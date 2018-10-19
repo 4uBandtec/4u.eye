@@ -1,19 +1,56 @@
 package br.com.eye.controller;
 
 import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
+import oshi.hardware.GlobalMemory;
 import oshi.hardware.HardwareAbstractionLayer;
 import oshi.software.os.OperatingSystem;
+import oshi.util.FormatUtil;
 
 public class ControllerComputador {
 
-    SystemInfo si = new SystemInfo();
+    SystemInfo systemInfo = new SystemInfo();
 
+    HardwareAbstractionLayer hal = systemInfo.getHardware();
+
+    public void getCodigoComputador() {
+       //Banco
+       //
+    }
+    public void getNomeComputador() {
+       //Banco
+       //
+    }
+    
     public OperatingSystem getSistemaOperacional() {
-        return si.getOperatingSystem();
+        return systemInfo.getOperatingSystem();
+    }
+
+    public void getVersaoProcessador() {
+        //
+        //
     }
 
     public int getBit() {
-        return si.getBitness();
+        return systemInfo.getOperatingSystem().getBitness();
     }
-    HardwareAbstractionLayer hal = si.getHardware();
+
+    public CentralProcessor getProcessador() {
+        return hal.getProcessor();
+    }
+
+    public double getCPU() {
+        return hal.getProcessor().getSystemCpuLoad();
+    }
+
+    public void getDisco() {
+        //
+        //
+    }
+
+    public long getMemoria() {
+        return hal.getMemory().getTotal();
+    }
+    
+    
 }
