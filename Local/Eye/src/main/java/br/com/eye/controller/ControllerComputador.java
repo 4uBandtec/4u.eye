@@ -1,46 +1,52 @@
 package br.com.eye.controller;
 
+import br.com.eye.dao.StatementComputador;
+import br.com.eye.model.Computador;
+import java.sql.SQLException;
 import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-import oshi.hardware.GlobalMemory;
-import oshi.hardware.HardwareAbstractionLayer;
-import oshi.software.os.OperatingSystem;
-import oshi.util.FormatUtil;
 
 public class ControllerComputador {
 
     SystemInfo systemInfo = new SystemInfo();
 
-    HardwareAbstractionLayer hal = systemInfo.getHardware();
+    public Computador getComputadorAtual(int codUsuario) throws SQLException {
+        StatementComputador statementComputador = new StatementComputador();
+        return new Computador(
+                statementComputador.getCodComputador(codUsuario),
+                "temporario",
+                getSistemaOperacional(),
+                getVersaoSistema(),
+                getBit(),
+                getProcessador(),
+                getCPU(),
+                1.0,//Alterar para getDisco()
+                getMemoria(),
+                codUsuario
+        );
 
-    public void getCodigoComputador() {
-       //Banco
-       //
-    }
-    public void getNomeComputador() {
-       //Banco
-       //
-    }
-    
-    public OperatingSystem getSistemaOperacional() {
-        return systemInfo.getOperatingSystem();
     }
 
-    public void getVersaoProcessador() {
-        //
-        //
+    public String getSistemaOperacional() {
+        return systemInfo.getOperatingSystem().toString();
+    }
+
+    public String getVersaoSistema() {
+        return systemInfo.getOperatingSystem().getVersion().toString();
+        //getSistemaOperacional().getVersion();
+        //String[] sistema = getSistemaOperacional().split("[0-9]");
+        //return sistema[0];
     }
 
     public int getBit() {
         return systemInfo.getOperatingSystem().getBitness();
     }
 
-    public CentralProcessor getProcessador() {
-        return hal.getProcessor();
+    public String getProcessador() {
+        return (systemInfo.getHardware().getProcessor()).toString();
     }
 
-    public double getCPU() {
-        return hal.getProcessor().getSystemCpuLoad();
+    public Double getCPU() {
+        return systemInfo.getHardware().getProcessor().getSystemCpuLoad();
     }
 
     public void getDisco() {
@@ -49,8 +55,11 @@ public class ControllerComputador {
     }
 
     public long getMemoria() {
-        return hal.getMemory().getTotal();
+        return systemInfo.getHardware().getMemory().getTotal();
     }
-    
-    
+
+    public boolean verificaAtualizacao(Computador atual, Computador salvo) {
+        return atual == salvo;//Falta completar
+    }
+
 }
