@@ -1,7 +1,14 @@
 package br.com.eye.view;
 
+import br.com.eye.model.Computador;
+
 public class index {
+
     public static void main(String[] args) {
-        System.out.println("Eu estou te vendo");
+        //Colocar aqui um metodo que verifica os componentes do banco e se estão atualizados com o banco
+        Computador teste = new Computador();
+
+        System.out.println(teste.getSistemaOperacional());
     }
+
 }
