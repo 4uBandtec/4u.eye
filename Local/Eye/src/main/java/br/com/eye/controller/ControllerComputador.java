@@ -1,6 +1,4 @@
 package br.com.eye.controller;
-
-import br.com.eye.dao.StatementComputador;
 import br.com.eye.model.Computador;
 import java.sql.SQLException;
 import oshi.SystemInfo;
@@ -10,20 +8,15 @@ public class ControllerComputador {
     SystemInfo systemInfo = new SystemInfo();
 
     public Computador getComputadorAtual(int codUsuario) throws SQLException {
-        StatementComputador statementComputador = new StatementComputador();
         return new Computador(
-                statementComputador.getCodComputador(codUsuario),
-                "temporario",
                 getSistemaOperacional(),
                 getVersaoSistema(),
                 getBit(),
                 getProcessador(),
                 getCPU(),
-                1.0,//Alterar para getDisco()
-                getMemoria(),
-                codUsuario
+                getDisco(),
+                getMemoria()
         );
-
     }
 
     public String getSistemaOperacional() {
@@ -32,9 +25,7 @@ public class ControllerComputador {
 
     public String getVersaoSistema() {
         return systemInfo.getOperatingSystem().getVersion().toString();
-        //getSistemaOperacional().getVersion();
-        //String[] sistema = getSistemaOperacional().split("[0-9]");
-        //return sistema[0];
+
     }
 
     public int getBit() {
@@ -49,9 +40,8 @@ public class ControllerComputador {
         return systemInfo.getHardware().getProcessor().getSystemCpuLoad();
     }
 
-    public void getDisco() {
-        //
-        //
+    public Double getDisco() {
+        return 1.0;
     }
 
     public long getMemoria() {
