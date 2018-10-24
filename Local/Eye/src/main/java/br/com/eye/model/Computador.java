@@ -21,12 +21,23 @@ public class Computador {
     ControllerComputador controllerComputador = new ControllerComputador();
     StatementComputador statementComputador = new StatementComputador();
 
+    public boolean equals(Computador computador) {
+
+        return (this.sistemaOperacional.equalsIgnoreCase(computador.getSistemaOperacionalAtual())
+                || this.versaoSistema.equalsIgnoreCase(computador.getVersaoSistemaAtual())
+                || this.versaoBits == computador.getVersaoBitsAtual()
+                || this.processador.equalsIgnoreCase(getProcessadorAtual())
+                || this.versaoBits == computador.getVersaoBitsAtual()
+                || this.totalCpu == computador.getTotalCpuAtual()
+                || this.totalDisco == computador.getTotalDiscoAtual()
+                || this.totalMemoria == computador.getTotalMemoriaAtual());
+
+    }
+
     public Computador() {
     }
 
-    public Computador(Integer codComputador, String nome, String sistemaOperacional, String versaoSistema, Integer versaoBits, String processador, Double totalCpu, Double totalDisco, long totalMemoria, Integer codUsuario) {
-        this.codComputador = codComputador;
-        this.nome = nome;
+    public Computador(String sistemaOperacional, String versaoSistema, Integer versaoBits, String processador, Double totalCpu, Double totalDisco, long totalMemoria) {
         this.sistemaOperacional = sistemaOperacional;
         this.versaoSistema = versaoSistema;
         this.versaoBits = versaoBits;
@@ -34,91 +45,122 @@ public class Computador {
         this.totalCpu = totalCpu;
         this.totalDisco = totalDisco;
         this.totalMemoria = totalMemoria;
-        this.codUsuario = codUsuario;
-    }
-
-    public Computador(int aInt, String string, String string0, String string1, int aInt0, String string2, long aLong, double aDouble, double aDouble0, double aDouble1, int codUsuario) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    public Integer getCodComputador(int codigoUsuario) throws SQLException {
-        return statementComputador.getCodComputador(codigoUsuario);
-    }
-
-    public String getNome(Computador computador) throws SQLException {
-        return statementComputador.getNome(computador.codComputador);
-    }
-
-    public String getSistemaOperacional() {
-        return controllerComputador.getSistemaOperacional();
-    }
-
-    public String getVersaoSistema() {
-        return controllerComputador.getVersaoSistema();
-    }
-
-    public int getVersaoBits() {
-        return controllerComputador.getBit();
-    }
-
-    public String getProcessador() {
-        return controllerComputador.getProcessador();
-    }
-
-    public Double getTotalCpu() {
-        return controllerComputador.getCPU();
-    }
-
-    public Double getTotalDisco() {
-        return totalDisco;
-    }
-
-    public long getTotalMemoria() {
-        return controllerComputador.getMemoria();
     }
 
     public int getCodUsuario() {
         return codUsuario;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setCodUsuario(Integer codUsuario) {
+        this.codUsuario = codUsuario;
+    }
+
+    public Integer getCodComputador(int codigoUsuario) throws SQLException {
+        return statementComputador.getCodComputador(codigoUsuario);
+    }
+
+    public Integer getCodComputador() {
+        return codComputador;
     }
 
     public void setCodComputador(Integer codComputador) {
         this.codComputador = codComputador;
     }
 
+    public String getNomeAtual(Computador computador) throws SQLException {
+        return statementComputador.getNome(computador.codComputador);
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getSistemaOperacionalAtual() {
+        return (controllerComputador.getSistemaOperacional().split("[0-9]")[0]);
+    }
+
+    public String getSistemaOperacional() {
+        return sistemaOperacional;
+    }
+
     public void setSistemaOperacional(String sistemaOperacional) {
         this.sistemaOperacional = sistemaOperacional;
+    }
+
+    public String getVersaoSistemaAtual() {
+        return controllerComputador.getVersaoSistema();
+    }
+
+    public String getVersaoSistema() {
+        return versaoSistema;
     }
 
     public void setVersaoSistema(String versaoSistema) {
         this.versaoSistema = versaoSistema;
     }
 
+    public int getVersaoBitsAtual() {
+        return controllerComputador.getBit();
+    }
+
+    public Integer getVersaoBits() {
+        return versaoBits;
+    }
+
     public void setVersaoBits(Integer versaoBits) {
         this.versaoBits = versaoBits;
+    }
+
+    public String getProcessadorAtual() {
+        return controllerComputador.getProcessador();
+    }
+
+    public String getProcessador() {
+        return processador;
     }
 
     public void setProcessador(String processador) {
         this.processador = processador;
     }
 
+    public Double getTotalCpuAtual() {
+        return controllerComputador.getCPU();
+    }
+
+    public Double getTotalCpu() {
+        return totalCpu;
+    }
+
     public void setTotalCpu(Double totalCpu) {
         this.totalCpu = totalCpu;
+    }
+
+    public Double getTotalDiscoAtual() {
+        return totalDisco;
+    }
+
+    public Double getTotalDisco() {
+        return totalDisco;
     }
 
     public void setTotalDisco(Double totalDisco) {
         this.totalDisco = totalDisco;
     }
 
-    public void setTotalMemoria(long totalMemoria) {
-        this.totalMemoria = totalMemoria;
+    public long getTotalMemoriaAtual() {
+        return controllerComputador.getMemoria();
     }
 
-    public void setCodUsuario(Integer codUsuario) {
-        this.codUsuario = codUsuario;
+    public long getTotalMemoria() {
+        return totalMemoria;
+    }
+
+    public void setTotalMemoria(long totalMemoria) {
+        this.totalMemoria = totalMemoria;
     }
 
     public Computador getComputadorSalvo() throws SQLException {

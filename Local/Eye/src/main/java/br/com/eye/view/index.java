@@ -8,7 +8,8 @@ public class index {
         //Colocar aqui um metodo que verifica os componentes do banco e se estão atualizados com o banco
         Computador teste = new Computador();
 
-        System.out.println(teste.getSistemaOperacional());
+
+        System.out.println(teste.getVersaoSistemaAtual());
     }
 
 }

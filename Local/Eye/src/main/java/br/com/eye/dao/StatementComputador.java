@@ -11,23 +11,20 @@ public class StatementComputador {
 
     public Computador getComputadorSalvo(int codUsuario) throws SQLException {
         Computador computador = null;
-        String sql = "SELECT * FROM computador WHERE cod_usuario = ?";
+        String sql = "SELECT sistema_operacional, versao_sistema, versao_bits,  processador, total_cpu, total_discoFROM computador WHERE cod_usuario = ?";
         PreparedStatement query = conexao.getConnection().prepareStatement(sql);
         query.setInt(1, codUsuario);
         ResultSet resultado = query.executeQuery();
         if (resultado.next()) {
             computador = new Computador(
-                    resultado.getInt("cod_computador"),
-                    resultado.getString("nome"),
                     resultado.getString("sistema_operacional"),
                     resultado.getString("versao_sistema"),
                     resultado.getInt("versao_bits"),
                     resultado.getString("processador"),
-                    resultado.getLong("total_cpu"),
+                    resultado.getDouble("total_cpu"),
                     resultado.getDouble("total_disco"),
-                    resultado.getDouble("total_memoria"),
-                    resultado.getDouble("total_memoria"),
-                    codUsuario);
+                    resultado.getLong("total_memoria")
+            );
         }
         return computador;
     }
@@ -48,10 +45,6 @@ public class StatementComputador {
         query.setInt(1, codComputador);
         ResultSet resultado = query.executeQuery();
         return resultado.next() ? resultado.getString("nome") : "";
-    }
-
-    public Computador getComputadorSalvo() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }
