@@ -13,9 +13,8 @@ public class Computador {
     private String versaoSistema;
     private Integer versaoBits;
     private String processador;
-    private Double totalCpu;
-    private Double totalDisco;
-    private long totalMemoria;
+    private Long totalDisco;
+    private Long totalMemoria;
     private Integer codUsuario;
 
     ControllerComputador controllerComputador = new ControllerComputador();
@@ -28,7 +27,6 @@ public class Computador {
                 || this.versaoBits == computador.getVersaoBitsAtual()
                 || this.processador.equalsIgnoreCase(getProcessadorAtual())
                 || this.versaoBits == computador.getVersaoBitsAtual()
-                || this.totalCpu == computador.getTotalCpuAtual()
                 || this.totalDisco == computador.getTotalDiscoAtual()
                 || this.totalMemoria == computador.getTotalMemoriaAtual());
 
@@ -37,12 +35,11 @@ public class Computador {
     public Computador() {
     }
 
-    public Computador(String sistemaOperacional, String versaoSistema, Integer versaoBits, String processador, Double totalCpu, Double totalDisco, long totalMemoria) {
+    public Computador(String sistemaOperacional, String versaoSistema, Integer versaoBits, String processador, Double totalCpu, Long totalDisco, long totalMemoria) {
         this.sistemaOperacional = sistemaOperacional;
         this.versaoSistema = versaoSistema;
         this.versaoBits = versaoBits;
         this.processador = processador;
-        this.totalCpu = totalCpu;
         this.totalDisco = totalDisco;
         this.totalMemoria = totalMemoria;
     }
@@ -127,27 +124,18 @@ public class Computador {
         this.processador = processador;
     }
 
-    public Double getTotalCpuAtual() {
-        return controllerComputador.getCPU();
+    
+
+
+    public long getTotalDiscoAtual() {
+        return controllerComputador.getDisco();
     }
 
-    public Double getTotalCpu() {
-        return totalCpu;
-    }
-
-    public void setTotalCpu(Double totalCpu) {
-        this.totalCpu = totalCpu;
-    }
-
-    public Double getTotalDiscoAtual() {
+    public Long getTotalDisco() {
         return totalDisco;
     }
 
-    public Double getTotalDisco() {
-        return totalDisco;
-    }
-
-    public void setTotalDisco(Double totalDisco) {
+    public void setTotalDisco(Long totalDisco) {
         this.totalDisco = totalDisco;
     }
 
@@ -156,7 +144,7 @@ public class Computador {
     }
 
     public long getTotalMemoria() {
-        return totalMemoria;
+        return controllerComputador.getMemoria();
     }
 
     public void setTotalMemoria(long totalMemoria) {
