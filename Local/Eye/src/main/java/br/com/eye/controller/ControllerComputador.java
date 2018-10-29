@@ -2,10 +2,14 @@ package br.com.eye.controller;
 import br.com.eye.model.Computador;
 import java.sql.SQLException;
 import oshi.SystemInfo;
+import oshi.software.os.FileSystem;
+import oshi.software.os.OSFileStore;
 
 public class ControllerComputador {
 
     SystemInfo systemInfo = new SystemInfo();
+    
+    FileSystem fileSystem = systemInfo.getOperatingSystem().getFileSystem();
 
     public Computador getComputadorAtual(int codUsuario) throws SQLException {
         return new Computador(
@@ -37,11 +41,24 @@ public class ControllerComputador {
     }
 
     public Double getCPU() {
-        return systemInfo.getHardware().getProcessor().getSystemCpuLoad();
+        
+        return systemInfo.getHardware().getProcessor().getSystemCpuLoad()*100.0;
     }
 
-    public Double getDisco() {
-        return 1.0;
+    public long getDisco() {
+       
+        OSFileStore[] fsArray = fileSystem.getFileStores();
+        
+        
+        long total = 0;
+        
+        for (OSFileStore fs : fsArray) {
+
+            total += fs.getTotalSpace();
+
+        }
+        
+           return total;
     }
 
     public long getMemoria() {
