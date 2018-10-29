@@ -1,13 +1,7 @@
 package br.com.eye.controller;
 import br.com.eye.model.Computador;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-import oshi.hardware.HardwareAbstractionLayer;
-import org.slf4j.impl.StaticLoggerBinder;
-import oshi.hardware.HWDiskStore;
 import oshi.software.os.FileSystem;
 import oshi.software.os.OSFileStore;
 
@@ -47,11 +41,8 @@ public class ControllerComputador {
     }
 
     public Double getCPU() {
-        SystemInfo si = systemInfo;
-        HardwareAbstractionLayer ha = si.getHardware();
-        CentralProcessor pr = ha.getProcessor();
-        Double cl = pr.getSystemCpuLoad();
-        return cl*100.0;
+        
+        return systemInfo.getHardware().getProcessor().getSystemCpuLoad()*100.0;
     }
 
     public long getDisco() {
