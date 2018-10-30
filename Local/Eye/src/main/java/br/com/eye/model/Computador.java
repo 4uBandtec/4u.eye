@@ -4,6 +4,7 @@ import br.com.eye.controller.ControllerComputador;
 import br.com.eye.dao.StatementComputador;
 
 import java.sql.SQLException;
+import java.util.Objects;
 
 public class Computador {
 
@@ -22,20 +23,19 @@ public class Computador {
 
     public boolean equals(Computador computador) {
 
-        return (this.sistemaOperacional.equalsIgnoreCase(computador.getSistemaOperacionalAtual())
-                || this.versaoSistema.equalsIgnoreCase(computador.getVersaoSistemaAtual())
-                || this.versaoBits == computador.getVersaoBitsAtual()
-                || this.processador.equalsIgnoreCase(getProcessadorAtual())
-                || this.versaoBits == computador.getVersaoBitsAtual()
-                || this.totalDisco == computador.getTotalDiscoAtual()
-                || this.totalMemoria == computador.getTotalMemoriaAtual());
+        return (this.sistemaOperacional.equalsIgnoreCase(computador.getSistemaOperacional())
+                || this.getVersaoSistema().equalsIgnoreCase(computador.getVersaoSistema())
+                || Objects.equals(this.getVersaoBits(), computador.getVersaoBits())
+                || this.getProcessador().equalsIgnoreCase(computador.getProcessador())
+                || Objects.equals(this.getTotalDisco(), computador.getTotalDisco())
+                || this.getTotalMemoria() == computador.getTotalMemoria());
 
     }
 
     public Computador() {
     }
 
-    public Computador(String sistemaOperacional, String versaoSistema, Integer versaoBits, String processador, Double totalCpu, Long totalDisco, long totalMemoria) {
+    public Computador(String sistemaOperacional, String versaoSistema, Integer versaoBits, String processador, Long totalDisco, Long totalMemoria) {
         this.sistemaOperacional = sistemaOperacional;
         this.versaoSistema = versaoSistema;
         this.versaoBits = versaoBits;
@@ -124,9 +124,6 @@ public class Computador {
         this.processador = processador;
     }
 
-    
-
-
     public long getTotalDiscoAtual() {
         return controllerComputador.getDisco();
     }
@@ -156,10 +153,18 @@ public class Computador {
     }
 
     public Computador getComputadorAtual() throws SQLException {
-        return controllerComputador.getComputadorAtual(1);
+        return controllerComputador.getComputadorAtual();
     }
 
-    public boolean verificaAtualizacao(Computador atual, Computador salvo) {
-        return true;//Arumar metodo verificaAtualizacao();
+    public boolean inserePrimeiroComputador(int codUsuario) throws SQLException {
+        return statementComputador.existeComputadorRegistrado(codUsuario)
+                ? null : statementComputador.setComputador(controllerComputador.getComputadorAtual());
+        //Precisa de Banco para testar
+    }
+
+    public boolean verificaAtualizacao(int codUsuario) throws SQLException {
+
+        return (statementComputador.getComputadorSalvo(codUsuario)).equals(controllerComputador.getComputadorAtual());
+        //Precisa de Banco para testar
     }
 }
