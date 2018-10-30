@@ -9,7 +9,8 @@
 
         var options = {
             pieHole: 0.9,
-            backgroundColor: { fill: 'transparent' }
+            backgroundColor: { fill: 'rgb(16,16,16)' },
+            colors: ['rgb(226,26,47)', 'rgb(16,16,16)']
         };
 
         var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
