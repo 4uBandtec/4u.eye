@@ -54,5 +54,5 @@ function efeitoHover(itembgs, items) {
 
 
 function efeitoOut(itembgs, items) {
-    itembgs.style.left = "-200%";
+    //itembgs.style.left = "-200%";
 }
