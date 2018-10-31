@@ -19,11 +19,14 @@ function iniciar() {
 function getItemMenu() {
 
     var itemMenuBackgrounds = document.getElementsByClassName("itemMenuBackGround"); 
-    var itemMenus = document.getElementsByClassName("itemMenu");
     var totalItens = itemMenuBackgrounds.length;
 
 
     for (i = 0; i < totalItens; i++) {
+        var itemMenuBackgrounds = document.getElementsByClassName("itemMenuBackGround");
+        var itemMenus = document.getElementsByClassName("itemMenu");
+        var totalItens = itemMenuBackgrounds.length;
+
         addEvento(i);
     }
     

@@ -11,8 +11,11 @@
             pieHole: 0.9,
             backgroundColor: { fill: 'rgb(16,16,16)' },
             colors: ['rgb(226,26,47)', 'rgb(16,16,16)'],
-            pieSliceBorderColor: "transparent"
-
+            pieSliceBorderColor: "transparent",
+            pieSliceTextStyle: {
+                color: 'white',
+            },
+            legend: 'none'
 
         };
           
