@@ -54,7 +54,14 @@ function drawChart() {
         var chart = new google.visualization.PieChart(document.getElementById('donutchart' + i));
         chart.draw(data, options);
 
+        animarPie(chart, options, data);
+
     }
+    
+    
+}
+
+function animarPie(chart, options, data) {
 
     // initial value
     var percent = 0;
@@ -72,9 +79,8 @@ function drawChart() {
             // stop the loop
             clearInterval(handler);
         }
-    }, 30);
-        
-    
+    }, 10);
+
 }
 
 
