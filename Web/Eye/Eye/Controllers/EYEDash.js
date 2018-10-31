@@ -51,7 +51,7 @@ function drawChart() {
         var options = {
             pieHole: 0.9,
             backgroundColor: { fill: darkerBgColor },
-            colors: [redColor, darkerBgColor],
+            colors: [redColor.replace(/\s/g, ''), darkerBgColor.replace(/\s/g, '')],
             pieSliceBorderColor: "transparent",
             pieSliceTextStyle: {
                 color: 'white',

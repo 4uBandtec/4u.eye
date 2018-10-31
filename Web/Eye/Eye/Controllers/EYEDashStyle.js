@@ -12,6 +12,19 @@ function getCoordenadas() {
 
 function iniciarEstilo() {
     getItemMenu();
+    /*
+    var html = document.getElementsByTagName('html')[0];
+    html.style.setProperty("--bg-color", "rgb(" + Math.random() * 200 + "," + Math.random() * 200 + "," + Math.random() * 200 + ")");
+    html.style.setProperty("--txt-color", "rgb(" + Math.random() * 200 + "," + Math.random() * 200 + "," + Math.random() * 200 + ")");
+    html.style.setProperty("--red-color", "rgb(" + (Math.random() * 200).toFixed(0) + "," + (Math.random() * 200).toFixed(0) + "," + (Math.random() * 200).toFixed(0) + ")");
+    html.style.setProperty("--purple-color", "rgb(" + Math.random() * 200 + "," + Math.random() * 200 + "," + Math.random() * 200 + ")");
+    html.style.setProperty("--darker-bg-color", "rgb(" + (Math.random() * 200).toFixed(0) + "," + (Math.random() * 200).toFixed(0) + "," + (Math.random() * 200).toFixed(0) + ")");
+    html.style.setProperty("--lighter-bg-color", "rgb(" + Math.random() * 200 + "," + Math.random() * 200 + "," + Math.random() * 200 + ")");
+    html.style.setProperty("--red-color-a", "rgb(" + Math.random() * 200 + "," + Math.random() * 200 + "," + Math.random() * 200 + "," + Math.random() + ")");
+    html.style.setProperty("--purple-color-a", "rgb(" + Math.random() * 200 + "," + Math.random() * 200 + "," + Math.random() * 200 + "," + Math.random() + ")");
+    html.style.setProperty("--to-invisible", "rgb(" + Math.random() * 200 + "," + Math.random() * 200 + "," + Math.random() * 200 + ", 0)");
+    html.style.setProperty("--black-color-a", "rgb(" + Math.random() * 200 + "," + Math.random() * 200 + "," + Math.random() * 200 + "," + Math.random()/2 + ")");
+    */
 }
 
 
