@@ -34,7 +34,7 @@ function getItemMenu() {
 
 
 
-function addEvento(index) {
+function addEvento(i) {
     var itemMenuBackgrounds = document.getElementsByClassName("itemMenuBackGround");
     var itemMenus = document.getElementsByClassName("itemMenu");
     var totalItens = itemMenuBackgrounds.length;
@@ -43,7 +43,6 @@ function addEvento(index) {
     var item = itemMenus[i];
     var background = itemMenuBackgrounds[i];
     itemMenus[i].addEventListener("mousemove", function () { efeitoHover(background, item) });
-    itemMenus[i].addEventListener("mouseout", function () { efeitoOut(background, item) });
 }
 
 
@@ -54,8 +53,3 @@ function efeitoHover(itembgs, items) {
     itembgs.style.left = backgroundX + "px";
 }
 
-
-
-function efeitoOut(itembgs, items) {
-    //itembgs.style.left = "-200%";
-}

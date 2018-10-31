@@ -37,6 +37,10 @@ google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 function drawChart() {
 
+    var style = getComputedStyle(document.body);
+    var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
+    var redColor = (style.getPropertyValue('--red-color'));
+
     for (i = 0; i < qtdComputers; i++) {
         var data = google.visualization.arrayToDataTable([
             ['', ''],
@@ -46,8 +50,8 @@ function drawChart() {
 
         var options = {
             pieHole: 0.9,
-            backgroundColor: { fill: 'rgb(16,16,16)' },
-            colors: ['rgb(226,26,47)', 'rgb(16,16,16)'],
+            backgroundColor: { fill: darkerBgColor },
+            colors: [redColor, darkerBgColor],
             pieSliceBorderColor: "transparent",
             pieSliceTextStyle: {
                 color: 'white',

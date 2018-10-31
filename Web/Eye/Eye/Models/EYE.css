@@ -1,35 +1,43 @@
-﻿* {
-    color: rgb(220,220,220);
+﻿:root {
+    --bg-color:rgb(26,26,26);
+    --txt-color:rgb(220,220,220);
+    --red-color:rgb(226,26,47);
+    --purple-color:rgb(86,13,196);
+    --darker-bg-color:rgb(16,16,16);
+    --lighter-bg-color:rgb(50,50,50);
+    --red-color-a:rgba(226,26,47,0.5);
+    --purple-color-a:rgba(86,13,196,0.5);
+    --to-invisible:rgba(50,50,50,0);
+    --black-color-a:rgba(0,0,0,0.3);
+}
+
+* {
+    color: var(--txt-color);
     font-family: Consolas;
     position: relative;
     transition-duration: 0.5s;
 }
 
 body {
-    background: rgb(26,26,26);
+    background: var(--bg-color);
 }
 
-/*Personalizar barra de rolagem*/
-/* largura da barra */
 ::-webkit-scrollbar {
     width: 15px;
 }
 
-/* 'caminho' que a barra pode rolar */
 ::-webkit-scrollbar-track {
-    background-color: rgb(26,26,26);
-    /*border-left: solid 1px white;*/
+    background-color: var(--bg-color);
 }
 
-/* barra de rolagem */
 ::-webkit-scrollbar-thumb {
-    background: rgb(50,50,50);
-    border-left: solid 1px rgb(86,13,196);
+    background: var(--lighter-bg-color);
+    border-left: solid 1px var(--purple-color);
     transition: 0.3s;
 }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: rgba(226,26,47,0.3);
+        background: var(--red-color-a);
 
     }
 
@@ -46,16 +54,17 @@ body {
     height: 10%;
     padding-top: 3%;
     padding-left: 2%;
-    border-bottom: 1px solid rgb(226,26,47);
-    background: rgb(26,26,26);
+    border-bottom: 1px solid var(--red-color);
+    background: var(--bg-color);
     cursor: pointer;
     transition-duration: 1s;
     overflow: hidden;
     transition-property: width;
+    border-bottom-right-radius: 10px;
 }
 
 .itemMenuBackGround {
-    background: linear-gradient(90deg,rgba(50,50,50,0),rgba(0,0,0,0.3), rgba(226,26,47,0.5), rgba(0,0,0,0.3), rgba(50,50,50,0));
+    background: linear-gradient(90deg,var(--to-invisible), var(--black-color-a), var(--red-color-a), var(--black-color-a), var(--to-invisible));
     opacity: 0;
     position: absolute;
     top: 0;
@@ -104,15 +113,15 @@ body {
     position: fixed;
     left: 0;
     bottom: 0;
-    border-right: 1px solid rgb(86,13,196);
+    border-right: 1px solid var(--purple-color);
     margin-top: 10%;
     transition-duration: 0.5s;
     z-index: 2;
-    background: rgb(26,26,26);
+    background: var(--bg-color);
 }
 
 .txtMeuResumo {
-    border-bottom: 1px solid rgb(86,13,196);
+    border-bottom: 1px solid var(--purple-color);
     padding: 2%;
     width: 50%;
     transition-duration: 0.5s;
@@ -131,10 +140,12 @@ body {
     width: 40%;
     height: 30%;
     margin: 4%;
-    border-top: 1px solid rgb(226,26,47);
-    background: rgb(16,16,16);
+    border-top: 1px solid var(--red-color);
+    background: var(--darker-bg-color);
     float: left;
     transition-duration: 0s;
+    border-radius: 10px;
+    overflow:hidden;
 }
 
 #donutchart{
@@ -143,7 +154,6 @@ body {
     position: absolute;
     left: 0;
     top: 0;
-
 }
 
 
@@ -162,27 +172,8 @@ body {
         font-size: 2vmax;
     }
 
-    /*Personalizar barra de rolagem*/
-    /* largura da barra */
     ::-webkit-scrollbar {
         width: 5px;
-    }
-
-    /* 'caminho' que a barra pode rolar */
-    ::-webkit-scrollbar-track {
-        background-color: rgb(26,26,26);
-        /*border-left: solid 1px white;*/
-    }
-
-    /* barra de rolagem */
-    ::-webkit-scrollbar-thumb {
-        background: rgb(50,50,50);
-        border-left: solid 1px rgb(86,13,196);
-        transition: 0.3s;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: rgba(226,26,47,0.3);
     }
 
     
@@ -215,14 +206,14 @@ body {
     }
 
     .itemMenuBackGround {
-        background: linear-gradient(90deg,rgba(0,0,0,0.3), rgba(226,26,47,0.5), rgba(0,0,0,0.3));
+        background: linear-gradient(90deg,var(--black-color-a), var(--red-color-a), var(--black-color-a));
     }
 
     
     #meuResumo {
         width: 11vmax;
         height: 5vmax;
-        border-right: 1px solid rgb(86,13,196);
+        border-right: 1px solid var(--purple-color);
         overflow: hidden;
     }
 
