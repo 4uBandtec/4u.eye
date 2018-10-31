@@ -1,8 +1,13 @@
 ﻿var qtdComputers = 4; //Teste, essa vai ser a qtd de computadores do usuário
-
+var valoresUsada = [];
+var valoresLivre = [];
 
 function iniciarDash() {
     for (i = 0; i < qtdComputers; i++) {
+
+        valoresUsada[i] = Math.random() * 10;
+
+        valoresLivre[i] = Math.random() * 10;
 
         var areaInfo = document.getElementById('areaInfo');
 
@@ -35,8 +40,8 @@ function drawChart() {
     for (i = 0; i < qtdComputers; i++) {
         var data = google.visualization.arrayToDataTable([
             ['', ''],
-            ['Usada', Math.random() * 100],
-            ['Livre', Math.random() * 100]
+            ['Usada', valoresUsada[i]],
+            ['Livre', valoresLivre[i]]
         ]);
 
         var options = {
@@ -54,14 +59,20 @@ function drawChart() {
         var chart = new google.visualization.PieChart(document.getElementById('donutchart' + i));
         chart.draw(data, options);
 
-        animarPie(chart, options, data);
+        animarPie(chart, options, data, i);
 
     }
     
     
 }
 
-function animarPie(chart, options, data) {
+function animarPie(chart, options, data, index) {
+    
+
+    var umPorCento = (valoresUsada[index] + valoresLivre[index]) / 100;
+
+    var pctUsada = valoresUsada[index] / umPorCento;
+    var pctLivre = valoresLivre[index] / umPorCento;
 
     // initial value
     var percent = 0;
@@ -75,7 +86,7 @@ function animarPie(chart, options, data) {
         // update the pie
         chart.draw(data, options);
         // check if we have reached the desired value
-        if (percent > 74) {
+        if (percent >= pctUsada) {
             // stop the loop
             clearInterval(handler);
         }
