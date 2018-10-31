@@ -92,8 +92,9 @@
     <Content Include="Controllers\EYEDash.js" />
     <Content Include="Controllers\EYEDashStyle.js" />
     <Content Include="Global.asax" />
+    <Content Include="Imagens\icon.png" />
     <Content Include="Views\DashBoard.html" />
-    <Content Include="Views\EYE.css" />
+    <Content Include="Models\EYE.css" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -115,7 +116,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

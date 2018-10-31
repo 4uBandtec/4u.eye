@@ -131,7 +131,7 @@ body {
     width: 40%;
     height: 30%;
     margin: 4%;
-    border: 1px solid rgb(226,26,47);
+    border-top: 1px solid rgb(226,26,47);
     background: rgb(16,16,16);
     float: left;
     transition-duration: 0s;
@@ -253,10 +253,6 @@ body {
     .infoGeralComputador {
         width: 60vmin;
         height: 80vmin;
-        margin: 4%;
-        border: 1px solid rgb(226,26,47);
-        background: rgb(16,16,16);
-        float: left;
     }
 
 

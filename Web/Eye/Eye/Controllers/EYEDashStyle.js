@@ -10,7 +10,7 @@ function getCoordenadas() {
 }
 
 
-function iniciar() {
+function iniciarEstilo() {
     getItemMenu();
 }
 

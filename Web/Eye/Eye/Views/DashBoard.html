@@ -12,11 +12,13 @@
     <script type="text/javascript" src="../Controllers/EYEDash.js"></script>
     <script type="text/javascript" src="../Controllers/EYEDashStyle.js"></script>
 </head>
-<body onload="iniciar()" onresize="drawChart()">
+<body onload="iniciarEstilo(), iniciarDash()" onresize="drawChart()">
+
+    <!--MENU-->
     <div id="sideMenu" onmousemove="getCoordenadas()">
-       
+
         <div class="itemMenu">
-            
+
             <div class="itemIcon">
                 <img src="../Imagens/icon.png" />
             </div>
@@ -121,28 +123,25 @@
 
 
     </div>
+
+    <!--/MENU-->
+
+
 
     <div id="meuResumo">
         <div class="txtMeuResumo">MEU RESUMO:</div>
 
     </div>
 
+
+    <!--Area com os containers dos computadores-->
     <div id="areaInfo">
-        <div class="infoGeralComputador">
-            <div id="donutchart"></div>
-        </div>
-        <div class="infoGeralComputador">
 
-        </div>
-        <div class="infoGeralComputador">
+        <!--Eles são adds através da função iniciarDash() no script EYEDash.js-->
 
-        </div>
-        <div class="infoGeralComputador">
-
-        </div>
-        <div class="infoGeralComputador">
-
-        </div>
     </div>
+
+    <!--/Area com os containers dos computadores-->
+
 </body>
 </html>

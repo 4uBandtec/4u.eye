@@ -1,10 +1,42 @@
-﻿ google.charts.load("current", {packages:["corechart"]});
-      google.charts.setOnLoadCallback(drawChart);
-      function drawChart() {
+﻿var qtdComputers = 4; //Teste, essa vai ser a qtd de computadores do usuário
+
+
+function iniciarDash() {
+    for (i = 0; i < qtdComputers; i++) {
+
+        var areaInfo = document.getElementById('areaInfo');
+
+        var infoGeralComputador = document.createElement("div");
+
+        infoGeralComputador.setAttribute("class", "infoGeralComputador");
+        infoGeralComputador.setAttribute("id", "infoGeralComputador" + i);
+
+
+        areaInfo.appendChild(infoGeralComputador);
+
+
+        var pieChartInfo = document.createElement("div");
+
+        pieChartInfo.setAttribute("class", "donutchart");
+        pieChartInfo.setAttribute("id", "donutchart" + i);
+
+
+        infoGeralComputador.appendChild(pieChartInfo);
+
+    }
+}
+
+
+
+google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(drawChart);
+function drawChart() {
+
+    for (i = 0; i < qtdComputers; i++) {
         var data = google.visualization.arrayToDataTable([
-          ['', ''],
-          ['Usada',     11],
-          ['Livre',      2]
+            ['', ''],
+            ['Usada', Math.random() * 100],
+            ['Livre', Math.random() * 100]
         ]);
 
         var options = {
@@ -18,7 +50,32 @@
             legend: 'none'
 
         };
-          
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart'));
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart' + i));
         chart.draw(data, options);
+
+    }
+
+    // initial value
+    var percent = 0;
+    // start the animation loop
+    var handler = setInterval(function () {
+        // values increment
+        percent += 1;
+        // apply new values
+        data.setValue(0, 1, percent);
+        data.setValue(1, 1, 100 - percent);
+        // update the pie
+        chart.draw(data, options);
+        // check if we have reached the desired value
+        if (percent > 74) {
+            // stop the loop
+            clearInterval(handler);
+        }
+    }, 30);
+        
+    
 }
+
+
+
