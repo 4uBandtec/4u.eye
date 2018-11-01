@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿
+using Eye.Models;
+using System;
 
 namespace Eye.View
 {
@@ -12,6 +9,11 @@ namespace Eye.View
         protected void Page_Load(object sender, EventArgs e)
         {
 
+        }
+
+        protected void btnLogar_Click(object sender, EventArgs e)
+        {
+            new Workspace().Logar(txtWorkspacename, txtSenha);
         }
     }
 }
