@@ -69,8 +69,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Component\icon.png" />
-    <Content Include="Controller\EYEDash.js" />
-    <Content Include="Controller\EYEDashStyle.js" />
+    <Content Include="Controller\Dashboard.js" />
+    <Content Include="Controller\DashStyle.js" />
     <Content Include="Global.asax" />
     <Content Include="Model\EYE.css" />
     <Content Include="View\CadastroWorkspace.aspx" />

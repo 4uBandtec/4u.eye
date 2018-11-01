@@ -40,7 +40,6 @@ function drawChart() {
     var style = getComputedStyle(document.body);
     var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
     var redColor = (style.getPropertyValue('--red-color'));
-
     for (i = 0; i < qtdComputers; i++) {
         var data = google.visualization.arrayToDataTable([
             ['', ''],
@@ -50,7 +49,7 @@ function drawChart() {
 
         var options = {
             pieHole: 0.9,
-            backgroundColor: { fill: darkerBgColor },
+            backgroundColor: { fill: darkerBgColor.replace(/\s/g, '') },
             colors: [redColor.replace(/\s/g, ''), darkerBgColor.replace(/\s/g, '')],
             pieSliceBorderColor: "transparent",
             pieSliceTextStyle: {
