@@ -114,3 +114,7 @@ C:\Users\henrique.silva\Documents\4U\Projeto\4u.eye\Web\Eye\Eye\obj\Debug\Eye.cs
 C:\Users\henrique.silva\Documents\4U\Projeto\4u.eye\Web\Eye\Eye\obj\Debug\Eye.csproj.CopyComplete
 C:\Users\henrique.silva\Documents\4U\Projeto\4u.eye\Web\Eye\Eye\obj\Debug\Eye.dll
 C:\Users\henrique.silva\Documents\4U\Projeto\4u.eye\Web\Eye\Eye\obj\Debug\Eye.pdb
+C:\Users\user\OneDrive\PenDrive\4u.eye\Web\Eye\Eye\obj\Debug\Eye.csprojResolveAssemblyReference.cache
+C:\Users\user\OneDrive\PenDrive\4u.eye\Web\Eye\Eye\obj\Debug\Eye.csproj.CoreCompileInputs.cache
+C:\Users\user\OneDrive\PenDrive\4u.eye\Web\Eye\Eye\obj\Debug\Eye.dll
+C:\Users\user\OneDrive\PenDrive\4u.eye\Web\Eye\Eye\obj\Debug\Eye.pdb

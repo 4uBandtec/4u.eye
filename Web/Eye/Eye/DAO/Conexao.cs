@@ -4,10 +4,9 @@ namespace Eye.DAO
 {
     public class Conexao
     {
-        public static void GetConexao()
+        public static SqlConnection GetConexao()
         {
-            var conexao = new SqlConnection("");
-            conexao.Open();
+            return new SqlConnection("Server=tcp:bandtecserver.database.windows.net,1433;Initial Catalog=bd4U;Persist Security Info=False;User ID=henriquegs@bandtecserver;Password=digitalSCHO00L;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
     }
 }

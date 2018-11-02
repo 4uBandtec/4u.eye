@@ -1,4 +1,4 @@
-﻿namespace Eye.Models
+﻿namespace Eye.Model
 {
     public class Monitor
     {
@@ -8,7 +8,5 @@
         private string NomeComputador { get; set; }
         private long DiscoTotal { get; set; }
         private long RAMTotal { get; set; }
-
-
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.Web.UI.WebControls;
 
-namespace Eye.Models
+namespace Eye.Model
 {
     public class Valida
     {
