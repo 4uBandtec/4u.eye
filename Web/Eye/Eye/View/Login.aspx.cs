@@ -1,5 +1,4 @@
-﻿
-using Eye.Models;
+﻿using Eye.Model;
 using System;
 
 namespace Eye.View
@@ -8,12 +7,19 @@ namespace Eye.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if((int)Session["codWorkspace"] != 0)
+            {
+                Response.Redirect("area_inicio/monitor.aspx");
+            }
         }
 
         protected void btnLogar_Click(object sender, EventArgs e)
         {
-            new Workspace().Logar(txtWorkspacename, txtSenha);
+            if (new Workspace().Logar(txtWorkspacename, txtSenha))
+            {
+                Session["codWorkspace"] = new Workspace().GetCodigo(txtWorkspacename.Text);
+            }
+            else lblMensagem.Text = "Login Incorreto";
         }
     }
 }
