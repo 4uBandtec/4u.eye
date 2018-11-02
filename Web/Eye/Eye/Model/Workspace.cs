@@ -1,6 +1,6 @@
-﻿using System.Web.UI.WebControls;
-using Eye.Models;
-namespace Eye.Models
+﻿using Eye.Controller;
+using System.Web.UI.WebControls;
+namespace Eye.Model
 
 {
     public class Workspace
@@ -12,10 +12,11 @@ namespace Eye.Models
         public bool Logar(TextBox txtWorkspacename, TextBox txtSenha)
         {
             Valida.StringVazia(txtWorkspacename, txtSenha);
-
-            return true;
+            return (new ControllerWorkspace().AutenticaWorkspace(txtWorkspacename.Text, txtSenha.Text));
+        }
+        public int GetCodigo(string workspace)
+        {
+            return new ControllerWorkspace().GetCodigo(workspace);
         }
     }
-
-  
 }
