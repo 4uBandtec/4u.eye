@@ -17,7 +17,7 @@
             <label>Senha</label>
             <br />
             <asp:TextBox ID="txtSenha" runat="server" Placeholder="Senha" type="password"></asp:TextBox>
-
+            <asp:Label ID ="lblMensagem" Text="" runat="server"  />
             <asp:Button ID="btnLogar" runat="server" Text="Button" OnClick="btnLogar_Click" />
         </div>
     </form>
