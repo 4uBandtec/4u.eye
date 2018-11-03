@@ -17,7 +17,9 @@ namespace Eye.View
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
-            new Workspace().Cadastrar(txtWorkspacename, txtNome,txtEmail,txtSenha);
+            if (new Workspace().Cadastrar(txtWorkspacename, txtNome, txtEmail, txtSenha)) {
+                Response.Redirect("./Login.aspx");//Ou chamar um metodo que limpa os campos e mostra "Cadastro efetuado"
+            }
         }
     }
 }
