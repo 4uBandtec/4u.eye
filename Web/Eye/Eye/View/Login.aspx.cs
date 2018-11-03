@@ -7,9 +7,10 @@ namespace Eye.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if((int)Session["codWorkspace"] != 0)
+            var codWorkspace =(string)Session["codWorkspace"];
+            if (codWorkspace != null && codWorkspace!="0")
             {
-                Response.Redirect("area_inicio/monitor.aspx");
+                Response.Redirect("./Dashboard.html");
             }
         }
 

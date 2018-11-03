@@ -1,4 +1,5 @@
 ﻿using Eye.DAO;
+using Eye.Model;
 using System;
 using System.Security.Cryptography;
 using System.Text;
@@ -7,12 +8,21 @@ namespace Eye.Controller
 {
     public class ControllerWorkspace
     {
-        public bool AutenticaWorkspace(string workspacename, string senha)
+        public bool AutenticarWorkspace(string workspacename, string senha)
         {
             var statementWorkspace = new StatementWorkspace();
             var salt = statementWorkspace.BuscaSalt(workspacename);
             var senhaBanco = statementWorkspace.BuscaSenhaHash(workspacename);
             return ValidaSenha(senhaBanco, senha, salt);
+        }
+        public bool Cadastrar(Workspace workspace)
+        {
+            var statementWorkspace = new StatementWorkspace();
+            statementWorkspace.VerificaWorkspacenameUnico(workspace.Workspacename);
+            statementWorkspace.VerificaEmailUnico(workspace.Email);
+            workspace.Salt = GerarSalt();
+            workspace.Senha = GerarSenhaHash(workspace.Senha, workspace.Salt);
+            return statementWorkspace.InserirWorkspace(workspace);
         }
         public string GerarSenhaHash(string senha, int salt)
         {

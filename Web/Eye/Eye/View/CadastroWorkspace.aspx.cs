@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using Eye.Model;
+using System;
 
 namespace Eye.View
 {
@@ -11,7 +7,19 @@ namespace Eye.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            var codWorkspace = (string)Session["codWorkspace"];
+            if (codWorkspace != null && codWorkspace != "0")
+            {
+                Response.Redirect("./Dashboard.html");
+            }
 
+        }
+
+        protected void btnCadastrar_Click(object sender, EventArgs e)
+        {
+            if (new Workspace().Cadastrar(txtWorkspacename, txtNome, txtEmail, txtSenha)) {
+                Response.Redirect("./Login.aspx");//Ou chamar um metodo que limpa os campos e mostra "Cadastro efetuado"
+            }
         }
     }
 }
