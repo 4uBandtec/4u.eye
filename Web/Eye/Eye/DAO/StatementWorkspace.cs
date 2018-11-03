@@ -36,7 +36,7 @@ namespace Eye.DAO
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT salt FROM workspace WHERE workspacename = @workspacename", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT salt FROM workspace WHERE workspacename = @workspacename  OR email = @workspacename", conexao))
             {
                 cmd.Parameters.AddWithValue("@workspacename", workspacename);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
@@ -53,7 +53,7 @@ namespace Eye.DAO
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT senha FROM workspace WHERE workspacename = @workspacename", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT senha FROM workspace WHERE workspacename = @workspacename OR email = @workspacename", conexao))
             {
                 cmd.Parameters.AddWithValue("@workspacename", workspacename);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
@@ -70,7 +70,7 @@ namespace Eye.DAO
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT cod_workspace FROM workspace WHERE workspacename = @workspacename", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT cod_workspace FROM workspace WHERE workspacename = @workspacename OR email = @workspacename", conexao))
             {
                 cmd.Parameters.AddWithValue("@workspacename", workspacename);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
