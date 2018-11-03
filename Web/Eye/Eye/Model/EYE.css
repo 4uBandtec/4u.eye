@@ -229,7 +229,10 @@ body {
 }
 
 
-    .areaCampos input[type="text"]:focus, .areaCampos input[type="password"]:focus {
+    .areaCampos input[type="text"]:focus, .areaCampos input[type="password"]:focus,
+    .areaCampos input[type="text"]:active, .areaCampos input[type="password"]:active,
+    .areaCampos input[type="text"]:target, .areaCampos input[type="password"]:target
+    {
         border-bottom: 1px solid var(--purple-color);
         border-bottom-left-radius: 20%;
         width: 92%;
@@ -433,7 +436,8 @@ label {
         border-top: none;
         border-bottom-right-radius: 40px;
         border-bottom-left-radius: 40px;
-        border-top-right-radius:0;
+        border-top-right-radius: 0;
+        height: 10vh;
     }
 
 
@@ -441,6 +445,7 @@ label {
             margin-left: 0%;
             width: 90vw;
             font-size: 4vmax;
+            margin-top: -2vh;
         }
 
 
