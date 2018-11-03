@@ -1,6 +1,9 @@
-﻿:root {
+﻿
+
+
+:root {
     --bg-color: rgb(26,26,26);
-    --txt-color: rgb(220,220,220);
+    --txt-color: rgb(200,200,200);
     --red-color: rgb(226,26,47);
     --purple-color: rgb(86,13,196);
     --darker-bg-color: rgb(16,16,16);
@@ -9,11 +12,13 @@
     --purple-color-a: rgba(86,13,196,0.5);
     --to-invisible: rgba(50,50,50,0);
     --black-color-a: rgba(0,0,0,0.3);
+    --black-color-a9: rgba(0,0,0,0.9);
+    --black-color: rgb(0,0,0);
 }
 
 * {
     color: var(--txt-color);
-    font-family: Consolas;
+    font-family: 'Segoe UI';
     position: relative;
     transition-duration: 0.5s;
 }
@@ -21,6 +26,14 @@
 body {
     background: var(--bg-color);
 }
+
+
+
+::selection {
+    color: var(--bg-color);
+    background: var(--txt-color);
+}
+
 
 ::-webkit-scrollbar {
     width: 15px;
@@ -39,6 +52,17 @@ body {
     ::-webkit-scrollbar-thumb:hover {
         background: var(--red-color-a);
     }
+
+
+.radialBlack {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0vh;
+    left: 0vw;
+    background: radial-gradient(circle, var(--bg-color), var(--darker-bg-color),var(--black-color));
+    z-index: -2;
+}
 
 #sideMenu {
     height: 50%;
@@ -147,7 +171,7 @@ body {
     overflow: hidden;
 }
 
-#donutchart {
+.donutchart {
     height: 100%;
     width: 100%;
     position: absolute;
@@ -156,7 +180,132 @@ body {
 }
 
 
+.areaCampos {
+    position: fixed;
+    left: 25%;
+    right: 25%;
+    top: 30%;
+    width: 50%;
+    height: 40%;
+}
 
+.mensagem {
+    height: 10%;
+    color: var(--red-color);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.campos {
+    width: 70%;
+    left: 0;
+    top: 10%;
+    position: relative;
+    float: left;
+}
+
+    .campos:last-of-type {
+        width: 30%;
+    }
+
+.areaCampos input[type="text"], .areaCampos input[type="password"] {
+    background: none;
+    border: none;
+    border: none;
+    width: 96%;
+    height: 7vh;
+    border-bottom: solid 1px var(--red-color);
+    font-size: 2vmax;
+    font-weight: lighter;
+    padding: 2vh;
+    padding-right: 0.5vw;
+    padding-left: 1vw;
+    position: relative;
+    float: left;
+    margin: 0;
+    margin-top: 3vh;
+}
+
+
+    .areaCampos input[type="text"]:focus, .areaCampos input[type="password"]:focus {
+        border-bottom: 1px solid var(--purple-color);
+        border-bottom-left-radius: 20%;
+        width: 92%;
+        padding-left: 4%;
+        color: var(--purple-color);
+    }
+
+
+.btnForm {
+    width: 40%;
+    border: solid 1px var(--red-color);
+    margin-top: 14vh;
+    font-size: 1.5vmax;
+    float: left;
+    height: 14vh;
+    padding: 0;
+    width:10vw;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
+    color: var(--txt-color);
+    overflow: hidden;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;
+    cursor: pointer;
+}
+
+    .btnForm:hover {
+        border-color: var(--to-invisible);
+    }
+
+    .btnForm input {
+        background: none;
+        border:none;
+        font-size: 1.5vmax;
+        transition-duration: .3s;
+        cursor: pointer;
+        height: 14vh;
+        width: 10vw;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+        .btnForm input:focus {
+            color: var(--purple-color);
+            padding-left: 40%;
+        }
+
+
+    .btnForm:hover input, .btnForm:focus input, .btnForm:active input {
+        color: var(--bg-color);
+        padding-left: 40%;
+        font-weight: bold;
+    }
+
+    .btnForm .itemMenuBackGround {
+        position: absolute;
+    }
+
+    .btnForm:hover .itemMenuBackGround {
+        opacity: 1;
+        left: 0;
+        transition-delay: 0s;
+        transition-duration: 0.1s;
+        background: radial-gradient(circle, var(--red-color-a), var(--black-color-a));
+        position: absolute;
+    }
+
+input:focus {
+    outline: none !important;
+}
+
+
+label {
+    font-size: 1.5vmax;
+    font-weight: lighter;
+}
 
 
 
@@ -220,6 +369,7 @@ body {
         #meuResumo:hover {
             width: 100vmin;
             height: 100vmin;
+            background: var(--black-color-a9);
         }
 
             #meuResumo:hover .txtMeuResumo {
@@ -245,4 +395,59 @@ body {
         width: 60vmin;
         height: 80vmin;
     }
+
+    .areaCampos {
+        left: 5%;
+        right: 5%;
+        top: 20%;
+        width: 90%;
+        height: 80%;
+    }
+
+    .mensagem {
+        width: 90%;
+    }
+
+    .campos {
+        width: 100%;
+        left: 0;
+        top: 10%;
+        position: relative;
+        float: left;
+    }
+
+
+
+    .areaCampos input[type="text"], .areaCampos input[type="password"] {
+        width: 86vw;
+        padding: 2vw;
+        font-size: 6vmin;
+    }
+
+
+
+
+    .btnForm {
+        width: 89.7vw;
+        margin: 0%;
+        border-top: none;
+        border-bottom-right-radius: 40px;
+        border-bottom-left-radius: 40px;
+        border-top-right-radius:0;
+    }
+
+
+        .btnForm input {
+            margin-left: 0%;
+            width: 90vw;
+            font-size: 4vmax;
+        }
+
+
+
+        .btnForm:hover .itemMenuBackGround {
+            background: linear-gradient(90deg, var(--to-invisible),var(--black-color-a), var(--red-color-a), var(--black-color-a),var(--to-invisible));
+        }
+
+
 }

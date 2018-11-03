@@ -61,8 +61,35 @@ function addEvento(i) {
 
 
 function efeitoHover(itembgs, items) {
+
     var width = items.getBoundingClientRect().width;
-    var backgroundX = (-width / 2) + (mouseX - width / 2);
+    var itemX = items.getBoundingClientRect().x;
+    var backgroundX = (mouseX - itemX) - ((width));
+
     itembgs.style.left = backgroundX + "px";
 }
 
+function startaHover(itembg, item) {
+    var itembgs = document.getElementById(itembg);
+    var items = document.getElementById(item);
+
+    efeitoHover(itembgs, items);
+
+}
+
+function radial(id) {
+
+    getCoordenadas();
+
+    var item = document.getElementById(id);
+
+    var width = item.getBoundingClientRect().width;
+    var height = item.getBoundingClientRect().height;
+    
+    var backgroundX = (mouseX - width / 2);
+
+    var backgroundY = (mouseY - height / 2);
+
+    item.style.left = backgroundX + "px";
+    item.style.top = backgroundY + "px";
+}

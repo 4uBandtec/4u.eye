@@ -69,6 +69,37 @@ function drawChart() {
 
 }
 
+
+function updateChart() {
+
+    var style = getComputedStyle(document.body);
+    var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
+    var redColor = (style.getPropertyValue('--red-color'));
+    for (i = 0; i < qtdComputers; i++) {
+        var data = google.visualization.arrayToDataTable([
+            ['', ''],
+            ['Usada', valoresUsada[i]],
+            ['Livre', valoresLivre[i]]
+        ]);
+
+        var options = {
+            pieHole: 0.9,
+            backgroundColor: { fill: darkerBgColor.replace(/\s/g, '') },
+            colors: [redColor.replace(/\s/g, ''), darkerBgColor.replace(/\s/g, '')],
+            pieSliceBorderColor: "transparent",
+            pieSliceTextStyle: {
+                color: 'white',
+            },
+            legend: 'none'
+
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchart' + i));
+        chart.draw(data, options);
+    }
+}
+
+
 function animarPie(chart, options, data, index) {
 
 

@@ -7,19 +7,24 @@ namespace Eye.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            if((int)Session["codWorkspace"] != 0)
+            /*
+            var codWorkspace = (string)Session["codWorkspace"];
+            if(codWorkspace!= null && codWorkspace != "0")
             {
-                Response.Redirect("area_inicio/monitor.aspx");
-            }
+                Response.Redirect("./Dashboard.html");
+            }*/
         }
 
         protected void btnLogar_Click(object sender, EventArgs e)
         {
+            Response.Redirect("./Dashboard.html");
+            /*
             if (new Workspace().Logar(txtWorkspacename, txtSenha))
             {
                 Session["codWorkspace"] = new Workspace().GetCodigo(txtWorkspacename.Text);
             }
             else lblMensagem.Text = "Login Incorreto";
+            */
         }
     }
 }
