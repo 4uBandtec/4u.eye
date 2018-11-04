@@ -1,0 +1,745 @@
+﻿
+
+
+:root {
+    --bg-color: rgb(26,26,26);
+    --txt-color: rgb(200,200,200);
+    --red-color: rgb(226,26,47);
+    --purple-color: rgb(86,13,196);
+    --darker-bg-color: rgb(16,16,16);
+    --lighter-bg-color: rgb(50,50,50);
+    --red-color-a: rgba(226,26,47,0.5);
+    --purple-color-a: rgba(86,13,196,0.5);
+    --to-invisible: rgba(50,50,50,0);
+    --black-color-a: rgba(0,0,0,0.3);
+    --black-color-a9: rgba(0,0,0,0.9);
+    --black-color: rgb(0,0,0);
+}
+
+* {
+    color: var(--txt-color);
+    font-family: 'Segoe UI';
+    position: relative;
+    transition-duration: 0.5s;
+}
+
+body {
+    background: var(--bg-color);
+}
+
+
+
+::selection {
+    color: var(--bg-color);
+    background: var(--txt-color);
+}
+
+
+::-webkit-scrollbar {
+    width: 15px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--lighter-bg-color);
+    border-left: solid 1px var(--purple-color);
+    transition: 0.3s;
+}
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--red-color-a);
+    }
+
+
+.radialBlack {
+    position: fixed;
+    height: 100vh;
+    width: 100vw;
+    top: 0vh;
+    left: 0vw;
+    background: radial-gradient(circle, var(--bg-color), var(--darker-bg-color),var(--black-color));
+    z-index: -2;
+    transition-duration: 0s;
+}
+
+#sideMenu {
+    height: 50%;
+    width: 20%;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.itemMenu {
+    width: 100%;
+    height: 10%;
+    padding-top: 3%;
+    padding-left: 2%;
+    border-bottom: 1px solid var(--red-color);
+    background: var(--bg-color);
+    cursor: pointer;
+    transition-duration: 1s;
+    overflow: hidden;
+    transition-property: width;
+    border-bottom-right-radius: 10px;
+}
+
+.itemMenuBackGround {
+    background: linear-gradient(90deg,var(--to-invisible), var(--black-color-a), var(--red-color-a), var(--black-color-a), var(--to-invisible));
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 200%;
+    left: -200%;
+    transition-timing-function: ease-out;
+    transition-delay: 0.1s;
+    transition-duration: 1s;
+}
+
+.itemIcon {
+    height: 100%;
+    width: 50px;
+    position: absolute;
+    left: 10px;
+    top: 10%;
+}
+
+    .itemIcon img {
+        height: 80%;
+    }
+
+.itemTxt {
+    height: 70%;
+    width: 60%;
+    position: absolute;
+    left: 40%;
+    top: 10%;
+    text-align: left;
+    padding-top: 4%;
+}
+
+.itemMenu:hover .itemMenuBackGround {
+    opacity: 1;
+    left: 0;
+    transition-delay: 0s;
+    transition-duration: 0.1s;
+}
+
+
+
+#meuResumo {
+    height: 45%;
+    width: 20%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    border-right: 1px solid var(--purple-color);
+    margin-top: 10%;
+    transition-duration: 0.5s;
+    z-index: 2;
+    background: var(--bg-color);
+}
+
+.txtMeuResumo {
+    border-bottom: 1px solid var(--purple-color);
+    padding: 2%;
+    width: 50%;
+    transition-duration: 0.5s;
+}
+
+#areaInfo {
+    width: 75%;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    overflow: auto;
+}
+
+.infoGeralComputador {
+    width: 40%;
+    height: 30%;
+    margin: 4%;
+    border-top: 1px solid var(--red-color);
+    background: var(--darker-bg-color);
+    float: left;
+    transition-duration: 0s;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.donutchart {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+
+.areaCampos {
+    position: fixed;
+    left: 25%;
+    right: 25%;
+    top: 30%;
+    width: 50%;
+    height: 40%;
+}
+
+.mensagem {
+    height: 10%;
+    color: var(--red-color);
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+
+.campos {
+    width: 70%;
+    left: 0;
+    top: 10%;
+    position: relative;
+    float: left;
+}
+
+    .campos:last-of-type {
+        width: 30%;
+    }
+
+.areaCampos input[type="text"], .areaCampos input[type="password"] {
+    background: none;
+    border: none;
+    border: none;
+    width: 96%;
+    height: 7vh;
+    border-bottom: solid 1px var(--red-color);
+    font-size: 2vmax;
+    font-weight: lighter;
+    padding: 2vh;
+    padding-right: 0.5vw;
+    padding-left: 1vw;
+    position: relative;
+    float: left;
+    margin: 0;
+    margin-top: 3vh;
+}
+
+
+    .areaCampos input[type="text"]:focus, .areaCampos input[type="password"]:focus,
+    .areaCampos input[type="text"]:active, .areaCampos input[type="password"]:active,
+    .areaCampos input[type="text"]:target, .areaCampos input[type="password"]:target {
+        border-bottom: 1px solid var(--purple-color);
+        border-bottom-left-radius: 20%;
+        width: 92%;
+        padding-left: 4%;
+        color: var(--purple-color);
+    }
+
+
+.btnForm {
+    width: 40%;
+    border: solid 1px var(--red-color);
+    margin-top: 14vh;
+    font-size: 1.5vmax;
+    float: left;
+    height: 14vh;
+    padding: 0;
+    width: 10vw;
+    border-bottom-right-radius: 100px;
+    border-top-right-radius: 100px;
+    color: var(--txt-color);
+    overflow: hidden;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;
+    cursor: pointer;
+}
+
+    .btnForm:hover {
+        border-color: var(--to-invisible);
+    }
+
+    .btnForm input {
+        background: none;
+        border: none;
+        font-size: 1.5vmax;
+        transition-duration: .3s;
+        cursor: pointer;
+        height: 14vh;
+        width: 10vw;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+    }
+
+        .btnForm input:focus {
+            color: var(--purple-color);
+            padding-left: 40%;
+        }
+
+
+    .btnForm:hover input, .btnForm:focus input, .btnForm:active input {
+        
+        padding-left: 40%;
+    }
+
+    .btnForm .itemMenuBackGround {
+        position: absolute;
+    }
+
+    .btnForm:hover .itemMenuBackGround {
+        opacity: 1;
+        left: 0;
+        transition-delay: 0s;
+        transition-duration: 0.1s;
+        background: radial-gradient(circle, var(--red-color-a), var(--black-color-a));
+        position: absolute;
+    }
+
+input:focus {
+    outline: none !important;
+}
+
+
+label {
+    font-size: 1.5vmax;
+    font-weight: lighter;
+}
+
+
+
+
+#progressTrack {
+    position: fixed;
+    right: 50%;
+    width: 50vmax;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -0%);
+    top: 10%;
+    transition-duration: 0.5s;
+    height: 2vh;
+    border-bottom: 1px solid var(--txt-color);
+}
+
+#progressBar {
+    position: absolute;
+    width: 0;
+    left: 0;
+    top: 0;
+    transition-duration: 0.5s;
+    height: 1vh;
+    background: var(--purple-color)
+}
+
+#lblTexto {
+    position: fixed;
+    right: 50%;
+    width: 50vmax;
+    left: 50%;
+    text-align: center;
+    transform: translate(-50%, -0%);
+    top: 15%;
+    font-size: 2vmax;
+    transition-duration: 0.5s;
+    font-weight: lighter;
+}
+
+
+.cadastroCampos .areaCampos {
+    overflow: hidden;
+    width: 50%;
+    max-width: 50vw;
+    min-width: 50vw;
+    position: fixed;
+}
+
+.cadastroCampos .campos {
+    width: 100%;
+    position: absolute;
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+
+
+.cadastroCampos .areaCampos input[type="text"], .cadastroCampos .areaCampos input[type="password"] {
+    position: absolute;
+    opacity: 0;
+}
+
+
+    .cadastroCampos .areaCampos input[type="text"]:focus, .cadastroCampos .areaCampos input[type="password"]:focus,
+    .cadastroCampos .areaCampos input[type="text"]:active, .cadastroCampos .areaCampos input[type="password"]:active,
+    .cadastroCampos .areaCampos input[type="text"]:target, .cadastroCampos .areaCampos input[type="password"]:target {
+        border-radius: 20%;
+    }
+
+
+#btnFormCadastrar {
+    position: absolute;
+    right: 25%;
+    left: 25%;
+    width: 50%;
+    border-radius: 0px;
+    border-color: var(--purple-color);
+    border-top: none;
+}
+
+    #btnFormCadastrar #btnCadastrar {
+        width: 100%;
+    }
+
+
+    #btnFormCadastrar .itemMenuBackGround {
+        background: radial-gradient(circle, var(--purple-color-a), var(--black-color-a));
+    }
+
+    #btnFormCadastrar:hover .itemMenuBackGround {
+        background: radial-gradient(circle, var(--purple-color-a), var(--black-color-a));
+    }
+
+#btnFormNext {
+    width: 24%;
+    position: absolute;
+    right: 0;
+    border-color: var(--purple-color);
+    border-top-right-radius: 0;
+    border-top: none;
+}
+
+#btnFormPrevious {
+    width: 24%;
+    position: absolute;
+    left: 0;
+    border-radius: 0;
+    border-bottom-left-radius: 100px;
+    border-color: var(--purple-color);
+    border-top: none;
+}
+
+    #btnFormPrevious .itemMenuBackGround, #btnFormNext .itemMenuBackGround {
+        background: radial-gradient(circle, var(--purple-color-a), var(--black-color-a));
+    }
+
+    #btnFormPrevious:hover .itemMenuBackGround, #btnFormNext:hover .itemMenuBackGround {
+        background: radial-gradient(circle, var(--purple-color-a), var(--black-color-a));
+    }
+
+    #btnFormPrevious:hover, #btnFormNext:hover, #btnFormCadastrar:hover {
+        border-color: var(--to-invisible);
+    }
+
+    #btnFormPrevious input {
+        width: 110%;
+    }
+
+#btnFormNext input {
+    width: 110%;
+}
+
+#btnFormPrevious:hover input {
+    padding-left: -0%;
+    border-radius: 0;
+}
+
+#btnFormNext:hover input {
+    padding-left: 0%;
+    border-radius: 0;
+}
+
+
+#btnFormCadastrar:hover input {
+    padding-left: 0%;
+    border-radius: 0;
+}
+
+
+
+.defaultButton {
+    width: 40%;
+    border: solid 1px var(--red-color);
+    font-size: 1.2vmax;
+    float: left;
+    height: 10vh;
+    width: 10vw;
+    color: var(--txt-color);
+    overflow: hidden;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in;
+    cursor: pointer;
+    background: var(--to-invisible);
+}
+
+    .defaultButton:hover, .defaultButton:focus, .defaultButton:target, .defaultButton:active {
+        border-color: var(--to-invisible);
+        color: var(--purple-color-a);
+    }
+
+#btnIrPara {
+    position: fixed;
+    right: 0;
+    top: 0;
+    border: none;
+    border-bottom: solid 1px var(--purple-color);
+    border-bottom-left-radius: 20%;
+}
+
+
+/*                                                                                                */
+/*------------------------------------------Responsive--------------------------------------------*/
+@media only screen and (max-width: 1000px) {
+    * {
+        font-size: 2vmax;
+    }
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+
+    #sideMenu {
+        width: 10vmax;
+        overflow-y: visible;
+        overflow-x: visible;
+        height: 85%;
+        z-index: 1;
+    }
+
+    .itemMenu {
+        width: 10vmax;
+    }
+
+        .itemMenu:hover {
+            width: 25vmax;
+            transition-duration: 0.1s;
+            transition-timing-function: ease;
+        }
+
+
+    .itemTxt {
+        opacity: 0;
+        margin-left: 0px;
+        transition-duration: 0.3s;
+    }
+
+    .itemMenu:hover .itemTxt {
+        opacity: 1;
+    }
+
+    .itemMenuBackGround {
+        background: linear-gradient(90deg,var(--black-color-a), var(--red-color-a), var(--black-color-a));
+    }
+
+
+    #meuResumo {
+        width: 11vmax;
+        height: 5vmax;
+        border-right: 1px solid var(--purple-color);
+        overflow: hidden;
+    }
+
+        #meuResumo:hover {
+            width: 100vmin;
+            height: 100vmin;
+            background: var(--black-color-a9);
+        }
+
+            #meuResumo:hover .txtMeuResumo {
+                width: 50%;
+                height: auto;
+            }
+
+    .txtMeuResumo {
+        width: 60%;
+        height: 50px;
+    }
+
+    #areaInfo {
+        width: 75%;
+        height: 100%;
+        position: fixed;
+        right: 0;
+        top: 0;
+        overflow: auto;
+    }
+
+    .infoGeralComputador {
+        width: 60vmin;
+        height: 80vmin;
+    }
+
+    .areaCampos {
+        left: 5%;
+        right: 5%;
+        top: 20%;
+        width: 90%;
+        height: 80%;
+    }
+
+    .mensagem {
+        width: 90%;
+        top: 10%
+    }
+
+    .campos {
+        width: 100%;
+        left: 0;
+        top: 10%;
+        position: relative;
+        float: left;
+    }
+
+
+
+    .areaCampos input[type="text"], .areaCampos input[type="password"] {
+        width: 86vw;
+        padding: 2vw;
+        font-size: 6vmin;
+    }
+
+
+
+
+    .btnForm {
+        width: 89.7vw;
+        margin: 0%;
+        border-top: none;
+        border-bottom-right-radius: 40px;
+        border-bottom-left-radius: 40px;
+        border-top-right-radius: 0;
+        height: 10vh;
+    }
+
+
+        .btnForm input {
+            font-weight: lighter;
+            margin-left: 0%;
+            width: 90vw;
+            font-size: 4vmax;
+            margin-top: -2vh;
+        }
+
+        .btnForm input:focus {
+            padding: 0;
+        }
+
+
+        .btnForm:hover .itemMenuBackGround {
+            background: linear-gradient(90deg, var(--to-invisible),var(--black-color-a), var(--red-color-a), var(--black-color-a),var(--to-invisible));
+        }
+
+
+
+    #progressTrack {
+        width: 90vw;
+
+    }
+
+
+
+    #lblTexto {
+        width: 70vw;
+        top: 15%;
+        font-size: 4vmax;
+        max-width: 70vw;
+        min-width: 70vw;
+        height: auto;
+        position: fixed;
+        overflow: auto;
+    }
+
+
+    .cadastroCampos .areaCampos {
+        width: 90vw;
+        max-width: 90vw;
+        min-width: 90vw;
+    }
+
+
+    .cadastroCampos .campos {
+        position: relative;
+        top: 20vh;
+    }
+
+    .cadastroCampos .campos:last-of-type {
+        position: relative;
+        top: 36vh;
+    }
+
+
+
+    #btnFormCadastrar {
+        height: 13vh;
+        width: 40%;
+        left: 30.1%;
+    }
+
+        #btnFormCadastrar #btnCadastrar {
+            width: 100%;
+            height: 13vh;
+        }
+
+
+
+    #btnFormNext {
+        width: 30%;
+        border-bottom-left-radius: 0;
+        height: 13vh;
+    }
+
+    #btnFormPrevious {
+        width: 30%;
+        height: 13vh;
+        border-bottom-left-radius: 40px;
+    }
+
+    #btnFormNext input {
+        font-size: 5vw;
+        height: 120%;
+    }
+
+    #btnFormPrevious input {
+        font-size: 5vw;
+        height: 120%;
+    }
+
+    #btnFormCadastrar input {
+        font-size: 5vw;
+        height: 120%;
+        margin-top: -3%;
+    }
+
+
+
+    .defaultButton {
+        width: 90vw;
+        min-width: 90vw;
+        max-width: 90vw;
+        font-size: 3vmax;
+        border-radius: 0;
+        height: 7vh
+    }
+
+        .defaultButton:hover {
+            border-color: var(--to-invisible);
+            color: var(--purple-color-a);
+        }
+
+    #btnIrPara {
+        position: fixed;
+        left: 5vw;
+        border: none;
+        border-top: solid 1px var(--purple-color);
+        border-radius: 0;
+        bottom: 0;
+        top: 93vh;
+        z-index: 2;
+    }
+}
+
+
