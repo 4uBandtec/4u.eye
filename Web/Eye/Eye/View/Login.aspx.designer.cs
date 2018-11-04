@@ -22,6 +22,15 @@ namespace Eye.View {
         protected global::System.Web.UI.HtmlControls.HtmlForm formLogin;
         
         /// <summary>
+        /// Controle btnIrPara.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnIrPara;
+        
+        /// <summary>
         /// Controle lblMensagem.
         /// </summary>
         /// <remarks>

@@ -26,5 +26,10 @@ namespace Eye.View
             else lblMensagem.Text = "Login Incorreto";
             */
         }
+
+        protected void btnIrPara_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("./CadastroWorkspace.aspx");
+        }
     }
 }
