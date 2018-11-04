@@ -22,7 +22,20 @@ namespace Eye.View {
         protected global::System.Web.UI.HtmlControls.HtmlForm formLogin;
         
         /// <summary>
+<<<<<<< HEAD
         /// Controle btnIrPara.
+=======
+        /// Controle lblWorkspace.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblWorkspace;
+        
+        /// <summary>
+        /// Controle txtWorkspacename.
+>>>>>>> develop
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
@@ -31,7 +44,20 @@ namespace Eye.View {
         protected global::System.Web.UI.WebControls.Button btnIrPara;
         
         /// <summary>
+<<<<<<< HEAD
         /// Controle lblMensagem.
+=======
+        /// Controle lblSenha.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSenha;
+        
+        /// <summary>
+        /// Controle txtSenha.
+>>>>>>> develop
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.

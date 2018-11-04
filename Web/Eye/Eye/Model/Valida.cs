@@ -52,5 +52,9 @@ namespace Eye.Model
                 }
             }
         }
+        public static void SenhasIguais(TextBox senha, TextBox confirmaSenha)
+        {
+            senha.Text.Equals(confirmaSenha.Text);
+         }
     }
 }

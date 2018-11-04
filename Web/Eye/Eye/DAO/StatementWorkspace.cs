@@ -1,11 +1,11 @@
-﻿
+﻿using Eye.Model;
 using System.Data.SqlClient;
 
 namespace Eye.DAO
 {
     public class StatementWorkspace
     {
-        public bool VerificaWorknameUnico(string workspacename)
+        public bool VerificaWorkspacenameUnico(string workspacename)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -18,11 +18,25 @@ namespace Eye.DAO
                 }
             }
         }
+
+        public bool VerificaEmailUnico(string email)
+        {
+            var conexao = Conexao.GetConexao();
+            conexao.Open();
+            using (SqlCommand cmd = new SqlCommand("SELECT workspacename FROM workspace WHERE email = @email", conexao))
+            {
+                cmd.Parameters.AddWithValue("@email", email);
+                using (SqlDataReader leitor = cmd.ExecuteReader())
+                {
+                    return !(leitor.Read());
+                }
+            }
+        }
         public int BuscaSalt(string workspacename)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT salt FROM workspace WHERE workspacename = @workspacename", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT salt FROM workspace WHERE workspacename = @workspacename  OR email = @workspacename", conexao))
             {
                 cmd.Parameters.AddWithValue("@workspacename", workspacename);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
@@ -39,7 +53,7 @@ namespace Eye.DAO
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT senha FROM workspace WHERE workspacename = @workspacename", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT senha FROM workspace WHERE workspacename = @workspacename OR email = @workspacename", conexao))
             {
                 cmd.Parameters.AddWithValue("@workspacename", workspacename);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
@@ -56,7 +70,7 @@ namespace Eye.DAO
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT cod_workspace FROM workspace WHERE workspacename = @workspacename", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT cod_workspace FROM workspace WHERE workspacename = @workspacename OR email = @workspacename", conexao))
             {
                 cmd.Parameters.AddWithValue("@workspacename", workspacename);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
@@ -65,5 +79,20 @@ namespace Eye.DAO
                 }
             }
         }
+        public bool InserirWorkspace(Workspace workspace)
+        {
+            var conexao = Conexao.GetConexao();
+            conexao.Open();
+            using (SqlCommand cmd = new SqlCommand("INSERT INTO workspace (workspacename, nome, email, senha, salt) VALUES (@workspacename, @nome, @email, @senha, @salt)", conexao))
+            {
+                cmd.Parameters.AddWithValue("@workspacename", workspace.Workspacename);
+                cmd.Parameters.AddWithValue("@nome", workspace.Nome);
+                cmd.Parameters.AddWithValue("@email", workspace.Email);
+                cmd.Parameters.AddWithValue("@senha", workspace.Senha);
+                cmd.Parameters.AddWithValue("@salt", workspace.Salt);
+                return (cmd.ExecuteNonQuery() == 1);
+            }
+        }
+
     }
 }
