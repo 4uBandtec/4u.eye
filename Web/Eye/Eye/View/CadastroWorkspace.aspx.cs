@@ -7,19 +7,39 @@ namespace Eye.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+            /*
+=======
+>>>>>>> develop
             var codWorkspace = (string)Session["codWorkspace"];
             if (codWorkspace != null && codWorkspace != "0")
             {
                 Response.Redirect("./Dashboard.html");
             }
+<<<<<<< HEAD
+            */
+=======
+>>>>>>> develop
 
         }
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
+            /*
+            new Workspace().Cadastrar(txtWorkspacename, txtNome, txtEmail, txtSenha);
+            */
+        }
+
+        protected void btnIrParaLogin_Click(object sender, EventArgs e)
+        {
+
+            Response.Redirect("./Login.aspx");
+=======
             if (new Workspace().Cadastrar(txtWorkspacename, txtNome, txtEmail, txtSenha)) {
                 Response.Redirect("./Login.aspx");//Ou chamar um metodo que limpa os campos e mostra "Cadastro efetuado"
             }
+>>>>>>> develop
         }
     }
 }

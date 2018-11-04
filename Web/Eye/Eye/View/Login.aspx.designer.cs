@@ -13,15 +13,18 @@ namespace Eye.View {
     public partial class Login {
         
         /// <summary>
-        /// Controle form1.
+        /// Controle formLogin.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
+        protected global::System.Web.UI.HtmlControls.HtmlForm formLogin;
         
         /// <summary>
+<<<<<<< HEAD
+        /// Controle btnIrPara.
+=======
         /// Controle lblWorkspace.
         /// </summary>
         /// <remarks>
@@ -29,6 +32,38 @@ namespace Eye.View {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblWorkspace;
+        
+        /// <summary>
+        /// Controle txtWorkspacename.
+>>>>>>> develop
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnIrPara;
+        
+        /// <summary>
+<<<<<<< HEAD
+        /// Controle lblMensagem.
+=======
+        /// Controle lblSenha.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblSenha;
+        
+        /// <summary>
+        /// Controle txtSenha.
+>>>>>>> develop
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensagem;
         
         /// <summary>
         /// Controle txtWorkspacename.
@@ -40,15 +75,6 @@ namespace Eye.View {
         protected global::System.Web.UI.WebControls.TextBox txtWorkspacename;
         
         /// <summary>
-        /// Controle lblSenha.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSenha;
-        
-        /// <summary>
         /// Controle txtSenha.
         /// </summary>
         /// <remarks>
@@ -56,15 +82,6 @@ namespace Eye.View {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtSenha;
-        
-        /// <summary>
-        /// Controle lblMensagem.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensagem;
         
         /// <summary>
         /// Controle btnLogar.
