@@ -18,7 +18,8 @@ namespace Eye.View
         {
             if (new Workspace().Logar(txtWorkspacename, txtSenha))
             {
-                Session["codWorkspace"] = new Workspace().GetCodigo(txtWorkspacename.Text);
+                Session["codWorkspace"] = new Workspace().GetCodigo(txtWorkspacename.Text).ToString();
+                Response.Redirect("./Dashboard.html");
             }
             else lblMensagem.Text = "Login Incorreto";
         }

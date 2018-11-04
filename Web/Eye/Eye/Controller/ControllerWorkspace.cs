@@ -1,8 +1,5 @@
 ﻿using Eye.DAO;
 using Eye.Model;
-using System;
-using System.Security.Cryptography;
-using System.Text;
 
 namespace Eye.Controller
 {
@@ -20,33 +17,18 @@ namespace Eye.Controller
             var statementWorkspace = new StatementWorkspace();
             statementWorkspace.VerificaWorkspacenameUnico(workspace.Workspacename);
             statementWorkspace.VerificaEmailUnico(workspace.Email);
-            workspace.Salt = GerarSalt();
-            workspace.Senha = GerarSenhaHash(workspace.Senha, workspace.Salt);
+            workspace.Salt = new ControllerCriptografia().GerarSalt();
+            workspace.Senha = new ControllerCriptografia().GerarSenhaHash(workspace.Senha, workspace.Salt);
             return statementWorkspace.InserirWorkspace(workspace);
         }
-        public string GerarSenhaHash(string senha, int salt)
-        {
-            MD5 md5Hash = MD5.Create();
-            byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes($"{senha}{salt}"));
 
-            StringBuilder sBuilder = new StringBuilder();
-            for (int i = 0; i < data.Length; i++)
-            {
-                sBuilder.Append(data[i].ToString("x2"));
-            }
-            return sBuilder.ToString();
-        }
-        public int GerarSalt()
-        {
-            return new Random().Next();
-        }
         public int GetCodigo(string workspacename)
         {
             return new StatementWorkspace().BuscaCodigo(workspacename);
         }
         public bool ValidaSenha(string senhaBanco, string senha, int salt)
         {
-            return senhaBanco.Equals(GerarSenhaHash(senha, salt));
+            return senhaBanco.Equals(new ControllerCriptografia().GerarSenhaHash(senha, salt));
         }
     }
 }
