@@ -15,11 +15,9 @@
 
     <div class="radialBlack" id="radialBlack"></div>
     <form id="form1" runat="server">
-<<<<<<< HEAD
-        <asp:Button ID="btnIrPara" runat="server" Text="Ir para o Login" OnClick="btnIrParaLogin_Click" cssClass="defaultButton"/>
-        <div id ="progressTrack">
+        <asp:Button ID="btnIrPara" runat="server" Text="Ir para o Login" OnClick="btnIrParaLogin_Click" CssClass="defaultButton" />
+        <div id="progressTrack">
             <div id="progressBar">
-
             </div>
         </div>
         <div class="campos">
@@ -33,7 +31,7 @@
 
                 <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
 
-                <div class="campos"  onkeydown="tabPress(event)" onkeyup="keyUp()">
+                <div class="campos" onkeydown="tabPress(event)" onkeyup="keyUp()">
 
                     <asp:TextBox ID="txtNome" runat="server" Placeholder="Seu nome" CssClass="campoCadastro"></asp:TextBox>
 
@@ -57,44 +55,23 @@
                         <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click" />
                     </div>
 
-                    <div class="btnForm" id="btnFormPrevious" 
+                    <div class="btnForm" id="btnFormPrevious"
                         onmousemove="startaHover('itemMenuBackGroundPrevious', 'btnFormPrevious')"
                         onfocus="alert('a')">
-                        
+
                         <div class="itemMenuBackGround" id="itemMenuBackGroundPrevious"></div>
-                        <input type="button" id="btnPrevious" value="voltar" onclick="previousCampo()"/>
+                        <input type="button" id="btnPrevious" value="voltar" onclick="previousCampo()" />
                     </div>
 
-                    <div class="btnForm" id="btnFormNext" 
+                    <div class="btnForm" id="btnFormNext"
                         onmousemove="startaHover('itemMenuBackGroundNext', 'btnFormNext')">
-                        
+
                         <div class="itemMenuBackGround" id="itemMenuBackGroundNext"></div>
                         <input type="button" id="btnNext" value="próximo" onclick="nextCampo()" />
                     </div>
                 </div>
 
             </div>
-=======
-        <div>
-            <asp:Label ID="lblWorkspacename" Text="Workspacename" runat="server" />
-            <br />
-            <asp:TextBox ID="txtWorkspacename" runat="server" Placeholder="Workspacename"></asp:TextBox>
-            <br />
-            <asp:Label ID="lblNome" Text="Nome" runat="server" />
-            <br />
-            <asp:TextBox ID="txtNome" runat="server" Placeholder="Nome"></asp:TextBox>
-            <br />
-            <asp:Label ID="lblEmail" Text="E-mail" runat="server" />
-            <br />
-            <asp:TextBox ID="txtEmail" runat="server" Placeholder="Email"></asp:TextBox>
-            <br />
-            <asp:Label ID="lblSenha" Text="Senha" runat="server" />
-            <br />
-            <asp:TextBox ID="txtSenha" runat="server" Placeholder="Senha" type="password"></asp:TextBox>
-            <br />
-            <asp:Label ID="lblMensagem" Text="" runat="server" />
-            <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click" />
->>>>>>> develop
         </div>
     </form>
 </body>
