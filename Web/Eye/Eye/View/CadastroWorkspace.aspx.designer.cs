@@ -21,13 +21,6 @@ namespace Eye.View {
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIrPara;
-        
         /// <summary>
         /// Controle lblTexto.
         /// </summary>
@@ -39,6 +32,11 @@ namespace Eye.View {
         
         /// <summary>
         /// Controle lblMensagem.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensagem;
         
         /// <summary>
@@ -79,6 +77,11 @@ namespace Eye.View {
         
         /// <summary>
         /// Controle txtEmail.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
@@ -89,5 +92,14 @@ namespace Eye.View {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnCadastrar;
+        
+        /// <summary>
+        /// Controle btnIrPara.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnIrPara;
     }
 }

@@ -4,16 +4,17 @@ namespace Eye.Model
 {
     public class Valida
     {
-        public static void StringVazia(params TextBox[] campos)
+        public static bool StringVazia(params TextBox[] campos)
         {
             foreach (var campo in campos)
             {
                 if (campo == null || string.IsNullOrWhiteSpace(campo.Text))
                 {
                     campo.Focus();
-                    return;
+                    return false;
                 }
             }
+            return true;
         }
         public static void DropDownListVazia(params DropDownList[] listas)
         {
@@ -37,7 +38,7 @@ namespace Eye.Model
                 }
             }
         }
-        public static void Email(params TextBox[] campos)
+        public static bool Email(params TextBox[] campos)
         {
             foreach (var campo in campos)
             {
@@ -48,9 +49,10 @@ namespace Eye.Model
                 if (arroba <= 0 || ponto <= (arroba + 1) || ponto == (email.Length - 1) || arroba2 != arroba)
                 {
                     campo.Focus();
-                    return;
+                    return false;
                 }
             }
+            return true;
         }
         public static void SenhasIguais(TextBox senha, TextBox confirmaSenha)
         {

@@ -475,7 +475,7 @@ label {
     background: var(--to-invisible);
 }
 
-    .defaultButton:hover {
+    .defaultButton:hover, .defaultButton:focus, .defaultButton:target, .defaultButton:active {
         border-color: var(--to-invisible);
         color: var(--purple-color-a);
     }
@@ -583,6 +583,7 @@ label {
 
     .mensagem {
         width: 90%;
+        top: 10%
     }
 
     .campos {
@@ -643,7 +644,7 @@ label {
 
     #lblTexto {
         width: 70vw;
-        top: 17%;
+        top: 15%;
         font-size: 4vmax;
         max-width: 70vw;
         min-width: 70vw;
@@ -697,6 +698,23 @@ label {
         border-bottom-left-radius: 40px;
     }
 
+    #btnFormNext input {
+        font-size: 5vw;
+        height: 120%;
+    }
+
+    #btnFormPrevious input {
+        font-size: 5vw;
+        height: 120%;
+    }
+
+    #btnFormCadastrar input {
+        font-size: 5vw;
+        height: 120%;
+        margin-top: -3%;
+    }
+
+
 
     .defaultButton {
         width: 90vw;
@@ -716,9 +734,11 @@ label {
         position: fixed;
         left: 5vw;
         border: none;
-        border-bottom: solid 1px var(--purple-color);
+        border-top: solid 1px var(--purple-color);
         border-radius: 0;
         bottom: 0;
+        top: 93vh;
+        z-index: 2;
     }
 }
 

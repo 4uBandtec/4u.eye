@@ -12,8 +12,6 @@
 <body id="body">
     <div class="radialBlack" id="radialBlack"></div>
     <form id="formLogin" runat="server">
-        <asp:Button ID="btnIrPara" runat="server" Text="Novo Workspace" OnClick="btnIrPara_Click" CssClass="defaultButton" />
-
         <div class="areaCampos">
             <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
             <div class="campos">
@@ -33,6 +31,10 @@
                 </div>
             </div>
         </div>
+
+        
+        <asp:Button ID="btnIrPara" runat="server" Text="Novo Workspace" OnClick="btnIrPara_Click" CssClass="defaultButton" />
+
     </form>
 </body>
 </html>

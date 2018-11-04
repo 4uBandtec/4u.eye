@@ -14,13 +14,23 @@ namespace Eye.Model
 
         public bool Logar(TextBox txtWorkspacename, TextBox txtSenha)
         {
-            Valida.StringVazia(txtWorkspacename, txtSenha);
+            if (!Valida.StringVazia(txtWorkspacename, txtSenha))
+            {
+                return false;
+            }
             return (new ControllerWorkspace().AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text));
         }
         public bool Cadastrar(TextBox txtWorkspacename, TextBox txtNome, TextBox txtEmail, TextBox txtSenha)
         {
-            Valida.StringVazia(txtWorkspacename, txtNome, txtEmail, txtSenha);
-            Valida.Email(txtEmail);
+            if (!Valida.StringVazia(txtWorkspacename, txtNome, txtEmail, txtSenha))
+            {
+                return false;
+            }
+            if (!Valida.Email(txtEmail))
+            {
+                txtEmail.Focus();
+                return false;
+            }
             var workspace = new Workspace();
             workspace.Workspacename = txtWorkspacename.Text;
             workspace.Nome = txtNome.Text;
@@ -32,6 +42,16 @@ namespace Eye.Model
         public int GetCodigo(string workspace)
         {
             return new ControllerWorkspace().GetCodigo(workspace);
+        }
+
+        public bool EmailJaExiste(TextBox txtEmail)
+        {
+            return new ControllerWorkspace().verificaEmailUnico(txtEmail.Text);
+        }
+
+        public bool WorkspacenameJaExiste(TextBox txtWorkspacename)
+        {
+            return new ControllerWorkspace().VerificaWorkspacenameUnico(txtWorkspacename.Text);
         }
     }
 }
