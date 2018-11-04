@@ -15,7 +15,7 @@
 
     <div class="radialBlack" id="radialBlack"></div>
     <form id="form1" runat="server">
-        <asp:Button ID="btnIrPara" runat="server" Text="Ir para o Login" OnClick="btnIrParaLogin_Click" CssClass="defaultButton" />
+
         <div id="progressTrack">
             <div id="progressBar">
             </div>
@@ -60,19 +60,21 @@
                         onfocus="alert('a')">
 
                         <div class="itemMenuBackGround" id="itemMenuBackGroundPrevious"></div>
-                        <input type="button" id="btnPrevious" value="voltar" onclick="previousCampo()" />
+                        <input type="button" id="btnPrevious" value="Voltar" onclick="previousCampo()" />
                     </div>
 
                     <div class="btnForm" id="btnFormNext"
                         onmousemove="startaHover('itemMenuBackGroundNext', 'btnFormNext')">
 
                         <div class="itemMenuBackGround" id="itemMenuBackGroundNext"></div>
-                        <input type="button" id="btnNext" value="próximo" onclick="nextCampo()" />
+                        <input type="button" id="btnNext" value="Próximo" onclick="nextCampo()" />
                     </div>
                 </div>
 
             </div>
         </div>
+        
+        <asp:Button ID="btnIrPara" runat="server" Text="Ir para o Login" OnClick="btnIrParaLogin_Click" CssClass="defaultButton" />
     </form>
 </body>
 </html>

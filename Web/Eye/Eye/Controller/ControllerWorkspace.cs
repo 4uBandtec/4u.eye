@@ -10,13 +10,25 @@ namespace Eye.Controller
             var statementWorkspace = new StatementWorkspace();
             var salt = statementWorkspace.BuscaSalt(workspacename);
             var senhaBanco = statementWorkspace.BuscaSenhaHash(workspacename);
+
+            if(salt == 0 || senhaBanco == null)
+            {
+                return false;
+            }
+
             return ValidaSenha(senhaBanco, senha, salt);
         }
         public bool Cadastrar(Workspace workspace)
         {
             var statementWorkspace = new StatementWorkspace();
-            statementWorkspace.VerificaWorkspacenameUnico(workspace.Workspacename);
-            statementWorkspace.VerificaEmailUnico(workspace.Email);
+            if (!statementWorkspace.VerificaWorkspacenameUnico(workspace.Workspacename))
+            {
+                return false;
+            }
+            if (!statementWorkspace.VerificaEmailUnico(workspace.Email))
+            {
+                return false;
+            }
             workspace.Salt = new ControllerCriptografia().GerarSalt();
             workspace.Senha = new ControllerCriptografia().GerarSenhaHash(workspace.Senha, workspace.Salt);
             return statementWorkspace.InserirWorkspace(workspace);
@@ -29,6 +41,16 @@ namespace Eye.Controller
         public bool ValidaSenha(string senhaBanco, string senha, int salt)
         {
             return senhaBanco.Equals(new ControllerCriptografia().GerarSenhaHash(senha, salt));
+        }
+
+        public bool verificaEmailUnico(string email)
+        {
+            return new StatementWorkspace().VerificaEmailUnico(email);
+        }
+
+        public bool VerificaWorkspacenameUnico(string workspacename)
+        {
+            return new StatementWorkspace().VerificaWorkspacenameUnico(workspacename);
         }
     }
 }

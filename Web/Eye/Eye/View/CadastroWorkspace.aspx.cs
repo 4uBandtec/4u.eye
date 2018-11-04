@@ -16,10 +16,23 @@ namespace Eye.View
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
+            if (!new Workspace().WorkspacenameJaExiste(txtWorkspacename))
+            {
+                lblMensagem.Text = "Ops, já existe um Workspace chamado " + txtWorkspacename.Text + ", tente outra coisa.";
+            }
+            
+            else if (!new Workspace().EmailJaExiste(txtEmail))
+            {
+                lblMensagem.Text = "Calma aí, parece que o e-mail escolhido já está sendo usado, por favor digite outro.";
+            }
 
-            if (new Workspace().Cadastrar(txtWorkspacename, txtNome, txtEmail, txtSenha))
+            else if (new Workspace().Cadastrar(txtWorkspacename, txtNome, txtEmail, txtSenha))
             {
                 Response.Redirect("./Login.aspx");//Ou chamar um metodo que limpa os campos e mostra "Cadastro efetuado"
+            }
+            else
+            {
+                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";
             }
         }
 

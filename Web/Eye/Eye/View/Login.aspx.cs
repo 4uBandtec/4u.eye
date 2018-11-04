@@ -17,8 +17,6 @@ namespace Eye.View
 
         protected void btnLogar_Click(object sender, EventArgs e)
         {
-            Response.Redirect("./Dashboard.html");
-      
             if (new Workspace().Logar(txtWorkspacename, txtSenha))
             {
                 Session["codWorkspace"] = new Workspace().GetCodigo(txtWorkspacename.Text).ToString();

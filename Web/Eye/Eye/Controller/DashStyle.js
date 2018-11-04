@@ -183,6 +183,20 @@ function updateProgressBar() {
     progressBar.style.width = (100 / totalCamposCadastro) * (campoAtual+1)+"%";
 }
 
+function checaEmail() {
+
+    var email = camposCadastro[totalCamposCadastro - 1].value;
+    var arroba = email.indexOf('@');
+    var arroba2 = email.lastIndexOf('@');
+    var ponto = email.lastIndexOf('.');
+    
+
+    if (arroba <= 0 || ponto <= (arroba + 1) || ponto == (email.length - 1) || arroba2 != arroba) {
+        
+        return false;
+    }
+    return true;
+}
 
 function showCampoCadastro(index) {
     updateProgressBar();
@@ -191,7 +205,7 @@ function showCampoCadastro(index) {
     if (index === totalCamposCadastro - 1) {
 
 
-        if (!!camposCadastro[index].value) {
+        if (checaEmail()) {
             btnCadastrar.style.opacity = 1;
             btnFormCadastrar.style.opacity = 1;
             btnCadastrar.disabled = false;
@@ -248,9 +262,7 @@ function showCampoCadastro(index) {
         btnFormPrevious.style.opacity = 1;
         btnPrevious.disabled = false;
     }
-
-
-
+    
 
     for (var i = 0; i < totalCamposCadastro; i++) {
         if (i === index) {
@@ -308,9 +320,12 @@ function tabPress(e) {
         if (campoAtual == totalCamposCadastro - 2) {
             if (e.preventDefault) e.preventDefault();
         }
-
-        
-        nextCampo();
+        if (campoAtual == 3 && camposCadastro[campoAtual].value != camposCadastro[campoAtual - 1].value) {
+            showCampoCadastro(campoAtual);
+        }
+        else {
+            nextCampo();
+        }
     }
 
 
