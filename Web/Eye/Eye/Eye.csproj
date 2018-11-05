@@ -71,6 +71,7 @@
     <Content Include="Component\icon.png" />
     <Content Include="Controller\Dashboard.js" />
     <Content Include="Controller\DashStyle.js" />
+    <Content Include="Controller\CamposFormulario.js" />
     <Content Include="Global.asax" />
     <Content Include="Model\EYE.css" />
     <Content Include="View\CadastroUsuario.aspx" />
