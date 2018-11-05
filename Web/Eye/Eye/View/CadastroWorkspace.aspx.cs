@@ -23,7 +23,7 @@ namespace Eye.View
             
             else if (!new Workspace().EmailJaExiste(txtEmail))
             {
-                lblMensagem.Text = "Calma aí, parece que o e-mail escolhido já está sendo usado, por favor digite outro.";
+                lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
             }
 
             else if (new Workspace().Cadastrar(txtWorkspacename, txtNome, txtEmail, txtSenha))

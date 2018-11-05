@@ -211,7 +211,7 @@ body {
         width: 30%;
     }
 
-.areaCampos input[type="text"], .areaCampos input[type="password"] {
+.areaCampos input[type="text"], .areaCampos input[type="password"], .areaCampos input[type="email"], .areaCampos input[type="date"] {
     background: none;
     border: none;
     border: none;
@@ -230,9 +230,9 @@ body {
 }
 
 
-    .areaCampos input[type="text"]:focus, .areaCampos input[type="password"]:focus,
-    .areaCampos input[type="text"]:active, .areaCampos input[type="password"]:active,
-    .areaCampos input[type="text"]:target, .areaCampos input[type="password"]:target {
+    .areaCampos input[type="text"]:focus, .areaCampos input[type="password"]:focus, .areaCampos input[type="email"]:focus, .areaCampos input[type="date"]:focus,
+    .areaCampos input[type="text"]:active, .areaCampos input[type="password"]:active, .areaCampos input[type="email"]:active, .areaCampos input[type="date"]:active,
+    .areaCampos input[type="text"]:target, .areaCampos input[type="password"]:target, .areaCampos input[type="email"]:target, .areaCampos input[type="email"]:target {
         border-bottom: 1px solid var(--purple-color);
         border-bottom-left-radius: 20%;
         width: 92%;
@@ -367,18 +367,17 @@ label {
 
 
 
-.cadastroCampos .areaCampos input[type="text"], .cadastroCampos .areaCampos input[type="password"] {
+.cadastroCampos .areaCampos input[type="text"], .cadastroCampos .areaCampos input[type="password"], .cadastroCampos .areaCampos input[type="email"], .cadastroCampos .areaCampos input[type="date"] {
     position: absolute;
     opacity: 0;
 }
 
 
-    .cadastroCampos .areaCampos input[type="text"]:focus, .cadastroCampos .areaCampos input[type="password"]:focus,
-    .cadastroCampos .areaCampos input[type="text"]:active, .cadastroCampos .areaCampos input[type="password"]:active,
-    .cadastroCampos .areaCampos input[type="text"]:target, .cadastroCampos .areaCampos input[type="password"]:target {
+    .cadastroCampos .areaCampos input[type="text"]:focus, .cadastroCampos .areaCampos input[type="password"]:focus, .cadastroCampos .areaCampos input[type="email"]:focus, .cadastroCampos .areaCampos input[type="date"]:focus,
+    .cadastroCampos .areaCampos input[type="text"]:active, .cadastroCampos .areaCampos input[type="password"]:active, .cadastroCampos .areaCampos input[type="email"]:active, .cadastroCampos .areaCampos input[type="date"]:active,
+    .cadastroCampos .areaCampos input[type="text"]:target, .cadastroCampos .areaCampos input[type="password"]:target, .cadastroCampos .areaCampos input[type="email"]:target, .cadastroCampos .areaCampos input[type="date"]:target {
         border-radius: 20%;
     }
-
 
 #btnFormCadastrar {
     position: absolute;
@@ -586,6 +585,10 @@ label {
         top: 10%
     }
 
+    .cadastroCampos .mensagem{
+        top: 15%;
+    }
+
     .campos {
         width: 100%;
         left: 0;
@@ -596,7 +599,7 @@ label {
 
 
 
-    .areaCampos input[type="text"], .areaCampos input[type="password"] {
+    .areaCampos input[type="text"], .areaCampos input[type="password"], .areaCampos input[type="email"], .areaCampos input[type="date"] {
         width: 86vw;
         padding: 2vw;
         font-size: 6vmin;

@@ -73,6 +73,7 @@
     <Content Include="Controller\DashStyle.js" />
     <Content Include="Global.asax" />
     <Content Include="Model\EYE.css" />
+    <Content Include="View\CadastroUsuario.aspx" />
     <Content Include="View\CadastroWorkspace.aspx" />
     <Content Include="View\Dashboard.html" />
     <Content Include="View\Login.aspx" />
@@ -90,6 +91,13 @@
     <Compile Include="Model\Valida.cs" />
     <Compile Include="Model\Workspace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\CadastroUsuario.aspx.cs">
+      <DependentUpon>CadastroUsuario.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\CadastroUsuario.aspx.designer.cs">
+      <DependentUpon>CadastroUsuario.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\CadastroWorkspace.aspx.cs">
       <DependentUpon>CadastroWorkspace.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
