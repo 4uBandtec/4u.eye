@@ -18,6 +18,12 @@ namespace Eye.Model
             {
                 return false;
             }
+
+            if(!new ControllerWorkspace().AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text))
+            {
+                txtWorkspacename.Focus();
+                return false;
+            }
             return (new ControllerWorkspace().AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text));
         }
         public bool Cadastrar(TextBox txtWorkspacename, TextBox txtNome, TextBox txtEmail, TextBox txtSenha)
