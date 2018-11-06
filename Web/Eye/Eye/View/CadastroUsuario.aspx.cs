@@ -8,6 +8,10 @@ namespace Eye.View
         protected void Page_Load(object sender, EventArgs e)
         {
             var codWorkspace = (string)Session["codWorkspace"];
+            if (codWorkspace == null || codWorkspace == "0")
+            {
+                Response.Redirect("./Login.aspx");
+            }
         }
 
         protected void btnCadastrarUsuario_Click(object sender, EventArgs e)
