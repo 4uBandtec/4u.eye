@@ -16,16 +16,17 @@ namespace Eye.Model
             }
             return true;
         }
-        public static void DropDownListVazia(params DropDownList[] listas)
+        public static bool  DropDownListVazia(params DropDownList[] listas)
         {
             foreach (var lista in listas)
             {
                 if (lista.SelectedValue.Equals(""))
                 {
                     lista.Focus();
-                    return;
+                    return false;
                 }
             }
+            return true;
         }
         public static void Numero(params TextBox[] campos)
         {

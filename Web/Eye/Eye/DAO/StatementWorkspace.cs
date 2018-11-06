@@ -23,7 +23,7 @@ namespace Eye.DAO
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT workspacename FROM workspace WHERE email = @email", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM workspace WHERE email = @email", conexao))
             {
                 cmd.Parameters.AddWithValue("@email", email);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
