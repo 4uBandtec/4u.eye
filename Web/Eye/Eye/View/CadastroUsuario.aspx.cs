@@ -1,11 +1,5 @@
-﻿using Eye.Controller;
-using Eye.Model;
+﻿using Eye.Model;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace Eye.View
 {
@@ -19,8 +13,10 @@ namespace Eye.View
         protected void btnCadastrarUsuario_Click(object sender, EventArgs e)
         {
             var codWorkspace = (string)Session["codWorkspace"];
-            new Usuario().Cadastrar(txtUsername, txtNome, txtEmail, txtSenha, txtDataNascimento, ddlSexo, codWorkspace, lblMensagem);
-
+            if (!new Usuario().Cadastrar(txtUsername, txtNome, txtEmail, txtSenha, txtDataNascimento, ddlSexo, codWorkspace, lblMensagem))
+            {
+                return;
+            }
         }
     }
 }

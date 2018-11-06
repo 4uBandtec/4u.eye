@@ -8,7 +8,6 @@ namespace Eye.Controller
 
         public bool Cadastrar(Usuario usuario)
         {
-        
             usuario.Salt = new ControllerCriptografia().GerarSalt();
             usuario.Senha = new ControllerCriptografia().GerarSenhaHash(usuario.Senha, usuario.Salt);
             return new StatementUsuario().InserirUsuario(usuario);
