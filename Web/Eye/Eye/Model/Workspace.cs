@@ -19,22 +19,34 @@ namespace Eye.Model
                 return false;
             }
 
-            if(!new ControllerWorkspace().AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text))
+            if (!new ControllerWorkspace().AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text))
             {
                 txtWorkspacename.Focus();
                 return false;
             }
             return (new ControllerWorkspace().AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text));
         }
-        public bool Cadastrar(TextBox txtWorkspacename, TextBox txtNome, TextBox txtEmail, TextBox txtSenha)
+        public bool Cadastrar(TextBox txtWorkspacename, TextBox txtNome, TextBox txtEmail, TextBox txtSenha, Label lblMensagem)
         {
             if (!Valida.StringVazia(txtWorkspacename, txtNome, txtEmail, txtSenha))
             {
+                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
                 return false;
             }
             else if (!Valida.Email(txtEmail))
             {
-                txtEmail.Focus();
+                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
+                return false;
+            }
+            else if (!new Workspace().WorkspacenameJaExiste(txtWorkspacename))
+            {
+                lblMensagem.Text = "Ops, já existe um Workspace chamado " + txtWorkspacename.Text + ", tente outra coisa.";
+                return false;
+            }
+
+            else if (!new Workspace().EmailJaExiste(txtEmail))
+            {
+                lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
                 return false;
             }
             var workspace = new Workspace();

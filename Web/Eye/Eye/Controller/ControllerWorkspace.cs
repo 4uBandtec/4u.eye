@@ -20,18 +20,9 @@ namespace Eye.Controller
         }
         public bool Cadastrar(Workspace workspace)
         {
-            var statementWorkspace = new StatementWorkspace();
-            if (!statementWorkspace.VerificaWorkspacenameUnico(workspace.Workspacename))
-            {
-                return false;
-            }
-            if (!statementWorkspace.VerificaEmailUnico(workspace.Email))
-            {
-                return false;
-            }
             workspace.Salt = new ControllerCriptografia().GerarSalt();
             workspace.Senha = new ControllerCriptografia().GerarSenhaHash(workspace.Senha, workspace.Salt);
-            return statementWorkspace.InserirWorkspace(workspace);
+            return new StatementWorkspace().InserirWorkspace(workspace);
         }
 
         public int GetCodigo(string workspacename)
