@@ -82,13 +82,16 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllerCriptografia.cs" />
+    <Compile Include="Controller\ControllerUsuario.cs" />
     <Compile Include="Controller\ControllerWorkspace.cs" />
     <Compile Include="DAO\Conexao.cs" />
+    <Compile Include="DAO\StatementUsuario.cs" />
     <Compile Include="DAO\StatementWorkspace.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Model\Monitor.cs" />
+    <Compile Include="Model\Usuario.cs" />
     <Compile Include="Model\Valida.cs" />
     <Compile Include="Model\Workspace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
