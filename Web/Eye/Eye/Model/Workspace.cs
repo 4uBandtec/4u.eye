@@ -38,13 +38,13 @@ namespace Eye.Model
                 lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
                 return false;
             }
-            else if (!new Workspace().WorkspacenameJaExiste(txtWorkspacename))
+            else if (WorkspacenameJaExiste(txtWorkspacename))
             {
                 lblMensagem.Text = "Ops, já existe um Workspace chamado " + txtWorkspacename.Text + ", tente outra coisa.";
                 return false;
             }
 
-            else if (!new Workspace().EmailJaExiste(txtEmail))
+            else if (EmailJaExiste(txtEmail))
             {
                 lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
                 return false;

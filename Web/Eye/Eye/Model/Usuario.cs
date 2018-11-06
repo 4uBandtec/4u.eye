@@ -15,14 +15,27 @@ namespace Eye.Model
         public int Salt { get; set; }
         public string CodWorkspace { get; set; }
 
-        public bool Cadastrar(TextBox txtUsername, TextBox txtNome, TextBox txtEmail, TextBox txtSenha, TextBox txtDataNascimento, DropDownList ddlSexo, string codWorkspace)
+        public bool Cadastrar(TextBox txtUsername, TextBox txtNome, TextBox txtEmail, TextBox txtSenha, TextBox txtDataNascimento, DropDownList ddlSexo, string codWorkspace, Label lblMensagem)
         {
             if (!Valida.StringVazia(txtUsername, txtNome, txtEmail, txtSenha, txtDataNascimento))
             {
+                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
                 return false;
             }
             else if (!Valida.DropDownListVazia(ddlSexo))
             {
+                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
+                return false;
+            }
+            else if (UsernameJaExiste(txtUsername))
+            {
+
+                lblMensagem.Text = "Ops, já existe um Usuario chamado " + txtUsername.Text + ", tente outra coisa.";
+                return false;
+            }
+            else if(EmailJaExiste(txtEmail))
+            {
+                lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
                 return false;
             }
             var usuario = new Usuario();
@@ -34,6 +47,15 @@ namespace Eye.Model
             usuario.Sexo = ddlSexo.SelectedValue;
             usuario.CodWorkspace = codWorkspace;
             return (new ControllerUsuario().Cadastrar(usuario));
+        }
+        public bool EmailJaExiste(TextBox txtEmail)
+        {
+            return new ControllerUsuario().VerificaEmailUnico(txtEmail.Text);
+        }
+
+        public bool UsernameJaExiste(TextBox txtUsername)
+        {
+            return new ControllerUsuario().VerificaUsernameUnico(txtUsername.Text);
         }
     }
 }

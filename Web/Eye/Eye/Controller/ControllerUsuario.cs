@@ -8,18 +8,10 @@ namespace Eye.Controller
 
         public bool Cadastrar(Usuario usuario)
         {
-            var statementUsuario = new StatementUsuario();
-            if (!statementUsuario.VerificaUsernameUnico(usuario.Username))
-            {
-                return false;
-            }
-            if (!statementUsuario.VerificaEmailUnico(usuario.Email))
-            {
-                return false;
-            }
+        
             usuario.Salt = new ControllerCriptografia().GerarSalt();
             usuario.Senha = new ControllerCriptografia().GerarSenhaHash(usuario.Senha, usuario.Salt);
-            return statementUsuario.InserirUsuario(usuario);
+            return new StatementUsuario().InserirUsuario(usuario);
         }
         public bool VerificaEmailUnico(string email)
         {
