@@ -21,6 +21,7 @@
     font-family: 'Segoe UI';
     position: relative;
     transition-duration: 0.5s;
+    outline: none !important;
 }
 
 body {
