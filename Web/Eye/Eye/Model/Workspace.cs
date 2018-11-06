@@ -32,7 +32,7 @@ namespace Eye.Model
             {
                 return false;
             }
-            if (!Valida.Email(txtEmail))
+            else if (!Valida.Email(txtEmail))
             {
                 txtEmail.Focus();
                 return false;
@@ -52,7 +52,7 @@ namespace Eye.Model
 
         public bool EmailJaExiste(TextBox txtEmail)
         {
-            return new ControllerWorkspace().verificaEmailUnico(txtEmail.Text);
+            return new ControllerWorkspace().VerificaEmailUnico(txtEmail.Text);
         }
 
         public bool WorkspacenameJaExiste(TextBox txtWorkspacename)
