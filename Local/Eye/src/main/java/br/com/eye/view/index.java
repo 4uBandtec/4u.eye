@@ -9,6 +9,7 @@ public class index {
 
     public static void main(String[] args) throws InterruptedException {
         //Colocar aqui um metodo que verifica os componentes do banco e se estão atualizados com o banco
+        new TelaLogin();
         Computador computer = new Computador();
         LeituraComputador leitura = new LeituraComputador();
         
