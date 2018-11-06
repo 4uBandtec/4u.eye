@@ -27,13 +27,12 @@ namespace Eye.Model
                 lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
                 return false;
             }
-            else if (UsernameJaExiste(txtUsername))
+            else if (!UsernameJaExiste(txtUsername))
             {
-
                 lblMensagem.Text = "Ops, já existe um Usuario chamado " + txtUsername.Text + ", tente outra coisa.";
                 return false;
             }
-            else if(EmailJaExiste(txtEmail))
+            else if(!EmailJaExiste(txtEmail))
             {
                 lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
                 return false;
