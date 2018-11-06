@@ -6,20 +6,20 @@ namespace Eye.Controller
     public class ControllerUsuario
     {
 
-        public bool Cadastrar(Usuario usuario)
+        public static bool Cadastrar(Usuario usuario)
         {
-            usuario.Salt = new ControllerCriptografia().GerarSalt();
-            usuario.Senha = new ControllerCriptografia().GerarSenhaHash(usuario.Senha, usuario.Salt);
-            return new StatementUsuario().InserirUsuario(usuario);
+            usuario.Salt = ControllerCriptografia.GerarSalt();
+            usuario.Senha = ControllerCriptografia.GerarSenhaHash(usuario.Senha, usuario.Salt);
+            return StatementUsuario.InserirUsuario(usuario);
         }
-        public bool VerificaEmailUnico(string email)
+        public static bool VerificaEmailUnico(string email)
         {
-            return new StatementUsuario().VerificaEmailUnico(email);
+            return StatementUsuario.VerificaEmailUnico(email);
         }
 
-        public bool VerificaUsernameUnico(string username)
+        public static bool VerificaUsernameUnico(string username)
         {
-            return new StatementUsuario().VerificaUsernameUnico(username);
+            return StatementUsuario.VerificaUsernameUnico(username);
         }
     }
 }

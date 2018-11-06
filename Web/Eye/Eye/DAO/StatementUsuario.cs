@@ -5,7 +5,7 @@ namespace Eye.DAO
 {
     public class StatementUsuario
     {
-        public bool VerificaUsernameUnico(string username)
+        public static bool VerificaUsernameUnico(string username)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -19,7 +19,7 @@ namespace Eye.DAO
             }
         }
 
-        public bool VerificaEmailUnico(string email)
+        public static bool VerificaEmailUnico(string email)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -33,7 +33,7 @@ namespace Eye.DAO
             }
         }
 
-        public bool InserirUsuario(Usuario usuario)
+        public static bool InserirUsuario(Usuario usuario)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();

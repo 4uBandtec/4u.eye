@@ -5,7 +5,7 @@ namespace Eye.DAO
 {
     public class StatementWorkspace
     {
-        public bool VerificaWorkspacenameUnico(string workspacename)
+        public static bool VerificaWorkspacenameUnico(string workspacename)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -19,7 +19,7 @@ namespace Eye.DAO
             }
         }
 
-        public bool VerificaEmailUnico(string email)
+        public static bool VerificaEmailUnico(string email)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -32,7 +32,7 @@ namespace Eye.DAO
                 }
             }
         }
-        public int BuscaSalt(string workspacename)
+        public static int BuscaSalt(string workspacename)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -49,7 +49,7 @@ namespace Eye.DAO
             }
             return 0;
         }
-        public string BuscaSenhaHash(string workspacename)
+        public static string BuscaSenhaHash(string workspacename)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -66,7 +66,7 @@ namespace Eye.DAO
             }
             return null;
         }
-        public int BuscaCodigo(string workspacename)
+        public static int BuscaCodigo(string workspacename)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -79,7 +79,7 @@ namespace Eye.DAO
                 }
             }
         }
-        public bool InserirWorkspace(Workspace workspace)
+        public static bool InserirWorkspace(Workspace workspace)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
