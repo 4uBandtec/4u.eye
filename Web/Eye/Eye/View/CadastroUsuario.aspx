@@ -11,9 +11,10 @@
 
     <script type="text/javascript" src="../Controller/Dashboard.js"></script>
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
+    <script type="text/javascript" src="../Controller/CamposFormulario.js"></script>
 </head>
 <body onload="getCamposCadastroUsuario()">
-    
+
     <div class="radialBlack" id="radialBlack"></div>
 
     <form id="formCadastroUsuario" runat="server">
@@ -27,10 +28,10 @@
         </div>
 
         <div class="cadastroCampos">
-            <div class="areaCampos"> 
+            <div class="areaCampos">
                 <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
 
-                <div class="campos" onkeydown="tabPress(event)"  onkeyup="keyUp()">
+                <div class="campos" onkeydown="tabPress(event)" onkeyup="keyUp()">
 
                     <asp:TextBox ID="txtNome" runat="server" Placeholder="Nome" CssClass="campoCadastro"></asp:TextBox>
 
@@ -38,13 +39,20 @@
 
                     <asp:TextBox ID="txtEmail" runat="server" Placeholder="Email" type="email" CssClass="campoCadastro"></asp:TextBox>
 
-                    <asp:TextBox ID="txtDataNascimento" runat="server" Placeholder="Nascimento" TextMode="Date" CssClass="campoCadastro"></asp:TextBox>
+                    <asp:TextBox ID="txtDataNascimento" runat="server" Placeholder="Data de Nascimento" CssClass="campoCadastro" MaxLength="10"></asp:TextBox>
 
-                    <asp:TextBox ID="txtSexo" runat="server" Placeholder="Selecione" CssClass="campoCadastro"></asp:TextBox>
 
-                    <asp:TextBox ID="txtSenha" runat="server" Placeholder="Senha" type="password"  CssClass="campoCadastro"></asp:TextBox>
+                    <asp:DropDownList runat="server" ID="ddlSexo" CssClass="campoCadastro"  onchange="keyUp()">
+                            <asp:ListItem Text="Qual seu sexo?" Value="" Selected="True" />
+                            <asp:ListItem Text="Feminino" Value="F" />
+                            <asp:ListItem Text="Masculino" Value="M" />
+                            <asp:ListItem Text="Outro" Value="O" />
+                    </asp:DropDownList>
 
-                    <asp:TextBox ID="txtConfirmarSenha" runat="server" Placeholder="Confirmar Senha" type="password"  CssClass="campoCadastro"></asp:TextBox>
+
+                    <asp:TextBox ID="txtSenha" runat="server" Placeholder="Senha" type="password" CssClass="campoCadastro"></asp:TextBox>
+
+                    <asp:TextBox ID="txtConfirmarSenha" runat="server" Placeholder="Confirmar Senha" type="password" CssClass="campoCadastro"></asp:TextBox>
 
 
                 </div>

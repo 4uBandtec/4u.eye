@@ -43,7 +43,7 @@ namespace Eye.Controller
             return senhaBanco.Equals(new ControllerCriptografia().GerarSenhaHash(senha, salt));
         }
 
-        public bool verificaEmailUnico(string email)
+        public bool VerificaEmailUnico(string email)
         {
             return new StatementWorkspace().VerificaEmailUnico(email);
         }
