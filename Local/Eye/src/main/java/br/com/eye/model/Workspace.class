@@ -6,7 +6,7 @@ public class Workspace {
     private int codWorkspace;
 
     public boolean ValidarWorkspace() {
-        System.out.println("Ta clicando no botão");
+        System.out.println("Ta clicando no botão de PROXIMO");
         return ControllerWorkspace.workspaceValido();
    }
    public long getCodWorkspace() {
