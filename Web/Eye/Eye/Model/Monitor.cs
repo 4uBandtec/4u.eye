@@ -1,4 +1,6 @@
-﻿namespace Eye.Model
+﻿using System.Web.UI.WebControls;
+
+namespace Eye.Model
 {
     public class Monitor
     {
@@ -8,5 +10,14 @@
         private string NomeComputador { get; set; }
         private long DiscoTotal { get; set; }
         private long RAMTotal { get; set; }
+
+
+
+
+        public static bool iniciarMonitores()
+        {
+            return false;
+        }
+
     }
 }

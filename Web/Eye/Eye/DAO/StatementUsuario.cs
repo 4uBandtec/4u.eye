@@ -50,5 +50,49 @@ namespace Eye.DAO
                 return (cmd.ExecuteNonQuery() == 1);
             }
         }
+
+        public static int ContaUsuario(int codWorkspace)
+        {
+            Usuario[] usuarios = new Usuario[10];
+            var conexao = Conexao.GetConexao();
+            conexao.Open();
+            using (SqlCommand cmd = new SqlCommand("SELECT COUNT(cod_usuario) FROM usuario WHERE cod_workspace = @cod_workspace", conexao))
+            {
+                cmd.Parameters.AddWithValue("@cod_workspace", codWorkspace);
+                using (SqlDataReader leitor = cmd.ExecuteReader())
+                {
+                    if (leitor.Read())
+                    {
+                        return (leitor.GetInt32(1));
+                    }
+                }
+            }
+            return 0;
+        }
+
+        public static bool GetUsuarios(int codWorkspace)
+        {
+            Usuario[] usuarios = new Usuario[10];
+            var conexao = Conexao.GetConexao();
+            conexao.Open();
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM usuario WHERE cod_workspace = @cod_workspace", conexao))
+            {
+                cmd.Parameters.AddWithValue("@cod_workspace", codWorkspace);
+                using (SqlDataReader leitor = cmd.ExecuteReader())
+                {
+                    do
+                    {
+                        while (leitor.Read())
+                        {
+
+                            //Fazer:  leitor.GetString(1);
+                        }
+                    }
+                    while (leitor.NextResult());
+                }
+            }
+            return false;
+        }
+
     }
 }

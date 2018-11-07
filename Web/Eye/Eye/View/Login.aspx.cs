@@ -11,7 +11,7 @@ namespace Eye.View
             var codWorkspace =(string)Session["codWorkspace"];
             if (codWorkspace != null && codWorkspace!="0")
             {
-                Response.Redirect("./Dashboard.html");
+                Response.Redirect("./Dashboard.aspx");
             }
         }
 
@@ -20,7 +20,7 @@ namespace Eye.View
             if (new Workspace().Logar(txtWorkspacename, txtSenha))
             {
                 Session["codWorkspace"] = new Workspace().GetCodigo(txtWorkspacename.Text).ToString();
-                Response.Redirect("./Dashboard.html");
+                Response.Redirect("./Dashboard.aspx");
             }
             else lblMensagem.Text = "Login Incorreto";
         }

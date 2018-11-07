@@ -1,9 +1,12 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Eye.View.Dashboard" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Dashboard | EYE by 4U</title>
-    <link href="../Model/EYE.css" rel="stylesheet" type="text/css">
+    <link href="../Model/EYE.css" rel="stylesheet" type="text/css"/>
 
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -13,8 +16,8 @@
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
 </head>
 <body onload="iniciarEstilo(), iniciarDash()" onresize="updateChart()">
-
-    <!--MENU-->
+    <form id="formDashboard" runat="server">
+        <!--MENU-->
     <div id="sideMenu" onmousemove="getCoordenadas()">
 
         <div class="itemMenu">
@@ -142,6 +145,6 @@
     </div>
 
     <!--/Area com os containers dos computadores-->
-
+    </form>
 </body>
 </html>

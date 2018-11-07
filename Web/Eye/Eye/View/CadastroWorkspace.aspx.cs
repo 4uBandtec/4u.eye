@@ -10,7 +10,7 @@ namespace Eye.View
             var codWorkspace = (string)Session["codWorkspace"];
             if (codWorkspace != null && codWorkspace != "0")
             {
-                Response.Redirect("./Dashboard.html");
+                Response.Redirect("./Dashboard.aspx");
             }
         }
 

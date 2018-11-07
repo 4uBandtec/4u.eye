@@ -4,7 +4,7 @@ namespace Eye.DAO
 {
     public class StatementLeituraAtual
     {
-
+        
 
         public static double getRAMAtual(string codComputador)
         {

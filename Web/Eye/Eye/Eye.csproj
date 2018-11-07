@@ -76,7 +76,7 @@
     <Content Include="Model\EYE.css" />
     <Content Include="View\CadastroUsuario.aspx" />
     <Content Include="View\CadastroWorkspace.aspx" />
-    <Content Include="View\Dashboard.html" />
+    <Content Include="View\Dashboard.aspx" />
     <Content Include="View\Login.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -85,6 +85,7 @@
     <Compile Include="Controller\ControllerUsuario.cs" />
     <Compile Include="Controller\ControllerWorkspace.cs" />
     <Compile Include="DAO\Conexao.cs" />
+    <Compile Include="DAO\StatementComputador.cs" />
     <Compile Include="DAO\StatementUsuario.cs" />
     <Compile Include="DAO\StatementWorkspace.cs" />
     <Compile Include="Global.asax.cs">
@@ -108,6 +109,13 @@
     </Compile>
     <Compile Include="View\CadastroWorkspace.aspx.designer.cs">
       <DependentUpon>CadastroWorkspace.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
