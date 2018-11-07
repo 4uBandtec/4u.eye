@@ -53,7 +53,6 @@ namespace Eye.DAO
 
         public static int ContaUsuario(int codWorkspace)
         {
-            Usuario[] usuarios = new Usuario[10];
             var conexao = Conexao.GetConexao();
             conexao.Open();
             using (SqlCommand cmd = new SqlCommand("SELECT COUNT(cod_usuario) FROM usuario WHERE cod_workspace = @cod_workspace", conexao))
@@ -76,7 +75,7 @@ namespace Eye.DAO
             var contador = 0;
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT COD_USUARIO, USERNAME, NOME, EMAIL, SEXO FROM usuario WHERE cod_workspace = @cod_workspace", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT COD_USUARIO, USERNAME, NOME, EMAIL, SEXO, DATA_NASCIMENTO FROM usuario WHERE cod_workspace = @cod_workspace", conexao))
             {
                 cmd.Parameters.AddWithValue("@cod_workspace", codWorkspace);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
@@ -92,6 +91,7 @@ namespace Eye.DAO
                             usuarios[contador].Username = leitor.GetString(2);
                             usuarios[contador].Email = leitor.GetString(3);
                             usuarios[contador].Sexo = leitor.GetString(4);
+                            usuarios[contador].DataNascimento = leitor.GetString(5);
 
                             ++contador;
                         }

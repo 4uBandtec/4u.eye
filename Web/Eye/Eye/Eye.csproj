@@ -81,6 +81,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ControllerComputador.cs" />
     <Compile Include="Controller\ControllerCriptografia.cs" />
     <Compile Include="Controller\ControllerUsuario.cs" />
     <Compile Include="Controller\ControllerWorkspace.cs" />

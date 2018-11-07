@@ -1,22 +1,31 @@
 ﻿using System.Web.UI.WebControls;
+using Eye.Controller;
 
 namespace Eye.Model
 {
     public class Monitor
     {
-        private int CodComputador { get; set; }
-        private string User { get; set; }
-        private int Perfil { get; set; }
-        private string NomeComputador { get; set; }
-        private long DiscoTotal { get; set; }
-        private long RAMTotal { get; set; }
+        public int CodComputador { get; set; }
+        public string User { get; set; }
+        public int Perfil { get; set; }
+        public string NomeComputador { get; set; }
+        public decimal DiscoTotal { get; set; }
+        public decimal RAMTotal { get; set; }
+        public string SistemaOperacional { get; set; }
+        public string VersaoSistema { get; set; }
+        public int VersaoBits { get; set; }
+        public string Processador { get; set; }
+        public int CodUsuario { get; set; }
 
 
-
-
-        public static bool iniciarMonitores()
+        public int ContarComputadorUsuario(int codUsuario)
         {
-            return false;
+            return ControllerComputador.ContarComputadorUsuario(codUsuario);
+        }
+
+        public Monitor[] ListarComputadoresUsuario(int codUsuario)
+        {
+            return ControllerComputador.ListarComputadoresUsuario(codUsuario);
         }
 
     }

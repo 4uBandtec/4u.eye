@@ -19,9 +19,23 @@ namespace Eye.View
             int totalUserWorkspace = usuario.ContaUsuariosWorkspace(codWorkspaceInt);
             Usuario[] usuarios = usuario.ListarUsuarios(codWorkspaceInt);
 
+            Monitor monitor = new Monitor();
             for (int i = 0; i < totalUserWorkspace; i++)
             {
-                lblMensagem.Text += usuarios[i].Nome+" ";
+                Monitor[] monitores = new Monitor[monitor.ContarComputadorUsuario(usuarios[i].CodUsuario)];
+
+                monitores = monitor.ListarComputadoresUsuario(usuarios[i].CodUsuario);
+
+                usuarios[i].ComputadoresUsuario = monitores;
+            }
+
+            for (int i = 0; i < totalUserWorkspace; i++)
+            {
+                lblMensagem.Text += usuarios[i].Nome + " :";
+                for (int j = 0; j < usuarios[i].ComputadoresUsuario.Length; j++)
+                {
+                    lblMensagem.Text += i+" "+j+" "+usuarios[i].ComputadoresUsuario[j].NomeComputador+"\n\n\naa";
+                }
             }
         }
     }

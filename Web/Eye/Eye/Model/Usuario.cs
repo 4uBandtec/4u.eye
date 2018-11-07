@@ -15,6 +15,8 @@ namespace Eye.Model
         public int Salt { get; set; }
         public string CodWorkspace { get; set; }
 
+        public Monitor[] ComputadoresUsuario { get; set; }
+
         public bool Cadastrar(TextBox txtUsername, TextBox txtNome, TextBox txtEmail, TextBox txtSenha, TextBox txtDataNascimento, DropDownList ddlSexo, string codWorkspace, Label lblMensagem)
         {
             if (!Valida.StringVazia(txtUsername, txtNome, txtEmail, txtSenha, txtDataNascimento))
