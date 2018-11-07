@@ -42,7 +42,7 @@ public class TelaFuncionou extends JFrame implements ActionListener {
 
     LineBorder borderRed = new LineBorder(redColor, 1);
 
-    public TelaFuncionou() {
+    public TelaFuncionou(/*int codUsuario*/) {
         setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
@@ -67,6 +67,10 @@ public class TelaFuncionou extends JFrame implements ActionListener {
         add(txtWorkspacename, constraints);
         
         setVisible(true);
+        while (true){
+            new ControllerLeituraComputador().setLeitura(codUsuario);
+            Thread.sleep(1000);
+        }
     }
 
     @Override

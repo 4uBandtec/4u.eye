@@ -13,7 +13,10 @@ public class Usuario {
     
      public boolean Logar(String login, String senha) {
         System.out.println("Ta clicando no botão de LOGIN");
-         return ControllerUsuario.Logar(login, senha);
+         return ControllerUsuario.autenticarUsuario(login, senha);
+    }
+    public int getCodUsuario(String username){
+        return ControllerUsuario.getCodUsuario(username);
     }
     
 }

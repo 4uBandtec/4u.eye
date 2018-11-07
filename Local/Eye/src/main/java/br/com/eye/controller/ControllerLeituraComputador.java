@@ -40,7 +40,7 @@ public class ControllerLeituraComputador {
         return new LeituraComputador(getCPUUsada(), getMemoriaDisponivel(), getDiscoDisponivel());
     }
 
-    public boolean setLeitura(LeituraComputador leitura, int codUsuario) throws SQLException {
+    public boolean setLeitura(int codUsuario) throws SQLException {
         return new StatementLeituraComputador().existeLeituraRegistrada(codUsuario)
                 ? new StatementLeituraComputador().updateLeitura(leitura, codUsuario)
                 : new StatementLeituraComputador().setPrimeiraLeitura(leitura, codUsuario);

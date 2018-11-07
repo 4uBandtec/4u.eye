@@ -129,7 +129,9 @@ public class TelaLogin extends JFrame implements ActionListener {
        if (e.getSource()==btnLogar){
           if( new Usuario().Logar(txtUsername.getText,txtSenha.getText))
           {
-            new TelaFuncionou();
+            //session.setAttribute("codUsuario", new Usuario().getCodUsuario(txtUsername.getText););
+            //Ver como faz isso 
+            new TelaFuncionou(/*new Usuario().getCodUsuario(txtUsername.getText)*/);
           }
        }
     }
