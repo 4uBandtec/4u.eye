@@ -451,6 +451,8 @@ function getCamposCadastroUsuario() {
 function showCampoCadastroUsuario(index) {
 
 
+    index = validaMudancaCampo(index);
+
     for (var i = 0; i < totalCamposCadastro; i++) {
         if (i === index) {
             camposCadastro[i].style.opacity = "1";
@@ -472,11 +474,10 @@ function showCampoCadastroUsuario(index) {
         mascaraData(camposCadastro[index]);
     }
 
-    validaMudancaCampo(index);
+
 
     updateProgressBar();
     mudarTexto();
-
 }
 
 function checaConfirmaSenha(index) {
@@ -490,13 +491,22 @@ function validaMudancaCampo(index) {
 
     var lblMensagem = document.getElementById('lblMensagem');
     if (telaAtual == "usuario") {
+
         if (msgErro) {
             msgErro = false;
+            lblMensagem.style.color = "var(--red-color)";
             lblMensagem.innerHTML = "";
         }
 
+        if (lblMensagem.innerHTML.indexOf('cadastrado') >= 0) {
+            index = 0;
+            campoAtual = 0;
+            lblMensagem.style.color = "var(--purple-color)";
+            limpaCampos();
+            msgErro = true;
+        }
 
-        if (lblMensagem.innerHTML.indexOf('Username') >= 0) {
+        if (lblMensagem.innerHTML.indexOf('sername') >= 0) {
             index = 1;
             campoAtual = 1;
             msgErro = true;
@@ -506,6 +516,14 @@ function validaMudancaCampo(index) {
             campoAtual = 2;
             msgErro = true;
         }
+        else if (lblMensagem.innerHTML.indexOf('sexo') >= 0) {
+            index = 4;
+            campoAtual = 4;
+            msgErro = true;
+        }
+
+
+
         if (index === totalCamposCadastro - 1) {
 
 
@@ -565,5 +583,13 @@ function validaMudancaCampo(index) {
             btnFormPrevious.style.opacity = 1;
             btnPrevious.disabled = false;
         }
+    }
+
+    return index;
+}
+
+function limpaCampos() {
+    for (i = 0; i < totalCamposCadastro; i++) {
+        camposCadastro[i].value = "";
     }
 }

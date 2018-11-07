@@ -19,22 +19,22 @@ namespace Eye.Model
         {
             if (!Valida.StringVazia(txtUsername, txtNome, txtEmail, txtSenha, txtDataNascimento))
             {
-                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
+                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";
                 return false;
             }
             else if (!Valida.DropDownListVazia(ddlSexo))
             {
-                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
+                lblMensagem.Text = "Você não me disse seu sexo, por favor escolha um";
                 return false;
             }
             else if (!UsernameJaExiste(txtUsername))
             {
-                lblMensagem.Text = "Ops, já existe um Usuario chamado " + txtUsername.Text + ", tente outra coisa.";
+                lblMensagem.Text = "Má noticia, alguém já tem o Username " + txtUsername.Text + ", seja mais criativo";
                 return false;
             }
             else if (!EmailJaExiste(txtEmail))
             {
-                lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
+                lblMensagem.Text = "Alguém já usa esse e-mail, ele não pode ser usado de novo";
                 return false;
             }
             var usuario = new Usuario();
@@ -45,7 +45,13 @@ namespace Eye.Model
             usuario.DataNascimento = txtDataNascimento.Text;
             usuario.Sexo = ddlSexo.SelectedValue;
             usuario.CodWorkspace = codWorkspace;
-            return (ControllerUsuario.Cadastrar(usuario));
+
+            if (ControllerUsuario.Cadastrar(usuario)){
+                lblMensagem.Text = "Usuário cadastrado";
+                return true;
+            }
+            lblMensagem.Text = "Ops, deu algo errado, acho que a culpa é nossa";
+            return false;
         }
         public bool EmailJaExiste(TextBox txtEmail)
         {
