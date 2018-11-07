@@ -33,26 +33,26 @@
 
                 <div class="campos" onkeydown="tabPress(event)" onkeyup="keyUp()">
 
-                    <asp:TextBox ID="txtNome" runat="server" Placeholder="Nome" CssClass="campoCadastro"></asp:TextBox>
+                    <asp:TextBox ID="txtNome" runat="server" Placeholder="Qual o nome dele?" CssClass="campoCadastro"></asp:TextBox>
 
-                    <asp:TextBox ID="txtUsername" runat="server" Placeholder="Username" CssClass="campoCadastro"></asp:TextBox>
+                    <asp:TextBox ID="txtUsername" runat="server" Placeholder="E o Username?" CssClass="campoCadastro"></asp:TextBox>
 
-                    <asp:TextBox ID="txtEmail" runat="server" Placeholder="Email" type="email" CssClass="campoCadastro"></asp:TextBox>
+                    <asp:TextBox ID="txtEmail" runat="server" Placeholder="Coloque o email" type="email" CssClass="campoCadastro"></asp:TextBox>
 
                     <asp:TextBox ID="txtDataNascimento" runat="server" Placeholder="Data de Nascimento" CssClass="campoCadastro" MaxLength="10"></asp:TextBox>
 
 
                     <asp:DropDownList runat="server" ID="ddlSexo" CssClass="campoCadastro"  onchange="keyUp()">
-                            <asp:ListItem Text="Qual seu sexo?" Value="" Selected="True" />
+                            <asp:ListItem Text="Qual o sexo?" Value="" Selected="True" />
                             <asp:ListItem Text="Feminino" Value="F" />
                             <asp:ListItem Text="Masculino" Value="M" />
                             <asp:ListItem Text="Outro" Value="O" />
                     </asp:DropDownList>
 
 
-                    <asp:TextBox ID="txtSenha" runat="server" Placeholder="Senha" type="password" CssClass="campoCadastro"></asp:TextBox>
+                    <asp:TextBox ID="txtSenha" runat="server" Placeholder="A primeira Senha dele" type="password" CssClass="campoCadastro"></asp:TextBox>
 
-                    <asp:TextBox ID="txtConfirmarSenha" runat="server" Placeholder="Confirmar Senha" type="password" CssClass="campoCadastro"></asp:TextBox>
+                    <asp:TextBox ID="txtConfirmarSenha" runat="server" Placeholder="Confirme a Senha" type="password" CssClass="campoCadastro"></asp:TextBox>
 
 
                 </div>

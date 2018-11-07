@@ -47,7 +47,15 @@ namespace Eye.Model
             usuario.CodWorkspace = codWorkspace;
 
             if (ControllerUsuario.Cadastrar(usuario)){
-                lblMensagem.Text = "Usuário cadastrado";
+                lblMensagem.Text = "O novo usuário foi cadastrado, dê as boas vindas á ele por mim";
+
+                txtUsername.Text = "";
+                txtNome.Text = "";
+                txtEmail.Text = "";
+                txtSenha.Text = "";
+                txtDataNascimento.Text = "";
+                ddlSexo.SelectedValue = "";
+
                 return true;
             }
             lblMensagem.Text = "Ops, deu algo errado, acho que a culpa é nossa";
