@@ -256,7 +256,7 @@ function mudarTexto() {
                 if (decide[1] == 0) mensagem = "Tenho certeza que tudo que essa pessoa precisa é mais uma Senha pra lembrar";
                 else if (decide[1] == 1) mensagem = "Dê uma senha, de preferencia uma bem forte, a minha por exemplo é: *********";
                 else if (decide[1] == 2) mensagem = "Coloque uma senha, só não esqueça dela... ainda";
-                else mensagem = "Na minha opinião, essa pessoa merece uma senha, o que você acha?";
+                else mensagem = "Na minha opinião essa pessoa merece uma senha, o que você acha?";
 
                 break;
 

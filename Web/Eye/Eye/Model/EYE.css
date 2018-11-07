@@ -604,7 +604,7 @@ label {
     }
 
     .cadastroCampos .mensagem{
-        top: 15%;
+        top: 23%;
     }
 
     .campos {
@@ -760,6 +760,14 @@ label {
         bottom: 0;
         top: 93vh;
         z-index: 2;
+    }
+
+    .cadastroCampos option {
+        height: 100%;
+        width: 100%;
+        background: var(--bg-color);
+        border: none;
+        font-size: 0.7vh;
     }
 }
 
