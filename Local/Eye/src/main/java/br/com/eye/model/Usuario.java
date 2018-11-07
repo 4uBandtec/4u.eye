@@ -4,15 +4,16 @@ import br.com.eye.controller.ControllerUsuario;
 
 public class Usuario {
     
-    private int CodUsuario;
-    private String Login;
-    private String Senha;
-    private int Salt;
-    private String CodWorkspace;
+    private int codUsuario;
+    private String login;
+    private String senha;
+    private int salt;
+    private String codWorkspace;
 
-     public boolean Logar() {
-         System.out.println("oooie");
-         return ControllerUsuario.Logar();
+    
+     public boolean Logar(String login, String senha) {
+        System.out.println("Ta clicando no botão de LOGIN");
+         return ControllerUsuario.Logar(login, senha);
     }
     
 }

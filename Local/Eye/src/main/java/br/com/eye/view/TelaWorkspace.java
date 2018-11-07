@@ -26,13 +26,11 @@ import javax.swing.border.LineBorder;
 
 public class TelaLogin extends JFrame implements ActionListener {
 
-    JTextField txtUsername = new JTextField(),
-            txtSenha = new JTextField();
+    JTextField  = new JTextField(),
 
-    JLabel lblNome = new JLabel("Nome"),
-            lblSenha = new JLabel("Senha");
+    JLabel lblWorkspacename = new JLabel("Workspacename"),
 
-    JButton btnLogar = new JButton("Logar");
+    JButton btnProximo = new JButton("Logar");
 
     GridBagConstraints constraints = new GridBagConstraints();
 
@@ -49,17 +47,17 @@ public class TelaLogin extends JFrame implements ActionListener {
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
         setLocationRelativeTo(null);
-        setTitle("Login | EYE");
+        setTitle("Workspace | EYE");
 
         setLayout(new GridBagLayout());
         getContentPane().setBackground(bgColor);
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
 
-        lblNome.setFont(fontSergoe);
-        lblNome.setName("lblNome");
+        lblWorkspacename.setFont(fontSergoe);
+        lblWorkspacename.setName("lblWorkspacename");
 
-        lblNome.setForeground(txtColor);
+        lblWorkspacename.setForeground(txtColor);
 
         constraints.weightx = 1;
         constraints.fill = GridBagConstraints.HORIZONTAL;
@@ -67,51 +65,28 @@ public class TelaLogin extends JFrame implements ActionListener {
         constraints.gridx = 0;
         constraints.gridwidth = 3;
 
-        add(lblNome, constraints);
+        add(lblWorkspacename, constraints);
 
-        txtUsername.setFont(fontSergoe);
-        txtUsername.setBorder(borderRed);
-        txtUsername.setName("txtUsername");
-        txtUsername.setForeground(txtColor);
-        txtUsername.setBackground(bgColor);
+        txtWorkspacename.setFont(fontSergoe);
+        txtWorkspacename.setBorder(borderRed);
+        txtWorkspacename.setName("txtWorkspacename");
+        txtWorkspacename.setForeground(txtColor);
+        txtWorkspacename.setBackground(bgColor);
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weightx = 1;
         constraints.gridy = 2;
         constraints.gridx = 0;
         constraints.gridwidth = 3;
-        add(txtUsername, constraints);
+        add(txtWorkspacename, constraints);
 
-        lblSenha.setFont(fontSergoe);
-        lblSenha.setName("lblSenha");
-        lblSenha.setForeground(txtColor);
 
-        constraints.weightx = 1;
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.gridy = 3;
-        constraints.gridx = 0;
-        constraints.gridwidth = 3;
-        add(lblSenha, constraints);
-
-        txtSenha.setFont(fontSergoe);
-        txtSenha.setName("txtSenha");
-        txtSenha.setForeground(txtColor);
-        txtSenha.setBorder(borderRed);
-        txtSenha.setBackground(bgColor);
-
-        constraints.fill = GridBagConstraints.HORIZONTAL;
-        constraints.weightx = 1;
-        constraints.gridy = 4;
-        constraints.gridx = 0;
-        constraints.gridwidth = 3;
-        add(txtSenha, constraints);
-
-        btnLogar.setFont(fontSergoe);
-        btnLogar.setBorder(borderRed);
-        btnLogar.setName("btnLogar");
-        btnLogar.setForeground(txtColor);
-        btnLogar.setBackground(bgColor);
-        btnLogar.addActionListener(this);
+        btnProximo.setFont(fontSergoe);
+        btnProximo.setBorder(borderRed);
+        btnProximo.setName("btnProximo");
+        btnProximo.setForeground(txtColor);
+        btnProximo.setBackground(bgColor);
+        btnProximo.addActionListener(this);
 
         constraints.fill = GridBagConstraints.HORIZONTAL;
         constraints.weighty = 1;
@@ -119,18 +94,17 @@ public class TelaLogin extends JFrame implements ActionListener {
         constraints.gridx = 1;
         constraints.gridwidth = 1;
         constraints.gridy = 5;
-        add(btnLogar, constraints);
+        add(btnProximo, constraints);
 
         setVisible(true);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       if (e.getSource()==btnLogar){
-          if( new Usuario().Logar(txtUsername.getText,txtSenha.getText))
-          {
-            new TelaFuncionou();
-          }
+       if (e.getSource()==btnProximo){
+           if (new Workspace().ValidarWorkspace()){
+               new TelaLogin();
+           }
        }
     }
 }
