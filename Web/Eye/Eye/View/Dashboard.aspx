@@ -133,7 +133,8 @@
 
     <div id="meuResumo">
         <div class="txtMeuResumo">MEU RESUMO:</div>
-
+        
+                <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
     </div>
 
 

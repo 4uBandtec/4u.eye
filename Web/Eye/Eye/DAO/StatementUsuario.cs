@@ -63,19 +63,20 @@ namespace Eye.DAO
                 {
                     if (leitor.Read())
                     {
-                        return (leitor.GetInt32(1));
+                        return (leitor.GetInt32(0));
                     }
                 }
             }
             return 0;
         }
 
-        public static bool GetUsuarios(int codWorkspace)
+        public static Usuario[] ListarUsuarios(int codWorkspace)
         {
-            Usuario[] usuarios = new Usuario[10];
+            Usuario[] usuarios = new Usuario[ContaUsuario(codWorkspace)];
+            var contador = 0;
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM usuario WHERE cod_workspace = @cod_workspace", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT COD_USUARIO, USERNAME, NOME, EMAIL, SEXO FROM usuario WHERE cod_workspace = @cod_workspace", conexao))
             {
                 cmd.Parameters.AddWithValue("@cod_workspace", codWorkspace);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
@@ -84,14 +85,21 @@ namespace Eye.DAO
                     {
                         while (leitor.Read())
                         {
+                            
+                            usuarios[contador] = new Usuario();
+                            usuarios[contador].CodUsuario = leitor.GetInt32(0);
+                            usuarios[contador].Nome = leitor.GetString(1);
+                            usuarios[contador].Username = leitor.GetString(2);
+                            usuarios[contador].Email = leitor.GetString(3);
+                            usuarios[contador].Sexo = leitor.GetString(4);
 
-                            //Fazer:  leitor.GetString(1);
+                            ++contador;
                         }
                     }
                     while (leitor.NextResult());
                 }
             }
-            return false;
+            return usuarios;
         }
 
     }

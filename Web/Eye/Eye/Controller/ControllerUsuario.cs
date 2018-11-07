@@ -21,5 +21,15 @@ namespace Eye.Controller
         {
             return StatementUsuario.VerificaUsernameUnico(username);
         }
+
+        public static int ContaUsuarioWorkspace(int codWorkspace)
+        {
+            return StatementUsuario.ContaUsuario(codWorkspace);
+        }
+
+        public static Usuario[] ListarUsuarios(int codWorkspace)
+        {
+            return StatementUsuario.ListarUsuarios(codWorkspace);
+        }
     }
 }

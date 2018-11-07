@@ -70,5 +70,15 @@ namespace Eye.Model
         {
             return ControllerUsuario.VerificaUsernameUnico(txtUsername.Text);
         }
+
+        public int ContaUsuariosWorkspace(int codWorkspace)
+        {
+            return ControllerUsuario.ContaUsuarioWorkspace(codWorkspace);
+        }
+
+        public Usuario[] ListarUsuarios(int codWorkspace)
+        {
+            return ControllerUsuario.ListarUsuarios(codWorkspace);
+        }
     }
 }
