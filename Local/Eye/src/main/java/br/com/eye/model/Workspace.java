@@ -1,19 +1,19 @@
 package br.com.eye.model;
 
-import br.com.eye.controller.ControllerUsuario;
+import br.com.eye.controller.ControllerWorkspace;
 
-public class Usuario {
-    
-    private int codUsuario;
-    private String login;
-    private String senha;
-    private int salt;
-    private String codWorkspace;
+public class Workspace {
+    private int codWorkspace;
 
-    
-     public boolean Logar(String login, String senha) {
-        System.out.println("Ta clicando no botão de LOGIN");
-         return ControllerUsuario.Logar(login, senha);
+    public boolean ValidarWorkspace() {
+        System.out.println("Ta clicando no botão de PROXIMO");
+        return ControllerWorkspace.workspaceValido();
+   }
+   public long getCodWorkspace() {
+    return discoDisponivel;
     }
-    
+
+    public void setCodWorkspace(int codWorkspace) {
+        this.codWorkspace = codWorkspace;
+    }
 }
