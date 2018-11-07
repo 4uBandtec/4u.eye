@@ -24,7 +24,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-public class TelaLogin extends JFrame implements ActionListener {
+public class TelaWorkspace extends JFrame implements ActionListener {
 
     JTextField  = new JTextField(),
 
@@ -42,7 +42,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 
     LineBorder borderRed = new LineBorder(redColor, 1);
 
-    public TelaLogin() {
+    public TelaWorkspace() {
         setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
