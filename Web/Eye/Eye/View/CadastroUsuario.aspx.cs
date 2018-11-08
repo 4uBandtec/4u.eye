@@ -22,5 +22,10 @@ namespace Eye.View
                 return;
             }
         }
+
+        protected void btnIrPara_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("./Dashboard.aspx");
+        }
     }
 }

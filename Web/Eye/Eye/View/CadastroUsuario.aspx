@@ -88,6 +88,9 @@
 
             </div>
         </div>
+        
+        <asp:Button ID="btnIrPara" runat="server" Text="Ir para a Dashboard" OnClick="btnIrPara_Click" CssClass="defaultButton" />
+   
     </form>
 </body>
 </html>

@@ -5,8 +5,7 @@ var mouseY;
 function getCoordenadas() {
     mouseX = event.clientX;
     mouseY = event.clientY;
-    //var coords = "X coords: " + x + ", Y coords: " + y;
-    //console.log(coords);
+    
 }
 
 
