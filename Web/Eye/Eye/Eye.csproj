@@ -87,11 +87,13 @@
     <Compile Include="Controller\ControllerWorkspace.cs" />
     <Compile Include="DAO\Conexao.cs" />
     <Compile Include="DAO\StatementComputador.cs" />
+    <Compile Include="DAO\StatementLeituraAtual.cs" />
     <Compile Include="DAO\StatementUsuario.cs" />
     <Compile Include="DAO\StatementWorkspace.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\LeituraAtual.cs" />
     <Compile Include="Model\Monitor.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Model\Valida.cs" />

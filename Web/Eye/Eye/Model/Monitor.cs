@@ -16,6 +16,7 @@ namespace Eye.Model
         public int VersaoBits { get; set; }
         public string Processador { get; set; }
         public int CodUsuario { get; set; }
+        public LeituraAtual Leitura { get; set; }
 
 
         public int ContarComputadorUsuario(int codUsuario)
