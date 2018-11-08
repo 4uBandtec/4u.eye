@@ -1,6 +1,7 @@
 package br.com.eye.view;
 
 import br.com.eye.model.Usuario;
+import br.com.eye.model.Workspace;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -12,8 +13,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 
 import javax.swing.JFrame;
@@ -26,11 +30,11 @@ import javax.swing.border.LineBorder;
 
 public class TelaWorkspace extends JFrame implements ActionListener {
 
-    JTextField  = new JTextField(),
+    JTextField txtWorkspacename = new JTextField();
 
-    JLabel lblWorkspacename = new JLabel("Workspacename"),
+    JLabel lblWorkspacename = new JLabel("Workspacename");
 
-    JButton btnProximo = new JButton("Logar");
+    JButton btnProximo = new JButton("Proximo");
 
     GridBagConstraints constraints = new GridBagConstraints();
 
@@ -80,7 +84,6 @@ public class TelaWorkspace extends JFrame implements ActionListener {
         constraints.gridwidth = 3;
         add(txtWorkspacename, constraints);
 
-
         btnProximo.setFont(fontSergoe);
         btnProximo.setBorder(borderRed);
         btnProximo.setName("btnProximo");
@@ -101,10 +104,15 @@ public class TelaWorkspace extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       if (e.getSource()==btnProximo){
-           if (new Workspace().ValidarWorkspace()){
-               new TelaLogin();
-           }
-       }
+        if (e.getSource() == btnProximo) {
+            try {
+                if (new Workspace().ValidarWorkspace(txtWorkspacename.getText())) {
+                    dispose();
+                    new TelaLogin();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaWorkspace.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }

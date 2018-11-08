@@ -1,28 +1,26 @@
 package br.com.eye.controller;
 
+import br.com.eye.dao.StatementUsuario;
+import java.sql.SQLException;
+
 public class ControllerUsuario {
 
-    public boolean autenticarUsuario(String login, String senha) {
+    public boolean autenticarUsuario(String login, String senha) throws SQLException {
         int salt = new StatementUsuario().buscarSalt(login);
         String senhaBanco = new StatementUsuario().buscarSenhaHash(login);
-        if (salt == 0 || senhaBanco == null)
-        {
+        if (salt == 0 || senhaBanco == null) {
             return false;
         }
-        
-        return ValidaSenha(senhaBanco, senha, salt);
 
+        return validaSenha(senhaBanco, senha, salt);
     }
 
-    public boolean validaSenha(String senhaBanco, String senha, String salt)
-    {
-        public static bool ValidaSenha(string senhaBanco, string senha, int salt)
-        {
-            return senhaBanco.Equals(ControllerCriptografia.gerarSenhaHash(senha, salt));
-        }
+    public boolean validaSenha(String senhaBanco, String senha, int salt) {
+        return true;
+        //return senhaBanco.Equals(ControllerCriptografia.gerarSenhaHash(senha, salt));
     }
 
-    public  boolean getCodUsuario(String username) {
+    public int getCodUsuario(String username) throws SQLException {
         return new StatementUsuario().getCodUsuario(username);
     }
 }

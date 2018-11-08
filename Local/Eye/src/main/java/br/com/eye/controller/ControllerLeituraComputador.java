@@ -36,13 +36,15 @@ public class ControllerLeituraComputador {
         return disponivel;
     }
 
-    public LeituraComputador realizaLeitura() {
-        return new LeituraComputador(getCPUUsada(), getMemoriaDisponivel(), getDiscoDisponivel());
-    }
+    public boolean setLeitura(int codUsuario) throws SQLException, InterruptedException {
 
-    public boolean setLeitura(int codUsuario) throws SQLException {
-        return new StatementLeituraComputador().existeLeituraRegistrada(codUsuario)
-                ? new StatementLeituraComputador().updateLeitura(leitura, codUsuario)
-                : new StatementLeituraComputador().setPrimeiraLeitura(leitura, codUsuario);
+        while (true) {
+            Thread.sleep(1000);
+            if (new StatementLeituraComputador().existeLeituraRegistrada(codUsuario)) {
+                return new StatementLeituraComputador().updateLeitura(new LeituraComputador().leituraOshi(), codUsuario);
+            } else {
+                return new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codUsuario);
+            }
+        }
     }
 }

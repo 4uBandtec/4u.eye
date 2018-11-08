@@ -7,10 +7,9 @@ import java.sql.SQLException;
 
 public class StatementComputador {
 
-
     public boolean setComputador(Computador computador) throws SQLException {
         String sql = "INSERT INTO computador (sistema_operacional, versao_sistema, versao_bits, processador, total_disco, total_memoria, cod_usuario) VALUES (?, ?, ?, ?, ?, ?, ?)";
-        PreparedStatement query = Conexao.getConnection().prepareStatement(sql);
+        PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setString(1, computador.getSistemaOperacional());
         query.setString(2, computador.getVersaoSistema());
         query.setInt(3, computador.getVersaoBits());
@@ -25,7 +24,7 @@ public class StatementComputador {
     public Computador getComputadorSalvo(int codUsuario) throws SQLException {
         Computador computador = null;
         String sql = "SELECT sistema_operacional, versao_sistema, versao_bits, processador, total_disco, total_memoria FROM computador WHERE cod_usuario = ?";
-        PreparedStatement query = Conexao.getConnection().prepareStatement(sql);
+        PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setInt(1, codUsuario);
         ResultSet resultado = query.executeQuery();
         if (resultado.next()) {
@@ -44,7 +43,7 @@ public class StatementComputador {
     public Integer getCodComputador(int codUsuario) throws SQLException {
         String sql = "SELECT cod_computador FROM computador WHERE cod_usuario = ?";
 
-        PreparedStatement query = Conexao.getConnection().prepareStatement(sql);
+        PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setInt(1, codUsuario);
         ResultSet resultado = query.executeQuery();
 
@@ -53,7 +52,7 @@ public class StatementComputador {
 
     public String getNome(int codComputador) throws SQLException {
         String sql = "SELECT nome FROM computador WHERE cod_computador = ?";
-        PreparedStatement query = Conexao.getConnection().prepareStatement(sql);
+        PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setInt(1, codComputador);
         ResultSet resultado = query.executeQuery();
         return resultado.next() ? resultado.getString("nome") : "";
@@ -61,7 +60,7 @@ public class StatementComputador {
 
     public boolean existeComputadorRegistrado(int codUsuario) throws SQLException {
         String sql = "SELECT * FROM computador WHERE cod_usuario = ?";
-        PreparedStatement query = Conexao.getConnection().prepareStatement(sql);
+        PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setInt(1, codUsuario);
         ResultSet resultado = query.executeQuery();
         return (resultado.next());

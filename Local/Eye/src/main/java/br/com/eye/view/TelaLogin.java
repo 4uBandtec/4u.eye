@@ -12,8 +12,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 
 import javax.swing.JFrame;
@@ -126,13 +129,16 @@ public class TelaLogin extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-       if (e.getSource()==btnLogar){
-          if( new Usuario().Logar(txtUsername.getText,txtSenha.getText))
-          {
-            //session.setAttribute("codUsuario", new Usuario().getCodUsuario(txtUsername.getText););
-            //Ver como faz isso 
-            new TelaFuncionou(/*new Usuario().getCodUsuario(txtUsername.getText)*/);
-          }
-       }
+        try {
+            if (e.getSource() == btnLogar) {
+
+                if (new Usuario().Logar(txtUsername.getText(), txtSenha.getText())) {
+                    dispose();
+                    new TelaFuncionou(new Usuario().getCodUsuario(txtUsername.getText()));
+                }
+            }
+        } catch (InterruptedException | SQLException ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
