@@ -129,4 +129,19 @@ function animarPie(chart, options, data, index) {
 }
 
 
+function Teste(cod) {
+    setInterval(function() {
 
+        PageMethods.AtualizarMonitores(cod, onSucess);
+
+
+    }, 1000);
+}
+
+function onSucess(result) {
+    console.log(result);
+}
+
+function onError(result) {
+    alert(result);
+}
