@@ -1,0 +1,9 @@
+package br.com.eye.dao;
+
+import br.com.eye.model.LeituraComputador;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+public class StatementUsuario {
+}
