@@ -1,5 +1,6 @@
 ﻿using Eye.Model;
 using System;
+using System.Web.Services;
 
 namespace Eye.View
 {
@@ -37,6 +38,16 @@ namespace Eye.View
                     lblMensagem.Text += i+" "+j+" "+usuarios[i].ComputadoresUsuario[j].NomeComputador+"\n\n\naa";
                 }
             }
+        }
+
+        [WebMethod]
+        public static double AtualizarMonitores(int codComputador)
+        {
+            LeituraAtual testeAjax = new LeituraAtual();
+            testeAjax.CPUAtual = 1234;
+            testeAjax.RAMAtual = 2345;
+            testeAjax.DiscoAtual = 3456;
+            return testeAjax.DiscoAtual;
         }
     }
 }

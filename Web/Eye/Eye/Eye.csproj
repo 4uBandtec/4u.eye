@@ -69,6 +69,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Component\icon.png" />
+    <Content Include="Controller\AJAXDashboard.js" />
     <Content Include="Controller\Dashboard.js" />
     <Content Include="Controller\DashStyle.js" />
     <Content Include="Controller\CamposFormulario.js" />

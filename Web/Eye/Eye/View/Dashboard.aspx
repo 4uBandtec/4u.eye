@@ -11,11 +11,12 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-
+    
+    <script type="text/javascript" src="../Controller/AJAXDashboard.js"></script>
     <script type="text/javascript" src="../Controller/Dashboard.js"></script>
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
 </head>
-<body onload="iniciarEstilo(), iniciarDash()" onresize="updateChart()">
+<body onload="iniciarEstilo(), iniciarDash(), RequestAtualizarMonitores(2)" onresize="updateChart()">
     <form id="formDashboard" runat="server">
         <!--MENU-->
     <div id="sideMenu" onmousemove="getCoordenadas()">
