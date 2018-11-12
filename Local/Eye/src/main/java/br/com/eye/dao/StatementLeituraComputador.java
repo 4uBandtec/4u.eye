@@ -7,8 +7,16 @@ import java.sql.SQLException;
 
 public class StatementLeituraComputador {
 
+    public int getCodComputador(int codUsuario) throws SQLException {
+        String sql = "SELECT cod_computador FROM Computador WHERE cod_usuario = ?";
+        PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
+        query.setInt(1, codUsuario);
+        ResultSet resultado = query.executeQuery();
+        return resultado.next() ? resultado.getInt("cod_computador") : 0;
+    }
+
     public boolean setPrimeiraLeitura(LeituraComputador leitura, int codComputador) throws SQLException {
-        String sql = "INSERT INTO leitura_atual (cod_computador, ram, cpu, disco) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO leitura_atual (cod_computador, ram, cpu, hd) VALUES (?, ?, ?, ?)";
         System.out.println("ENTROU INSERT");
         PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setInt(1, codComputador);
@@ -19,19 +27,13 @@ public class StatementLeituraComputador {
     }
 
     public boolean updateLeitura(LeituraComputador leitura, int codComputador) throws SQLException {
-        System.out.println("ENTROU UPDATE");
-        String sql = "UPDATE leitura_atual SET ram = ?, cpu= ?, disco= ? WHERE cod_computador = ?";
+        String sql = "UPDATE leitura_atual SET ram = ?, cpu= ?, hd= ? WHERE cod_computador = ?";
         PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
-        System.out.println("leu");
         query.setDouble(1, leitura.getMemoriaDisponivel());
-        System.out.println("leu2");
+            System.out.println(leitura.getMemoriaDisponivel());
         query.setDouble(2, leitura.getCpuUsada());
-        System.out.println("leu3");
         query.setLong(3, leitura.getDiscoDisponivel());
-        System.out.println("leu4");
         query.setInt(4, codComputador);
-        System.out.println("leu5");
-        System.out.println("não foi esse2");
 
         return query.execute();
     }

@@ -1,6 +1,8 @@
 package br.com.eye.view;
 
 import br.com.eye.controller.ControllerLeituraComputador;
+import br.com.eye.dao.StatementLeituraComputador;
+import br.com.eye.model.Computador;
 import br.com.eye.model.Usuario;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -65,7 +67,9 @@ public class TelaFuncionou extends JFrame implements ActionListener {
 
         setVisible(true);
 
-        new ControllerLeituraComputador().setLeitura(codUsuario);
+        if (new Computador().inserePrimeiroComputador(codUsuario)) {
+            new ControllerLeituraComputador().setLeitura(new StatementLeituraComputador().getCodComputador(codUsuario));
+        }
     }
 
     @Override

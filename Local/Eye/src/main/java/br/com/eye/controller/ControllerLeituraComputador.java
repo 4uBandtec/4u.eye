@@ -36,14 +36,16 @@ public class ControllerLeituraComputador {
         return disponivel;
     }
 
-    public boolean setLeitura(int codUsuario) throws SQLException, InterruptedException {
+    public void setLeitura(int codComputador) throws SQLException, InterruptedException {
 
         while (true) {
             Thread.sleep(1000);
-            if (new StatementLeituraComputador().existeLeituraRegistrada(codUsuario)) {
-                return new StatementLeituraComputador().updateLeitura(new LeituraComputador().leituraOshi(), codUsuario);
+            if (new StatementLeituraComputador().existeLeituraRegistrada(codComputador)) {
+                System.out.println("DEU TRUE");
+                new StatementLeituraComputador().updateLeitura(new LeituraComputador().leituraOshi(), codComputador);
             } else {
-                return new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codUsuario);
+                  System.out.println("DEU FALSE");
+                new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codComputador);
             }
         }
     }

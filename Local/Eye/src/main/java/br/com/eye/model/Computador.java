@@ -14,8 +14,8 @@ public class Computador {
     private String versaoSistema;
     private Integer versaoBits;
     private String processador;
-    private Long totalDisco;
     private Long totalMemoria;
+    private Long totalDisco;
     private Integer codUsuario;
 
     ControllerComputador controllerComputador = new ControllerComputador();
@@ -35,7 +35,7 @@ public class Computador {
     public Computador() {
     }
 
-    public Computador(String sistemaOperacional, String versaoSistema, Integer versaoBits, String processador, Long totalDisco, Long totalMemoria) {
+    public Computador(String sistemaOperacional, String versaoSistema, Integer versaoBits, String processador, Long totalMemoria, Long totalDisco) {
         this.sistemaOperacional = sistemaOperacional;
         this.versaoSistema = versaoSistema;
         this.versaoBits = versaoBits;
@@ -136,15 +136,15 @@ public class Computador {
         this.totalDisco = totalDisco;
     }
 
-    public long getTotalMemoriaAtual() {
+    public Long getTotalMemoriaAtual() {
         return controllerComputador.getMemoria();
     }
 
-    public long getTotalMemoria() {
+    public Long getTotalMemoria() {
         return controllerComputador.getMemoria();
     }
 
-    public void setTotalMemoria(long totalMemoria) {
+    public void setTotalMemoria(Long totalMemoria) {
         this.totalMemoria = totalMemoria;
     }
 
@@ -158,8 +158,7 @@ public class Computador {
 
     public boolean inserePrimeiroComputador(int codUsuario) throws SQLException {
         return statementComputador.existeComputadorRegistrado(codUsuario)
-                ? null : statementComputador.setComputador(controllerComputador.getComputadorAtual());
-        //Precisa de Banco para testar
+                ? true : statementComputador.setComputador(controllerComputador.getComputadorAtual(), codUsuario);
     }
 
     public boolean verificaAtualizacao(int codUsuario) throws SQLException {
