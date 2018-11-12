@@ -12,7 +12,7 @@ namespace EYE.Model
         private double hdAtual;
 
 
-        public double RAMAtual    // the Name property
+        public double RAMAtual
         {
             get
             {
@@ -24,7 +24,7 @@ namespace EYE.Model
             }
         }
 
-        public double HDAtual    // the Name property
+        public double HDAtual
         {
             get
             {
@@ -36,7 +36,7 @@ namespace EYE.Model
             }
         }
 
-        public long CPUAtual    // the Name property
+        public long CPUAtual
         {
             get
             {

@@ -9,14 +9,83 @@ namespace EYE.Model
     public class Workspace
     {
 
-        public int CodWorkspace { get; set; }
-        public string Workspacename { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public int Salt { get; set; }
+        private int codWorkspace;
+        private string workspacename;
+        private string nome;
+        private string email;
+        private string senha;
+        private int salt;
 
-        
-        
+        public int CodWorkspace
+        {
+            get
+            {
+                return codWorkspace;
+            }
+            set
+            {
+                codWorkspace = value;
+            }
+        }
+
+        public string Workspacename
+        {
+            get
+            {
+                return workspacename;
+            }
+            set
+            {
+                workspacename = value;
+            }
+        }
+
+        public string Nome
+        {
+            get
+            {
+                return nome;
+            }
+            set
+            {
+                nome = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+            set
+            {
+                email = value;
+            }
+        }
+
+        public string Senha
+        {
+            get
+            {
+                return senha;
+            }
+            set
+            {
+                senha = value;
+            }
+        }
+
+        public int Salt
+        {
+            get
+            {
+                return salt;
+            }
+            set
+            {
+                salt = value;
+            }
+        }
     }
 }
