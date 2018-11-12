@@ -125,7 +125,6 @@ function animarPie(chart, options, data, index) {
             clearInterval(handler);
         }
     }, 10);
-
 }
 
 
