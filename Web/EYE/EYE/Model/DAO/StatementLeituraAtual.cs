@@ -1,12 +1,12 @@
 ﻿using System.Data.SqlClient;
 
-namespace Eye.DAO
+namespace EYE.Model.DAO
 {
     public class StatementLeituraAtual
     {
         
 
-        public static double getRAMAtual(string codComputador)
+        public static double getRAMAtual(int codComputador)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -23,7 +23,7 @@ namespace Eye.DAO
                 return 0.0;
             }
         }
-        public static double getCPUAtual(string codComputador)
+        public static double getCPUAtual(int codComputador)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -41,7 +41,7 @@ namespace Eye.DAO
             }
         }
 
-        public static double getDiscoAtual(string codComputador)
+        public static double getDiscoAtual(int codComputador)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();

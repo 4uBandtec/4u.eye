@@ -1,4 +1,4 @@
-﻿using Eye.Model;
+﻿using EYE.Controller;
 using System;
 
 namespace Eye.View
@@ -16,7 +16,7 @@ namespace Eye.View
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (!new Workspace().Cadastrar(txtWorkspacename, txtNome, txtEmail, txtSenha, lblMensagem))
+            if (!new ControllerWorkspace().Cadastrar(txtWorkspacename, txtNome, txtEmail, txtSenha, lblMensagem))
             {
                 return;
 

@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using Eye.DAO;
-using Eye.Model;
+using EYE.Model.DAO;
+using EYE.Model;
 
-
-namespace Eye.Controller
+namespace EYE.Controller
 {
     public class ControllerComputador
     {
-        public static int ContarComputadorUsuario(int codUsuario){
+        public int ContarComputadorUsuario(int codUsuario)
+        {
             return StatementComputador.ContaComputador(codUsuario);
         }
-        public static Monitor[] ListarComputadoresUsuario(int codUsuario)
+        public Computador[] ListarComputadoresUsuario(int codUsuario)
         {
             return StatementComputador.ListarComputadores(codUsuario);
         }

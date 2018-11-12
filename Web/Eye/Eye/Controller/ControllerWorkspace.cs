@@ -1,36 +1,40 @@
-﻿using Eye.DAO;
-using Eye.Model;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using EYE.Model.DAO;
+using EYE.Model;
+using System.Web.UI.WebControls;
 
-namespace Eye.Controller
+namespace EYE.Controller
 {
     public class ControllerWorkspace
     {
-        public static bool AutenticarWorkspace(string workspacename, string senha)
+        public bool Logar(TextBox txtWorkspacename, TextBox txtSenha)
         {
-            var salt = StatementWorkspace.BuscaSalt(workspacename);
-            var senhaBanco = StatementWorkspace.BuscaSenhaHash(workspacename);
 
-            if (salt == 0 || senhaBanco == null)
+            
+            if (!Validacao.StringVazia(txtWorkspacename, txtSenha))
             {
                 return false;
             }
 
-            return ValidaSenha(senhaBanco, senha, salt);
-        }
-        public static bool Cadastrar(Workspace workspace)
-        {
-            workspace.Salt = ControllerCriptografia.GerarSalt();
-            workspace.Senha = ControllerCriptografia.GerarSenhaHash(workspace.Senha, workspace.Salt);
-            return StatementWorkspace.InserirWorkspace(workspace);
-        }
 
-        public static int GetCodigo(string workspacename)
+            var salt = StatementWorkspace.BuscaSalt(txtWorkspacename.Text);
+            var senhaBanco = StatementWorkspace.BuscaSenhaHash(txtWorkspacename.Text);
+
+            return ValidaSenha(senhaBanco, txtSenha.Text, salt);
+            
+        }
+        
+        public int GetCodigo(string workspacename)
         {
             return StatementWorkspace.BuscaCodigo(workspacename);
         }
+
         public static bool ValidaSenha(string senhaBanco, string senha, int salt)
         {
-            return senhaBanco.Equals(ControllerCriptografia.GerarSenhaHash(senha, salt));
+            return senhaBanco.Equals(Criptografia.GerarSenhaHash(senha, salt));
         }
 
         public static bool VerificaEmailUnico(string email)
@@ -42,5 +46,44 @@ namespace Eye.Controller
         {
             return StatementWorkspace.VerificaWorkspacenameUnico(workspacename);
         }
+
+
+        public bool Cadastrar(TextBox txtWorkspacename, TextBox txtNome, TextBox txtEmail, TextBox txtSenha, Label lblMensagem)
+        {
+            if (!Validacao.StringVazia(txtWorkspacename, txtNome, txtEmail, txtSenha))
+            {
+                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
+                return false;
+            }
+            else if (!Validacao.Email(txtEmail))
+            {
+                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
+                return false;
+            }
+            else if (!VerificaWorkspacenameUnico(txtWorkspacename.Text))
+            {
+                lblMensagem.Text = "Ops, já existe um Workspace chamado " + txtWorkspacename.Text + ", tente outra coisa.";
+                return false;
+            }
+
+            else if (!VerificaEmailUnico(txtEmail.Text))
+            {
+                lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
+                return false;
+            }
+
+            var workspace = new Workspace
+            {
+                Workspacename = txtWorkspacename.Text,
+                Nome = txtNome.Text,
+                Email = txtEmail.Text,
+                Senha = txtSenha.Text
+            };
+
+            workspace.Salt = Criptografia.GerarSalt();
+            workspace.Senha = Criptografia.GerarSenhaHash(workspace.Senha, workspace.Salt);
+            return StatementWorkspace.InserirWorkspace(workspace);
+        }
+
     }
 }

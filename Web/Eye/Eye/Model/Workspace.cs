@@ -1,11 +1,14 @@
-﻿using Eye.Controller;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 using System.Web.UI.WebControls;
 
-namespace Eye.Model
-
+namespace EYE.Model
 {
     public class Workspace
     {
+
         public int CodWorkspace { get; set; }
         public string Workspacename { get; set; }
         public string Nome { get; set; }
@@ -13,67 +16,7 @@ namespace Eye.Model
         public string Senha { get; set; }
         public int Salt { get; set; }
 
-        public bool Logar(TextBox txtWorkspacename, TextBox txtSenha)
-        {
-            if (!Valida.StringVazia(txtWorkspacename, txtSenha))
-            {
-                return false;
-            }
-
-            if (!ControllerWorkspace.AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text))
-            {
-                txtWorkspacename.Focus();
-                return false;
-            }
-            return (ControllerWorkspace.AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text));
-        }
-        public bool Cadastrar(TextBox txtWorkspacename, TextBox txtNome, TextBox txtEmail, TextBox txtSenha, Label lblMensagem)
-        {
-            if (!Valida.StringVazia(txtWorkspacename, txtNome, txtEmail, txtSenha))
-            {
-                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
-                return false;
-            }
-            else if (!Valida.Email(txtEmail))
-            {
-                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
-                return false;
-            }
-            else if (!WorkspacenameJaExiste(txtWorkspacename))
-            {
-                lblMensagem.Text = "Ops, já existe um Workspace chamado " + txtWorkspacename.Text + ", tente outra coisa.";
-                return false;
-            }
-
-            else if (!EmailJaExiste(txtEmail))
-            {
-                lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
-                return false;
-            }
-            var workspace = new Workspace
-            {
-                Workspacename = txtWorkspacename.Text,
-                Nome = txtNome.Text,
-                Email = txtEmail.Text,
-                Senha = txtSenha.Text
-            };
-
-            return ControllerWorkspace.Cadastrar(workspace);
-        }
-        public int GetCodigo(string workspace)
-        {
-            return ControllerWorkspace.GetCodigo(workspace);
-        }
-
-        public bool EmailJaExiste(TextBox txtEmail)
-        {
-            return ControllerWorkspace.VerificaEmailUnico(txtEmail.Text);
-        }
-
-        public bool WorkspacenameJaExiste(TextBox txtWorkspacename)
-        {
-            return ControllerWorkspace.VerificaWorkspacenameUnico(txtWorkspacename.Text);
-        }
+        
+        
     }
 }
-

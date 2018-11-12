@@ -1,23 +1,52 @@
-﻿namespace Eye.Model
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+namespace EYE.Model
 {
     public class LeituraAtual
     {
-        public double RAMAtual { get; set; }
-        public long CPUAtual { get; set; }
-        public double DiscoAtual { get; set; }
+        private double ramAtual;
+        private long cpuAtual;
+        private double hdAtual;
 
-        public double GetPorcentagemRAM()
+
+        public double RAMAtual    // the Name property
         {
-            return 0;
+            get
+            {
+                return RAMAtual;
+            }
+            set
+            {
+                RAMAtual = value;
+            }
         }
-        public double GetPorcentagemCPU()
+
+        public double HDAtual    // the Name property
         {
-            return 0;
+            get
+            {
+                return HDAtual;
+            }
+            set
+            {
+                HDAtual = value;
+            }
         }
-        public double GetPorcentagemDisco()
+
+        public long CPUAtual    // the Name property
         {
-            return 0;
+            get
+            {
+                return CPUAtual;
+            }
+            set
+            {
+                CPUAtual = value;
+            }
         }
+
     }
-    
 }

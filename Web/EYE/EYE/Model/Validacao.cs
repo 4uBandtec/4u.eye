@@ -1,8 +1,12 @@
-﻿using System.Web.UI.WebControls;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI.WebControls;
 
-namespace Eye.Model
+namespace EYE.Model
 {
-    public class Valida
+    public class Validacao
     {
         public static bool StringVazia(params TextBox[] campos)
         {

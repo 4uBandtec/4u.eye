@@ -1,10 +1,13 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web;
 
-namespace Eye.Controller
+namespace EYE.Model
 {
-    public class ControllerCriptografia
+    public class Criptografia
     {
         public static string GerarSenhaHash(string senha, int salt)
         {

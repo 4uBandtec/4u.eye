@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.SqlClient;
-using Eye.Model;
+using EYE.Model;
 
-namespace Eye.DAO
+namespace EYE.Model.DAO
 {
     public class StatementComputador
     {
@@ -27,9 +27,9 @@ namespace Eye.DAO
             return 0;
         }
 
-        public static Monitor[] ListarComputadores(int codUsuario)
+        public static Computador[] ListarComputadores(int codUsuario)
         {
-            Monitor[] monitores = new Monitor[ContaComputador(codUsuario)];
+            Computador[] monitores = new Computador[ContaComputador(codUsuario)];
             var contador = 0;
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -43,7 +43,7 @@ namespace Eye.DAO
                         while (leitor.Read())
                         {
 
-                            monitores[contador] = new Monitor();
+                            monitores[contador] = new Computador();
                             monitores[contador].NomeComputador = leitor.GetString(0);
                             monitores[contador].SistemaOperacional = leitor.GetString(1);
                             monitores[contador].VersaoSistema = leitor.GetString(2);

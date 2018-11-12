@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace Eye.DAO
+namespace EYE.Model.DAO
 {
     public class Conexao
     {

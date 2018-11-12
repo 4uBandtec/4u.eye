@@ -1,9 +1,11 @@
-﻿using System.Web.UI.WebControls;
-using Eye.Controller;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-namespace Eye.Model
+namespace EYE.Model
 {
-    public class Monitor
+    public class Computador
     {
         public int CodComputador { get; set; }
         public string User { get; set; }
@@ -16,18 +18,8 @@ namespace Eye.Model
         public int VersaoBits { get; set; }
         public string Processador { get; set; }
         public int CodUsuario { get; set; }
-        public LeituraAtual Leitura { get; set; }
 
-
-        public int ContarComputadorUsuario(int codUsuario)
-        {
-            return ControllerComputador.ContarComputadorUsuario(codUsuario);
-        }
-
-        public Monitor[] ListarComputadoresUsuario(int codUsuario)
-        {
-            return ControllerComputador.ListarComputadoresUsuario(codUsuario);
-        }
+        
 
     }
 }

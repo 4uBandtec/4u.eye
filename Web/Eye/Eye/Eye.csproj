@@ -8,12 +8,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{408307BA-2E19-4058-88CA-76D67167B43D}</ProjectGuid>
+    <ProjectGuid>{F19EF107-098E-47D3-A6F6-C461EAAAF327}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Eye</RootNamespace>
-    <AssemblyName>Eye</AssemblyName>
+    <RootNamespace>EYE</RootNamespace>
+    <AssemblyName>EYE</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
     <Use64BitIISExpress />
@@ -69,9 +69,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Component\icon.png" />
+    <Content Include="Controller\CamposFormulario.js" />
     <Content Include="Controller\Dashboard.js" />
     <Content Include="Controller\DashStyle.js" />
-    <Content Include="Controller\CamposFormulario.js" />
     <Content Include="Global.asax" />
     <Content Include="Model\EYE.css" />
     <Content Include="View\CadastroUsuario.aspx" />
@@ -82,21 +82,22 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ControllerComputador.cs" />
-    <Compile Include="Controller\ControllerCriptografia.cs" />
+    <Compile Include="Controller\ControllerLeituraAtual.cs" />
     <Compile Include="Controller\ControllerUsuario.cs" />
     <Compile Include="Controller\ControllerWorkspace.cs" />
-    <Compile Include="DAO\Conexao.cs" />
-    <Compile Include="DAO\StatementComputador.cs" />
-    <Compile Include="DAO\StatementLeituraAtual.cs" />
-    <Compile Include="DAO\StatementUsuario.cs" />
-    <Compile Include="DAO\StatementWorkspace.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Model\Computador.cs" />
+    <Compile Include="Model\Criptografia.cs" />
+    <Compile Include="Model\DAO\Conexao.cs" />
+    <Compile Include="Model\DAO\StatementComputador.cs" />
+    <Compile Include="Model\DAO\StatementLeituraAtual.cs" />
+    <Compile Include="Model\DAO\StatementUsuario.cs" />
+    <Compile Include="Model\DAO\StatementWorkspace.cs" />
     <Compile Include="Model\LeituraAtual.cs" />
-    <Compile Include="Model\Monitor.cs" />
     <Compile Include="Model\Usuario.cs" />
-    <Compile Include="Model\Valida.cs" />
+    <Compile Include="Model\Validacao.cs" />
     <Compile Include="Model\Workspace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\CadastroUsuario.aspx.cs">
@@ -153,9 +154,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>52716</DevelopmentServerPort>
+          <DevelopmentServerPort>63662</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:52716/</IISUrl>
+          <IISUrl>http://localhost:63662/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -167,7 +168,7 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+      <ErrorText>Este projeto faz referência a pacotes do NuGet que não estão presentes neste computador. Use a Restauração de Pacotes do NuGet para baixá-los.  Para obter mais informações, consulte http://go.microsoft.com/fwlink/?LinkID=322105. O arquivo ausente é {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.6.1\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.8\build\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
