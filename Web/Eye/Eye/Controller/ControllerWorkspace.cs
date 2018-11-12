@@ -34,6 +34,9 @@ namespace EYE.Controller
 
         public static bool ValidaSenha(string senhaBanco, string senha, int salt)
         {
+            if (senhaBanco == null || senhaBanco == "") {
+                return false;
+            }
             return senhaBanco.Equals(Criptografia.GerarSenhaHash(senha, salt));
         }
 

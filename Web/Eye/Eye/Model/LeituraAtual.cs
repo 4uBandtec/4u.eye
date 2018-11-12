@@ -16,11 +16,11 @@ namespace EYE.Model
         {
             get
             {
-                return RAMAtual;
+                return ramAtual;
             }
             set
             {
-                RAMAtual = value;
+                ramAtual = value;
             }
         }
 
@@ -28,11 +28,11 @@ namespace EYE.Model
         {
             get
             {
-                return HDAtual;
+                return hdAtual;
             }
             set
             {
-                HDAtual = value;
+                hdAtual = value;
             }
         }
 
@@ -40,11 +40,11 @@ namespace EYE.Model
         {
             get
             {
-                return CPUAtual;
+                return cpuAtual;
             }
             set
             {
-                CPUAtual = value;
+                cpuAtual = value;
             }
         }
 
