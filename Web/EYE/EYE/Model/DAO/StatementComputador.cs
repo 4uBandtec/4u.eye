@@ -33,7 +33,7 @@ namespace EYE.Model.DAO
             var contador = 0;
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT nome, sistema_operacional, versao_sistema, versao_bits, processador, total_disco, total_memoria FROM computador WHERE cod_usuario = @cod_usuario", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT nome, sistema_operacional, versao_sistema, versao_bits, processador, total_hd, total_ram FROM computador WHERE cod_usuario = @cod_usuario", conexao))
             {
                 cmd.Parameters.AddWithValue("@cod_usuario", codUsuario);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
@@ -49,7 +49,7 @@ namespace EYE.Model.DAO
                             monitores[contador].VersaoSistema = leitor.GetString(2);
                             monitores[contador].VersaoBits = leitor.GetInt32(3);
                             monitores[contador].Processador = leitor.GetString(4);
-                            monitores[contador].DiscoTotal = leitor.GetDecimal(5);
+                            monitores[contador].HDTotal = leitor.GetDecimal(5);
                             monitores[contador].RAMTotal = leitor.GetDecimal(6);
                             monitores[contador].CodUsuario = codUsuario;
                             

@@ -11,7 +11,7 @@ namespace EYE.Model
         public string User { get; set; }
         public int Perfil { get; set; }
         public string NomeComputador { get; set; }
-        public decimal DiscoTotal { get; set; }
+        public decimal HDTotal { get; set; }
         public decimal RAMTotal { get; set; }
         public string SistemaOperacional { get; set; }
         public string VersaoSistema { get; set; }

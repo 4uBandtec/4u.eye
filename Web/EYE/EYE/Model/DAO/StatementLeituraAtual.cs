@@ -41,11 +41,11 @@ namespace EYE.Model.DAO
             }
         }
 
-        public static double getDiscoAtual(int codComputador)
+        public static double getHDAtual(int codComputador)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT disco FROM leitura WHERE cod_computador = @cod_computador", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT hd FROM leitura WHERE cod_computador = @cod_computador", conexao))
             {
                 cmd.Parameters.AddWithValue("@cod_computador", codComputador);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
