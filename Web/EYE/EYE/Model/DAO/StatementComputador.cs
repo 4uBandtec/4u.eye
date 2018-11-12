@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 using System.Data.SqlClient;
-using EYE.Model;
 
 namespace EYE.Model.DAO
 {
@@ -29,7 +25,7 @@ namespace EYE.Model.DAO
 
         public static Computador[] ListarComputadores(int codUsuario)
         {
-            Computador[] monitores = new Computador[ContaComputador(codUsuario)];
+            Computador[] computadores = new Computador[ContaComputador(codUsuario)];
             var contador = 0;
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -43,15 +39,15 @@ namespace EYE.Model.DAO
                         while (leitor.Read())
                         {
 
-                            monitores[contador] = new Computador();
-                            monitores[contador].NomeComputador = leitor.GetString(0);
-                            monitores[contador].SistemaOperacional = leitor.GetString(1);
-                            monitores[contador].VersaoSistema = leitor.GetString(2);
-                            monitores[contador].VersaoBits = leitor.GetInt32(3);
-                            monitores[contador].Processador = leitor.GetString(4);
-                            monitores[contador].HDTotal = leitor.GetDecimal(5);
-                            monitores[contador].RAMTotal = leitor.GetDecimal(6);
-                            monitores[contador].CodUsuario = codUsuario;
+                            computadores[contador] = new Computador();
+                            computadores[contador].NomeComputador = leitor.GetString(0);
+                            computadores[contador].SistemaOperacional = leitor.GetString(1);
+                            computadores[contador].VersaoSistema = leitor.GetString(2);
+                            computadores[contador].VersaoBits = leitor.GetInt32(3);
+                            computadores[contador].Processador = leitor.GetString(4);
+                            computadores[contador].HDTotal = leitor.GetDecimal(5);
+                            computadores[contador].RAMTotal = leitor.GetDecimal(6);
+                            computadores[contador].CodUsuario = codUsuario;
                             
                             ++contador;
                         }
@@ -59,7 +55,7 @@ namespace EYE.Model.DAO
                     while (leitor.NextResult());
                 }
             }
-            return monitores;
+            return computadores;
         }
 
     }

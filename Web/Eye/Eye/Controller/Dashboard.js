@@ -132,7 +132,7 @@ function animarPie(chart, options, data, index) {
 function Teste(cod) {
     setInterval(function() {
 
-        PageMethods.AtualizarMonitores(cod, onSucess);
+        PageMethods.AtualizarComputadores(cod, onSucess);
 
 
     }, 1000);

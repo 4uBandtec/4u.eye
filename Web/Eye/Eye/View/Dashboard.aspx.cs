@@ -45,7 +45,7 @@ namespace Eye.View
 
 
         [ScriptMethod, WebMethod]
-        public static double AtualizarMonitores(int codComputador)
+        public static double AtualizarComputadores(int codComputador)
         {
             LeituraAtual testeAjax = new LeituraAtual();
             testeAjax.CPUAtual = 1234;

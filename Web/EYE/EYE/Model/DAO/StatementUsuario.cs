@@ -1,5 +1,4 @@
 ﻿
-using EYE.Model;
 using System.Data.SqlClient;
 
 namespace EYE.Model.DAO
