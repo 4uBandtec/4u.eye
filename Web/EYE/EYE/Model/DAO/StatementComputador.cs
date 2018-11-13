@@ -29,7 +29,7 @@ namespace EYE.Model.DAO
             var contador = 0;
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT nome, sistema_operacional, versao_sistema, versao_bits, processador, total_hd, total_ram FROM computador WHERE cod_usuario = @cod_usuario", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT cod_computador, nome, sistema_operacional, versao_sistema, versao_bits, processador, total_hd, total_ram FROM computador WHERE cod_usuario = @cod_usuario", conexao))
             {
                 cmd.Parameters.AddWithValue("@cod_usuario", codUsuario);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
@@ -40,13 +40,14 @@ namespace EYE.Model.DAO
                         {
 
                             computadores[contador] = new Computador();
-                            computadores[contador].NomeComputador = leitor.GetString(0);
-                            computadores[contador].SistemaOperacional = leitor.GetString(1);
-                            computadores[contador].VersaoSistema = leitor.GetString(2);
-                            computadores[contador].VersaoBits = leitor.GetInt32(3);
-                            computadores[contador].Processador = leitor.GetString(4);
-                            computadores[contador].HDTotal = leitor.GetInt64(5);
-                            computadores[contador].RAMTotal = leitor.GetInt64(6);
+                            computadores[contador].CodComputador = leitor.GetInt32(0);
+                            computadores[contador].NomeComputador = leitor.GetString(1);
+                            computadores[contador].SistemaOperacional = leitor.GetString(2);
+                            computadores[contador].VersaoSistema = leitor.GetString(3);
+                            computadores[contador].VersaoBits = leitor.GetInt32(4);
+                            computadores[contador].Processador = leitor.GetString(5);
+                            computadores[contador].HDTotal = leitor.GetInt64(6);
+                            computadores[contador].RAMTotal = leitor.GetInt64(7);
                             computadores[contador].CodUsuario = codUsuario;
                             
                             ++contador;

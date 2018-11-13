@@ -2,6 +2,8 @@
 var valoresUsada = [];
 var valoresLivre = [];
 
+
+
 function iniciarDash() {
     for (i = 0; i < qtdComputers; i++) {
 
@@ -128,25 +130,81 @@ function animarPie(chart, options, data, index) {
 }
 
 
-//Função com PageMethods q chama o método de listagem de usuários
-//Lista computadores de cada usuário
-//Pra cada computador de cada usuário chama a leitura atual
-//Com o resultado recebido no onSucces atualiza a dashboard
 
-
-//FAZER ELE SÓ CONTAR OS COMPUTADORES E LISTAR OS USUÀRIOS 1 VEZ
 
 
 function GetUsuariosWorkspace() {
-    PageMethods.GetUsuariosWorkspace(onSucess, onError);
+    PageMethods.GetUsuariosWorkspace(setCodComputadores, onError);
 }
 
-function onSucess(result) {
-    console.log(result);
-    console.log(result[0]);
-    console.log(result[0].Nome);
+
+
+var computadoresUsuarios = [];
+
+
+function setCodComputadores(usuarios) {
+    computadoresUsuarios = usuarios;
+
+    getLeitura();
 }
+
 
 function onError(result) {
-    alert(result);
+    console.log(result);
+}
+
+function getLeitura() {
+
+    console.log("Lendo");
+    for (i = 0; i < computadoresUsuarios.length; i++) {
+
+        console.log(computadoresUsuarios[i].Nome + ": ");
+
+        for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
+            console.log("\t" + computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador);
+        }
+
+
+    }
+
+    console.log("Lido");
+
+
+    setTimeout(getLeitura(computadoresUsuarios), 1000);
+}
+
+function Ajax() {
+    var jaEntrou = false, req = new XMLHttpRequest();
+    req.open("GET", "ExeASP/TemperaturaReal.aspx?id=" + sensores.options[sensores.selectedIndex].value, true);
+    req.onreadystatechange = function () {
+        if (req.readyState == 4) {
+            if (jaEntrou) {
+                return;
+            }
+            jaEntrou = true;
+
+            if (req.status != 200) {
+                return;
+            }
+
+            //{
+              //  "primeiroQA": <%= q1 %>,
+              //      "mediaA": <%= media %>,
+                //        "medianaA": <%= med %>,
+                  //          "terceiroQA": <%= q3 %>,
+                    //            "minimaA": <%= min %>,
+                      //              "maximaA": <%= max %>,
+                        //                "varianciaA": <%= var %>,
+                          //                  "stdevA": <%= stdev %>,
+                            //                    "ampmaxA": <%= amp %>,
+                                //                    "tempA": "<%= "" + media + " ± " + stdev + " °C" %>",
+                              //                          "chartData" : <%= chartData %>}
+            var obj = JSON.parse(req.responseText);
+
+            //obj.key
+
+            setTimeout(atualizar, 3000);
+        }
+    };
+    req.send();
 }
