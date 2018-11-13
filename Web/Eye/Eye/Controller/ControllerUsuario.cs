@@ -37,7 +37,7 @@ namespace EYE.Controller
             usuario.Senha = txtSenha.Text;
             usuario.DataNascimento = txtDataNascimento.Text;
             usuario.Sexo = ddlSexo.SelectedValue;
-            usuario.CodWorkspace = codWorkspace;
+            usuario.CodWorkspace = int.Parse(codWorkspace);
 
 
 
