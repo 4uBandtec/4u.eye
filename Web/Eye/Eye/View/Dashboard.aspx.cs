@@ -9,6 +9,8 @@ namespace Eye.View
 {
     public partial class Dashboard : System.Web.UI.Page
     {
+        
+
         protected void Page_Load(object sender, EventArgs e)
         {
             var codWorkspace = (string)Session["codWorkspace"];
@@ -17,11 +19,22 @@ namespace Eye.View
                 Response.Redirect("./Login.aspx");
             }
 
-            ControllerUsuario controllerUsuario = new ControllerUsuario();
-            int codWorkspaceInt = Int32.Parse(codWorkspace);
+        }
 
-            int totalUserWorkspace = controllerUsuario.ContaUsuarioWorkspace(codWorkspaceInt);
-            Usuario[] usuarios = controllerUsuario.ListarUsuarios(codWorkspaceInt);
+        public int returnSession()
+        {
+            return int.Parse((String)Session["codWorkspace"]);
+        }
+
+        [ScriptMethod, WebMethod]
+        public static Usuario[] GetUsuariosWorkspace()
+        {
+            ControllerUsuario controllerUsuario = new ControllerUsuario();
+
+            Dashboard dash = new Dashboard();
+
+            int totalUserWorkspace = controllerUsuario.ContaUsuarioWorkspace(dash.returnSession());
+            Usuario[] usuarios = controllerUsuario.ListarUsuarios(dash.returnSession());
 
             ControllerComputador controllerComputador = new ControllerComputador();
             for (int i = 0; i < totalUserWorkspace; i++)
@@ -33,25 +46,20 @@ namespace Eye.View
                 usuarios[i].ComputadoresUsuario = computadores;
             }
 
-            for (int i = 0; i < totalUserWorkspace; i++)
-            {
-                lblMensagem.Text += usuarios[i].Nome + " :";
-                for (int j = 0; j < usuarios[i].ComputadoresUsuario.Length; j++)
-                {
-                    lblMensagem.Text += i + " " + j + " " + usuarios[i].ComputadoresUsuario[j].NomeComputador + "\n\n\naa";
-                }
-            }
+            return usuarios;
         }
 
-
         [ScriptMethod, WebMethod]
-        public static double AtualizarComputadores(int codComputador)
+        public static LeituraAtual AtualizarComputadores(int codComputador)
         {
-            LeituraAtual testeAjax = new LeituraAtual();
-            testeAjax.CPUAtual = 1234;
-            testeAjax.HDAtual = 2345;
-            testeAjax.RAMAtual = codComputador * new Random().Next();
-            return testeAjax.RAMAtual;
+            LeituraAtual leitura = new LeituraAtual();
+
+            ControllerLeituraAtual controllerLeituraAtual = new ControllerLeituraAtual();
+
+            leitura.CPUAtual = controllerLeituraAtual.GetPorcentagemCPU(codComputador);
+            leitura.HDAtual = controllerLeituraAtual.GetPorcentagemHD(codComputador);
+            leitura.RAMAtual = controllerLeituraAtual.GetPorcentagemRAM(codComputador);
+            return leitura;
         }
 
     }

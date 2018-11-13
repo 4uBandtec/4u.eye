@@ -4,8 +4,8 @@ namespace EYE.Model
     public class LeituraAtual
     {
         private double ramAtual;
-        private long cpuAtual;
-        private double hdAtual;
+        private double cpuAtual;
+        private long hdAtual;
 
 
         public double RAMAtual
@@ -20,7 +20,7 @@ namespace EYE.Model
             }
         }
 
-        public double HDAtual
+        public long HDAtual
         {
             get
             {
@@ -32,7 +32,7 @@ namespace EYE.Model
             }
         }
 
-        public long CPUAtual
+        public double CPUAtual
         {
             get
             {

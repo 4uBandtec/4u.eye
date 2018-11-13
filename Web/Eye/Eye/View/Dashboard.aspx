@@ -1,4 +1,4 @@
-<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Eye.View.Dashboard" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Eye.View.Dashboard" %>
 
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
 
 </head>
-<body onload="iniciarEstilo(), iniciarDash(), Teste(2)" onresize="updateChart()">
+<body onload="iniciarEstilo(), iniciarDash(), GetUsuariosWorkspace()" onresize="updateChart()">
     <form id="formDashboard" runat="server">
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />

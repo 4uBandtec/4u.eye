@@ -75,7 +75,7 @@ namespace EYE.Model.DAO
             var contador = 0;
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT COD_USUARIO, USERNAME, NOME, EMAIL, SEXO, DATA_NASCIMENTO FROM usuario WHERE cod_workspace = @cod_workspace", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT COD_USUARIO, USERNAME, NOME, EMAIL, SEXO, DATA_NASCIMENTO, COD_WORKSPACE FROM usuario WHERE cod_workspace = @cod_workspace", conexao))
             {
                 cmd.Parameters.AddWithValue("@cod_workspace", codWorkspace);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
@@ -92,6 +92,7 @@ namespace EYE.Model.DAO
                             usuarios[contador].Email = leitor.GetString(3);
                             usuarios[contador].Sexo = leitor.GetString(4);
                             usuarios[contador].DataNascimento = leitor.GetString(5);
+                            usuarios[contador].CodWorkspace = leitor.GetInt32(6);
 
                             ++contador;
                         }

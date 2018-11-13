@@ -128,17 +128,23 @@ function animarPie(chart, options, data, index) {
 }
 
 
-function Teste(cod) {
-    setInterval(function() {
+//Função com PageMethods q chama o método de listagem de usuários
+//Lista computadores de cada usuário
+//Pra cada computador de cada usuário chama a leitura atual
+//Com o resultado recebido no onSucces atualiza a dashboard
 
-        PageMethods.AtualizarComputadores(cod, onSucess);
+
+//FAZER ELE SÓ CONTAR OS COMPUTADORES E LISTAR OS USUÀRIOS 1 VEZ
 
 
-    }, 1000);
+function GetUsuariosWorkspace() {
+    PageMethods.GetUsuariosWorkspace(onSucess, onError);
 }
 
 function onSucess(result) {
     console.log(result);
+    console.log(result[0]);
+    console.log(result[0].Nome);
 }
 
 function onError(result) {

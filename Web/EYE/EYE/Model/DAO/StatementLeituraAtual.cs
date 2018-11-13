@@ -41,7 +41,7 @@ namespace EYE.Model.DAO
             }
         }
 
-        public static double getHDAtual(int codComputador)
+        public static long getHDAtual(int codComputador)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
@@ -52,10 +52,10 @@ namespace EYE.Model.DAO
                 {
                     if (leitor.Read())
                     {
-                        return leitor.GetDouble(0);
+                        return leitor.GetInt64(0);
                     }
                 }
-                return 0.0;
+                return 0;
             }
         }
     }

@@ -13,7 +13,7 @@ namespace EYE.Controller
         {
             return StatementLeituraAtual.getCPUAtual(codComputador);
         }
-        public double GetPorcentagemHD(int codComputador)
+        public long GetPorcentagemHD(int codComputador)
         {
             return StatementLeituraAtual.getHDAtual(codComputador);
         }

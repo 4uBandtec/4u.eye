@@ -11,7 +11,7 @@ namespace EYE.Model
         private string dataNascimento;
         private string sexo;
         private int salt;
-        private string codWorkspace;
+        private int codWorkspace;
 
         private Computador[] computadoresUsuario;
 
@@ -113,7 +113,7 @@ namespace EYE.Model
             }
         }
 
-        public string CodWorkspace
+        public int CodWorkspace
         {
             get
             {
