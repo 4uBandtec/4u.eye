@@ -2,6 +2,8 @@
 var valoresUsada = [];
 var valoresLivre = [];
 
+
+
 function iniciarDash() {
     for (i = 0; i < qtdComputers; i++) {
 
@@ -125,8 +127,65 @@ function animarPie(chart, options, data, index) {
             clearInterval(handler);
         }
     }, 10);
-
 }
 
 
 
+
+
+function GetUsuariosWorkspace() {
+    PageMethods.GetUsuariosWorkspace(setCodComputadores, onError);
+}
+
+
+
+var computadoresUsuarios = [];
+
+
+function setCodComputadores(usuarios) {
+    computadoresUsuarios = usuarios;
+
+    setTimeout(getLeitura(), 1000);
+}
+
+
+function onError(result) {
+    console.log(result);
+}
+
+
+
+function getLeitura() {
+
+    for (i = 0; i < computadoresUsuarios.length; i++) {
+
+
+        for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
+
+            console.log(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador);
+
+
+            PageMethods.AtualizarComputadores(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador, AtualizarDashboard, onError);
+        }
+
+    }
+
+    setTimeout(getLeitura, 5000);
+}
+
+
+function AtualizarDashboard(leituraAtual) {
+
+    if (!!leituraAtual) {
+        console.log(leituraAtual.CPUAtual);
+        console.log(leituraAtual.RAMAtual);
+        console.log(leituraAtual.HDAtual);
+
+    }
+    else {
+        console.log("Não existe nenhuma leitura desse computador, certifique-se se a aplicação local está rodando nele")
+
+    }
+
+
+}

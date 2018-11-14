@@ -63,6 +63,7 @@ public class TelaFuncionou extends JFrame implements ActionListener {
         constraints.gridy = 2;
         constraints.gridx = 0;
         constraints.gridwidth = 3;
+
         add(lblFuncionou, constraints);
 
         setVisible(true);

@@ -1,60 +1,141 @@
-﻿using Eye.Controller;
-using System.Web.UI.WebControls;
-
-namespace Eye.Model
+﻿
+namespace EYE.Model
 {
     public class Usuario
     {
-        public int CodUsuario { get; set; }
-        public string Username { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public string DataNascimento { get; set; }
-        public string Sexo { get; set; }
-        public int Salt { get; set; }
-        public string CodWorkspace { get; set; }
+        private int codUsuario;
+        private string username;
+        private string nome;
+        private string email;
+        private string senha;
+        private string dataNascimento;
+        private string sexo;
+        private int salt;
+        private int codWorkspace;
 
-        public bool Cadastrar(TextBox txtUsername, TextBox txtNome, TextBox txtEmail, TextBox txtSenha, TextBox txtDataNascimento, DropDownList ddlSexo, string codWorkspace, Label lblMensagem)
+        private Computador[] computadoresUsuario;
+
+
+        public int CodUsuario
         {
-            if (!Valida.StringVazia(txtUsername, txtNome, txtEmail, txtSenha, txtDataNascimento))
+            get
             {
-                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
-                return false;
+                return codUsuario;
             }
-            else if (!Valida.DropDownListVazia(ddlSexo))
+            set
             {
-                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
-                return false;
+                codUsuario = value;
             }
-            else if (!UsernameJaExiste(txtUsername))
-            {
-                lblMensagem.Text = "Ops, já existe um Usuario chamado " + txtUsername.Text + ", tente outra coisa.";
-                return false;
-            }
-            else if (!EmailJaExiste(txtEmail))
-            {
-                lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
-                return false;
-            }
-            var usuario = new Usuario();
-            usuario.Username = txtUsername.Text;
-            usuario.Nome = txtNome.Text;
-            usuario.Email = txtEmail.Text;
-            usuario.Senha = txtSenha.Text;
-            usuario.DataNascimento = txtDataNascimento.Text;
-            usuario.Sexo = ddlSexo.SelectedValue;
-            usuario.CodWorkspace = codWorkspace;
-            return (ControllerUsuario.Cadastrar(usuario));
-        }
-        public bool EmailJaExiste(TextBox txtEmail)
-        {
-            return ControllerUsuario.VerificaEmailUnico(txtEmail.Text);
         }
 
-        public bool UsernameJaExiste(TextBox txtUsername)
+
+        public string Username
         {
-            return ControllerUsuario.VerificaUsernameUnico(txtUsername.Text);
+            get
+            {
+                return username;
+            }
+            set
+            {
+                username = value;
+            }
+        }
+
+        public string Nome
+        {
+            get
+            {
+                return nome;
+            }
+            set
+            {
+                nome = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+            set
+            {
+                email = value;
+            }
+        }
+
+        public string Senha
+        {
+            get
+            {
+                return senha;
+            }
+            set
+            {
+                senha = value;
+            }
+        }
+
+        public string DataNascimento
+        {
+            get
+            {
+                return dataNascimento;
+            }
+            set
+            {
+                dataNascimento = value;
+            }
+        }
+
+        public string Sexo
+        {
+            get
+            {
+                return sexo;
+            }
+            set
+            {
+                sexo = value;
+            }
+        }
+
+        public int Salt
+        {
+            get
+            {
+                return salt;
+            }
+            set
+            {
+                salt = value;
+            }
+        }
+
+        public int CodWorkspace
+        {
+            get
+            {
+                return codWorkspace;
+            }
+            set
+            {
+                codWorkspace = value;
+            }
+        }
+
+
+        public Computador[] ComputadoresUsuario
+        {
+            get
+            {
+                return computadoresUsuario;
+            }
+            set
+            {
+                computadoresUsuario = value;
+            }
         }
     }
 }

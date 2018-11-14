@@ -30,7 +30,7 @@ public class StatementLeituraComputador {
         String sql = "UPDATE leitura_atual SET ram = ?, cpu= ?, hd= ? WHERE cod_computador = ?";
         PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setDouble(1, leitura.getMemoriaDisponivel());
-            System.out.println(leitura.getMemoriaDisponivel());
+        System.out.println(leitura.getMemoriaDisponivel());
         query.setDouble(2, leitura.getCpuUsada());
         query.setLong(3, leitura.getDiscoDisponivel());
         query.setInt(4, codComputador);

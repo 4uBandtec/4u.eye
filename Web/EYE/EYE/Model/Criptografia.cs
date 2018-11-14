@@ -2,9 +2,9 @@
 using System.Security.Cryptography;
 using System.Text;
 
-namespace Eye.Controller
+namespace EYE.Model
 {
-    public class ControllerCriptografia
+    public class Criptografia
     {
         public static string GerarSenhaHash(string senha, int salt)
         {

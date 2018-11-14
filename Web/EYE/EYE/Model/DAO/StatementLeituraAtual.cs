@@ -1,61 +1,67 @@
 ﻿using System.Data.SqlClient;
 
-namespace Eye.DAO
+namespace EYE.Model.DAO
 {
     public class StatementLeituraAtual
     {
+        
 
-
-        public static double getRAMAtual(string codComputador)
+        public static double getRAMAtual(int codComputador)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT ram FROM leitura WHERE cod_computador = @cod_computador", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT ram FROM leitura_atual WHERE cod_computador = @cod_computador", conexao))
             {
                 cmd.Parameters.AddWithValue("@cod_computador", codComputador);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
                 {
                     if (leitor.Read())
                     {
-                        return leitor.GetDouble(0);
+                        float result = leitor.GetFloat(0);
+                        conexao.Close();
+                        return result;
                     }
                 }
                 return 0.0;
             }
         }
-        public static double getCPUAtual(string codComputador)
+        public static double getCPUAtual(int codComputador)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT cpu FROM leitura WHERE cod_computador = @cod_computador", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT cpu FROM leitura_atual WHERE cod_computador = @cod_computador", conexao))
             {
                 cmd.Parameters.AddWithValue("@cod_computador", codComputador);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
                 {
                     if (leitor.Read())
                     {
-                        return leitor.GetDouble(0);
+                        float result = leitor.GetFloat(0);
+                        conexao.Close();
+                        return result;
                     }
                 }
                 return 0.0;
             }
         }
 
-        public static double getDiscoAtual(string codComputador)
+        public static long getHDAtual(int codComputador)
         {
             var conexao = Conexao.GetConexao();
             conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT disco FROM leitura WHERE cod_computador = @cod_computador", conexao))
+            using (SqlCommand cmd = new SqlCommand("SELECT hd FROM leitura_atual WHERE cod_computador = @cod_computador", conexao))
             {
                 cmd.Parameters.AddWithValue("@cod_computador", codComputador);
                 using (SqlDataReader leitor = cmd.ExecuteReader())
                 {
                     if (leitor.Read())
                     {
-                        return leitor.GetDouble(0);
+                        long result = leitor.GetInt64(0);
+                        conexao.Close();
+                        return result;
                     }
                 }
-                return 0.0;
+                return 0;
             }
         }
     }

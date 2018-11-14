@@ -1,4 +1,4 @@
-﻿using Eye.Model;
+﻿using EYE.Controller;
 using System;
 
 namespace Eye.View
@@ -10,13 +10,13 @@ namespace Eye.View
             var codWorkspace = (string)Session["codWorkspace"];
             if (codWorkspace != null && codWorkspace != "0")
             {
-                Response.Redirect("./Dashboard.html");
+                Response.Redirect("./Dashboard.aspx");
             }
         }
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (!new Workspace().Cadastrar(txtWorkspacename, txtNome, txtEmail, txtSenha, lblMensagem))
+            if (!new ControllerWorkspace().Cadastrar(txtWorkspacename, txtNome, txtEmail, txtSenha, lblMensagem))
             {
                 return;
 

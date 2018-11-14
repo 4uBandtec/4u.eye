@@ -1,1 +1,1 @@
-﻿<%@ Application Codebehind="Global.asax.cs" Inherits="Eye.Global" Language="C#" %>
+﻿<%@ Application Codebehind="Global.asax.cs" Inherits="EYE.Global" Language="C#" %>

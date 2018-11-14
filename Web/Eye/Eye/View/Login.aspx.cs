@@ -1,4 +1,4 @@
-﻿using Eye.Model;
+﻿using EYE.Controller;
 using System;
 
 namespace Eye.View
@@ -11,16 +11,16 @@ namespace Eye.View
             var codWorkspace =(string)Session["codWorkspace"];
             if (codWorkspace != null && codWorkspace!="0")
             {
-                Response.Redirect("./Dashboard.html");
+                Response.Redirect("./Dashboard.aspx");
             }
         }
 
         protected void btnLogar_Click(object sender, EventArgs e)
         {
-            if (new Workspace().Logar(txtWorkspacename, txtSenha))
+            if (new ControllerWorkspace().Logar(txtWorkspacename, txtSenha))
             {
-                Session["codWorkspace"] = new Workspace().GetCodigo(txtWorkspacename.Text).ToString();
-                Response.Redirect("./Dashboard.html");
+                Session["codWorkspace"] = new ControllerWorkspace().GetCodigo(txtWorkspacename.Text).ToString();
+                Response.Redirect("./Dashboard.aspx");
             }
             else lblMensagem.Text = "Login Incorreto";
         }

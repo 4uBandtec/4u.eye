@@ -1,19 +1,48 @@
-﻿namespace Eye.Model
+﻿
+namespace EYE.Model
 {
     public class LeituraAtual
     {
-        //public long RAM { get; set; }
-        //public long CPU { get; set; }
-        //public long Disco { get; set; }
-    }
-    //public double GetPorcentagemRAM()
-    //{
+        private double ramAtual;
+        private double cpuAtual;
+        private long hdAtual;
 
-    //}
-    //public double GetPorcentagemCPU()
-    //{
-    //}
-    //public double GetPorcentagemDisco()
-    //{
-    //}
+
+        public double RAMAtual
+        {
+            get
+            {
+                return ramAtual;
+            }
+            set
+            {
+                ramAtual = value;
+            }
+        }
+
+        public long HDAtual
+        {
+            get
+            {
+                return hdAtual;
+            }
+            set
+            {
+                hdAtual = value;
+            }
+        }
+
+        public double CPUAtual
+        {
+            get
+            {
+                return cpuAtual;
+            }
+            set
+            {
+                cpuAtual = value;
+            }
+        }
+
+    }
 }

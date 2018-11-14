@@ -18,5 +18,4 @@ public class Usuario {
     public int getCodUsuario(String username) throws SQLException {
         return new ControllerUsuario().getCodUsuario(username);
     }
-
 }

@@ -195,6 +195,84 @@ function mudarTexto() {
                 break;
         }
     }
+
+
+    if (telaAtual == "usuario") {
+        const NOME = 0,
+            USER_NAME = 1,
+            EMAIL = 2,
+            DATA_NASCIMENTO = 3,
+            SEXO = 4,
+            SENHA = 5,
+            CONFIRMA_SENHA = 6;
+
+
+
+        switch (campoAtual) {
+            case NOME:
+                info = decide[0] == 1 ? "Qual o nome dele?" : "Como ele se chama?";
+
+
+                if (decide[1] == 0) mensagem = "Você vai cadastrar um novo usuário? ";
+                else if (decide[1] == 1) mensagem = "Oi de novo, deseja cadastrar alguém? ";
+                else if (decide[1] == 2) mensagem = "Quer fazer o cadastro de um novo usuário do EYE? ";
+                else mensagem = "Olá, tem alguém que você quer cadastrar? ";
+
+                break;
+
+            case USER_NAME:
+
+
+                if (decide[1] == 0) mensagem = "Ele precisa de um Username para usar o EYE. ";
+                else if (decide[1] == 1) mensagem = "Qual vai ser o Username dessa pessoa? ";
+                else if (decide[1] == 2) mensagem = "Coloque um Username pra ele, seja criativo!!! ";
+                else mensagem = "Decida qual será o Username do novo usuário... e digite ele aí ";
+
+                break;
+
+            case EMAIL:
+
+
+                if (decide[1] == 0) mensagem = "Vamos precisar de um email pra ele";
+                else if (decide[1] == 1) mensagem = "Ele tem algum email? Espero que sim";
+                else if (decide[1] == 2) mensagem = "Qual é o email dele? \"Prometo\" que não vou mandar spam";
+                else mensagem = "Agora me diga o email dele";
+
+                break;
+
+            case DATA_NASCIMENTO:
+                info = decide[0] == 1 ? "Quando ele nasceu? Só por curiosidade mesmo" : "Qual a data de nascimento dele?";
+                
+                break;
+
+            case SEXO:
+                info = decide[0] == 1 ? "Qual o sexo dele... dela...???" : "Você é capaz de identificar o sexo dessa pessoa?";
+                
+                break;
+
+            case SENHA:
+
+
+                if (decide[1] == 0) mensagem = "Tenho certeza que tudo que essa pessoa precisa é mais uma Senha pra lembrar";
+                else if (decide[1] == 1) mensagem = "Dê uma senha, de preferencia uma bem forte, a minha por exemplo é: *********";
+                else if (decide[1] == 2) mensagem = "Coloque uma senha, só não esqueça dela... ainda";
+                else mensagem = "Na minha opinião essa pessoa merece uma senha, o que você acha?";
+
+                break;
+
+            case CONFIRMA_SENHA:
+
+                if (decide[1] == 0) mensagem = "Você sabe como funciona essa parte... ";
+                else if (decide[1] == 1) mensagem = "Qual é a senha mesmo? Eu esqueci, e você? ";
+                else if (decide[1] == 2) mensagem = "Lembra que eu falei pra não esquecer? Então...";
+                else mensagem = "Estamos quase acabando, agora, com muita calma, concentre-se e digite exatamente a mesma coisa que você acabou de digitar";
+
+                break;
+
+            
+        }
+    }
+    
     lblTexto.innerHTML = mensagem + info;
 }
 
@@ -451,6 +529,8 @@ function getCamposCadastroUsuario() {
 function showCampoCadastroUsuario(index) {
 
 
+    index = validaMudancaCampo(index);
+
     for (var i = 0; i < totalCamposCadastro; i++) {
         if (i === index) {
             camposCadastro[i].style.opacity = "1";
@@ -472,11 +552,10 @@ function showCampoCadastroUsuario(index) {
         mascaraData(camposCadastro[index]);
     }
 
-    validaMudancaCampo(index);
+
 
     updateProgressBar();
     mudarTexto();
-
 }
 
 function checaConfirmaSenha(index) {
@@ -490,13 +569,22 @@ function validaMudancaCampo(index) {
 
     var lblMensagem = document.getElementById('lblMensagem');
     if (telaAtual == "usuario") {
+
         if (msgErro) {
             msgErro = false;
+            lblMensagem.style.color = "var(--red-color)";
             lblMensagem.innerHTML = "";
         }
 
+        if (lblMensagem.innerHTML.indexOf('cadastrado') >= 0) {
+            index = 0;
+            campoAtual = 0;
+            lblMensagem.style.color = "var(--purple-color)";
+            limpaCampos();
+            msgErro = true;
+        }
 
-        if (lblMensagem.innerHTML.indexOf('Username') >= 0) {
+        if (lblMensagem.innerHTML.indexOf('sername') >= 0) {
             index = 1;
             campoAtual = 1;
             msgErro = true;
@@ -506,6 +594,14 @@ function validaMudancaCampo(index) {
             campoAtual = 2;
             msgErro = true;
         }
+        else if (lblMensagem.innerHTML.indexOf('sexo') >= 0) {
+            index = 4;
+            campoAtual = 4;
+            msgErro = true;
+        }
+
+
+
         if (index === totalCamposCadastro - 1) {
 
 
@@ -565,5 +661,13 @@ function validaMudancaCampo(index) {
             btnFormPrevious.style.opacity = 1;
             btnPrevious.disabled = false;
         }
+    }
+
+    return index;
+}
+
+function limpaCampos() {
+    for (i = 0; i < totalCamposCadastro; i++) {
+        camposCadastro[i].value = "";
     }
 }

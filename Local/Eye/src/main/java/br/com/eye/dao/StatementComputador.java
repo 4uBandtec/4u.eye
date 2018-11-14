@@ -23,6 +23,7 @@ public class StatementComputador {
 
     public Computador getComputadorSalvo(int codUsuario) throws SQLException {
         Computador computador = null;
+
         String sql = "SELECT sistema_operacional, versao_sistema, versao_bits, processador, total_ram, total_hd FROM computador WHERE cod_usuario = ?";
         PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setInt(1, codUsuario);
@@ -42,7 +43,6 @@ public class StatementComputador {
 
     public Integer getCodComputador(int codUsuario) throws SQLException {
         String sql = "SELECT cod_computador FROM computador WHERE cod_usuario = ?";
-
         PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setInt(1, codUsuario);
         ResultSet resultado = query.executeQuery();

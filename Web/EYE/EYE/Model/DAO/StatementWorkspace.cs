@@ -1,7 +1,8 @@
-﻿using Eye.Model;
+﻿
+using EYE.Controller;
 using System.Data.SqlClient;
 
-namespace Eye.DAO
+namespace EYE.Model.DAO
 {
     public class StatementWorkspace
     {

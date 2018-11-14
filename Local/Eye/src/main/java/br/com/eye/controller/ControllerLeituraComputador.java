@@ -44,7 +44,7 @@ public class ControllerLeituraComputador {
                 System.out.println("DEU TRUE");
                 new StatementLeituraComputador().updateLeitura(new LeituraComputador().leituraOshi(), codComputador);
             } else {
-                  System.out.println("DEU FALSE");
+                System.out.println("DEU FALSE");
                 new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codComputador);
             }
         }

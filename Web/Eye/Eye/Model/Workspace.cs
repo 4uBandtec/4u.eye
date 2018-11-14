@@ -1,79 +1,87 @@
-﻿using Eye.Controller;
-using System.Web.UI.WebControls;
+﻿
 
-namespace Eye.Model
-
+namespace EYE.Model
 {
     public class Workspace
     {
-        public int CodWorkspace { get; set; }
-        public string Workspacename { get; set; }
-        public string Nome { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public int Salt { get; set; }
 
-        public bool Logar(TextBox txtWorkspacename, TextBox txtSenha)
+        private int codWorkspace;
+        private string workspacename;
+        private string nome;
+        private string email;
+        private string senha;
+        private int salt;
+
+        public int CodWorkspace
         {
-            if (!Valida.StringVazia(txtWorkspacename, txtSenha))
+            get
             {
-                return false;
+                return codWorkspace;
             }
-
-            if (!ControllerWorkspace.AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text))
+            set
             {
-                txtWorkspacename.Focus();
-                return false;
+                codWorkspace = value;
             }
-            return (ControllerWorkspace.AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text));
-        }
-        public bool Cadastrar(TextBox txtWorkspacename, TextBox txtNome, TextBox txtEmail, TextBox txtSenha, Label lblMensagem)
-        {
-            if (!Valida.StringVazia(txtWorkspacename, txtNome, txtEmail, txtSenha))
-            {
-                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
-                return false;
-            }
-            else if (!Valida.Email(txtEmail))
-            {
-                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";//Trocar essa frase
-                return false;
-            }
-            else if (!WorkspacenameJaExiste(txtWorkspacename))
-            {
-                lblMensagem.Text = "Ops, já existe um Workspace chamado " + txtWorkspacename.Text + ", tente outra coisa.";
-                return false;
-            }
-
-            else if (!EmailJaExiste(txtEmail))
-            {
-                lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
-                return false;
-            }
-            var workspace = new Workspace
-            {
-                Workspacename = txtWorkspacename.Text,
-                Nome = txtNome.Text,
-                Email = txtEmail.Text,
-                Senha = txtSenha.Text
-            };
-
-            return ControllerWorkspace.Cadastrar(workspace);
-        }
-        public int GetCodigo(string workspace)
-        {
-            return ControllerWorkspace.GetCodigo(workspace);
         }
 
-        public bool EmailJaExiste(TextBox txtEmail)
+        public string Workspacename
         {
-            return ControllerWorkspace.VerificaEmailUnico(txtEmail.Text);
+            get
+            {
+                return workspacename;
+            }
+            set
+            {
+                workspacename = value;
+            }
         }
 
-        public bool WorkspacenameJaExiste(TextBox txtWorkspacename)
+        public string Nome
         {
-            return ControllerWorkspace.VerificaWorkspacenameUnico(txtWorkspacename.Text);
+            get
+            {
+                return nome;
+            }
+            set
+            {
+                nome = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return email;
+            }
+            set
+            {
+                email = value;
+            }
+        }
+
+        public string Senha
+        {
+            get
+            {
+                return senha;
+            }
+            set
+            {
+                senha = value;
+            }
+        }
+
+        public int Salt
+        {
+            get
+            {
+                return salt;
+            }
+            set
+            {
+                salt = value;
+            }
         }
     }
 }
-
