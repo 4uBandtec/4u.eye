@@ -5,43 +5,42 @@ namespace Eye.Controller
 {
     public class ControllerWorkspace
     {
-        public bool AutenticarWorkspace(string workspacename, string senha)
+        public static bool AutenticarWorkspace(string workspacename, string senha)
         {
-            var statementWorkspace = new StatementWorkspace();
-            var salt = statementWorkspace.BuscaSalt(workspacename);
-            var senhaBanco = statementWorkspace.BuscaSenhaHash(workspacename);
+            var salt = StatementWorkspace.BuscaSalt(workspacename);
+            var senhaBanco = StatementWorkspace.BuscaSenhaHash(workspacename);
 
-            if(salt == 0 || senhaBanco == null)
+            if (salt == 0 || senhaBanco == null)
             {
                 return false;
             }
 
             return ValidaSenha(senhaBanco, senha, salt);
         }
-        public bool Cadastrar(Workspace workspace)
+        public static bool Cadastrar(Workspace workspace)
         {
-            workspace.Salt = new ControllerCriptografia().GerarSalt();
-            workspace.Senha = new ControllerCriptografia().GerarSenhaHash(workspace.Senha, workspace.Salt);
-            return new StatementWorkspace().InserirWorkspace(workspace);
+            workspace.Salt = ControllerCriptografia.GerarSalt();
+            workspace.Senha = ControllerCriptografia.GerarSenhaHash(workspace.Senha, workspace.Salt);
+            return StatementWorkspace.InserirWorkspace(workspace);
         }
 
-        public int GetCodigo(string workspacename)
+        public static int GetCodigo(string workspacename)
         {
-            return new StatementWorkspace().BuscaCodigo(workspacename);
+            return StatementWorkspace.BuscaCodigo(workspacename);
         }
-        public bool ValidaSenha(string senhaBanco, string senha, int salt)
+        public static bool ValidaSenha(string senhaBanco, string senha, int salt)
         {
-            return senhaBanco.Equals(new ControllerCriptografia().GerarSenhaHash(senha, salt));
-        }
-
-        public bool VerificaEmailUnico(string email)
-        {
-            return new StatementWorkspace().VerificaEmailUnico(email);
+            return senhaBanco.Equals(ControllerCriptografia.GerarSenhaHash(senha, salt));
         }
 
-        public bool VerificaWorkspacenameUnico(string workspacename)
+        public static bool VerificaEmailUnico(string email)
         {
-            return new StatementWorkspace().VerificaWorkspacenameUnico(workspacename);
+            return StatementWorkspace.VerificaEmailUnico(email);
+        }
+
+        public static bool VerificaWorkspacenameUnico(string workspacename)
+        {
+            return StatementWorkspace.VerificaWorkspacenameUnico(workspacename);
         }
     }
 }

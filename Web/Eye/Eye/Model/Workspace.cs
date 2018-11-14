@@ -1,5 +1,6 @@
 ﻿using Eye.Controller;
 using System.Web.UI.WebControls;
+
 namespace Eye.Model
 
 {
@@ -19,12 +20,12 @@ namespace Eye.Model
                 return false;
             }
 
-            if (!new ControllerWorkspace().AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text))
+            if (!ControllerWorkspace.AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text))
             {
                 txtWorkspacename.Focus();
                 return false;
             }
-            return (new ControllerWorkspace().AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text));
+            return (ControllerWorkspace.AutenticarWorkspace(txtWorkspacename.Text, txtSenha.Text));
         }
         public bool Cadastrar(TextBox txtWorkspacename, TextBox txtNome, TextBox txtEmail, TextBox txtSenha, Label lblMensagem)
         {
@@ -49,27 +50,29 @@ namespace Eye.Model
                 lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
                 return false;
             }
-            var workspace = new Workspace();
-            workspace.Workspacename = txtWorkspacename.Text;
-            workspace.Nome = txtNome.Text;
-            workspace.Email = txtEmail.Text;
-            workspace.Senha = txtSenha.Text;
+            var workspace = new Workspace
+            {
+                Workspacename = txtWorkspacename.Text,
+                Nome = txtNome.Text,
+                Email = txtEmail.Text,
+                Senha = txtSenha.Text
+            };
 
-            return (new ControllerWorkspace().Cadastrar(workspace));
+            return ControllerWorkspace.Cadastrar(workspace);
         }
         public int GetCodigo(string workspace)
         {
-            return new ControllerWorkspace().GetCodigo(workspace);
+            return ControllerWorkspace.GetCodigo(workspace);
         }
 
         public bool EmailJaExiste(TextBox txtEmail)
         {
-            return new ControllerWorkspace().VerificaEmailUnico(txtEmail.Text);
+            return ControllerWorkspace.VerificaEmailUnico(txtEmail.Text);
         }
 
         public bool WorkspacenameJaExiste(TextBox txtWorkspacename)
         {
-            return new ControllerWorkspace().VerificaWorkspacenameUnico(txtWorkspacename.Text);
+            return ControllerWorkspace.VerificaWorkspacenameUnico(txtWorkspacename.Text);
         }
     }
 }

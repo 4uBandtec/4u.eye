@@ -32,7 +32,7 @@ namespace Eye.Model
                 lblMensagem.Text = "Ops, já existe um Usuario chamado " + txtUsername.Text + ", tente outra coisa.";
                 return false;
             }
-            else if(!EmailJaExiste(txtEmail))
+            else if (!EmailJaExiste(txtEmail))
             {
                 lblMensagem.Text = "Calma aí, parece que o email escolhido já está sendo usado, por favor digite outro.";
                 return false;
@@ -45,16 +45,16 @@ namespace Eye.Model
             usuario.DataNascimento = txtDataNascimento.Text;
             usuario.Sexo = ddlSexo.SelectedValue;
             usuario.CodWorkspace = codWorkspace;
-            return (new ControllerUsuario().Cadastrar(usuario));
+            return (ControllerUsuario.Cadastrar(usuario));
         }
         public bool EmailJaExiste(TextBox txtEmail)
         {
-            return new ControllerUsuario().VerificaEmailUnico(txtEmail.Text);
+            return ControllerUsuario.VerificaEmailUnico(txtEmail.Text);
         }
 
         public bool UsernameJaExiste(TextBox txtUsername)
         {
-            return new ControllerUsuario().VerificaUsernameUnico(txtUsername.Text);
+            return ControllerUsuario.VerificaUsernameUnico(txtUsername.Text);
         }
     }
 }

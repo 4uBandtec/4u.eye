@@ -6,7 +6,7 @@ namespace Eye.Controller
 {
     public class ControllerCriptografia
     {
-        public string GerarSenhaHash(string senha, int salt)
+        public static string GerarSenhaHash(string senha, int salt)
         {
             MD5 md5Hash = MD5.Create();
             byte[] data = md5Hash.ComputeHash(Encoding.UTF8.GetBytes($"{senha}{salt}"));
@@ -19,7 +19,7 @@ namespace Eye.Controller
             return sBuilder.ToString();
         }
 
-        public int GerarSalt()
+        public static int GerarSalt()
         {
             return new Random().Next();
         }
