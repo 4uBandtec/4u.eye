@@ -52,6 +52,7 @@ namespace Eye.View
         [ScriptMethod, WebMethod]
         public static LeituraAtual AtualizarComputadores(int codComputador)
         {
+
             LeituraAtual leitura = new LeituraAtual();
 
             ControllerLeituraAtual controllerLeituraAtual = new ControllerLeituraAtual();
@@ -59,8 +60,14 @@ namespace Eye.View
             leitura.CPUAtual = controllerLeituraAtual.GetPorcentagemCPU(codComputador);
             leitura.HDAtual = controllerLeituraAtual.GetPorcentagemHD(codComputador);
             leitura.RAMAtual = controllerLeituraAtual.GetPorcentagemRAM(codComputador);
+            
+
+
+
             return leitura;
         }
+
+        
 
     }
 }

@@ -145,7 +145,7 @@ var computadoresUsuarios = [];
 function setCodComputadores(usuarios) {
     computadoresUsuarios = usuarios;
 
-    getLeitura();
+    setTimeout(getLeitura(), 1000);
 }
 
 
@@ -153,58 +153,39 @@ function onError(result) {
     console.log(result);
 }
 
+
+
 function getLeitura() {
 
-    console.log("Lendo");
     for (i = 0; i < computadoresUsuarios.length; i++) {
 
-        console.log(computadoresUsuarios[i].Nome + ": ");
 
         for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
-            console.log("\t" + computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador);
-        }
 
+            console.log(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador);
+
+
+            PageMethods.AtualizarComputadores(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador, AtualizarDashboard, onError);
+        }
 
     }
 
-    console.log("Lido");
-
-
-    setTimeout(getLeitura(computadoresUsuarios), 1000);
+    setTimeout(getLeitura, 1000);
 }
 
-function Ajax() {
-    var jaEntrou = false, req = new XMLHttpRequest();
-    req.open("GET", "ExeASP/TemperaturaReal.aspx?id=" + sensores.options[sensores.selectedIndex].value, true);
-    req.onreadystatechange = function () {
-        if (req.readyState == 4) {
-            if (jaEntrou) {
-                return;
-            }
-            jaEntrou = true;
 
-            if (req.status != 200) {
-                return;
-            }
+function AtualizarDashboard(leituraAtual) {
 
-            //{
-              //  "primeiroQA": <%= q1 %>,
-              //      "mediaA": <%= media %>,
-                //        "medianaA": <%= med %>,
-                  //          "terceiroQA": <%= q3 %>,
-                    //            "minimaA": <%= min %>,
-                      //              "maximaA": <%= max %>,
-                        //                "varianciaA": <%= var %>,
-                          //                  "stdevA": <%= stdev %>,
-                            //                    "ampmaxA": <%= amp %>,
-                                //                    "tempA": "<%= "" + media + " ± " + stdev + " °C" %>",
-                              //                          "chartData" : <%= chartData %>}
-            var obj = JSON.parse(req.responseText);
+    if (!!leituraAtual) {
+        console.log(leituraAtual.CPUAtual);
+        console.log(leituraAtual.RAMAtual);
+        console.log(leituraAtual.HDAtual);
 
-            //obj.key
+    }
+    else {
+        console.log("Não existe nenhuma leitura desse computador, certifique-se se a aplicação local está rodando nele")
 
-            setTimeout(atualizar, 3000);
-        }
-    };
-    req.send();
+    }
+
+
 }
