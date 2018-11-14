@@ -4,6 +4,7 @@ import br.com.eye.model.Computador;
 import oshi.SystemInfo;
 import oshi.software.os.FileSystem;
 import oshi.software.os.OSFileStore;
+import oshi.util.FormatUtil;
 
 public class ControllerComputador {
 
@@ -17,13 +18,13 @@ public class ControllerComputador {
                 getVersaoSistema(),
                 getBit(),
                 getProcessador(),
-                getDisco(),
-                getMemoria()
+                getMemoria(),
+                getDisco()
         );
     }
 
     public String getSistemaOperacional() {
-        return systemInfo.getOperatingSystem().toString();
+        return systemInfo.getOperatingSystem().toString().split("[0-9]")[0];
     }
 
     public String getVersaoSistema() {
@@ -42,7 +43,7 @@ public class ControllerComputador {
         return systemInfo.getHardware().getProcessor().getSystemCpuLoad() * 100.0;
     }
 
-    public long getDisco() {
+    public Long getDisco() {
         OSFileStore[] fsArray = fileSystem.getFileStores();
         long total = 0;
 
@@ -53,7 +54,7 @@ public class ControllerComputador {
         return total;
     }
 
-    public long getMemoria() {
+    public Long getMemoria() {
         return systemInfo.getHardware().getMemory().getTotal();
     }
 }

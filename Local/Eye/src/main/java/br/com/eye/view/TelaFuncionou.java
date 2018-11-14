@@ -1,5 +1,8 @@
 package br.com.eye.view;
 
+import br.com.eye.controller.ControllerLeituraComputador;
+import br.com.eye.dao.StatementLeituraComputador;
+import br.com.eye.model.Computador;
 import br.com.eye.model.Usuario;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -12,10 +15,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JButton;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -24,13 +27,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
-public class TelaLogin extends JFrame implements ActionListener {
+public class TelaFuncionou extends JFrame implements ActionListener {
 
-    JTextField  = new JTextField(),
-
-    JLabel lblWorkspacename = new JLabel("Workspacename"),
-
-    JButton btnProximo = new JButton("Logar");
+    JLabel lblFuncionou = new JLabel("Pegando informações");
 
     GridBagConstraints constraints = new GridBagConstraints();
 
@@ -42,7 +41,7 @@ public class TelaLogin extends JFrame implements ActionListener {
 
     LineBorder borderRed = new LineBorder(redColor, 1);
 
-    public TelaLogin() {
+    public TelaFuncionou(int codUsuario) throws InterruptedException, SQLException {
         setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
@@ -64,9 +63,14 @@ public class TelaLogin extends JFrame implements ActionListener {
         constraints.gridy = 2;
         constraints.gridx = 0;
         constraints.gridwidth = 3;
-        add(txtWorkspacename, constraints);
-        
+
+        add(lblFuncionou, constraints);
+
         setVisible(true);
+
+        if (new Computador().inserePrimeiroComputador(codUsuario)) {
+            new ControllerLeituraComputador().setLeitura(new StatementLeituraComputador().getCodComputador(codUsuario));
+        }
     }
 
     @Override

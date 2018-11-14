@@ -36,13 +36,17 @@ public class ControllerLeituraComputador {
         return disponivel;
     }
 
-    public LeituraComputador realizaLeitura() {
-        return new LeituraComputador(getCPUUsada(), getMemoriaDisponivel(), getDiscoDisponivel());
-    }
+    public void setLeitura(int codComputador) throws SQLException, InterruptedException {
 
-    public boolean setLeitura(LeituraComputador leitura, int codUsuario) throws SQLException {
-        return new StatementLeituraComputador().existeLeituraRegistrada(codUsuario)
-                ? new StatementLeituraComputador().updateLeitura(leitura, codUsuario)
-                : new StatementLeituraComputador().setPrimeiraLeitura(leitura, codUsuario);
+        while (true) {
+            Thread.sleep(1000);
+            if (new StatementLeituraComputador().existeLeituraRegistrada(codComputador)) {
+                System.out.println("DEU TRUE");
+                new StatementLeituraComputador().updateLeitura(new LeituraComputador().leituraOshi(), codComputador);
+            } else {
+                System.out.println("DEU FALSE");
+                new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codComputador);
+            }
+        }
     }
 }

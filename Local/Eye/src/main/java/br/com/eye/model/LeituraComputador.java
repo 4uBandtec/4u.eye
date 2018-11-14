@@ -8,6 +8,9 @@ public class LeituraComputador {
     private Double memoriaDisponivel;
     private long discoDisponivel;
 
+    public LeituraComputador() {
+    }
+
     public LeituraComputador(Double cpuUsada, Double memoriaDisponivel, long discoDisponivel) {
         this.cpuUsada = cpuUsada;
         this.memoriaDisponivel = memoriaDisponivel;
@@ -16,8 +19,8 @@ public class LeituraComputador {
 
     ControllerLeituraComputador controllerLeituraComputador = new ControllerLeituraComputador();
 
-    public LeituraComputador(double cpuUsada, double memoriaDisponivel, long discoDisponivel) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public LeituraComputador leituraOshi(){
+        return new LeituraComputador (getCpuUsadaOshi(), getMemoriaDisponivelOshi(), getDiscoDisponivelOshi());
     }
 
     public Double getCpuUsada() {
