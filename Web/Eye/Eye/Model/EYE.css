@@ -1,4 +1,5 @@
 ﻿
+
 /* http://meyerweb.com/eric/tools/css/reset/ */
 /* v1.0 | 20080212 */
 
@@ -71,6 +72,7 @@ table {
     --txt-color: rgb(200,200,200);
     --red-color: rgb(226,26,47);
     --purple-color: rgb(86,13,196);
+    --pink-color: rgb(120,20,150);
     --darker-bg-color: rgb(16,16,16);
     --lighter-bg-color: rgb(50,50,50);
     --red-color-a: rgba(226,26,47,0.5);
@@ -238,12 +240,32 @@ body {
     overflow: hidden;
 }
 
-.donutchart {
+.donutchartHD {
     height: 100%;
-    width: 100%;
+    width: 50%;
     position: absolute;
-    left: 0;
+    left: 25%;
     top: 0;
+}
+
+.donutchartRAM {
+    height: 60%;
+    width: 30%;
+    position: absolute;
+    left: 0%;
+    top: 0;
+    animation-name: example;
+    animation-duration: 4s;
+}
+
+.donutchartCPU {
+    height: 40%;
+    width: 30%;
+    position: absolute;
+    left: 0%;
+    top: 55%;
+    animation-name: example;
+    animation-duration: 4s;
 }
 
 

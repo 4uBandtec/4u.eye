@@ -5,6 +5,7 @@ var valoresLivre = [];
 
 
 function iniciarDash() {
+
     for (i = 0; i < qtdComputers; i++) {
 
         valoresUsada[i] = Math.random() * 10;
@@ -22,22 +23,61 @@ function iniciarDash() {
         areaInfo.appendChild(infoGeralComputador);
 
 
+        iniciarHD(i, infoGeralComputador);
+        iniciarRAM(i, infoGeralComputador);
+        iniciarCPU(i, infoGeralComputador);
+    }
+
+}
+
+function iniciarHD(i, infoGeralComputador) {
+    
+
         var pieChartInfo = document.createElement("div");
 
-        pieChartInfo.setAttribute("class", "donutchart");
-        pieChartInfo.setAttribute("id", "donutchart" + i);
+        pieChartInfo.setAttribute("class", "donutchartHD");
+        pieChartInfo.setAttribute("id", "donutchartHD" + i);
 
 
         infoGeralComputador.appendChild(pieChartInfo);
-
-    }
+    
 }
 
 
 
+function iniciarRAM(i, infoGeralComputador) {
+
+
+    var pieChartInfo = document.createElement("div");
+
+    pieChartInfo.setAttribute("class", "donutchartRAM");
+    pieChartInfo.setAttribute("id", "donutchartRAM" + i);
+
+
+    infoGeralComputador.appendChild(pieChartInfo);
+
+}
+
+
+function iniciarCPU(i, infoGeralComputador) {
+
+
+    var pieChartInfo = document.createElement("div");
+
+    pieChartInfo.setAttribute("class", "donutchartCPU");
+    pieChartInfo.setAttribute("id", "donutchartCPU" + i);
+
+
+    infoGeralComputador.appendChild(pieChartInfo);
+
+}
+
+
+
+
 google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChart);
-function drawChart() {
+google.charts.setOnLoadCallback(drawChartHD);
+function drawChartHD() {
 
     var style = getComputedStyle(document.body);
     var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
@@ -61,7 +101,7 @@ function drawChart() {
 
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart' + i));
+        var chart = new google.visualization.PieChart(document.getElementById('donutchartHD' + i));
         chart.draw(data, options);
 
         animarPie(chart, options, data, i);
@@ -70,6 +110,92 @@ function drawChart() {
 
 
 }
+
+
+
+
+google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(drawChartRAM);
+function drawChartRAM() {
+
+    var style = getComputedStyle(document.body);
+    var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
+    var redColor = (style.getPropertyValue('--purple-color'));
+    for (i = 0; i < qtdComputers; i++) {
+        var data = google.visualization.arrayToDataTable([
+            ['', ''],
+            ['Usada', valoresUsada[i]],
+            ['Livre', valoresLivre[i]]
+        ]);
+
+        var options = {
+            pieHole: 0.9,
+            backgroundColor: { fill: darkerBgColor.replace(/\s/g, '') },
+            colors: [redColor.replace(/\s/g, ''), darkerBgColor.replace(/\s/g, '')],
+            pieSliceBorderColor: "transparent",
+            pieSliceTextStyle: {
+                color: 'white',
+            },
+            legend: 'none',
+            pieStartAngle: 180
+            
+
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchartRAM' + i));
+        chart.draw(data, options);
+
+        animarPie(chart, options, data, i);
+
+    }
+
+
+}
+
+
+
+
+google.charts.load("current", { packages: ["corechart"] });
+google.charts.setOnLoadCallback(drawChartCPU);
+function drawChartCPU() {
+
+    var style = getComputedStyle(document.body);
+    var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
+    var redColor = (style.getPropertyValue('--pink-color'));
+    for (i = 0; i < qtdComputers; i++) {
+        var data = google.visualization.arrayToDataTable([
+            ['', ''],
+            ['Usada', valoresUsada[i]],
+            ['Livre', valoresLivre[i]]
+        ]);
+
+        var options = {
+            pieHole: 0.9,
+            backgroundColor: { fill: darkerBgColor.replace(/\s/g, '') },
+            colors: [redColor.replace(/\s/g, ''), darkerBgColor.replace(/\s/g, '')],
+            pieSliceBorderColor: "transparent",
+            pieSliceTextStyle: {
+                color: 'white',
+            },
+            legend: 'none',
+            pieStartAngle: 90,
+            reverseCategories: true
+
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('donutchartCPU' + i));
+        chart.draw(data, options);
+
+        animarPie(chart, options, data, i);
+
+    }
+
+
+}
+
+
+
+
 
 
 function updateChart() {
@@ -96,7 +222,7 @@ function updateChart() {
 
         };
 
-        var chart = new google.visualization.PieChart(document.getElementById('donutchart' + i));
+        var chart = new google.visualization.PieChart(document.getElementById('donutchartHD' + i));
         chart.draw(data, options);
     }
 }
@@ -144,8 +270,8 @@ var computadoresUsuarios = [];
 
 function setCodComputadores(usuarios) {
     computadoresUsuarios = usuarios;
-
     setTimeout(getLeitura(), 1000);
+    return computadoresUsuarios;
 }
 
 
@@ -158,7 +284,7 @@ function onError(result) {
 function getLeitura() {
 
     for (i = 0; i < computadoresUsuarios.length; i++) {
-
+        console.log(computadoresUsuarios[i]);
 
         for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
 
