@@ -7,53 +7,56 @@ namespace EYE.Model.DAO
     {
         public static int ContaComputador(int codUsuario)
         {
-            var conexao = Conexao.GetConexao();
-            conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT COUNT(cod_computador) FROM computador WHERE cod_usuario = @cod_usuario", conexao))
+            int retorno = 0;
+            using (var conexao = Conexao.GetConexao())
             {
-                cmd.Parameters.AddWithValue("@cod_usuario", codUsuario);
-                using (SqlDataReader leitor = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand("SELECT COUNT(cod_computador) FROM computador WHERE cod_usuario = @cod_usuario", conexao))
                 {
-                    if (leitor.Read())
+                    cmd.Parameters.AddWithValue("@cod_usuario", codUsuario);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
                     {
-                        return (leitor.GetInt32(0));
+                        if (leitor.Read())
+                        {
+                            retorno = (leitor.GetInt32(0));
+                        }
                     }
                 }
             }
-            return 0;
+            return retorno;
         }
 
         public static Computador[] ListarComputadores(int codUsuario)
         {
             Computador[] computadores = new Computador[ContaComputador(codUsuario)];
             var contador = 0;
-            var conexao = Conexao.GetConexao();
-            conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT cod_computador, nome, sistema_operacional, versao_sistema, versao_bits, processador, total_hd, total_ram FROM computador WHERE cod_usuario = @cod_usuario", conexao))
+            using (var conexao = Conexao.GetConexao())
             {
-                cmd.Parameters.AddWithValue("@cod_usuario", codUsuario);
-                using (SqlDataReader leitor = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand("SELECT cod_computador, nome, sistema_operacional, versao_sistema, versao_bits, processador, total_hd, total_ram FROM computador WHERE cod_usuario = @cod_usuario", conexao))
                 {
-                    do
+                    cmd.Parameters.AddWithValue("@cod_usuario", codUsuario);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
                     {
-                        while (leitor.Read())
+                        do
                         {
+                            while (leitor.Read())
+                            {
 
-                            computadores[contador] = new Computador();
-                            computadores[contador].CodComputador = leitor.GetInt32(0);
-                            computadores[contador].NomeComputador = "Placeholder";//leitor.GetString(1);
-                            computadores[contador].SistemaOperacional = leitor.GetString(2);
-                            computadores[contador].VersaoSistema = leitor.GetString(3);
-                            computadores[contador].VersaoBits = leitor.GetInt32(4);
-                            computadores[contador].Processador = leitor.GetString(5);
-                            computadores[contador].HDTotal = leitor.GetInt64(6);
-                            computadores[contador].RAMTotal = leitor.GetInt64(7);
-                            computadores[contador].CodUsuario = codUsuario;
-                            
-                            ++contador;
+                                computadores[contador] = new Computador();
+                                computadores[contador].CodComputador = leitor.GetInt32(0);
+                                computadores[contador].NomeComputador = "Placeholder";//leitor.GetString(1);
+                                computadores[contador].SistemaOperacional = leitor.GetString(2);
+                                computadores[contador].VersaoSistema = leitor.GetString(3);
+                                computadores[contador].VersaoBits = leitor.GetInt32(4);
+                                computadores[contador].Processador = leitor.GetString(5);
+                                computadores[contador].HDTotal = leitor.GetInt64(6);
+                                computadores[contador].RAMTotal = leitor.GetInt64(7);
+                                computadores[contador].CodUsuario = codUsuario;
+
+                                ++contador;
+                            }
                         }
+                        while (leitor.NextResult());
                     }
-                    while (leitor.NextResult());
                 }
             }
             return computadores;
