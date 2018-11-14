@@ -170,7 +170,7 @@ function getLeitura() {
 
     }
 
-    setTimeout(getLeitura, 1000);
+    setTimeout(getLeitura, 5000);
 }
 
 
