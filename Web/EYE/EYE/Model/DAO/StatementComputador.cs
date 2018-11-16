@@ -43,7 +43,7 @@ namespace EYE.Model.DAO
 
                                 computadores[contador] = new Computador();
                                 computadores[contador].CodComputador = leitor.GetInt32(0);
-                                computadores[contador].NomeComputador = "Placeholder";//leitor.GetString(1);
+                                computadores[contador].NomeComputador = "Computador sem nome definido";//leitor.GetString(1);
                                 computadores[contador].SistemaOperacional = leitor.GetString(2);
                                 computadores[contador].VersaoSistema = leitor.GetString(3);
                                 computadores[contador].VersaoBits = leitor.GetInt32(4);

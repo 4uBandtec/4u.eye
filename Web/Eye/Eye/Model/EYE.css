@@ -229,8 +229,8 @@ body {
 }
 
 .infoGeralComputador {
-    width: 40%;
-    height: 30%;
+    width: 85%;
+    height: 24vw;
     margin: 4%;
     border-top: 1px solid var(--red-color);
     background: var(--darker-bg-color);
@@ -240,34 +240,83 @@ body {
     overflow: hidden;
 }
 
+.tituloComputador{
+    height: 2.5vw;
+    width: 98%;
+    color: var(--txt-color);
+    border-bottom: solid 1px var(--txt-color);
+    position: relative;
+    float: left;
+    text-align: left;
+    font-size: 1.5em;
+    padding-top: 1%;
+    padding-left: 2%;
+}
+
+.localChart {
+    height: 18vw;
+    width: 18vw;
+    position: relative;
+    float: left;
+    margin: 2%;
+}
+
 .donutchartHD {
-    height: 100%;
-    width: 50%;
-    position: absolute;
-    left: 25%;
+    height: 80%;
+    width: 30%;
+    position: relative;
+    left: 0%;
     top: 0;
 }
 
 .donutchartRAM {
-    height: 60%;
+    height: 80%;
     width: 30%;
-    position: absolute;
+    position: relative;
     left: 0%;
     top: 0;
-    animation-name: example;
-    animation-duration: 4s;
 }
 
 .donutchartCPU {
-    height: 40%;
+    height: 80%;
     width: 30%;
-    position: absolute;
+    position: relative;
     left: 0%;
-    top: 55%;
-    animation-name: example;
-    animation-duration: 4s;
+    top: 0%;
 }
 
+.labelsChart{
+    position: absolute;
+    z-index: 2;
+    background: none;
+    height: 80%;
+    width: 80%;
+    margin: 9%;
+    top: 0;
+    border: 2px var(--txt-color) solid;
+    border-radius: 100%;
+}
+
+.tituloLabel{
+    width: 100%;
+    background-color: none;
+    text-align: center;
+    font-size: 1.5em;
+    margin-top: 9%;
+    margin-bottom: 5%;
+}
+
+.conteudoLabel {
+    width: 40%;
+    height: 20%;
+    float: left;
+    background-color: none;
+    text-align: center;
+    font-size: 1em;
+    margin: 2.5%;
+    margin-bottom: 5%;
+    margin-top: 5%;
+}
 
 .areaCampos {
     position: fixed;
@@ -675,9 +724,37 @@ label {
     }
 
     .infoGeralComputador {
-        width: 60vmin;
-        height: 80vmin;
+        width: 60vw;
+        height: 500px;
     }
+
+
+    .localChart {
+        height: 150px;
+        width: 150px;
+        float: none;
+        position: relative;
+        margin-right: 40%;
+        float: left;
+        left: 50%;
+        transform: translate(-50%, 0%);
+
+    }
+
+    .tituloLabel {
+        font-size: 1em;
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+    .conteudoLabel {
+        font-size: 0.8em;
+        margin-top: 5%;
+    }
+
+    .tituloComputador {
+        height: 9vh;
+    }
+
 
     .areaCampos {
         left: 5%;

@@ -1,40 +1,6 @@
 ﻿
 
 
-function updateChart() {
-
-}
-
-
-function animarPie(chart, options, data, index, total, atual) {
-
-
-    var umPorCento = (total) / 100;
-
-
-    // initial value
-    var percent = 0;
-    // start the animation loop
-    var handler = setInterval(function () {
-        // values increment
-        percent += umPorCento;
-        // apply new values
-        data.setValue(0, 1, percent);
-        data.setValue(1, 1, total - percent);
-        // update the pie
-        chart.draw(data, options);
-        // check if we have reached the desired value
-        if (percent >= atual) {
-            // stop the loop
-            clearInterval(handler);
-        }
-    }, 10);
-}
-
-
-
-
-
 function GetUsuariosWorkspace() {
     PageMethods.GetUsuariosWorkspace(setCodComputadores, onError);
 }
@@ -105,16 +71,21 @@ function SetDadosMonitor(leituraMonitor) {
             }
         }
     }
+    
+
+    
+    
 
     if (!document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador)) {
         IniciarMonitor(computadorMonitor, leituraMonitor);
+    }
+    else {
+        updateChart(computadorMonitor, leituraMonitor);
     }
 }
 
 
 
-
-google.charts.load("current", { packages: ["corechart"] });
 
 function IniciarMonitor(computadorMonitor, leituraMonitor) {
 
@@ -130,62 +101,232 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
 
     areaInfo.appendChild(infoGeralComputador);
 
+    var tituloComputador = document.createElement("div");
+    tituloComputador.setAttribute("class", "tituloComputador");
+    tituloComputador.setAttribute("id", "tituloComputador" + computadorMonitor.CodComputador);
 
-    Desenhar("HD", infoGeralComputador, computadorMonitor.HDTotal, leituraMonitor.HDAtual, computadorMonitor.CodComputador);
-    Desenhar("RAM", infoGeralComputador, computadorMonitor.RAMTotal, leituraMonitor.RAMAtual, computadorMonitor.CodComputador);
+    infoGeralComputador.appendChild(tituloComputador);
+    
+
+    tituloComputador.textContent = computadorMonitor.NomeComputador;
+    
+
+    Desenhar("HD", infoGeralComputador, (computadorMonitor.HDTotal / 1e+9).toFixed(2), (leituraMonitor.HDAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    Desenhar("RAM", infoGeralComputador, (computadorMonitor.RAMTotal / 1e+9).toFixed(2), (leituraMonitor.RAMAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
     //Desenhar("CPU", infoGeralComputador, computadorMonitor.CPUAtual, leituraMonitor.CPUAtual);
 }
 
+var chartsData = [];
+var chartsCod = [];
+var chartsOptions = [];
+var chartsComp = [];
+
+var charts = [];
 
 function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
     
+    var localChart = document.createElement("div");
+    localChart.setAttribute("class", "localChart");
+    localChart.setAttribute("id", "localChart" + componente + cod);
+    
+    infoGeralComputador.appendChild(localChart);
 
-
-    var pieChartInfo = document.createElement("div");
+    var pieChartInfo = document.createElement("canvas");
 
     pieChartInfo.setAttribute("class", "donutchart" + componente);
     pieChartInfo.setAttribute("id", "donutchart" + componente + cod);
 
+    localChart.appendChild(pieChartInfo);
 
-    infoGeralComputador.appendChild(pieChartInfo);
+    var labelChart = document.createElement("div");
+
+    labelChart.setAttribute("class", "labelsChart");
+    labelChart.setAttribute("id", "donutchart" + componente + cod);
+
+    localChart.appendChild(labelChart);
+
+    var tituloLabel = document.createElement("div");
+
+    tituloLabel.setAttribute("class", "tituloLabel");
+    tituloLabel.setAttribute("id", "tituloLabel" + componente + cod);
+
+    labelChart.appendChild(tituloLabel);
+
+    tituloLabel.textContent = componente;
 
 
+    var atualLabel = document.createElement("div");
+
+    atualLabel.setAttribute("class", "conteudoLabel");
+    atualLabel.setAttribute("id", "conteudoLabelAtual" + componente + cod);
+
+    labelChart.appendChild(atualLabel);
+
+    atualLabel.textContent = "Usado: ";
+
+
+
+    var atualValor = document.createElement("div");
+
+    atualValor.setAttribute("class", "conteudoLabel");
+    atualValor.setAttribute("id", "conteudoAtual" + componente + cod);
+
+    labelChart.appendChild(atualValor);
+
+    atualValor.textContent = atual + " GB";
+
+
+
+
+    var totalLabel = document.createElement("div");
+
+    totalLabel.setAttribute("class", "conteudoLabel");
+    totalLabel.setAttribute("id", "conteudoLabelTotal" + componente + cod);
+
+    labelChart.appendChild(totalLabel);
+
+    totalLabel.textContent = "De: ";
+
+
+
+    var totalValor = document.createElement("div");
+
+    totalValor.setAttribute("class", "conteudoLabel");
+    totalValor.setAttribute("id", "conteudoTotal" + componente + cod);
+
+    labelChart.appendChild(totalValor);
+
+    totalValor.textContent = total + " GB";
+
+
+
+
+
+
+
+
+
+
+    var c = document.getElementById("donutchart" + componente + cod);
+    var ctx = c.getContext("2d");
 
     var style = getComputedStyle(document.body);
-    var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
+    var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
     var angulo = 0,
-        cor = style.getPropertyValue('--red-color');
+        cor = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
+    var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+
 
     if (componente == "RAM") {
-        angulo = 180;
-        cor = style.getPropertyValue('--purple-color');
+        angulo = 3.2;
+        cor = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
     }
 
-    var data = google.visualization.arrayToDataTable([
-        ['', ''],
-        [componente + ' Usado', total],
-        [componente + ' Livre', atual]
-    ]);
+    var rect = c.getBoundingClientRect();
 
+    var gradientStroke = ctx.createLinearGradient(rect.x, rect.y, rect.x - rect.width, rect.y - rect.height);
+    gradientStroke.addColorStop(0, cor);
+    gradientStroke.addColorStop(1, cor2);
+
+
+    data = {
+        datasets: [{
+            data: [atual, total - atual],
+            backgroundColor: [gradientStroke, darkerBgColor],
+            hoverBackgroundColor: [cor, "#000"]
+        }],
+
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: [
+            componente + ' Usado',
+            componente + ' Livre'
+        ]
+        
+    };
+
+    
 
 
     var options = {
-        pieHole: 0.9,
-        backgroundColor: { fill: darkerBgColor.replace(/\s/g, '') },
-        colors: [cor.replace(/\s/g, ''), darkerBgColor.replace(/\s/g, '')],
-        pieSliceBorderColor: "transparent",
-        pieSliceTextStyle: {
-            color: 'white',
+        elements: {
+            arc: {
+                borderWidth: 0
+            }
         },
-        legend: 'none',
-        pieStartAngle: angulo
+        legend: {
+            display: false
+        },
+        segmentShowStroke: false,
+        rotation: angulo,
+        cutoutPercentage: 90,
+        animationSteps: 100,
+        animationEasing: "easeOutBounce",
+        animateRotate: true,
+        responsive: true,
+        maintainAspectRatio: true,
+        animateScale: false,
+
+
     };
 
-    var chart = new google.visualization.PieChart(document.getElementById('donutchart' + componente + cod));
-    chart.draw(data, options);
+    chartsComp.push(componente);
+    chartsCod.push(cod);
+    chartsData.push(data);
+    chartsOptions.push(options);
 
-    animarPie(chart, options, data, cod, total, atual);
+    charts.push(new Chart(ctx, {
+        type: 'doughnut',
+        data: data,
+        options: options
+    }));
+    
+    
+
+
+    console.log(total, total - atual, atual);
+
+}    
+
+
+
+function updateChart(computadorMonitor, leituraMonitor) {
+    var infoGeralComputador = document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador);
+
+    Atualizar("HD", infoGeralComputador, (computadorMonitor.HDTotal / 1e+9).toFixed(2), (leituraMonitor.HDAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    Atualizar("RAM", infoGeralComputador, (computadorMonitor.RAMTotal / 1e+9).toFixed(2), (leituraMonitor.RAMAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+}
+
+
+function Atualizar(componente, infoGeralComputador, total, atual, cod) {
+
+
+    var style = getComputedStyle(document.body);
+    var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
+
+
+    if (componente == "RAM") {
+        angulo = 3.2;
+        cor = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
+    }
+    
+    
+
+    for (i = 0; i < charts.length; i++) {
+
+        if (chartsCod[i] == cod && chartsComp[i] == componente) {
+
+            var chart = charts[i];
+
+            chart.data.datasets[0].data = [atual, total - atual];
+            
+
+            chart.update();
+
+            console.log("Update",total, total - atual, atual);
+        }
+
+    }
 
 
 }    
