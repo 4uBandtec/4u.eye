@@ -17,7 +17,7 @@
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
 
 </head>
-<body onload="iniciarEstilo(), iniciarDash(), GetUsuariosWorkspace()" onresize="updateChart()">
+<body onload="iniciarEstilo(), GetUsuariosWorkspace()" onresize="updateChart()">
     <form id="formDashboard" runat="server">
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />

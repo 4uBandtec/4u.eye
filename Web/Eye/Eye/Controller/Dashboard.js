@@ -1,254 +1,30 @@
-﻿var qtdComputers = 4; //Teste, essa vai ser a qtd de computadores do usuário
-var valoresUsada = [];
-var valoresLivre = [];
-
-
-
-function iniciarDash() {
-
-    for (i = 0; i < qtdComputers; i++) {
-
-        valoresUsada[i] = Math.random() * 10;
-
-        valoresLivre[i] = Math.random() * 10;
-
-        var areaInfo = document.getElementById('areaInfo');
-
-        var infoGeralComputador = document.createElement("div");
-
-        infoGeralComputador.setAttribute("class", "infoGeralComputador");
-        infoGeralComputador.setAttribute("id", "infoGeralComputador" + i);
-
-
-        areaInfo.appendChild(infoGeralComputador);
-
-
-        iniciarHD(i, infoGeralComputador);
-        iniciarRAM(i, infoGeralComputador);
-        iniciarCPU(i, infoGeralComputador);
-    }
-
-}
-
-function iniciarHD(i, infoGeralComputador) {
-    
-
-        var pieChartInfo = document.createElement("div");
-
-        pieChartInfo.setAttribute("class", "donutchartHD");
-        pieChartInfo.setAttribute("id", "donutchartHD" + i);
-
-
-        infoGeralComputador.appendChild(pieChartInfo);
-    
-}
-
-
-
-function iniciarRAM(i, infoGeralComputador) {
-
-
-    var pieChartInfo = document.createElement("div");
-
-    pieChartInfo.setAttribute("class", "donutchartRAM");
-    pieChartInfo.setAttribute("id", "donutchartRAM" + i);
-
-
-    infoGeralComputador.appendChild(pieChartInfo);
-
-}
-
-
-function iniciarCPU(i, infoGeralComputador) {
-
-
-    var pieChartInfo = document.createElement("div");
-
-    pieChartInfo.setAttribute("class", "donutchartCPU");
-    pieChartInfo.setAttribute("id", "donutchartCPU" + i);
-
-
-    infoGeralComputador.appendChild(pieChartInfo);
-
-}
-
-
-
-
-google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChartHD);
-function drawChartHD() {
-
-    var style = getComputedStyle(document.body);
-    var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
-    var redColor = (style.getPropertyValue('--red-color'));
-    for (i = 0; i < qtdComputers; i++) {
-        var data = google.visualization.arrayToDataTable([
-            ['', ''],
-            ['Usada', valoresUsada[i]],
-            ['Livre', valoresLivre[i]]
-        ]);
-
-        var options = {
-            pieHole: 0.9,
-            backgroundColor: { fill: darkerBgColor.replace(/\s/g, '') },
-            colors: [redColor.replace(/\s/g, ''), darkerBgColor.replace(/\s/g, '')],
-            pieSliceBorderColor: "transparent",
-            pieSliceTextStyle: {
-                color: 'white',
-            },
-            legend: 'none'
-
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchartHD' + i));
-        chart.draw(data, options);
-
-        animarPie(chart, options, data, i);
-
-    }
-
-
-}
-
-
-
-
-google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChartRAM);
-function drawChartRAM() {
-
-    var style = getComputedStyle(document.body);
-    var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
-    var redColor = (style.getPropertyValue('--purple-color'));
-    for (i = 0; i < qtdComputers; i++) {
-        var data = google.visualization.arrayToDataTable([
-            ['', ''],
-            ['Usada', valoresUsada[i]],
-            ['Livre', valoresLivre[i]]
-        ]);
-
-        var options = {
-            pieHole: 0.9,
-            backgroundColor: { fill: darkerBgColor.replace(/\s/g, '') },
-            colors: [redColor.replace(/\s/g, ''), darkerBgColor.replace(/\s/g, '')],
-            pieSliceBorderColor: "transparent",
-            pieSliceTextStyle: {
-                color: 'white',
-            },
-            legend: 'none',
-            pieStartAngle: 180
-            
-
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchartRAM' + i));
-        chart.draw(data, options);
-
-        animarPie(chart, options, data, i);
-
-    }
-
-
-}
-
-
-
-
-google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChartCPU);
-function drawChartCPU() {
-
-    var style = getComputedStyle(document.body);
-    var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
-    var redColor = (style.getPropertyValue('--pink-color'));
-    for (i = 0; i < qtdComputers; i++) {
-        var data = google.visualization.arrayToDataTable([
-            ['', ''],
-            ['Usada', valoresUsada[i]],
-            ['Livre', valoresLivre[i]]
-        ]);
-
-        var options = {
-            pieHole: 0.9,
-            backgroundColor: { fill: darkerBgColor.replace(/\s/g, '') },
-            colors: [redColor.replace(/\s/g, ''), darkerBgColor.replace(/\s/g, '')],
-            pieSliceBorderColor: "transparent",
-            pieSliceTextStyle: {
-                color: 'white',
-            },
-            legend: 'none',
-            pieStartAngle: 90,
-            reverseCategories: true
-
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchartCPU' + i));
-        chart.draw(data, options);
-
-        animarPie(chart, options, data, i);
-
-    }
-
-
-}
-
-
-
-
+﻿
 
 
 function updateChart() {
 
-    var style = getComputedStyle(document.body);
-    var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
-    var redColor = (style.getPropertyValue('--red-color'));
-    for (i = 0; i < qtdComputers; i++) {
-        var data = google.visualization.arrayToDataTable([
-            ['', ''],
-            ['Usada', valoresUsada[i]],
-            ['Livre', valoresLivre[i]]
-        ]);
-
-        var options = {
-            pieHole: 0.9,
-            backgroundColor: { fill: darkerBgColor.replace(/\s/g, '') },
-            colors: [redColor.replace(/\s/g, ''), darkerBgColor.replace(/\s/g, '')],
-            pieSliceBorderColor: "transparent",
-            pieSliceTextStyle: {
-                color: 'white',
-            },
-            legend: 'none'
-
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('donutchartHD' + i));
-        chart.draw(data, options);
-    }
 }
 
 
-function animarPie(chart, options, data, index) {
+function animarPie(chart, options, data, index, total, atual) {
 
 
-    var umPorCento = (valoresUsada[index] + valoresLivre[index]) / 100;
+    var umPorCento = (total) / 100;
 
-    var pctUsada = valoresUsada[index] / umPorCento;
-    var pctLivre = valoresLivre[index] / umPorCento;
 
     // initial value
     var percent = 0;
     // start the animation loop
     var handler = setInterval(function () {
         // values increment
-        percent += 1;
+        percent += umPorCento;
         // apply new values
         data.setValue(0, 1, percent);
-        data.setValue(1, 1, 100 - percent);
+        data.setValue(1, 1, total - percent);
         // update the pie
         chart.draw(data, options);
         // check if we have reached the desired value
-        if (percent >= pctUsada) {
+        if (percent >= atual) {
             // stop the loop
             clearInterval(handler);
         }
@@ -301,11 +77,9 @@ function getLeitura() {
 
 
 function AtualizarDashboard(leituraAtual) {
-
     if (!!leituraAtual) {
-        console.log(leituraAtual.CPUAtual);
-        console.log(leituraAtual.RAMAtual);
-        console.log(leituraAtual.HDAtual);
+
+        SetDadosMonitor(leituraAtual);
 
     }
     else {
@@ -315,3 +89,103 @@ function AtualizarDashboard(leituraAtual) {
 
 
 }
+
+
+function SetDadosMonitor(leituraMonitor) {
+
+    var computadorMonitor;
+
+    for (i = 0; i < computadoresUsuarios.length; i++) {
+
+        for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
+
+            if (computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador == leituraMonitor.CodComputador) {
+                computadorMonitor = computadoresUsuarios[i].ComputadoresUsuario[j];
+                break;
+            }
+        }
+    }
+
+    if (!document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador)) {
+        IniciarMonitor(computadorMonitor, leituraMonitor);
+    }
+}
+
+
+
+
+google.charts.load("current", { packages: ["corechart"] });
+
+function IniciarMonitor(computadorMonitor, leituraMonitor) {
+
+
+
+    var areaInfo = document.getElementById('areaInfo');
+
+    var infoGeralComputador = document.createElement("div");
+
+    infoGeralComputador.setAttribute("class", "infoGeralComputador");
+    infoGeralComputador.setAttribute("id", "infoGeralComputador" + computadorMonitor.CodComputador);
+
+
+    areaInfo.appendChild(infoGeralComputador);
+
+
+    Desenhar("HD", infoGeralComputador, computadorMonitor.HDTotal, leituraMonitor.HDAtual, computadorMonitor.CodComputador);
+    Desenhar("RAM", infoGeralComputador, computadorMonitor.RAMTotal, leituraMonitor.RAMAtual, computadorMonitor.CodComputador);
+    //Desenhar("CPU", infoGeralComputador, computadorMonitor.CPUAtual, leituraMonitor.CPUAtual);
+}
+
+
+function Desenhar(componente, infoGeralComputador, total, atual, cod) {
+
+    
+
+
+    var pieChartInfo = document.createElement("div");
+
+    pieChartInfo.setAttribute("class", "donutchart" + componente);
+    pieChartInfo.setAttribute("id", "donutchart" + componente + cod);
+
+
+    infoGeralComputador.appendChild(pieChartInfo);
+
+
+
+    var style = getComputedStyle(document.body);
+    var darkerBgColor = (style.getPropertyValue('--darker-bg-color'));
+    var angulo = 0,
+        cor = style.getPropertyValue('--red-color');
+
+    if (componente == "RAM") {
+        angulo = 180;
+        cor = style.getPropertyValue('--purple-color');
+    }
+
+    var data = google.visualization.arrayToDataTable([
+        ['', ''],
+        [componente + ' Usado', total],
+        [componente + ' Livre', atual]
+    ]);
+
+
+
+    var options = {
+        pieHole: 0.9,
+        backgroundColor: { fill: darkerBgColor.replace(/\s/g, '') },
+        colors: [cor.replace(/\s/g, ''), darkerBgColor.replace(/\s/g, '')],
+        pieSliceBorderColor: "transparent",
+        pieSliceTextStyle: {
+            color: 'white',
+        },
+        legend: 'none',
+        pieStartAngle: angulo
+    };
+
+    var chart = new google.visualization.PieChart(document.getElementById('donutchart' + componente + cod));
+    chart.draw(data, options);
+
+    animarPie(chart, options, data, cod, total, atual);
+
+
+}    
