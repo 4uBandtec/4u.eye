@@ -4,64 +4,64 @@ namespace EYE.Model.DAO
 {
     public class StatementLeituraAtual
     {
-        
+
 
         public static double getRAMAtual(int codComputador)
         {
-            var conexao = Conexao.GetConexao();
-            conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT ram FROM leitura_atual WHERE cod_computador = @cod_computador", conexao))
+            float retorno = 0;
+            using (var conexao = Conexao.GetConexao())
             {
-                cmd.Parameters.AddWithValue("@cod_computador", codComputador);
-                using (SqlDataReader leitor = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand("SELECT ram FROM leitura_atual WHERE cod_computador = @cod_computador", conexao))
                 {
-                    if (leitor.Read())
+                    cmd.Parameters.AddWithValue("@cod_computador", codComputador);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
                     {
-                        float result = leitor.GetFloat(0);
-                        conexao.Close();
-                        return result;
+                        if (leitor.Read())
+                        {
+                            retorno = leitor.GetFloat(0);
+                        }
                     }
                 }
-                return 0.0;
+                return retorno;
             }
         }
         public static double getCPUAtual(int codComputador)
         {
-            var conexao = Conexao.GetConexao();
-            conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT cpu FROM leitura_atual WHERE cod_computador = @cod_computador", conexao))
+            double retorno = 0;
+            using (var conexao = Conexao.GetConexao())
             {
-                cmd.Parameters.AddWithValue("@cod_computador", codComputador);
-                using (SqlDataReader leitor = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand("SELECT cpu FROM leitura_atual WHERE cod_computador = @cod_computador", conexao))
                 {
-                    if (leitor.Read())
+                    cmd.Parameters.AddWithValue("@cod_computador", codComputador);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
                     {
-                        float result = leitor.GetFloat(0);
-                        conexao.Close();
-                        return result;
+                        if (leitor.Read())
+                        {
+                            retorno = leitor.GetFloat(0);
+                        }
                     }
                 }
-                return 0.0;
+                return retorno;
             }
         }
 
         public static long getHDAtual(int codComputador)
         {
-            var conexao = Conexao.GetConexao();
-            conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT hd FROM leitura_atual WHERE cod_computador = @cod_computador", conexao))
+            long retorno = 0;
+            using (var conexao = Conexao.GetConexao())
             {
-                cmd.Parameters.AddWithValue("@cod_computador", codComputador);
-                using (SqlDataReader leitor = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand("SELECT hd FROM leitura_atual WHERE cod_computador = @cod_computador", conexao))
                 {
-                    if (leitor.Read())
+                    cmd.Parameters.AddWithValue("@cod_computador", codComputador);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
                     {
-                        long result = leitor.GetInt64(0);
-                        conexao.Close();
-                        return result;
+                        if (leitor.Read())
+                        {
+                            retorno = leitor.GetInt64(0);
+                        }
                     }
                 }
-                return 0;
+                return retorno;
             }
         }
     }

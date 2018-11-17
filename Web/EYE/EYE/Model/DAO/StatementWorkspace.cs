@@ -8,91 +8,108 @@ namespace EYE.Model.DAO
     {
         public static bool VerificaWorkspacenameUnico(string workspacename)
         {
-            var conexao = Conexao.GetConexao();
-            conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT workspacename FROM workspace WHERE workspacename = @workspacename", conexao))
+            bool retorno = false;
+            using (var conexao = Conexao.GetConexao())
             {
-                cmd.Parameters.AddWithValue("@workspacename", workspacename);
-                using (SqlDataReader leitor = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand("SELECT workspacename FROM workspace WHERE workspacename = @workspacename", conexao))
                 {
-                    return !(leitor.Read());
+                    cmd.Parameters.AddWithValue("@workspacename", workspacename);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
+                    {
+                        retorno = !(leitor.Read());
+                    }
                 }
             }
+            return retorno;
         }
 
         public static bool VerificaEmailUnico(string email)
         {
-            var conexao = Conexao.GetConexao();
-            conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM workspace WHERE email = @email", conexao))
+
+            bool retorno = false;
+            using (var conexao = Conexao.GetConexao())
             {
-                cmd.Parameters.AddWithValue("@email", email);
-                using (SqlDataReader leitor = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand("SELECT * FROM workspace WHERE email = @email", conexao))
                 {
-                    return !(leitor.Read());
+                    cmd.Parameters.AddWithValue("@email", email);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
+                    {
+                        retorno = !(leitor.Read());
+                    }
                 }
             }
+            return retorno;
         }
         public static int BuscaSalt(string workspacename)
         {
-            var conexao = Conexao.GetConexao();
-            conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT salt FROM workspace WHERE workspacename = @workspacename  OR email = @workspacename", conexao))
+            int retorno = 0;
+            using (var conexao = Conexao.GetConexao())
             {
-                cmd.Parameters.AddWithValue("@workspacename", workspacename);
-                using (SqlDataReader leitor = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand("SELECT salt FROM workspace WHERE workspacename = @workspacename  OR email = @workspacename", conexao))
                 {
-                    if (leitor.Read())
+                    cmd.Parameters.AddWithValue("@workspacename", workspacename);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
                     {
-                        return leitor.GetInt32(0);
+                        if (leitor.Read())
+                        {
+                            retorno = leitor.GetInt32(0);
+                        }
                     }
                 }
             }
-            return 0;
+            return retorno;
         }
         public static string BuscaSenhaHash(string workspacename)
         {
-            var conexao = Conexao.GetConexao();
-            conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT senha FROM workspace WHERE workspacename = @workspacename OR email = @workspacename", conexao))
+            string retorno = null;
+            using (var conexao = Conexao.GetConexao())
             {
-                cmd.Parameters.AddWithValue("@workspacename", workspacename);
-                using (SqlDataReader leitor = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand("SELECT senha FROM workspace WHERE workspacename = @workspacename OR email = @workspacename", conexao))
                 {
-                    if (leitor.Read())
+                    cmd.Parameters.AddWithValue("@workspacename", workspacename);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
                     {
-                        return leitor.GetString(0);
+                        if (leitor.Read())
+                        {
+                            retorno = leitor.GetString(0);
+                        }
                     }
                 }
             }
-            return null;
+            return retorno;
         }
         public static int BuscaCodigo(string workspacename)
         {
-            var conexao = Conexao.GetConexao();
-            conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("SELECT cod_workspace FROM workspace WHERE workspacename = @workspacename OR email = @workspacename", conexao))
+            int retorno = 0;
+            using (var conexao = Conexao.GetConexao())
             {
-                cmd.Parameters.AddWithValue("@workspacename", workspacename);
-                using (SqlDataReader leitor = cmd.ExecuteReader())
+                using (SqlCommand cmd = new SqlCommand("SELECT cod_workspace FROM workspace WHERE workspacename = @workspacename OR email = @workspacename", conexao))
                 {
-                    return (leitor.Read()) ? leitor.GetInt32(0) : 0;
+                    cmd.Parameters.AddWithValue("@workspacename", workspacename);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
+                    {
+                        retorno = (leitor.Read()) ? leitor.GetInt32(0) : 0;
+                    }
                 }
             }
+            return retorno;
         }
         public static bool InserirWorkspace(Workspace workspace)
         {
-            var conexao = Conexao.GetConexao();
-            conexao.Open();
-            using (SqlCommand cmd = new SqlCommand("INSERT INTO workspace (workspacename, nome, email, senha, salt) VALUES (@workspacename, @nome, @email, @senha, @salt)", conexao))
+            bool retorno = false;
+            using (var conexao = Conexao.GetConexao())
             {
-                cmd.Parameters.AddWithValue("@workspacename", workspace.Workspacename);
-                cmd.Parameters.AddWithValue("@nome", workspace.Nome);
-                cmd.Parameters.AddWithValue("@email", workspace.Email);
-                cmd.Parameters.AddWithValue("@senha", workspace.Senha);
-                cmd.Parameters.AddWithValue("@salt", workspace.Salt);
-                return (cmd.ExecuteNonQuery() == 1);
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO workspace (workspacename, nome, email, senha, salt) VALUES (@workspacename, @nome, @email, @senha, @salt)", conexao))
+                {
+                    cmd.Parameters.AddWithValue("@workspacename", workspace.Workspacename);
+                    cmd.Parameters.AddWithValue("@nome", workspace.Nome);
+                    cmd.Parameters.AddWithValue("@email", workspace.Email);
+                    cmd.Parameters.AddWithValue("@senha", workspace.Senha);
+                    cmd.Parameters.AddWithValue("@salt", workspace.Salt);
+                    retorno = (cmd.ExecuteNonQuery() == 1);
+                }
             }
+            return retorno;
         }
 
     }

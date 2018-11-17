@@ -12,18 +12,34 @@
 
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script type="text/javascript" src="../Controller/Dashboard.js"></script>
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
 
 </head>
-<body onload="iniciarEstilo(), iniciarDash(), GetUsuariosWorkspace()" onresize="updateChart()">
+<body onload="iniciarEstilo(), GetUsuariosWorkspace()">
     <form id="formDashboard" runat="server">
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />
         <!--MENU-->
         <div id="sideMenu" onmousemove="getCoordenadas()">
 
+            <a href="CadastroUsuario.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/icon.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Cadastrar Usuário
+               
+                    </div>
+
+                </div>
+            </a>
+
             <div class="itemMenu">
 
                 <div class="itemIcon">
@@ -33,6 +49,7 @@
 
                 <div class="itemTxt">
                     Computador
+               
                 </div>
 
             </div>
@@ -46,6 +63,7 @@
 
                 <div class="itemTxt">
                     Computador
+               
                 </div>
 
             </div>
@@ -59,6 +77,7 @@
 
                 <div class="itemTxt">
                     Computador
+               
                 </div>
 
             </div>
@@ -72,6 +91,7 @@
 
                 <div class="itemTxt">
                     Computador
+               
                 </div>
 
             </div>
@@ -85,6 +105,7 @@
 
                 <div class="itemTxt">
                     Computador
+               
                 </div>
 
             </div>
@@ -98,6 +119,7 @@
 
                 <div class="itemTxt">
                     Computador
+               
                 </div>
 
             </div>
@@ -111,19 +133,7 @@
 
                 <div class="itemTxt">
                     Computador
-                </div>
-
-            </div>
-
-            <div class="itemMenu">
-
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
-
-                <div class="itemTxt">
-                    Computador
+               
                 </div>
 
             </div>

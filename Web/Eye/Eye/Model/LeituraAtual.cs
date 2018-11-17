@@ -6,6 +6,7 @@ namespace EYE.Model
         private double ramAtual;
         private double cpuAtual;
         private long hdAtual;
+        private int codComputador;
 
 
         public double RAMAtual
@@ -41,6 +42,18 @@ namespace EYE.Model
             set
             {
                 cpuAtual = value;
+            }
+        }
+
+        public int CodComputador
+        {
+            get
+            {
+                return codComputador;
+            }
+            set
+            {
+                codComputador = value;
             }
         }
 
