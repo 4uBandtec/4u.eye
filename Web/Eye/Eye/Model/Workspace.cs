@@ -1,6 +1,4 @@
-﻿
-
-namespace EYE.Model
+﻿namespace EYE.Model
 {
     public class Workspace
     {
@@ -12,76 +10,11 @@ namespace EYE.Model
         private string senha;
         private int salt;
 
-        public int CodWorkspace
-        {
-            get
-            {
-                return codWorkspace;
-            }
-            set
-            {
-                codWorkspace = value;
-            }
-        }
-
-        public string Workspacename
-        {
-            get
-            {
-                return workspacename;
-            }
-            set
-            {
-                workspacename = value;
-            }
-        }
-
-        public string Nome
-        {
-            get
-            {
-                return nome;
-            }
-            set
-            {
-                nome = value;
-            }
-        }
-
-        public string Email
-        {
-            get
-            {
-                return email;
-            }
-            set
-            {
-                email = value;
-            }
-        }
-
-        public string Senha
-        {
-            get
-            {
-                return senha;
-            }
-            set
-            {
-                senha = value;
-            }
-        }
-
-        public int Salt
-        {
-            get
-            {
-                return salt;
-            }
-            set
-            {
-                salt = value;
-            }
-        }
-    }
+		public int CodWorkspace { get => codWorkspace; set => codWorkspace = value; }
+		public string Workspacename { get => workspacename; set => workspacename = value; }
+		public string Nome { get => nome; set => nome = value; }
+		public string Email { get => email; set => email = value; }
+		public string Senha { get => senha; set => senha = value; }
+		public int Salt { get => salt; set => salt = value; }
+	}
 }
