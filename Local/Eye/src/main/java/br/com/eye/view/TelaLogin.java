@@ -1,28 +1,19 @@
 package br.com.eye.view;
 
-import br.com.eye.model.Usuario;
+import br.com.eye.controller.ControllerUsuario;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
@@ -131,9 +122,9 @@ public class TelaLogin extends JFrame implements ActionListener {
         try {
             if (e.getSource() == btnLogar) {
 
-                if (new Usuario().Logar(txtUsername.getText(), txtSenha.getText())) {
+                if (new ControllerUsuario().Logar(txtUsername.getText(), txtSenha.getText())) {
                     dispose();
-                    new TelaFuncionou(new Usuario().getCodUsuario(txtUsername.getText()));
+                    new TelaFuncionou(new ControllerUsuario().getCodUsuario(txtUsername.getText()));
                 }
             }
         } catch (InterruptedException | SQLException ex) {

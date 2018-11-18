@@ -1,23 +1,35 @@
 package br.com.eye.model;
 
-import br.com.eye.controller.ControllerLeituraComputador;
+import br.com.eye.model.dao.StatementLeituraComputador;
+import java.sql.SQLException;
+import oshi.SystemInfo;
+import oshi.hardware.CentralProcessor;
+import oshi.hardware.HardwareAbstractionLayer;
+import oshi.software.os.FileSystem;
+import oshi.software.os.OSFileStore;
 
 public class LeituraComputador {
 
     private Double cpuUsada;
-    private Double memoriaDisponivel;
+    private long memoriaDisponivel;
     private long discoDisponivel;
 
+        
+    
+    SystemInfo systemInfo = new SystemInfo();
+    HardwareAbstractionLayer hardware = systemInfo.getHardware();
+    CentralProcessor processor = hardware.getProcessor();
+    FileSystem fileSystem = systemInfo.getOperatingSystem().getFileSystem();
+
+    
     public LeituraComputador() {
     }
 
-    public LeituraComputador(Double cpuUsada, Double memoriaDisponivel, long discoDisponivel) {
+    public LeituraComputador(Double cpuUsada, long memoriaDisponivel, long discoDisponivel) {
         this.cpuUsada = cpuUsada;
         this.memoriaDisponivel = memoriaDisponivel;
         this.discoDisponivel = discoDisponivel;
     }
-
-    ControllerLeituraComputador controllerLeituraComputador = new ControllerLeituraComputador();
 
     public LeituraComputador leituraOshi(){
         return new LeituraComputador (getCpuUsadaOshi(), getMemoriaDisponivelOshi(), getDiscoDisponivelOshi());
@@ -27,7 +39,7 @@ public class LeituraComputador {
         return cpuUsada;
     }
 
-    public Double getMemoriaDisponivel() {
+    public long getMemoriaDisponivel() {
         return memoriaDisponivel;
     }
 
@@ -39,7 +51,7 @@ public class LeituraComputador {
         this.cpuUsada = cpuUsada;
     }
 
-    public void setMemoriaDisponivel(Double memoriaDisponivel) {
+    public void setMemoriaDisponivel(long memoriaDisponivel) {
         this.memoriaDisponivel = memoriaDisponivel;
     }
 
@@ -48,15 +60,41 @@ public class LeituraComputador {
     }
 
     public Double getCpuUsadaOshi() {
-        return controllerLeituraComputador.getCPUUsada();
+        Double cl = processor.getSystemCpuLoad();
+        return cl * 100.0;
     }
 
-    public Double getMemoriaDisponivelOshi() {
-        return controllerLeituraComputador.getMemoriaDisponivel();
+    public long getMemoriaDisponivelOshi() {
+        return systemInfo.getHardware().getMemory().getAvailable();
     }
 
     public long getDiscoDisponivelOshi() {
-        return controllerLeituraComputador.getDiscoDisponivel();
+        OSFileStore[] fsArray = fileSystem.getFileStores();
+
+        long disponivel = 0;
+
+        for (OSFileStore fs : fsArray) {
+            disponivel += fs.getUsableSpace();
+        }
+        return disponivel;
     }
 
+    
+
+   
+
+    public void setLeitura(int codComputador) throws SQLException, InterruptedException {
+
+        while (true) {
+            Thread.sleep(1000);
+            if (new StatementLeituraComputador().existeLeituraRegistrada(codComputador)) {
+                System.out.println("DEU TRUE");
+                new StatementLeituraComputador().updateLeitura(new LeituraComputador().leituraOshi(), codComputador);
+            } else {
+                System.out.println("DEU FALSE");
+                new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codComputador);
+            }
+        }
+    }
+    
 }
