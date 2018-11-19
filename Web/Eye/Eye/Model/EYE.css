@@ -72,7 +72,7 @@ table {
     --txt-color: rgb(200,200,200);
     --red-color: rgb(226,26,47);
     --purple-color: rgb(86,13,196);
-    --pink-color: rgb(120,20,150);
+    --pink-color: rgb(150,20,110);
     --darker-bg-color: rgb(16,16,16);
     --lighter-bg-color: rgb(50,50,50);
     --red-color-a: rgba(226,26,47,0.5);
@@ -230,60 +230,39 @@ body {
 
 .infoGeralComputador {
     width: 85%;
-    height: 24vw;
+    min-height: 30vw;
     margin: 4%;
-    border-top: 1px solid var(--red-color);
     background: var(--darker-bg-color);
     float: left;
     transition-duration: 0s;
-    border-radius: 10px;
-    overflow: hidden;
+    border-radius: 0px;
 }
 
-.tituloComputador{
+
+.tituloComputador {
     height: 2.5vw;
-    width: 98%;
+    width: 102%;
     color: var(--txt-color);
-    border-bottom: solid 1px var(--txt-color);
+    border-bottom: solid 1px var(--pink-color);
     position: relative;
     float: left;
     text-align: left;
-    font-size: 1.5em;
+    font-size: 1.3em;
     padding-top: 1%;
     padding-left: 2%;
+    left: -2%;
+    background: linear-gradient(90deg, var(--bg-color), var(--bg-color));
+    font-weight: lighter;
 }
 
 .localChart {
-    height: 18vw;
-    width: 18vw;
+    height: 14vw;
+    width: 14vw;
     position: relative;
     float: left;
     margin: 2%;
 }
 
-.donutchartHD {
-    height: 80%;
-    width: 30%;
-    position: relative;
-    left: 0%;
-    top: 0;
-}
-
-.donutchartRAM {
-    height: 80%;
-    width: 30%;
-    position: relative;
-    left: 0%;
-    top: 0;
-}
-
-.donutchartCPU {
-    height: 80%;
-    width: 30%;
-    position: relative;
-    left: 0%;
-    top: 0%;
-}
 
 .labelsChart{
     position: absolute;
@@ -293,17 +272,19 @@ body {
     width: 80%;
     margin: 9%;
     top: 0;
-    border: 2px var(--txt-color) solid;
     border-radius: 100%;
+    overflow: hidden
 }
 
-.tituloLabel{
+.tituloLabel {
     width: 100%;
     background-color: none;
     text-align: center;
     font-size: 1.5em;
-    margin-top: 9%;
-    margin-bottom: 5%;
+    padding-top: 8%;
+    padding-bottom: 4%;
+    margin-bottom: 4%;
+    color: var(--black-color);
 }
 
 .conteudoLabel {
@@ -316,6 +297,31 @@ body {
     margin: 2.5%;
     margin-bottom: 5%;
     margin-top: 5%;
+}
+
+.detalhesMonitor {
+    height: 26%;
+    width: 96%;
+    position: relative;
+    float: left;
+    margin: 2%;
+}
+
+.campoDetalhe{
+    float: right;
+    position: relative;
+    height: 15%;
+    margin: 2%;
+    text-align: center;
+}
+
+.graficoCpu {
+    height: 14vw;
+    width: 27vw;
+    position: relative;
+    float: left;
+    margin: 2%;
+    border: solid 1px var(--pink-color);
 }
 
 .areaCampos {
@@ -615,7 +621,7 @@ label {
 
     .defaultButton:hover, .defaultButton:focus, .defaultButton:target, .defaultButton:active {
         border-color: var(--to-invisible);
-        color: var(--purple-color-a);
+        color: var(--pink-color-a);
     }
 
 #btnIrPara {
@@ -623,8 +629,12 @@ label {
     right: 0;
     top: 0;
     border: none;
-    border-bottom: solid 1px var(--purple-color);
+    border-bottom: solid 1px var(--pink-color);
     border-bottom-left-radius: 20%;
+}
+
+#btnIrPara:hover, #btnIrPara:focus, #btnIrPara:active, #btnIrPara:target {
+    color: var(--pink-color);
 }
 
 
@@ -723,9 +733,11 @@ label {
         overflow: auto;
     }
 
+
+
     .infoGeralComputador {
         width: 60vw;
-        height: 500px;
+        height: auto;
     }
 
 
@@ -743,7 +755,7 @@ label {
 
     .tituloLabel {
         font-size: 1em;
-        margin-top: 5%;
+        padding-top: 6%;
         margin-bottom: 5%;
     }
     .conteudoLabel {
@@ -752,8 +764,38 @@ label {
     }
 
     .tituloComputador {
-        height: 9vh;
+        height: auto;
+        padding-bottom: 1%;
     }
+
+    .detalhesMonitor {
+        height: 30%;
+        width: 96%;
+        position: relative;
+        float: left;
+        margin: 2%;
+    }
+
+    .campoDetalhe {
+        float: none;
+        position: relative;
+        height: 15%;
+        margin: 3%;
+        text-align: center;
+        font-size: 0.8em;
+    }
+
+    .graficoCpu {
+        height: 40%;
+        width: 96%;
+        position: relative;
+        float: left;
+        margin: 2%;
+        background: var(--pink-color);
+    }
+
+
+
 
 
     .areaCampos {
@@ -913,19 +955,20 @@ label {
 
         .defaultButton:hover {
             border-color: var(--to-invisible);
-            color: var(--purple-color-a);
+            color: var(--pink-color-a);
         }
 
     #btnIrPara {
         position: fixed;
         left: 5vw;
         border: none;
-        border-top: solid 1px var(--purple-color);
+        border-top: solid 1px var(--pink-color);
         border-radius: 0;
         bottom: 0;
         top: 93vh;
         z-index: 2;
     }
+
 
     .cadastroCampos option {
         height: 100%;

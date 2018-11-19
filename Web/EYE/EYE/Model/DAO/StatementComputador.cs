@@ -41,8 +41,8 @@ namespace EYE.Model.DAO
 								computadores[contador].VersaoSistema = leitor.GetString(3);
 								computadores[contador].VersaoBits = leitor.GetInt32(4);
 								computadores[contador].Processador = leitor.GetString(5);
-								computadores[contador].HDTotal = leitor.GetInt64(6);
-								computadores[contador].RAMTotal = leitor.GetInt64(7);
+								computadores[contador].HdTotal = leitor.GetInt64(6);
+								computadores[contador].RamTotal = leitor.GetInt64(7);
 								computadores[contador].CodUsuario = codUsuario;
 
 								++contador;

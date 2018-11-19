@@ -26,6 +26,17 @@ namespace Eye.View
             return int.Parse((String)Session["codWorkspace"]);
         }
 
+
+        [ScriptMethod, WebMethod]
+        public static void BreakSession()
+        {
+            Dashboard dash = new Dashboard();
+            dash.Session.Abandon();
+        }
+
+        
+        
+
         [ScriptMethod, WebMethod]
         public static Usuario[] GetUsuariosWorkspace()
         {
@@ -57,9 +68,9 @@ namespace Eye.View
 
             ControllerLeituraAtual controllerLeituraAtual = new ControllerLeituraAtual();
 
-            leitura.CPUAtual = controllerLeituraAtual.GetPorcentagemCPU(codComputador);
-            leitura.HDAtual = controllerLeituraAtual.GetPorcentagemHD(codComputador);
-            leitura.RAMAtual = controllerLeituraAtual.GetPorcentagemRAM(codComputador);
+            leitura.CpuAtual = controllerLeituraAtual.GetPorcentagemCPU(codComputador);
+            leitura.HdAtual = controllerLeituraAtual.GetPorcentagemHD(codComputador);
+            leitura.RamAtual = controllerLeituraAtual.GetPorcentagemRAM(codComputador);
             leitura.CodComputador = codComputador;
 
 
