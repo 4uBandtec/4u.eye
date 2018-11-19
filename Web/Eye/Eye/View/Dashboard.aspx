@@ -124,20 +124,17 @@
 
             </div>
 
-            <div class="itemMenu">
-
+            <div class="itemMenu" onclick="breakSession()">
                 <div class="itemIcon">
                     <img src="../Component/icon.png" />
                 </div>
                 <div class="itemMenuBackGround"></div>
 
                 <div class="itemTxt">
-                    Computador
-               
+                    Loggout
                 </div>
 
             </div>
-
 
         </div>
 
@@ -146,7 +143,7 @@
 
 
         <div id="meuResumo">
-            <div class="txtMeuResumo">MEU RESUMO:</div>
+            <div class="txtMeuResumo">TIME:</div>
 
             <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
         </div>
