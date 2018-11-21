@@ -2,6 +2,8 @@ package br.com.eye.model;
 
 import br.com.eye.model.dao.StatementLeituraComputador;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
+import static jdk.nashorn.internal.objects.NativeMath.round;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
 import oshi.hardware.HardwareAbstractionLayer;
@@ -14,7 +16,9 @@ public class LeituraComputador {
     private long memoriaDisponivel;
     private long discoDisponivel;
 
-        
+    
+    DecimalFormat formato = new DecimalFormat(".##");    
+    
     
     SystemInfo systemInfo = new SystemInfo();
     HardwareAbstractionLayer hardware = systemInfo.getHardware();
@@ -61,7 +65,10 @@ public class LeituraComputador {
 
     public Double getCpuUsadaOshi() {
         Double cl = processor.getSystemCpuLoad();
-        return cl * 100.0;
+        
+        
+        System.out.println(formato.format(cl * 100.0).replaceAll(",",".")+"%");
+        return Double.parseDouble(formato.format(cl * 100.0).replaceAll(",","."));
     }
 
     public long getMemoriaDisponivelOshi() {
