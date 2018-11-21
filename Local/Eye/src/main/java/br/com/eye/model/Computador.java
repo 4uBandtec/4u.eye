@@ -1,10 +1,10 @@
 package br.com.eye.model;
 
-import br.com.eye.controller.ControllerComputador;
-import br.com.eye.dao.StatementComputador;
 
-import java.sql.SQLException;
 import java.util.Objects;
+import oshi.SystemInfo;
+import oshi.software.os.FileSystem;
+import oshi.software.os.OSFileStore;
 
 public class Computador {
 
@@ -18,9 +18,12 @@ public class Computador {
     private Long totalDisco;
     private Integer codUsuario;
 
-    ControllerComputador controllerComputador = new ControllerComputador();
-    StatementComputador statementComputador = new StatementComputador();
 
+    SystemInfo systemInfo = new SystemInfo();
+
+    FileSystem fileSystem = systemInfo.getOperatingSystem().getFileSystem();
+
+    
     public boolean equals(Computador computador) {
 
         return (this.sistemaOperacional.equalsIgnoreCase(computador.getSistemaOperacional())
@@ -52,9 +55,7 @@ public class Computador {
         this.codUsuario = codUsuario;
     }
 
-    public Integer getCodComputador(int codigoUsuario) throws SQLException {
-        return statementComputador.getCodComputador(codigoUsuario);
-    }
+    
 
     public Integer getCodComputador() {
         return codComputador;
@@ -64,9 +65,6 @@ public class Computador {
         this.codComputador = codComputador;
     }
 
-    public String getNomeAtual(Computador computador) throws SQLException {
-        return statementComputador.getNome(computador.codComputador);
-    }
 
     public String getNome() {
         return nome;
@@ -76,8 +74,8 @@ public class Computador {
         this.nome = nome;
     }
 
-    public String getSistemaOperacionalAtual() {
-        return (controllerComputador.getSistemaOperacional().split("[0-9]")[0]);
+    public String getSistemaOperacionalOshi() {
+        return systemInfo.getOperatingSystem().toString().split("[0-9]")[0];
     }
 
     public String getSistemaOperacional() {
@@ -88,8 +86,9 @@ public class Computador {
         this.sistemaOperacional = sistemaOperacional;
     }
 
-    public String getVersaoSistemaAtual() {
-        return controllerComputador.getVersaoSistema();
+    public String getVersaoSistemaOshi() {
+        
+        return systemInfo.getOperatingSystem().getVersion().toString();
     }
 
     public String getVersaoSistema() {
@@ -100,8 +99,8 @@ public class Computador {
         this.versaoSistema = versaoSistema;
     }
 
-    public int getVersaoBitsAtual() {
-        return controllerComputador.getBit();
+    public int getVersaoBitsOshi() {
+        return systemInfo.getOperatingSystem().getBitness();
     }
 
     public Integer getVersaoBits() {
@@ -112,8 +111,8 @@ public class Computador {
         this.versaoBits = versaoBits;
     }
 
-    public String getProcessadorAtual() {
-        return controllerComputador.getProcessador();
+    public String getProcessadorOshi() {
+        return (systemInfo.getHardware().getProcessor()).toString();
     }
 
     public String getProcessador() {
@@ -124,8 +123,15 @@ public class Computador {
         this.processador = processador;
     }
 
-    public long getTotalDiscoAtual() {
-        return controllerComputador.getDisco();
+    public long getTotalDiscoOshi() {
+        OSFileStore[] fsArray = fileSystem.getFileStores();
+        long total = 0;
+
+        for (OSFileStore fs : fsArray) {
+
+            total += fs.getTotalSpace();
+        }
+        return total;
     }
 
     public Long getTotalDisco() {
@@ -136,34 +142,20 @@ public class Computador {
         this.totalDisco = totalDisco;
     }
 
-    public Long getTotalMemoriaAtual() {
-        return controllerComputador.getMemoria();
+    public Long getTotalMemoriaOshi() {
+        return systemInfo.getHardware().getMemory().getTotal();
     }
 
     public Long getTotalMemoria() {
-        return controllerComputador.getMemoria();
+        return totalMemoria;
     }
 
     public void setTotalMemoria(Long totalMemoria) {
         this.totalMemoria = totalMemoria;
     }
-
-    public Computador getComputadorSalvo() throws SQLException {
-        return statementComputador.getComputadorSalvo(1);
-    }
-
-    public Computador getComputadorAtual() throws SQLException {
-        return controllerComputador.getComputadorAtual();
-    }
-
-    public boolean inserePrimeiroComputador(int codUsuario) throws SQLException {
-        return statementComputador.existeComputadorRegistrado(codUsuario)
-                ? true : statementComputador.setComputador(controllerComputador.getComputadorAtual(), codUsuario);
-    }
-
-    public boolean verificaAtualizacao(int codUsuario) throws SQLException {
-
-        return (statementComputador.getComputadorSalvo(codUsuario)).equals(controllerComputador.getComputadorAtual());
-        //Precisa de Banco para testar
+    
+    
+    public Double getCPUOshi() {
+        return systemInfo.getHardware().getProcessor().getSystemCpuLoad() * 100.0;
     }
 }

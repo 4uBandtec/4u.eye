@@ -1,4 +1,4 @@
-package br.com.eye.dao;
+package br.com.eye.model.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

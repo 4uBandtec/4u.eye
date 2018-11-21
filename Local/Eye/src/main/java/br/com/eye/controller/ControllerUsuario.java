@@ -1,11 +1,11 @@
 package br.com.eye.controller;
 
-import br.com.eye.dao.StatementUsuario;
+import br.com.eye.model.dao.StatementUsuario;
 import java.sql.SQLException;
 
 public class ControllerUsuario {
 
-    public boolean autenticarUsuario(String login, String senha) throws SQLException {
+    public boolean Logar(String login, String senha) throws SQLException {
         int salt = new StatementUsuario().buscarSalt(login);
         String senhaBanco = new StatementUsuario().buscarSenhaHash(login);
         if (salt == 0 || senhaBanco == null) {

@@ -1,7 +1,5 @@
 package br.com.eye.model;
 
-import br.com.eye.controller.ControllerWorkspace;
-import java.sql.SQLException;
 
 public class Workspace {
 
@@ -15,8 +13,5 @@ public class Workspace {
         this.codWorkspace = codWorkspace;
     }
 
-    public boolean ValidarWorkspace(String workspacename) throws SQLException {
-        return new ControllerWorkspace().workspaceValido(workspacename);
-    }
 
 }

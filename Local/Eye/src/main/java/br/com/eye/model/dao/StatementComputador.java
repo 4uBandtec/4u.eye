@@ -1,4 +1,4 @@
-package br.com.eye.dao;
+package br.com.eye.model.dao;
 
 import br.com.eye.model.Computador;
 import java.sql.PreparedStatement;
