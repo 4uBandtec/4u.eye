@@ -16,7 +16,7 @@ public class Workspace {
     }
 
     public boolean ValidarWorkspace(String workspacename) throws SQLException {
-        return new ControllerWorkspace().workspaceValido(workspacename);
+        return new ControllerWorkspace().WorkspaceValido(workspacename);
     }
 
 }

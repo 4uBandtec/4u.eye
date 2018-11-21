@@ -1,7 +1,6 @@
 package br.com.eye.view;
 
-import br.com.eye.model.Usuario;
-import br.com.eye.model.Workspace;
+import br.com.eye.controller.ControllerWorkspace;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
@@ -106,7 +105,7 @@ public class TelaWorkspace extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnProximo) {
             try {
-                if (new Workspace().ValidarWorkspace(txtWorkspacename.getText())) {
+                if (new ControllerWorkspace().WorkspaceValido(txtWorkspacename.getText())) {
                     dispose();
                     new TelaLogin();
                 }
