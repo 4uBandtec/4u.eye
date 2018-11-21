@@ -8,54 +8,9 @@ namespace EYE.Model
         private long hdAtual;
         private int codComputador;
 
-
-        public double RAMAtual
-        {
-            get
-            {
-                return ramAtual;
-            }
-            set
-            {
-                ramAtual = value;
-            }
-        }
-
-        public long HDAtual
-        {
-            get
-            {
-                return hdAtual;
-            }
-            set
-            {
-                hdAtual = value;
-            }
-        }
-
-        public double CPUAtual
-        {
-            get
-            {
-                return cpuAtual;
-            }
-            set
-            {
-                cpuAtual = value;
-            }
-        }
-
-        public int CodComputador
-        {
-            get
-            {
-                return codComputador;
-            }
-            set
-            {
-                codComputador = value;
-            }
-        }
-
-    }
+		public double RamAtual { get => ramAtual; set => ramAtual = value; }
+		public double CpuAtual { get => cpuAtual; set => cpuAtual = value; }
+		public long HdAtual { get => hdAtual; set => hdAtual = value; }
+		public int CodComputador { get => codComputador; set => codComputador = value; }
+	}
 }

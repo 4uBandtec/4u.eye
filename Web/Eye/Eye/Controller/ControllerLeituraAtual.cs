@@ -7,15 +7,15 @@ namespace EYE.Controller
     {
         public double GetPorcentagemRAM(int codComputador)
         {
-            return StatementLeituraAtual.getRAMAtual(codComputador);
+            return StatementLeituraAtual.GetRAMAtual(codComputador);
         }
         public double GetPorcentagemCPU(int codComputador)
         {
-            return StatementLeituraAtual.getCPUAtual(codComputador);
+            return StatementLeituraAtual.GetCPUAtual(codComputador);
         }
         public long GetPorcentagemHD(int codComputador)
         {
-            return StatementLeituraAtual.getHDAtual(codComputador);
+            return StatementLeituraAtual.GetHDAtual(codComputador);
         }
     }
 }

@@ -12,130 +12,19 @@ namespace EYE.Model
         private string sexo;
         private int salt;
         private int codWorkspace;
-
-        private Computador[] computadoresUsuario;
-
-
-        public int CodUsuario
-        {
-            get
-            {
-                return codUsuario;
-            }
-            set
-            {
-                codUsuario = value;
-            }
-        }
+		private int perfil;
+		private Computador[] computadoresUsuario;
 
 
-        public string Username
-        {
-            get
-            {
-                return username;
-            }
-            set
-            {
-                username = value;
-            }
-        }
-
-        public string Nome
-        {
-            get
-            {
-                return nome;
-            }
-            set
-            {
-                nome = value;
-            }
-        }
-
-        public string Email
-        {
-            get
-            {
-                return email;
-            }
-            set
-            {
-                email = value;
-            }
-        }
-
-        public string Senha
-        {
-            get
-            {
-                return senha;
-            }
-            set
-            {
-                senha = value;
-            }
-        }
-
-        public string DataNascimento
-        {
-            get
-            {
-                return dataNascimento;
-            }
-            set
-            {
-                dataNascimento = value;
-            }
-        }
-
-        public string Sexo
-        {
-            get
-            {
-                return sexo;
-            }
-            set
-            {
-                sexo = value;
-            }
-        }
-
-        public int Salt
-        {
-            get
-            {
-                return salt;
-            }
-            set
-            {
-                salt = value;
-            }
-        }
-
-        public int CodWorkspace
-        {
-            get
-            {
-                return codWorkspace;
-            }
-            set
-            {
-                codWorkspace = value;
-            }
-        }
-
-
-        public Computador[] ComputadoresUsuario
-        {
-            get
-            {
-                return computadoresUsuario;
-            }
-            set
-            {
-                computadoresUsuario = value;
-            }
-        }
-    }
+		public int CodUsuario { get => codUsuario; set => codUsuario = value; }
+		public string Username { get => username; set => username = value; }
+		public string Nome { get => nome; set => nome = value; }
+		public string Email { get => email; set => email = value; }
+		public string Senha { get => senha; set => senha = value; }
+		public string DataNascimento { get => dataNascimento; set => dataNascimento = value; }
+		public string Sexo { get => sexo; set => sexo = value; }
+		public int Salt { get => salt; set => salt = value; }
+		public int CodWorkspace { get => codWorkspace; set => codWorkspace = value; }
+		public Computador[] ComputadoresUsuario { get => computadoresUsuario; set => computadoresUsuario = value; }
+	}
 }

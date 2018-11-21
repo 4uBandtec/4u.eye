@@ -1,4 +1,5 @@
 ﻿
+using System.Text.RegularExpressions;
 using System.Web.UI.WebControls;
 
 namespace EYE.Model
@@ -59,6 +60,11 @@ namespace EYE.Model
         public static void SenhasIguais(TextBox senha, TextBox confirmaSenha)
         {
             senha.Text.Equals(confirmaSenha.Text);
-         }
+        }
+		public static bool SenhaCompleta(TextBox senha) {
+			var regexSenhaComplexa = "^.* (?=.{ 8,})(?=.*\\d)(?=.*[a - z])(?=.*[A - Z])(?=.*[@#$%^&+=]).*$";
+			Regex expressaoRegular = new Regex(regexSenhaComplexa, RegexOptions.None);
+			return expressaoRegular.IsMatch(senha.Text);
+		}
     }
 }

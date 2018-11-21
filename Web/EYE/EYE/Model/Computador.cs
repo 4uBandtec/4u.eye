@@ -63,7 +63,7 @@
             }
         }
 
-        public decimal HDTotal
+        public decimal HdTotal
         {
             get
             {
@@ -75,7 +75,7 @@
             }
         }
 
-        public decimal RAMTotal
+        public decimal RamTotal
         {
             get
             {

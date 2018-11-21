@@ -96,7 +96,11 @@ public class TelaWorkspace extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnProximo) {
             try {
+<<<<<<< HEAD
                 if (new ControllerWorkspace().ValidarWorkspace(txtWorkspacename.getText())) {
+=======
+                if (new ControllerWorkspace().WorkspaceValido(txtWorkspacename.getText())) {
+>>>>>>> 4287f4d4939e422c23471e5bd48b4e22fd8b88fe
                     dispose();
                     new TelaLogin();
                 }
