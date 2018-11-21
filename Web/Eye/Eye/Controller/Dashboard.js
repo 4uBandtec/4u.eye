@@ -34,6 +34,7 @@ function getLeitura() {
 
 
             PageMethods.AtualizarComputadores(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador, AtualizarDashboard, onError);
+
         }
 
     }
@@ -43,8 +44,8 @@ function getLeitura() {
 
 
 function AtualizarDashboard(leituraAtual) {
-    if (!!leituraAtual) {
 
+    if (!!leituraAtual) {
         SetDadosMonitor(leituraAtual);
 
     }
@@ -58,7 +59,6 @@ function AtualizarDashboard(leituraAtual) {
 
 
 function SetDadosMonitor(leituraMonitor) {
-
     var computadorMonitor;
 
     for (i = 0; i < computadoresUsuarios.length; i++) {
@@ -71,7 +71,9 @@ function SetDadosMonitor(leituraMonitor) {
                 break;
             }
         }
+
     }
+
     
 
     
@@ -90,8 +92,7 @@ function SetDadosMonitor(leituraMonitor) {
 
 function IniciarMonitor(computadorMonitor, leituraMonitor) {
 
-
-
+    
     var areaInfo = document.getElementById('areaInfo');
 
     var infoGeralComputador = document.createElement("div");
@@ -111,11 +112,12 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
 
     tituloComputador.textContent = computadorMonitor.NomeComputador;
     
-
-    Desenhar("HD", infoGeralComputador, (computadorMonitor.HdTotal / 1e+9).toFixed(2), (leituraMonitor.HdAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
-    Desenhar("RAM", infoGeralComputador, (computadorMonitor.RamTotal / 1e+9).toFixed(2), (leituraMonitor.RamAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    Desenhar("HD", infoGeralComputador, (computadorMonitor.HDTotal / 1e+9).toFixed(2), (leituraMonitor.HDAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    Desenhar("RAM", infoGeralComputador, (computadorMonitor.RAMTotal / 1e+9).toFixed(2), (leituraMonitor.RAMAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
     //Desenhar("CPU", infoGeralComputador, computadorMonitor.CpuAtual, leituraMonitor.CpuAtual);
-    
+
+
+
     var graficoCpu = document.createElement("div");
     graficoCpu.setAttribute("class", "graficoCpu");
     graficoCpu.setAttribute("id", "graficoCpu" + computadorMonitor.CodComputador);
@@ -268,7 +270,7 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
     var gradientStroke = ctx.createLinearGradient(rect.x, rect.y, rect.x - rect.width, rect.y - rect.height);
     gradientStroke.addColorStop(0, cor);
     gradientStroke.addColorStop(1, cor2);
-
+    
 
     data = {
         datasets: [{
@@ -333,19 +335,22 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 function updateChart(computadorMonitor, leituraMonitor) {
     var infoGeralComputador = document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador);
 
-    Atualizar("HD", infoGeralComputador, (computadorMonitor.HdTotal / 1e+9).toFixed(2), (leituraMonitor.HdAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
-    Atualizar("RAM", infoGeralComputador, (computadorMonitor.RamTotal / 1e+9).toFixed(2), (leituraMonitor.RamAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    console.log(leituraMonitor.RAMAtual);
+
+    Atualizar("HD", infoGeralComputador, (computadorMonitor.HDTotal / 1e+9).toFixed(2), (leituraMonitor.HDAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    Atualizar("RAM", infoGeralComputador, (computadorMonitor.RAMTotal / 1e+9).toFixed(2), (leituraMonitor.RAMAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
 
 
 }
 
 
 function Atualizar(componente, infoGeralComputador, total, atual, cod) {
-
-
     var style = getComputedStyle(document.body);
     var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
 
+    document.getElementById("conteudoTotal" + componente + cod).textContent = total + " GB";
+
+    document.getElementById("conteudoAtual" + componente + cod).textContent = atual + " GB";
 
     if (componente == "RAM") {
         angulo = 3.2;
@@ -361,11 +366,11 @@ function Atualizar(componente, infoGeralComputador, total, atual, cod) {
             var chart = charts[i];
 
             chart.data.datasets[0].data = [atual, total - atual];
+
             
 
             chart.update();
-
-            //console.log("Update",total, total - atual, atual);
+            
         }
 
     }

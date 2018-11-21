@@ -49,11 +49,6 @@ public class ControllerComputador {
         return computador.getTotalMemoriaOshi();
     }
     
-    
-    
-    //--------
-    
-    
     public Integer getCodComputador(int codigoUsuario) throws SQLException {
         return statementComputador.getCodComputador(codigoUsuario);
     }
@@ -68,13 +63,26 @@ public class ControllerComputador {
     }
     
     
-    public Computador getComputadorSalvo() throws SQLException {
-        return statementComputador.getComputadorSalvo(1);
+    public Computador getComputadorSalvo(int codUsuario) throws SQLException {
+        return statementComputador.getComputadorSalvo(codUsuario);
     }
 
     public boolean inserePrimeiroComputador(int codUsuario) throws SQLException {
-        return statementComputador.existeComputadorRegistrado(codUsuario)
-                ? true : statementComputador.setComputador(getComputadorOshi(), codUsuario);
+        System.out.println("Update 0");
+        if(statementComputador.existeComputadorRegistrado(codUsuario))
+        {
+            
+        System.out.println("Update 1");
+           if( !verificaAtualizacao(codUsuario)){
+               
+               statementComputador.updateComputador(statementComputador.getCodComputador(codUsuario));
+            }
+        }
+        else{
+        System.out.println("Update 3");
+            statementComputador.setComputador(getComputadorOshi(), codUsuario);
+        }
+        return true;
     }
 
     public boolean verificaAtualizacao(int codUsuario) throws SQLException {
