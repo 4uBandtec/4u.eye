@@ -1,30 +1,16 @@
 package br.com.eye.view;
 
 import br.com.eye.controller.ControllerLeituraComputador;
-import br.com.eye.dao.StatementLeituraComputador;
-import br.com.eye.model.Computador;
-import br.com.eye.model.Usuario;
+import br.com.eye.controller.ControllerComputador;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 public class TelaFuncionou extends JFrame implements ActionListener {
@@ -68,8 +54,8 @@ public class TelaFuncionou extends JFrame implements ActionListener {
 
         setVisible(true);
 
-        if (new Computador().inserePrimeiroComputador(codUsuario)) {
-            new ControllerLeituraComputador().setLeitura(new StatementLeituraComputador().getCodComputador(codUsuario));
+        if (new ControllerComputador().inserePrimeiroComputador(codUsuario)) {
+            new ControllerLeituraComputador().setLeitura(new ControllerLeituraComputador().getCodComputador(codUsuario));
         }
     }
 

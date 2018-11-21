@@ -1,52 +1,32 @@
 package br.com.eye.controller;
 
-import br.com.eye.dao.StatementLeituraComputador;
-import br.com.eye.model.LeituraComputador;
+import br.com.eye.model.dao.StatementLeituraComputador;
 import java.sql.SQLException;
-import oshi.SystemInfo;
-import oshi.hardware.CentralProcessor;
-import oshi.hardware.HardwareAbstractionLayer;
-import oshi.software.os.FileSystem;
-import oshi.software.os.OSFileStore;
+
+
+import br.com.eye.model.LeituraComputador;
 
 public class ControllerLeituraComputador {
 
-    SystemInfo systemInfo = new SystemInfo();
-    HardwareAbstractionLayer hardware = systemInfo.getHardware();
-    CentralProcessor processor = hardware.getProcessor();
-    FileSystem fileSystem = systemInfo.getOperatingSystem().getFileSystem();
-
+    LeituraComputador leituraComputador = new LeituraComputador();
+    
     public double getCPUUsada() {
-        Double cl = processor.getSystemCpuLoad();
-        return cl * 100.0;
+        return leituraComputador.getCpuUsadaOshi();
     }
 
     public double getMemoriaDisponivel() {
-        return systemInfo.getHardware().getMemory().getAvailable();
+        return leituraComputador.getMemoriaDisponivelOshi();
     }
 
     public long getDiscoDisponivel() {
-        OSFileStore[] fsArray = fileSystem.getFileStores();
-
-        long disponivel = 0;
-
-        for (OSFileStore fs : fsArray) {
-            disponivel += fs.getUsableSpace();
-        }
-        return disponivel;
+        return leituraComputador.getDiscoDisponivelOshi();
     }
 
+    public int getCodComputador(int codUsuario) throws SQLException{
+        return new StatementLeituraComputador().getCodComputador(codUsuario);
+    }
+    
     public void setLeitura(int codComputador) throws SQLException, InterruptedException {
-
-        while (true) {
-            Thread.sleep(1000);
-            if (new StatementLeituraComputador().existeLeituraRegistrada(codComputador)) {
-                System.out.println("DEU TRUE");
-                new StatementLeituraComputador().updateLeitura(new LeituraComputador().leituraOshi(), codComputador);
-            } else {
-                System.out.println("DEU FALSE");
-                new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codComputador);
-            }
-        }
+        leituraComputador.setLeitura(codComputador);
     }
 }

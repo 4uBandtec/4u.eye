@@ -1,7 +1,5 @@
 package br.com.eye.model;
 
-import br.com.eye.controller.ControllerUsuario;
-import java.sql.SQLException;
 
 public class Usuario {
 
@@ -10,12 +8,46 @@ public class Usuario {
     private String senha;
     private int salt;
     private String codWorkspace;
-
-    public boolean Logar(String login, String senha) throws SQLException {
-        return new ControllerUsuario().autenticarUsuario(login, senha);
+    
+    
+    public int getCodUsuario() {
+        return codUsuario;
     }
 
-    public int getCodUsuario(String username) throws SQLException {
-        return new ControllerUsuario().getCodUsuario(username);
+    public void setCodUsuario(int codUsuario) {
+        this.codUsuario = codUsuario;
     }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
+
+    public int getSalt() {
+        return salt;
+    }
+
+    public void setSalt(int salt) {
+        this.salt = salt;
+    }
+
+    public String getCodWorkspace() {
+        return codWorkspace;
+    }
+
+    public void setCodWorkspace(String codWorkspace) {
+        this.codWorkspace = codWorkspace;
+    }
+
 }

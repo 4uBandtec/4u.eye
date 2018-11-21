@@ -1,11 +1,11 @@
 package br.com.eye.controller;
 
-import br.com.eye.dao.StatementWorkspace;
+import br.com.eye.model.dao.StatementWorkspace;
 import java.sql.SQLException;
 
 public class ControllerWorkspace {
 
-    public boolean workspaceValido(String workspacename) throws SQLException {
+    public boolean ValidarWorkspace(String workspacename) throws SQLException {
        return new StatementWorkspace().workspaceValido(workspacename);
     }
 }
