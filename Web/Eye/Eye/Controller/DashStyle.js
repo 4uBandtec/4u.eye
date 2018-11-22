@@ -103,7 +103,7 @@ function addEstilo(i) {
 
     var color = getCor(i);
     item.style.borderColor = color;
-    background.style.background = "radial-gradient(circle, rgba(0,0,0,0.3), " + color +")";
+    background.style.background = "radial-gradient(circle, rgba(0,0,0,0.3), " + color + "," + getCor(i+1) + ")";
     
 }
 

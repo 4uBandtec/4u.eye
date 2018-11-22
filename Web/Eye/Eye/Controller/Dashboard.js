@@ -272,7 +272,8 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
     var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
     
     gradientStroke.addColorStop(0, cor);
-    gradientStroke.addColorStop(0.2, style.getPropertyValue('--yellow-color').replace(/\s/g, ''));
+    gradientStroke.addColorStop(0.1, style.getPropertyValue('--txt-color').replace(/\s/g, ''));
+    gradientStroke.addColorStop(0.2, cor2);
     
 
     data = {
