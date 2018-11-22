@@ -180,9 +180,9 @@ body {
 }
 
 .itemIcon {
-    height: 150%;
+    height: 100%;
     position: absolute;
-    left: 0;
+    left: -10%;
     top: 0;
     flex: auto;
     transition-delay: 0.1s;

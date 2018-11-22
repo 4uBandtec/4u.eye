@@ -135,7 +135,7 @@ function getCor(i) {
 function efeitoOutIcon(itembgs, items, icon) {
     
     
-    icon.style.left = 0;
+    icon.style.left = -10+"%";
     icon.style.top = 0;
 }
 
