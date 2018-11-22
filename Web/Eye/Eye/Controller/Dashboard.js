@@ -112,8 +112,8 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
 
     tituloComputador.textContent = computadorMonitor.NomeComputador;
     
-    Desenhar("HD", infoGeralComputador, (computadorMonitor.HDTotal / 1e+9).toFixed(2), (leituraMonitor.HDAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
-    Desenhar("RAM", infoGeralComputador, (computadorMonitor.RAMTotal / 1e+9).toFixed(2), (leituraMonitor.RAMAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    Desenhar("HD", infoGeralComputador, (computadorMonitor.HdTotal / 1e+9).toFixed(2), (leituraMonitor.HdAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    Desenhar("RAM", infoGeralComputador, (computadorMonitor.RamTotal / 1e+9).toFixed(2), (leituraMonitor.RamAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
     //Desenhar("CPU", infoGeralComputador, computadorMonitor.CpuAtual, leituraMonitor.CpuAtual);
 
 
@@ -167,7 +167,7 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
     var style = getComputedStyle(document.body);
     var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
     var angulo = 0,
-        cor = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
+        cor = (style.getPropertyValue('--blue-color')).replace(/\s/g, '');
     var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
 
 
@@ -267,9 +267,12 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
     var rect = c.getBoundingClientRect();
 
-    var gradientStroke = ctx.createLinearGradient(rect.x, rect.y, rect.x - rect.width, rect.y - rect.height);
+    console.log(rect.x, rect.width, rect.x - rect.width);
+
+    var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+    
     gradientStroke.addColorStop(0, cor);
-    gradientStroke.addColorStop(1, cor2);
+    gradientStroke.addColorStop(0.2, style.getPropertyValue('--yellow-color').replace(/\s/g, ''));
     
 
     data = {
@@ -335,10 +338,10 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 function updateChart(computadorMonitor, leituraMonitor) {
     var infoGeralComputador = document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador);
 
-    console.log(leituraMonitor.RAMAtual);
+    console.log(leituraMonitor.RamAtual);
 
-    Atualizar("HD", infoGeralComputador, (computadorMonitor.HDTotal / 1e+9).toFixed(2), (leituraMonitor.HDAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
-    Atualizar("RAM", infoGeralComputador, (computadorMonitor.RAMTotal / 1e+9).toFixed(2), (leituraMonitor.RAMAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    Atualizar("HD", infoGeralComputador, (computadorMonitor.HdTotal / 1e+9).toFixed(2), (leituraMonitor.HdAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    Atualizar("RAM", infoGeralComputador, (computadorMonitor.RamTotal / 1e+9).toFixed(2), (leituraMonitor.RamAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
 
 
 }
@@ -351,11 +354,7 @@ function Atualizar(componente, infoGeralComputador, total, atual, cod) {
     document.getElementById("conteudoTotal" + componente + cod).textContent = total + " GB";
 
     document.getElementById("conteudoAtual" + componente + cod).textContent = atual + " GB";
-
-    if (componente == "RAM") {
-        angulo = 3.2;
-        cor = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
-    }
+    
     
     
 
@@ -365,7 +364,7 @@ function Atualizar(componente, infoGeralComputador, total, atual, cod) {
 
             var chart = charts[i];
 
-            chart.data.datasets[0].data = [atual, total - atual];
+            chart.data.datasets[0].data = [atual, total-atual];
 
             
 

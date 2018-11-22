@@ -37,6 +37,7 @@ function getItemMenu() {
 
     for (i = 0; i < totalItens; i++) {
         addEvento(i);
+        addEstilo(i);
     }
 
 }
@@ -46,17 +47,21 @@ function getItemMenu() {
 function addEvento(i) {
     var itemMenuBackgrounds = document.getElementsByClassName("itemMenuBackGround");
     var itemMenus = document.getElementsByClassName("itemMenu");
+    var itemIcons = document.getElementsByClassName("itemIcon");
     var totalItens = itemMenuBackgrounds.length;
 
 
     var item = itemMenus[i];
     var background = itemMenuBackgrounds[i];
-    itemMenus[i].addEventListener("mousemove", function () { efeitoHover(background, item) });
+    var icon = itemIcons[i];
+    itemMenus[i].addEventListener("mousemove", function () { efeitoHoverIcon(background, item, icon) });
+    itemMenus[i].addEventListener("mouseout", function () { efeitoOutIcon(background, item, icon) });
+    
 }
 
 
 
-function efeitoHover(itembgs, items) {
+function efeitoHover(itembgs, items, icon) {
 
     var width = items.getBoundingClientRect().width;
     var itemX = items.getBoundingClientRect().x;
@@ -64,6 +69,77 @@ function efeitoHover(itembgs, items) {
 
     itembgs.style.left = backgroundX + "px";
 }
+
+function efeitoHoverIcon(itembgs, items, icon) {
+
+    var width = items.getBoundingClientRect().width;
+    var itemX = items.getBoundingClientRect().x;
+    var backgroundX = (mouseX - itemX) - ((width));
+    
+
+    var widthIcon = icon.getBoundingClientRect().width;
+    var iconX = icon.getBoundingClientRect().x;
+    var backgroundIconX = (mouseX - iconX) - ((widthIcon));
+
+    var heightIcon = icon.getBoundingClientRect().height;
+    var iconY = icon.getBoundingClientRect().y;
+    var backgroundIconY = (mouseY - iconY) - ((heightIcon));
+
+    itembgs.style.left = backgroundX + "px";
+    icon.style.left = backgroundIconX / 2 + "px";
+    icon.style.top = backgroundIconY / 2 + "px";
+}
+
+function addEstilo(i) {
+    var itemMenuBackgrounds = document.getElementsByClassName("itemMenuBackGround");
+    var itemMenus = document.getElementsByClassName("itemMenu");
+    var itemIcons = document.getElementsByClassName("itemIcon");
+    var totalItens = itemMenuBackgrounds.length;
+
+
+    var item = itemMenus[i];
+    var background = itemMenuBackgrounds[i];
+    var icon = itemIcons[i];
+
+    var color = getCor(i);
+    item.style.borderColor = color;
+    background.style.background = "radial-gradient(circle, rgba(0,0,0,0.3), " + color +")";
+    
+}
+
+function getCor(i) {
+    if (i > 6) i -= 7;
+    if (i < 0) i = 6;
+
+    var style = getComputedStyle(document.body);
+
+    switch (i) {
+        case 0:
+            return (style.getPropertyValue('--red-color')).replace(/\s/g, '');
+        case 1:
+            return (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+        case 2:
+            return (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
+        case 3:
+            return (style.getPropertyValue('--blue-color')).replace(/\s/g, '');
+        case 4:
+            return (style.getPropertyValue('--green-color')).replace(/\s/g, '');
+        case 5:
+            return (style.getPropertyValue('--yellow-color')).replace(/\s/g, '');
+        case 6:
+            return (style.getPropertyValue('--orange-color')).replace(/\s/g, '');
+
+    }
+}
+
+function efeitoOutIcon(itembgs, items, icon) {
+    
+    
+    icon.style.left = 0;
+    icon.style.top = 0;
+}
+
+
 
 function startaHover(itembg, item) {
     var itembgs = document.getElementById(itembg);

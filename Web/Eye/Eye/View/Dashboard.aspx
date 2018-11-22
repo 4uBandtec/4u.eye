@@ -23,9 +23,9 @@
             EnablePageMethods="true" />
         <!--MENU-->
         <div id="sideMenu" onmousemove="getCoordenadas()">
-
             <a href="CadastroUsuario.aspx">
                 <div class="itemMenu">
+
 
                     <div class="itemIcon">
                         <img src="../Component/icon.png" />
@@ -38,108 +38,125 @@
                     </div>
 
                 </div>
+
             </a>
 
-            <div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
 
-                <div class="itemTxt">
-                    Computador
+                    <div class="itemIcon">
+                        <img src="../Component/icon.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Computador
                
+                    </div>
+
                 </div>
+            </a>
 
-            </div>
 
-            <div class="itemMenu">
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+                    <div class="itemIcon">
+                        <img src="../Component/icon.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+                    <div class="itemTxt">
+                        Computador
                
+                    </div>
+
                 </div>
+            </a>
 
-            </div>
 
-            <div class="itemMenu">
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+                    <div class="itemIcon">
+                        <img src="../Component/icon.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+                    <div class="itemTxt">
+                        Computador
                
+                    </div>
+
                 </div>
+            </a>
 
-            </div>
 
-            <div class="itemMenu">
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+                    <div class="itemIcon">
+                        <img src="../Component/icon.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+                    <div class="itemTxt">
+                        Computador
                
+                    </div>
+
                 </div>
+            </a>
 
-            </div>
 
-            <div class="itemMenu">
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+                    <div class="itemIcon">
+                        <img src="../Component/icon.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+                    <div class="itemTxt">
+                        Computador
                
+                    </div>
+
                 </div>
+            </a>
 
-            </div>
 
-            <div class="itemMenu">
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+                    <div class="itemIcon">
+                        <img src="../Component/icon.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+                    <div class="itemTxt">
+                        Computador
                
+                    </div>
+
                 </div>
+            </a>
+            
 
-            </div>
+            <a href="Dashboard.aspx">
+                <div class="itemMenu" onclick="breakSession()">
+                    <div class="itemIcon">
+                        <img src="../Component/icon.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
 
-            <div class="itemMenu" onclick="breakSession()">
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
+                    <div class="itemTxt">
+                        Loggout
+                    </div>
+
                 </div>
-                <div class="itemMenuBackGround"></div>
-
-                <div class="itemTxt">
-<<<<<<< HEAD
-                    Computador
-               
-=======
-                    Loggout
->>>>>>> 4287f4d4939e422c23471e5bd48b4e22fd8b88fe
-                </div>
-
-            </div>
+            </a>
 
         </div>
 
@@ -152,7 +169,6 @@
 
             <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
         </div>
-
 
         <!--Area com os containers dos computadores-->
         <div id="areaInfo">
