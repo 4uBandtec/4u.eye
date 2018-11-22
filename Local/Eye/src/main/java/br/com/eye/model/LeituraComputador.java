@@ -1,6 +1,7 @@
 package br.com.eye.model;
 
 import br.com.eye.model.dao.StatementLeituraComputador;
+import br.com.eye.model.Computador;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
 import static jdk.nashorn.internal.objects.NativeMath.round;
@@ -72,7 +73,9 @@ public class LeituraComputador {
     }
 
     public long getMemoriaDisponivelOshi() {
-        return systemInfo.getHardware().getMemory().getAvailable();
+        Computador computador = new Computador();
+        long ramDisponivel = computador.getTotalMemoriaOshi() - systemInfo.getHardware().getMemory().getAvailable();
+        return ramDisponivel;
     }
 
     public long getDiscoDisponivelOshi() {

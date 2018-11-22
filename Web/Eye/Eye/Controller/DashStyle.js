@@ -115,19 +115,19 @@ function getCor(i) {
 
     switch (i) {
         case 0:
-            return (style.getPropertyValue('--red-color')).replace(/\s/g, '');
-        case 1:
             return (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
-        case 2:
+        case 1:
             return (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
-        case 3:
+        case 2:
             return (style.getPropertyValue('--blue-color')).replace(/\s/g, '');
-        case 4:
+        case 3:
             return (style.getPropertyValue('--green-color')).replace(/\s/g, '');
-        case 5:
+        case 4:
             return (style.getPropertyValue('--yellow-color')).replace(/\s/g, '');
-        case 6:
+        case 5:
             return (style.getPropertyValue('--orange-color')).replace(/\s/g, '');
+        case 6:
+            return (style.getPropertyValue('--red-color')).replace(/\s/g, '');
 
     }
 }

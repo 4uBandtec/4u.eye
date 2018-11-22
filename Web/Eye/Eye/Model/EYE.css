@@ -256,7 +256,8 @@ body {
 
 .txtMeuResumo {
     padding: 2%;
-    width: 50%;
+    width: 40%;
+    padding-left: 10%;
     text-align: center;
     margin-left: 25%;
     transition-duration: 0.5s;
@@ -304,7 +305,9 @@ body {
     height: 2.5vw;
     width: 102%;
     color: var(--txt-color);
-    border-bottom: solid 1px var(--pink-color);
+    border-bottom: solid 1px var(--to-invisible);
+    border-image: linear-gradient(to bottom right, var(--yellow-color) 0%, var(--green-color) 25%, var(--blue-color) 50%, var(--purple-color) 75%, var(--pink-color) 100%);
+    border-image-slice: 1;
     position: relative;
     float: left;
     text-align: left;

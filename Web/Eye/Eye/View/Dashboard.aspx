@@ -28,7 +28,43 @@
 
 
                     <div class="itemIcon">
-                        <img src="../Component/icon.png" />
+                        <img src="../Component/Dashboard.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Dashboard
+               
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/Usuarios.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Usuários
+               
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a href="CadastroUsuario.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/AddUsuarios.png" />
                     </div>
                     <div class="itemMenuBackGround"></div>
 
@@ -38,7 +74,6 @@
                     </div>
 
                 </div>
-
             </a>
 
 
@@ -46,12 +81,12 @@
                 <div class="itemMenu">
 
                     <div class="itemIcon">
-                        <img src="../Component/icon.png" />
+                        <img src="../Component/Tarefa.png" />
                     </div>
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Computador
+                        Cadastrar Tarefas
                
                     </div>
 
@@ -63,12 +98,12 @@
                 <div class="itemMenu">
 
                     <div class="itemIcon">
-                        <img src="../Component/icon.png" />
+                        <img src="../Component/Slack.png" />
                     </div>
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Computador
+                        Cadastrar SlackBot
                
                     </div>
 
@@ -80,63 +115,12 @@
                 <div class="itemMenu">
 
                     <div class="itemIcon">
-                        <img src="../Component/icon.png" />
+                        <img src="../Component/Opcoes.png" />
                     </div>
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Computador
-               
-                    </div>
-
-                </div>
-            </a>
-
-
-            <a href="Dashboard.aspx">
-                <div class="itemMenu">
-
-                    <div class="itemIcon">
-                        <img src="../Component/icon.png" />
-                    </div>
-                    <div class="itemMenuBackGround"></div>
-
-                    <div class="itemTxt">
-                        Computador
-               
-                    </div>
-
-                </div>
-            </a>
-
-
-            <a href="Dashboard.aspx">
-                <div class="itemMenu">
-
-                    <div class="itemIcon">
-                        <img src="../Component/icon.png" />
-                    </div>
-                    <div class="itemMenuBackGround"></div>
-
-                    <div class="itemTxt">
-                        Computador
-               
-                    </div>
-
-                </div>
-            </a>
-
-
-            <a href="Dashboard.aspx">
-                <div class="itemMenu">
-
-                    <div class="itemIcon">
-                        <img src="../Component/icon.png" />
-                    </div>
-                    <div class="itemMenuBackGround"></div>
-
-                    <div class="itemTxt">
-                        Computador
+                        Opções
                
                     </div>
 
@@ -147,12 +131,12 @@
             <a href="Dashboard.aspx">
                 <div class="itemMenu" onclick="breakSession()">
                     <div class="itemIcon">
-                        <img src="../Component/icon.png" />
+                        <img src="../Component/Logout.png" />
                     </div>
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Loggout
+                        Logout
                     </div>
 
                 </div>

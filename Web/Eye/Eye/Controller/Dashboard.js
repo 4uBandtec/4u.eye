@@ -172,7 +172,6 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
 
     if (componente == "RAM") {
-        angulo = 3.2;
         cor = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
     }
 
