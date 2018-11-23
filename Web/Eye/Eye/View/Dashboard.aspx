@@ -5,163 +5,158 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Dashboard | EYE by 4U</title>
-    <link href="../Model/EYE.css" rel="stylesheet" type="text/css" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Dashboard | EYE by 4U</title>
+	<link href="../Model/EYE.css" rel="stylesheet" type="text/css" />
 
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+	<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script type="text/javascript" src="../Controller/Dashboard.js"></script>
-    <script type="text/javascript" src="../Controller/DashStyle.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	<script type="text/javascript" src="../Controller/Dashboard.js"></script>
+	<script type="text/javascript" src="../Controller/DashStyle.js"></script>
 
 </head>
 <body onload="iniciarEstilo(), GetUsuariosWorkspace()">
-    <form id="formDashboard" runat="server">
-        <asp:ScriptManager ID="ScriptManager" runat="server"
-            EnablePageMethods="true" />
-        <!--MENU-->
-        <div id="sideMenu" onmousemove="getCoordenadas()">
+	<form id="formDashboard" runat="server">
+		<asp:ScriptManager ID="ScriptManager" runat="server"
+			EnablePageMethods="true" />
+		<!--MENU-->
+		<div id="sideMenu" onmousemove="getCoordenadas()">
 
-            <a href="CadastroUsuario.aspx">
-                <div class="itemMenu">
+			<a href="CadastroUsuario.aspx">
+				<div class="itemMenu">
 
-                    <div class="itemIcon">
-                        <img src="../Component/icon.png" />
-                    </div>
-                    <div class="itemMenuBackGround"></div>
+					<div class="itemIcon">
+						<img src="../Component/icon.png" />
+					</div>
+					<div class="itemMenuBackGround"></div>
 
-                    <div class="itemTxt">
-                        Cadastrar Usuário
+					<div class="itemTxt">
+						Cadastrar Usuário
                
-                    </div>
+					</div>
 
-                </div>
-            </a>
+				</div>
+			</a>
 
-            <div class="itemMenu">
+			<div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+				<div class="itemIcon">
+					<img src="../Component/icon.png" />
+				</div>
+				<div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+				<div class="itemTxt">
+					Computador
                
-                </div>
+				</div>
 
-            </div>
+			</div>
 
-            <div class="itemMenu">
+			<div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+				<div class="itemIcon">
+					<img src="../Component/icon.png" />
+				</div>
+				<div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+				<div class="itemTxt">
+					Computador
                
-                </div>
+				</div>
 
-            </div>
+			</div>
 
-            <div class="itemMenu">
+			<div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+				<div class="itemIcon">
+					<img src="../Component/icon.png" />
+				</div>
+				<div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+				<div class="itemTxt">
+					Computador
                
-                </div>
+				</div>
 
-            </div>
+			</div>
 
-            <div class="itemMenu">
+			<div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+				<div class="itemIcon">
+					<img src="../Component/icon.png" />
+				</div>
+				<div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+				<div class="itemTxt">
+					Computador
                
-                </div>
+				</div>
 
-            </div>
+			</div>
 
-            <div class="itemMenu">
+			<div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+				<div class="itemIcon">
+					<img src="../Component/icon.png" />
+				</div>
+				<div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+				<div class="itemTxt">
+					Computador
                
-                </div>
+				</div>
 
-            </div>
+			</div>
 
-            <div class="itemMenu">
+			<div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+				<div class="itemIcon">
+					<img src="../Component/icon.png" />
+				</div>
+				<div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+				<div class="itemTxt">
+					Computador
                
-                </div>
+				</div>
 
-            </div>
+			</div>
 
-            <div class="itemMenu" onclick="breakSession()">
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+			<div class="itemMenu" onclick="breakSession()">
+				<div class="itemIcon">
+					<img src="../Component/icon.png" />
+				</div>
+				<div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-<<<<<<< HEAD
-                    Computador
-               
-=======
-                    Loggout
->>>>>>> 4287f4d4939e422c23471e5bd48b4e22fd8b88fe
-                </div>
+				<div class="itemTxt">
+					Loggout
+				</div>
 
-            </div>
+			</div>
 
-        </div>
+		</div>
 
-        <!--/MENU-->
+		<!--/MENU-->
 
 
 
-        <div id="meuResumo">
-            <div class="txtMeuResumo">TIME:</div>
+		<div id="meuResumo">
+			<div class="txtMeuResumo">TIME:</div>
 
-            <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
-        </div>
+			<asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
+		</div>
 
 
-        <!--Area com os containers dos computadores-->
-        <div id="areaInfo">
+		<!--Area com os containers dos computadores-->
+		<div id="areaInfo">
 
-            <!--Eles são adds através da função iniciarDash() no script EYEDash.js-->
+			<!--Eles são adds através da função iniciarDash() no script EYEDash.js-->
 
-        </div>
+		</div>
 
-        <!--/Area com os containers dos computadores-->
-    </form>
+		<!--/Area com os containers dos computadores-->
+	</form>
 </body>
 </html>

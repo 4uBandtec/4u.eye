@@ -74,6 +74,7 @@
     <Content Include="Controller\DashStyle.js" />
     <Content Include="Global.asax" />
     <Content Include="Model\EYE.css" />
+    <Content Include="View\CadastroTarefas.aspx" />
     <Content Include="View\CadastroUsuario.aspx" />
     <Content Include="View\CadastroWorkspace.aspx" />
     <Content Include="View\Dashboard.aspx" />
@@ -83,6 +84,7 @@
   <ItemGroup>
     <Compile Include="Controller\ControllerComputador.cs" />
     <Compile Include="Controller\ControllerLeituraAtual.cs" />
+    <Compile Include="Controller\ControllerTarefa.cs" />
     <Compile Include="Controller\ControllerUsuario.cs" />
     <Compile Include="Controller\ControllerWorkspace.cs" />
     <Compile Include="Global.asax.cs">
@@ -94,15 +96,24 @@
     <Compile Include="Model\DAO\StatementComputador.cs" />
     <Compile Include="Model\DAO\StatementLeituraAtual.cs" />
     <Compile Include="Model\DAO\StatementPerfil.cs" />
+    <Compile Include="Model\DAO\StatementTarefa.cs" />
     <Compile Include="Model\DAO\StatementUsuario.cs" />
     <Compile Include="Model\DAO\StatementWorkspace.cs" />
     <Compile Include="Model\LeituraAtual.cs" />
     <Compile Include="Model\Perfil.cs" />
     <Compile Include="Model\Enum\TiposDePerfil.cs" />
+    <Compile Include="Model\Tarefa.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Model\Validacao.cs" />
     <Compile Include="Model\Workspace.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\CadastroTarefas.aspx.cs">
+      <DependentUpon>CadastroTarefas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\CadastroTarefas.aspx.designer.cs">
+      <DependentUpon>CadastroTarefas.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\CadastroUsuario.aspx.cs">
       <DependentUpon>CadastroUsuario.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
