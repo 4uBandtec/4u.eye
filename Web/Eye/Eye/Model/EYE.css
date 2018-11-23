@@ -180,10 +180,10 @@ body {
 }
 
 .itemIcon {
-    height: 100%;
+    height: 90%;
     position: absolute;
     left: -10%;
-    top: 0;
+    top: 0%;
     flex: auto;
     transition-delay: 0.1s;
 }
@@ -199,13 +199,14 @@ body {
 
 .itemTxt {
     height: 30%;
-    width: 96%;
+    width: 70%;
     position: absolute;
     left: 0;
     top: 0;
     font-size: 1.3em;
     text-align: center;
     padding: 2%;
+    padding-left: 28%;
     padding-top: 10%;
     padding-bottom: 40%;
     background: radial-gradient(circle, var(--black-color-a9), var(--black-color-a));

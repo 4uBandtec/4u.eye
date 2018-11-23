@@ -25,6 +25,18 @@ function iniciarEstilo() {
     html.style.setProperty("--to-invisible", "rgb(" + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() * 250 + ", 0)");
     html.style.setProperty("--black-color-a", "rgb(" + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random()/2 + ")");
     */
+
+
+
+    /*
+    var html = document.getElementsByTagName('html')[0];
+    html.style.setProperty("--bg-color", "rgb(220,220,220)");
+    html.style.setProperty("--txt-color", "rgb(20,20,20)");
+    html.style.setProperty("--darker-bg-color", "rgb(210,210,210)");
+    html.style.setProperty("--lighter-bg-color", "rgb(240,240,240)");
+    html.style.setProperty("--to-invisible", "rgba(255,255,255, 0)");
+    html.style.setProperty("--black-color-a", "rgba(255,255,255,0.5)");
+    */
 }
 
 
@@ -136,7 +148,7 @@ function efeitoOutIcon(itembgs, items, icon) {
     
     
     icon.style.left = -10+"%";
-    icon.style.top = 0;
+    icon.style.top = 0+"%";
 }
 
 

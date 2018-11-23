@@ -168,11 +168,11 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
     var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
     var angulo = 0,
         cor = (style.getPropertyValue('--blue-color')).replace(/\s/g, '');
-    var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+    var cor2 = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
 
 
     if (componente == "RAM") {
-        cor = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
+        cor = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
     }
 
 
@@ -271,8 +271,8 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
     var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
     
     gradientStroke.addColorStop(0, cor);
-    gradientStroke.addColorStop(0.1, style.getPropertyValue('--txt-color').replace(/\s/g, ''));
-    gradientStroke.addColorStop(0.2, cor2);
+    gradientStroke.addColorStop(0.1, cor2);
+    gradientStroke.addColorStop(0.2, cor);
     
 
     data = {
@@ -303,7 +303,6 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
             display: false
         },
         segmentShowStroke: false,
-        rotation: angulo,
         cutoutPercentage: 90,
         animationSteps: 100,
         animationEasing: "easeOutBounce",
