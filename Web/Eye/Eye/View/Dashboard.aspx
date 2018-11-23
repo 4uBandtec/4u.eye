@@ -157,6 +157,7 @@
         <!--Area com os containers dos computadores-->
         <div id="areaInfo">
 
+
             <!--Eles são adds através da função iniciarDash() no script EYEDash.js-->
 
         </div>

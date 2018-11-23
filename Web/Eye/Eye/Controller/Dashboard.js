@@ -1,7 +1,24 @@
 ﻿
+function LoadingAll() {
+    
+
+
+    var loading = document.createElement("div");
+    loading.setAttribute("class", "loading");
+    loading.setAttribute("id", "loading");
+
+    document.getElementById("areaInfo").appendChild(loading);
+
+    loading.textContent = "Carregando Informações..."
+}
+
+function Loaded() {
+    document.getElementById("loading").parentNode.removeChild(document.getElementById("loading"));
+}
 
 
 function GetUsuariosWorkspace() {
+    LoadingAll();
     PageMethods.GetUsuariosWorkspace(setCodComputadores, onError);
 }
 
@@ -12,7 +29,8 @@ var computadoresUsuarios = [];
 
 function setCodComputadores(usuarios) {
     computadoresUsuarios = usuarios;
-    setTimeout(getLeitura(), 1000);
+    getLeitura();
+    Loaded();
     return computadoresUsuarios;
 }
 
@@ -302,6 +320,9 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
         legend: {
             display: false
         },
+        tooltips: {
+            enabled: false
+        },
         segmentShowStroke: false,
         cutoutPercentage: 90,
         animationSteps: 100,
@@ -329,7 +350,7 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
 
     //console.log(total, total - atual, atual);
-
+    
 }    
 
 

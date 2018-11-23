@@ -186,6 +186,7 @@ body {
     top: 0%;
     flex: auto;
     transition-delay: 0.1s;
+    opacity: 0.2;
 }
 
     .itemIcon img {
@@ -222,8 +223,8 @@ body {
     transition: 0.3s ease-out;
     transition-delay: 0s;
     transform: scale(2);
+    opacity: 1;
 }
-
 
 
 .itemMenu:hover {
@@ -719,6 +720,39 @@ label {
     height: 10vh;
     overflow:visible;
 }
+
+
+@keyframes loading {
+    from {
+        border-color: var(--pink-color);
+        padding-top: 3%;
+
+    }
+
+    to {
+        border-color: var(--purple-color);
+        padding-bottom: 3%;
+    }
+}
+
+.loading {
+    content: "CARREGANDO INFORMAÇÕES...";
+    position: relative;
+    height: auto;
+    width: 80%;
+    left: 10%;
+    border: solid 4px var(--to-invisible);
+    border-left: none;
+    border-right: none;
+    animation-name: loading;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    text-align: center;
+    padding: 2%;
+}
+
 
 /*                                                                                                */
 /*------------------------------------------Responsive--------------------------------------------*/
