@@ -86,7 +86,7 @@ function efeitoHoverIcon(itembgs, items, icon) {
     var backgroundIconY = (mouseY - iconY) - ((heightIcon));
 
     itembgs.style.left = backgroundX + "px";
-    icon.style.left = backgroundIconX / 2 + "px";
+    icon.style.left = backgroundIconX / 4 + "px";
     icon.style.top = backgroundIconY / 4 + "px";
 }
 
