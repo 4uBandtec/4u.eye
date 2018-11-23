@@ -767,8 +767,11 @@ label {
         background: linear-gradient(90deg,var(--black-color-a), var(--red-color-a), var(--black-color-a));
     }
 
-    .itemIcon{
+    .itemIcon {
         height: 100%;
+    }
+    .itemIcon img{
+        height: 80%;
     }
 
     #meuResumo {
