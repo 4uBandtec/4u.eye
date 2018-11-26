@@ -171,6 +171,7 @@ var chartsOptions = [];
 var chartsComp = [];
 
 var charts = [];
+var lineCharts = [];
 
 function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
@@ -492,7 +493,6 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
     var ctx = c.getContext("2d");
 
 
-
     var rect = c.getBoundingClientRect();
 
     console.log(rect.x, rect.width, rect.x - rect.width);
@@ -504,18 +504,18 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
     gradientStroke.addColorStop(0.2, cor);
 
 
+    
+
     data = {
+
         datasets: [{
-            data: [atual, total - atual],
+            data: [total - atual],
             backgroundColor: [gradientStroke, darkerBgColor],
             hoverBackgroundColor: [cor, "#000"]
         }],
 
         // These labels appear in the legend and in the tooltips when hovering different arcs
-        labels: [
-            componente + ' Usado',
-            componente + ' Livre'
-        ]
+        labels: []
 
     };
 
@@ -523,35 +523,29 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
 
 
     var options = {
-        elements: {
-            arc: {
-                borderWidth: 0
-            }
-        },
         legend: {
             display: false
         },
-        tooltips: {
-            enabled: false
-        },
-        segmentShowStroke: false,
-        cutoutPercentage: 90,
         animationSteps: 100,
         animationEasing: "easeOutBounce",
-        animateRotate: true,
         responsive: true,
-        maintainAspectRatio: true,
-        animateScale: false,
+        maintainAspectRatio: false,
+        animateScale: true,
+        scaleOverride: false,
+        scaleSteps: 10,
+        scaleStepWidth: 50,
+        scaleStartValue: 0 
 
 
     };
 
+    /**/
     chartsComp.push(componente);
     chartsCod.push(cod);
     chartsData.push(data);
     chartsOptions.push(options);
 
-    charts.push(new Chart(ctx, {
+    lineCharts.push(new Chart(ctx, {
         type: 'line',
         data: data,
         options: options
@@ -561,11 +555,25 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
 
 
     //console.log(total, total - atual, atual);
-
+    updateLineChart();
 }
 
 
 
+function updateLineChart() {
+    for (i = 0; i < lineCharts.length; i++){
+
+        var lineChart = lineCharts[i];
+        lineChart.data.labels.push(i++)
+        lineChart.data.datasets[0].data.push(Math.random()*100)
+        if (lineChart.data.labels.length > 10) {
+            lineChart.data.labels.shift()
+            lineChart.data.datasets[0].data.shift()
+        }
+        lineChart.update()
+    }
+    setTimeout(updateLineChart, 5000)
+}
 
 
 function breakSession() {

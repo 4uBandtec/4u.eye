@@ -383,11 +383,13 @@ body {
 
 .graficoCpu {
     height: 14vw;
-    width: 37vw;
+    width: 35vw;
     position: relative;
     float: left;
     margin: 2%;
     border: solid 1px var(--pink-color);
+    padding-left:2vw;
+    padding-top: 1vw;
 }
 
 .areaCampos {
