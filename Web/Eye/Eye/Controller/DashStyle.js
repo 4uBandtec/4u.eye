@@ -83,7 +83,7 @@ function efeitoHover(itembgs, items, icon) {
 }
 
 function efeitoHoverIcon(itembgs, items, icon) {
-
+    er
     var width = items.getBoundingClientRect().width;
     var itemX = items.getBoundingClientRect().x;
     var backgroundX = (mouseX - itemX) - ((width));

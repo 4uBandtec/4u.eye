@@ -135,15 +135,9 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
     //Desenhar("CPU", infoGeralComputador, computadorMonitor.CpuAtual, leituraMonitor.CpuAtual);
 
 
+    
 
-    var graficoCpu = document.createElement("div");
-    graficoCpu.setAttribute("class", "graficoCpu");
-    graficoCpu.setAttribute("id", "graficoCpu" + computadorMonitor.CodComputador);
-
-    infoGeralComputador.appendChild(graficoCpu);
-
-    graficoCpu.textContent="Finge q tem um gráfico da Cê pê uh aqui"
-
+    DesenharCPU("CPU", infoGeralComputador, 100, leituraMonitor.CpuAtual.toFixed(2));
 
 
     var detalhesMonitor = document.createElement("div");
@@ -399,6 +393,183 @@ function Atualizar(componente, infoGeralComputador, total, atual, cod) {
 
 
 
+function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
+
+
+
+    var style = getComputedStyle(document.body);
+    var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
+    var angulo = 0,
+        cor = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
+    var cor2 = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
+    
+
+
+    var graficoCpu = document.createElement("div");
+    graficoCpu.setAttribute("class", "graficoCpu");
+    graficoCpu.setAttribute("id", "graficoCpu" + componente + cod);
+
+    infoGeralComputador.appendChild(graficoCpu);
+
+    var lineChartInfo = document.createElement("canvas");
+
+    lineChartInfo.setAttribute("class", "lineChart" + componente);
+    lineChartInfo.setAttribute("id", "lineChart" + componente + cod);
+
+    graficoCpu.appendChild(lineChartInfo);
+
+    /*
+    var labelChart = document.createElement("div");
+
+    labelChart.setAttribute("class", "labelsChart");
+    labelChart.setAttribute("id", "donutchart" + componente + cod);
+
+    graficoCpu.appendChild(labelChart);
+
+    var tituloLabel = document.createElement("div");
+
+    tituloLabel.setAttribute("class", "tituloLabel");
+    tituloLabel.setAttribute("id", "tituloLabel" + componente + cod);
+    tituloLabel.style.backgroundColor = cor;
+
+    labelChart.appendChild(tituloLabel);
+
+    tituloLabel.textContent = componente;
+
+    var atualLabel = document.createElement("div");
+
+    atualLabel.setAttribute("class", "conteudoLabel");
+    atualLabel.setAttribute("id", "conteudoLabelAtual" + componente + cod);
+
+    labelChart.appendChild(atualLabel);
+
+    atualLabel.textContent = "Usado: ";
+
+
+
+    var atualValor = document.createElement("div");
+
+    atualValor.setAttribute("class", "conteudoLabel");
+    atualValor.setAttribute("id", "conteudoAtual" + componente + cod);
+
+    labelChart.appendChild(atualValor);
+
+    atualValor.textContent = atual + " GB";
+
+
+
+
+    var totalLabel = document.createElement("div");
+
+    totalLabel.setAttribute("class", "conteudoLabel");
+    totalLabel.setAttribute("id", "conteudoLabelTotal" + componente + cod);
+
+    labelChart.appendChild(totalLabel);
+
+    totalLabel.textContent = "De: ";
+
+
+
+    var totalValor = document.createElement("div");
+
+    totalValor.setAttribute("class", "conteudoLabel");
+    totalValor.setAttribute("id", "conteudoTotal" + componente + cod);
+
+    labelChart.appendChild(totalValor);
+
+    totalValor.textContent = total + " GB";
+
+
+
+
+*/
+
+
+
+
+
+    var c = document.getElementById("lineChart" + componente + cod);
+    var ctx = c.getContext("2d");
+
+
+
+    var rect = c.getBoundingClientRect();
+
+    console.log(rect.x, rect.width, rect.x - rect.width);
+
+    var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+
+    gradientStroke.addColorStop(0, cor);
+    gradientStroke.addColorStop(0.1, cor2);
+    gradientStroke.addColorStop(0.2, cor);
+
+
+    data = {
+        datasets: [{
+            data: [atual, total - atual],
+            backgroundColor: [gradientStroke, darkerBgColor],
+            hoverBackgroundColor: [cor, "#000"]
+        }],
+
+        // These labels appear in the legend and in the tooltips when hovering different arcs
+        labels: [
+            componente + ' Usado',
+            componente + ' Livre'
+        ]
+
+    };
+
+
+
+
+    var options = {
+        elements: {
+            arc: {
+                borderWidth: 0
+            }
+        },
+        legend: {
+            display: false
+        },
+        tooltips: {
+            enabled: false
+        },
+        segmentShowStroke: false,
+        cutoutPercentage: 90,
+        animationSteps: 100,
+        animationEasing: "easeOutBounce",
+        animateRotate: true,
+        responsive: true,
+        maintainAspectRatio: true,
+        animateScale: false,
+
+
+    };
+
+    chartsComp.push(componente);
+    chartsCod.push(cod);
+    chartsData.push(data);
+    chartsOptions.push(options);
+
+    charts.push(new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    }));
+
+
+
+
+    //console.log(total, total - atual, atual);
+
+}
+
+
+
+
+
 function breakSession() {
     PageMethods.BreakSession(function () { window.location = "Login.aspx" }, onError);
 }
+
+

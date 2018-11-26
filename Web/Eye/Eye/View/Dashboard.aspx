@@ -23,7 +23,7 @@
             EnablePageMethods="true" />
         <!--MENU-->
         <div id="sideMenu" onmousemove="getCoordenadas()">
-            <a href="CadastroUsuario.aspx">
+            <a href="Dashboard.aspx">
                 <div class="itemMenu">
 
 
