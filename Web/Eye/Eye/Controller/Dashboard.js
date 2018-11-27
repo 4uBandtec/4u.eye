@@ -1,6 +1,6 @@
 ﻿
 function LoadingAll() {
-    
+
 
 
     var loading = document.createElement("div");
@@ -92,17 +92,15 @@ function SetDadosMonitor(leituraMonitor) {
 
     }
 
-    
 
-    
-    
+
+
+
 
     if (!document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador)) {
         IniciarMonitor(computadorMonitor, leituraMonitor);
     }
-    else {
-        updateChart(computadorMonitor, leituraMonitor);
-    }
+    updateChart(computadorMonitor, leituraMonitor);
 }
 
 
@@ -110,7 +108,7 @@ function SetDadosMonitor(leituraMonitor) {
 
 function IniciarMonitor(computadorMonitor, leituraMonitor) {
 
-    
+
     var areaInfo = document.getElementById('areaInfo');
 
     var infoGeralComputador = document.createElement("div");
@@ -126,18 +124,18 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
     tituloComputador.setAttribute("id", "tituloComputador" + computadorMonitor.CodComputador);
 
     infoGeralComputador.appendChild(tituloComputador);
-    
+
 
     tituloComputador.textContent = computadorMonitor.NomeComputador;
-    
+
     Desenhar("HD", infoGeralComputador, (computadorMonitor.HdTotal / 1e+9).toFixed(2), (leituraMonitor.HdAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
     Desenhar("RAM", infoGeralComputador, (computadorMonitor.RamTotal / 1e+9).toFixed(2), (leituraMonitor.RamAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
     //Desenhar("CPU", infoGeralComputador, computadorMonitor.CpuAtual, leituraMonitor.CpuAtual);
 
 
-    
 
-    DesenharCPU("CPU", infoGeralComputador, 100, leituraMonitor.CpuAtual.toFixed(2));
+
+    DesenharCPU("CPU", infoGeralComputador, 100, leituraMonitor.CpuAtual.toFixed(2), computadorMonitor.CodComputador);
 
 
     var detalhesMonitor = document.createElement("div");
@@ -150,12 +148,12 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
     addDetalhe(detalhesMonitor, "Perfil", computadorMonitor.Perfil, computadorMonitor.CodComputador);
     addDetalhe(detalhesMonitor, "Processador", computadorMonitor.Processador, computadorMonitor.CodComputador);
     addDetalhe(detalhesMonitor, "SO", computadorMonitor.SistemaOperacional + " " + computadorMonitor.VersaoSistema + " " + computadorMonitor.VersaoBits + " BITS ", computadorMonitor.CodComputador);
-    
+
 
 }
 
 
-function addDetalhe(detalhesMonitor, titulo, info, cod){
+function addDetalhe(detalhesMonitor, titulo, info, cod) {
     var campoDetalhe = document.createElement("div");
     campoDetalhe.setAttribute("class", "campoDetalhe");
     campoDetalhe.setAttribute("id", "campoDetalhe" + titulo + cod);
@@ -189,11 +187,11 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
     }
 
 
-    
+
     var localChart = document.createElement("div");
     localChart.setAttribute("class", "localChart");
     localChart.setAttribute("id", "localChart" + componente + cod);
-    
+
     infoGeralComputador.appendChild(localChart);
 
     var pieChartInfo = document.createElement("canvas");
@@ -282,11 +280,11 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
     console.log(rect.x, rect.width, rect.x - rect.width);
 
     var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
-    
+
     gradientStroke.addColorStop(0, cor);
     gradientStroke.addColorStop(0.1, cor2);
     gradientStroke.addColorStop(0.2, cor);
-    
+
 
     data = {
         datasets: [{
@@ -300,10 +298,10 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
             componente + ' Usado',
             componente + ' Livre'
         ]
-        
+
     };
 
-    
+
 
 
     var options = {
@@ -340,13 +338,13 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
         data: data,
         options: options
     }));
-    
-    
+
+
 
 
     //console.log(total, total - atual, atual);
-    
-}    
+
+}
 
 
 
@@ -357,7 +355,7 @@ function updateChart(computadorMonitor, leituraMonitor) {
 
     Atualizar("HD", infoGeralComputador, (computadorMonitor.HdTotal / 1e+9).toFixed(2), (leituraMonitor.HdAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
     Atualizar("RAM", infoGeralComputador, (computadorMonitor.RamTotal / 1e+9).toFixed(2), (leituraMonitor.RamAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
-
+    AtualizarCPU("CPU", infoGeralComputador, leituraMonitor.CpuAtual.toFixed(2), computadorMonitor.CodComputador)
 
 }
 
@@ -369,9 +367,9 @@ function Atualizar(componente, infoGeralComputador, total, atual, cod) {
     document.getElementById("conteudoTotal" + componente + cod).textContent = total + " GB";
 
     document.getElementById("conteudoAtual" + componente + cod).textContent = atual + " GB";
-    
-    
-    
+
+
+
 
     for (i = 0; i < charts.length; i++) {
 
@@ -379,18 +377,18 @@ function Atualizar(componente, infoGeralComputador, total, atual, cod) {
 
             var chart = charts[i];
 
-            chart.data.datasets[0].data = [atual, total-atual];
+            chart.data.datasets[0].data = [atual, total - atual];
 
-            
+
 
             chart.update();
-            
+
         }
 
     }
 
 
-}    
+}
 
 
 
@@ -401,9 +399,9 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
     var style = getComputedStyle(document.body);
     var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
     var angulo = 0,
-        cor = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
-    var cor2 = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
-    
+        cor = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
+    var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+
 
 
     var graficoCpu = document.createElement("div");
@@ -418,72 +416,6 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
     lineChartInfo.setAttribute("id", "lineChart" + componente + cod);
 
     graficoCpu.appendChild(lineChartInfo);
-
-    /*
-    var labelChart = document.createElement("div");
-
-    labelChart.setAttribute("class", "labelsChart");
-    labelChart.setAttribute("id", "donutchart" + componente + cod);
-
-    graficoCpu.appendChild(labelChart);
-
-    var tituloLabel = document.createElement("div");
-
-    tituloLabel.setAttribute("class", "tituloLabel");
-    tituloLabel.setAttribute("id", "tituloLabel" + componente + cod);
-    tituloLabel.style.backgroundColor = cor;
-
-    labelChart.appendChild(tituloLabel);
-
-    tituloLabel.textContent = componente;
-
-    var atualLabel = document.createElement("div");
-
-    atualLabel.setAttribute("class", "conteudoLabel");
-    atualLabel.setAttribute("id", "conteudoLabelAtual" + componente + cod);
-
-    labelChart.appendChild(atualLabel);
-
-    atualLabel.textContent = "Usado: ";
-
-
-
-    var atualValor = document.createElement("div");
-
-    atualValor.setAttribute("class", "conteudoLabel");
-    atualValor.setAttribute("id", "conteudoAtual" + componente + cod);
-
-    labelChart.appendChild(atualValor);
-
-    atualValor.textContent = atual + " GB";
-
-
-
-
-    var totalLabel = document.createElement("div");
-
-    totalLabel.setAttribute("class", "conteudoLabel");
-    totalLabel.setAttribute("id", "conteudoLabelTotal" + componente + cod);
-
-    labelChart.appendChild(totalLabel);
-
-    totalLabel.textContent = "De: ";
-
-
-
-    var totalValor = document.createElement("div");
-
-    totalValor.setAttribute("class", "conteudoLabel");
-    totalValor.setAttribute("id", "conteudoTotal" + componente + cod);
-
-    labelChart.appendChild(totalValor);
-
-    totalValor.textContent = total + " GB";
-
-
-
-
-*/
 
 
 
@@ -500,21 +432,25 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
     var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
 
     gradientStroke.addColorStop(0, cor);
-    gradientStroke.addColorStop(0.1, cor2);
-    gradientStroke.addColorStop(0.2, cor);
+    gradientStroke.addColorStop(0.2, cor2);
+    gradientStroke.addColorStop(0.4, cor);
 
 
-    
 
     data = {
 
         datasets: [{
-            data: [total - atual],
-            backgroundColor: [gradientStroke, darkerBgColor],
-            hoverBackgroundColor: [cor, "#000"]
+            data: [],
+            backgroundColor: gradientStroke,
+            hoverBackgroundColor: [cor, "#000"],
+            fill: true,
+            borderColor: "rgba(230,230,230,1)",
+            borderWidth: 2,
+            pointRadius: 10,
+            pointHoverRadius: 12,
+            showLine: true
         }],
 
-        // These labels appear in the legend and in the tooltips when hovering different arcs
         labels: []
 
     };
@@ -526,26 +462,49 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
         legend: {
             display: false
         },
+        scales: {
+            xAxes: [{
+                fontColor: cor,
+                display: false,
+                ticks: {
+                    stepSize: 1,
+                    fontColor: cor2,
+                    beginAtZero: true,
+                }
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    stepSize: 1,
+                    max: 100,
+                    min: 0,
+                    fontColor: cor,
+                    display: false
+                },
+                ticks: {
+                    fontColor: cor2,
+                    beginAtZero: true
+                }
+            }]
+        },
         animationSteps: 100,
         animationEasing: "easeOutBounce",
         responsive: true,
         maintainAspectRatio: false,
-        animateScale: true,
+        animateScale: false,
         scaleOverride: false,
-        scaleSteps: 10,
-        scaleStepWidth: 50,
-        scaleStartValue: 0 
+        scaleSteps: 1,
+        scaleStartValue: 0,
+        scaleEndValue: 100
 
 
     };
 
-    /**/
     chartsComp.push(componente);
     chartsCod.push(cod);
     chartsData.push(data);
     chartsOptions.push(options);
 
-    lineCharts.push(new Chart(ctx, {
+    charts.push(new Chart(ctx, {
         type: 'line',
         data: data,
         options: options
@@ -554,26 +513,36 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
 
 
 
-    //console.log(total, total - atual, atual);
-    updateLineChart();
 }
 
 
 
-function updateLineChart() {
-    for (i = 0; i < lineCharts.length; i++){
+function AtualizarCPU(componente, infoGeralComputador, atual, cod) {
+    var style = getComputedStyle(document.body);
 
-        var lineChart = lineCharts[i];
-        lineChart.data.labels.push(i++)
-        lineChart.data.datasets[0].data.push(Math.random()*100)
-        if (lineChart.data.labels.length > 10) {
-            lineChart.data.labels.shift()
-            lineChart.data.datasets[0].data.shift()
+
+
+    for (i = 0; i < charts.length; i++) {
+
+        if (chartsCod[i] == cod && chartsComp[i] == componente) {
+
+            var chart = charts[i];
+
+            chart.data.labels.push("CPU");
+            chart.data.datasets[0].data.push(atual)
+
+            if (chart.data.labels.length > 10) {
+                chart.data.labels.shift()
+                chart.data.datasets[0].data.shift()
+            }
+
+            chart.update();
+
         }
-        lineChart.update()
+
     }
-    setTimeout(updateLineChart, 5000)
 }
+
 
 
 function breakSession() {

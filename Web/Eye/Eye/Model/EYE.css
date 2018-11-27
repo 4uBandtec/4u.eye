@@ -293,9 +293,9 @@ body {
 
 
 .infoGeralComputador {
-    width: 90%;
+    width: 45%;
     min-height: 30vw;
-    margin: 4%;
+    margin: 2%;
     background: var(--darker-bg-color);
     float: left;
     transition-duration: 0s;
@@ -327,6 +327,7 @@ body {
     position: relative;
     float: left;
     margin: 2%;
+    margin-left: 8%;
 }
 
 
@@ -374,7 +375,7 @@ body {
 }
 
 .campoDetalhe{
-    float: right;
+    float: none;
     position: relative;
     height: 15%;
     margin: 2%;
@@ -382,15 +383,13 @@ body {
 }
 
 .graficoCpu {
-    height: 14vw;
+    height: 13vw;
     width: 35vw;
     position: relative;
     float: left;
     margin: 2%;
-    border: solid 1px var(--pink-color);
-    padding-left:2vw;
-    padding-top: 1vw;
 }
+
 
 .areaCampos {
     position: fixed;
@@ -758,336 +757,369 @@ label {
 
 /*                                                                                                */
 /*------------------------------------------Responsive--------------------------------------------*/
-@media only screen and (max-width: 1000px) {
+
+@media only screen and (max-aspect-ratio: 6/4) {
     * {
-        font-size: 2vmax;
+        font-size: 1.5vmax;
     }
-
-    ::-webkit-scrollbar {
-        width: 5px;
-    }
-
-
-    #sideMenu {
-        width: 10vmax;
-        overflow-y: visible;
-        overflow-x: visible;
-        height: 85%;
-        z-index: 1;
-    }
-
-    .itemMenu {
-        width: 10vmax;
-        transition-delay: 0.1s;
-    }
-
-        .itemMenu:hover {
-            width: 25vmax;
-            transition-duration: 0.1s;
-            transition-delay: 0s;
-            transition-timing-function: ease;
-        }
-
 
     .itemTxt {
-        opacity: 0;
-        margin-left: 0px;
-        transition-duration: 0.3s;
+        font-size: 1.5vmax;
     }
-
-    .itemMenu:hover .itemTxt {
-        opacity: 1;
-        font-size: 2vmax;
-    }
-
-    .itemMenuBackGround {
-        background: linear-gradient(90deg,var(--black-color-a), var(--red-color-a), var(--black-color-a));
-    }
-
-    .itemIcon {
-        height: 100%;
-    }
-    .itemIcon img{
-        height: 80%;
-    }
-
-    #meuResumo {
-        width: 11vmax;
-        height: 5vmax;
-        border-right: 1px solid var(--purple-color);
-        overflow: hidden;
-    }
-
-        #meuResumo:hover {
-            width: 100vmin;
-            height: 100vmin;
-            background: var(--black-color-a9);
-        }
-
-            #meuResumo:hover .txtMeuResumo {
-                width: 50%;
-                height: auto;
-            }
-
     .txtMeuResumo {
-        width: 60%;
-        height: 50px;
+        font-size: 1.5vmax;
     }
-
-    #areaInfo {
-        width: 75%;
-        height: 100%;
-        position: fixed;
-        right: 0;
-        top: 0;
-        overflow: auto;
-    }
-
-
-
-    .infoGeralComputador {
-        width: 60vw;
-        height: auto;
-    }
-
-
-    .localChart {
-        height: 30vw;
-        width: 30vw;
-        float: none;
-        position: relative;
-        margin-right: 40%;
-        float: left;
-        left: 50%;
-        transform: translate(-50%, 0%);
-
-    }
-
+    
     .tituloLabel {
         font-size: 2vmax;
-        padding-top: 6%;
-        margin-bottom: 5%;
     }
+
     .conteudoLabel {
         font-size: 1.5vmax;
-        margin-top: 5%;
     }
 
     .tituloComputador {
-        height: auto;
-        padding-bottom: 1%;
         font-size: 2vmax;
     }
 
-    .detalhesMonitor {
-        height: 30%;
-        width: 96%;
-        position: relative;
-        float: left;
-        margin: 2%;
-    }
 
     .campoDetalhe {
-        float: none;
-        position: relative;
-        height: 15%;
-        margin: 3%;
-        text-align: center;
         font-size: 1.5vmax;
     }
 
-    .graficoCpu {
-        height: 40%;
-        width: 96%;
-        position: relative;
-        float: left;
-        margin: 2%;
-        background: var(--pink-color);
-    }
+}
 
 
 
-
-
-    .areaCampos {
-        left: 5%;
-        right: 5%;
-        top: 20%;
-        width: 90%;
-        height: 80%;
-    }
-
-    .mensagem {
-        width: 90%;
-        top: 10%
-    }
-
-    .cadastroCampos .mensagem{
-        top: 23%;
-    }
-
-    .campos {
-        width: 100%;
-        left: 0;
-        top: 10%;
-        position: relative;
-        float: left;
-    }
-
-
-
-    .areaCampos input[type="text"], .areaCampos input[type="password"], .areaCampos input[type="email"], .areaCampos input[type="date"], .areaCampos select {
-        width: 86vw;
-        padding: 2vw;
-        font-size: 6vmin;
-    }
-
-
-
-
-    .btnForm {
-        width: 89.7vw;
-        margin: 0%;
-        border-top: none;
-        border-bottom-right-radius: 40px;
-        border-bottom-left-radius: 40px;
-        border-top-right-radius: 0;
-        height: 10vh;
-    }
-
-
-        .btnForm input {
-            font-weight: lighter;
-            margin-left: 0%;
-            width: 90vw;
-            font-size: 4vmax;
-            margin-top: -2vh;
+    @media only screen and (max-aspect-ratio: 7/8) {
+        * {
+            font-size: 2vmax;
         }
 
-        .btnForm input:focus {
-            padding: 0;
+        ::-webkit-scrollbar {
+            width: 5px;
         }
 
 
-        .btnForm:hover .itemMenuBackGround {
-            background: linear-gradient(90deg, var(--to-invisible),var(--black-color-a), var(--red-color-a), var(--black-color-a),var(--to-invisible));
+        #sideMenu {
+            width: 10vmax;
+            overflow-y: visible;
+            overflow-x: visible;
+            height: 85%;
+            z-index: 1;
+        }
+
+        .itemMenu {
+            width: 10vmax;
+            transition-delay: 0.1s;
+        }
+
+            .itemMenu:hover {
+                width: 25vmax;
+                transition-duration: 0.1s;
+                transition-delay: 0s;
+                transition-timing-function: ease;
+            }
+
+
+        .itemTxt {
+            opacity: 0;
+            margin-left: 0px;
+            transition-duration: 0.3s;
+        }
+
+        .itemMenu:hover .itemTxt {
+            opacity: 1;
+            font-size: 2vmax;
+        }
+
+        .itemMenuBackGround {
+            background: linear-gradient(90deg,var(--black-color-a), var(--red-color-a), var(--black-color-a));
+        }
+
+        .itemIcon {
+            height: 100%;
+        }
+
+            .itemIcon img {
+                height: 80%;
+            }
+
+        #meuResumo {
+            width: 11vmax;
+            height: 5vmax;
+            border-right: 1px solid var(--purple-color);
+            overflow: hidden;
+        }
+
+            #meuResumo:hover {
+                width: 100vmin;
+                height: 100vmin;
+                background: var(--black-color-a9);
+            }
+
+                #meuResumo:hover .txtMeuResumo {
+                    width: 50%;
+                    height: auto;
+                }
+
+        .txtMeuResumo {
+            width: 60%;
+            height: 50px;
+        }
+
+        #areaInfo {
+            width: 75%;
+            height: 100%;
+            position: fixed;
+            right: 0;
+            top: 0;
+            overflow: auto;
         }
 
 
 
-    #progressTrack {
-        width: 90vw;
-
-    }
-
-
-
-    #lblTexto {
-        width: 70vw;
-        top: 15%;
-        font-size: 4vmax;
-        max-width: 70vw;
-        min-width: 70vw;
-        height: auto;
-        position: fixed;
-    }
+        .infoGeralComputador {
+            width: 60vw;
+            height: auto;
+        }
 
 
-    .cadastroCampos .areaCampos {
-        width: 90vw;
-        max-width: 90vw;
-        min-width: 90vw;
-    }
+        .localChart {
+            height: 30vw;
+            width: 30vw;
+            float: none;
+            position: relative;
+            margin-right: 40%;
+            float: left;
+            left: 50%;
+            transform: translate(-50%, 0%);
+        }
+
+        .tituloLabel {
+            font-size: 2vmax;
+            padding-top: 6%;
+            margin-bottom: 5%;
+        }
+
+        .conteudoLabel {
+            font-size: 1.5vmax;
+            margin-top: 5%;
+        }
+
+        .tituloComputador {
+            height: auto;
+            padding-bottom: 1%;
+            font-size: 2vmax;
+        }
+
+        .detalhesMonitor {
+            height: 30%;
+            width: 96%;
+            position: relative;
+            float: left;
+            margin: 2%;
+        }
+
+        .campoDetalhe {
+            float: none;
+            position: relative;
+            height: 15%;
+            margin: 3%;
+            text-align: center;
+            font-size: 1.5vmax;
+        }
+
+        .graficoCpu {
+            height: 40%;
+            width: 96%;
+            position: relative;
+            float: left;
+            margin: 2%;
+        }
 
 
-    .cadastroCampos .campos {
-        position: relative;
-        top: 20vh;
-    }
-
-    .cadastroCampos .campos:last-of-type {
-        position: relative;
-        top: 36vh;
-    }
 
 
 
-    #btnFormCadastrar {
-        height: 13vh;
-        width: 40%;
-        left: 30.1%;
-    }
+        .areaCampos {
+            left: 5%;
+            right: 5%;
+            top: 20%;
+            width: 90%;
+            height: 80%;
+        }
 
-        #btnFormCadastrar #btnCadastrar {
+        .mensagem {
+            width: 90%;
+            top: 10%
+        }
+
+        .cadastroCampos .mensagem {
+            top: 23%;
+        }
+
+        .campos {
             width: 100%;
+            left: 0;
+            top: 10%;
+            position: relative;
+            float: left;
+        }
+
+
+
+        .areaCampos input[type="text"], .areaCampos input[type="password"], .areaCampos input[type="email"], .areaCampos input[type="date"], .areaCampos select {
+            width: 86vw;
+            padding: 2vw;
+            font-size: 6vmin;
+        }
+
+
+
+
+        .btnForm {
+            width: 89.7vw;
+            margin: 0%;
+            border-top: none;
+            border-bottom-right-radius: 40px;
+            border-bottom-left-radius: 40px;
+            border-top-right-radius: 0;
+            height: 10vh;
+        }
+
+
+            .btnForm input {
+                font-weight: lighter;
+                margin-left: 0%;
+                width: 90vw;
+                font-size: 4vmax;
+                margin-top: -2vh;
+            }
+
+                .btnForm input:focus {
+                    padding: 0;
+                }
+
+
+            .btnForm:hover .itemMenuBackGround {
+                background: linear-gradient(90deg, var(--to-invisible),var(--black-color-a), var(--red-color-a), var(--black-color-a),var(--to-invisible));
+            }
+
+
+
+        #progressTrack {
+            width: 90vw;
+        }
+
+
+
+        #lblTexto {
+            width: 70vw;
+            top: 15%;
+            font-size: 4vmax;
+            max-width: 70vw;
+            min-width: 70vw;
+            height: auto;
+            position: fixed;
+        }
+
+
+        .cadastroCampos .areaCampos {
+            width: 90vw;
+            max-width: 90vw;
+            min-width: 90vw;
+        }
+
+
+        .cadastroCampos .campos {
+            position: relative;
+            top: 20vh;
+        }
+
+            .cadastroCampos .campos:last-of-type {
+                position: relative;
+                top: 36vh;
+            }
+
+
+
+        #btnFormCadastrar {
+            height: 13vh;
+            width: 40%;
+            left: 30.1%;
+        }
+
+            #btnFormCadastrar #btnCadastrar {
+                width: 100%;
+                height: 13vh;
+            }
+
+
+
+        #btnFormNext {
+            width: 30%;
+            border-bottom-left-radius: 0;
             height: 13vh;
         }
 
-
-
-    #btnFormNext {
-        width: 30%;
-        border-bottom-left-radius: 0;
-        height: 13vh;
-    }
-
-    #btnFormPrevious {
-        width: 30%;
-        height: 13vh;
-        border-bottom-left-radius: 40px;
-    }
-
-    #btnFormNext input {
-        font-size: 5vw;
-        height: 120%;
-    }
-
-    #btnFormPrevious input {
-        font-size: 5vw;
-        height: 120%;
-    }
-
-    #btnFormCadastrar input {
-        font-size: 5vw;
-        height: 120%;
-        margin-top: -3%;
-    }
-
-
-
-    .defaultButton {
-        width: 90vw;
-        min-width: 90vw;
-        max-width: 90vw;
-        font-size: 3vmax;
-        border-radius: 0;
-        height: 7vh
-    }
-
-        .defaultButton:hover {
-            border-color: var(--to-invisible);
-            color: var(--pink-color-a);
+        #btnFormPrevious {
+            width: 30%;
+            height: 13vh;
+            border-bottom-left-radius: 40px;
         }
 
-    #btnIrPara {
-        position: fixed;
-        left: 5vw;
-        border: none;
-        border-top: solid 1px var(--pink-color);
-        border-radius: 0;
-        bottom: 0;
-        top: 93vh;
-        z-index: 2;
-    }
+        #btnFormNext input {
+            font-size: 5vw;
+            height: 120%;
+        }
+
+        #btnFormPrevious input {
+            font-size: 5vw;
+            height: 120%;
+        }
+
+        #btnFormCadastrar input {
+            font-size: 5vw;
+            height: 120%;
+            margin-top: -3%;
+        }
 
 
-    .cadastroCampos option {
-        height: 100%;
-        width: 100%;
-        background: var(--bg-color);
-        border: none;
-        font-size: 2.5vh;
+
+        .defaultButton {
+            width: 90vw;
+            min-width: 90vw;
+            max-width: 90vw;
+            font-size: 3vmax;
+            border-radius: 0;
+            height: 7vh
+        }
+
+            .defaultButton:hover {
+                border-color: var(--to-invisible);
+                color: var(--pink-color-a);
+            }
+
+        #btnIrPara {
+            position: fixed;
+            left: 5vw;
+            border: none;
+            border-top: solid 1px var(--pink-color);
+            border-radius: 0;
+            bottom: 0;
+            top: 93vh;
+            z-index: 2;
+        }
+
+
+        .cadastroCampos option {
+            height: 100%;
+            width: 100%;
+            background: var(--bg-color);
+            border: none;
+            font-size: 2.5vh;
+        }
     }
-}
 
 
