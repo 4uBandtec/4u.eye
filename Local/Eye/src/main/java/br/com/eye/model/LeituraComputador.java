@@ -88,10 +88,8 @@ public class LeituraComputador {
         while (true) {
             Thread.sleep(1000);
             if (new StatementLeituraComputador().existeLeituraRegistrada(codComputador)) {
-                System.out.println("DEU TRUE");
                 new StatementLeituraComputador().updateLeitura(new LeituraComputador().leituraOshi(), codComputador);
             } else {
-                System.out.println("DEU FALSE");
                 new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codComputador);
             }
         }

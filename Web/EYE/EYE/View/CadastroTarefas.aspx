@@ -10,6 +10,8 @@
 <body>
 	<form id="form1" runat="server">
 		<div>
+            <asp:Panel ID="pnlConfiguracao" runat="server" BackColor="#FFF"> </asp:Panel>
+            <asp:Button ID="btnAdicionar" Text="+" runat="server"  OnClick="btnAdicionar_Click"/>
 			<div>
 				<p>
 					Tarefa

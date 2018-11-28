@@ -38,5 +38,16 @@ namespace EYE.Controller
 			lblMensagem.Text = "Ops, deu algo errado, acho que a culpa é nossa";
 			return false;
 		}
-	}
+
+        public Panel CarregarPainel(int codWorkspace)
+        {
+            var listaUsuarios=StatementUsuario.ListarUsuarios(codWorkspace);
+            var ddlUsuarios = Usuario.AlimentarUsuarios(new DropDownList(), listaUsuarios);
+            var listaProcessos = StatementProcesso.ListarProcessos();
+            var ddlProcesso=Processo.AlimentarProcessos(new DropDownList(), listaProcessos);
+            return new Tarefa().ConstruirConteudo(ddlUsuarios, ddlProcesso);          
+            
+
+        }
+    }
 }
