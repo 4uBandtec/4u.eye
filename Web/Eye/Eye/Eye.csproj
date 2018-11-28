@@ -68,7 +68,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Component\AddUsuarios.png" />
+    <Content Include="Component\Dashboard.png" />
     <Content Include="Component\icon.png" />
+    <Content Include="Component\Logout.png" />
+    <Content Include="Component\Opcoes.png" />
+    <Content Include="Component\Slack.png" />
+    <Content Include="Component\Tarefa.png" />
+    <Content Include="Component\Usuarios.png" />
     <Content Include="Controller\CamposFormulario.js" />
     <Content Include="Controller\Dashboard.js" />
     <Content Include="Controller\DashStyle.js" />

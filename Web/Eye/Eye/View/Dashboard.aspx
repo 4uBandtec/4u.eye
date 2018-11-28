@@ -23,12 +23,48 @@
             EnablePageMethods="true" />
         <!--MENU-->
         <div id="sideMenu" onmousemove="getCoordenadas()">
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
+
+
+                    <div class="itemIcon">
+                        <img src="../Component/Dashboard.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Dashboard
+               
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/Usuarios.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Usuários
+               
+                    </div>
+
+                </div>
+            </a>
+
 
             <a href="CadastroUsuario.aspx">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
-                        <img src="../Component/icon.png" />
+                        <img src="../Component/AddUsuarios.png" />
                     </div>
                     <div class="itemMenuBackGround"></div>
 
@@ -40,106 +76,71 @@
                 </div>
             </a>
 
-            <div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
 
-                <div class="itemTxt">
-                    Computador
+                    <div class="itemIcon">
+                        <img src="../Component/Tarefa.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Cadastrar Tarefas
                
+                    </div>
+
                 </div>
+            </a>
 
-            </div>
 
-            <div class="itemMenu">
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+                    <div class="itemIcon">
+                        <img src="../Component/Slack.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+                    <div class="itemTxt">
+                        Cadastrar SlackBot
                
+                    </div>
+
                 </div>
+            </a>
 
-            </div>
 
-            <div class="itemMenu">
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
+                    <div class="itemIcon">
+                        <img src="../Component/Opcoes.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
 
-                <div class="itemTxt">
-                    Computador
+                    <div class="itemTxt">
+                        Opções
                
+                    </div>
+
                 </div>
+            </a>
+            
 
-            </div>
+            <a href="Dashboard.aspx">
+                <div class="itemMenu" onclick="breakSession()">
+                    <div class="itemIcon">
+                        <img src="../Component/Logout.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
 
-            <div class="itemMenu">
+                    <div class="itemTxt">
+                        Logout
+                    </div>
 
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
                 </div>
-                <div class="itemMenuBackGround"></div>
-
-                <div class="itemTxt">
-                    Computador
-               
-                </div>
-
-            </div>
-
-            <div class="itemMenu">
-
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
-
-                <div class="itemTxt">
-                    Computador
-               
-                </div>
-
-            </div>
-
-            <div class="itemMenu">
-
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
-
-                <div class="itemTxt">
-                    Computador
-               
-                </div>
-
-            </div>
-
-            <div class="itemMenu" onclick="breakSession()">
-                <div class="itemIcon">
-                    <img src="../Component/icon.png" />
-                </div>
-                <div class="itemMenuBackGround"></div>
-
-                <div class="itemTxt">
-<<<<<<< HEAD
-                    Computador
-               
-=======
-                    Loggout
->>>>>>> 4287f4d4939e422c23471e5bd48b4e22fd8b88fe
-                </div>
-
-            </div>
+            </a>
 
         </div>
 
@@ -153,9 +154,9 @@
             <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
         </div>
 
-
         <!--Area com os containers dos computadores-->
         <div id="areaInfo">
+
 
             <!--Eles são adds através da função iniciarDash() no script EYEDash.js-->
 
