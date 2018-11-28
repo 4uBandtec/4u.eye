@@ -68,14 +68,12 @@ public class LeituraComputador {
         Double cl = processor.getSystemCpuLoad();
         
         
-        System.out.println(formato.format(cl * 100.0).replaceAll(",",".")+"%");
         return Double.parseDouble(formato.format(cl * 100.0).replaceAll(",","."));
     }
 
     public long getMemoriaDisponivelOshi() {
         Computador computador = new Computador();
-        long ramDisponivel = computador.getTotalMemoriaOshi() - systemInfo.getHardware().getMemory().getAvailable();
-        return ramDisponivel;
+        return computador.getTotalMemoriaOshi() - systemInfo.getHardware().getMemory().getAvailable();
     }
 
     public long getDiscoDisponivelOshi() {
@@ -98,10 +96,8 @@ public class LeituraComputador {
         while (true) {
             Thread.sleep(1000);
             if (new StatementLeituraComputador().existeLeituraRegistrada(codComputador)) {
-                System.out.println("DEU TRUE");
                 new StatementLeituraComputador().updateLeitura(new LeituraComputador().leituraOshi(), codComputador);
             } else {
-                System.out.println("DEU FALSE");
                 new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codComputador);
             }
         }

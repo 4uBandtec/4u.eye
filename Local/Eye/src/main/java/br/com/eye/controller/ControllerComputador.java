@@ -68,18 +68,15 @@ public class ControllerComputador {
     }
 
     public boolean inserePrimeiroComputador(int codUsuario) throws SQLException {
-        System.out.println("Update 0");
         if(statementComputador.existeComputadorRegistrado(codUsuario))
         {
             
-        System.out.println("Update 1");
            if( !verificaAtualizacao(codUsuario)){
                
                statementComputador.updateComputador(statementComputador.getCodComputador(codUsuario));
             }
         }
         else{
-        System.out.println("Update 3");
             statementComputador.setComputador(getComputadorOshi(), codUsuario);
         }
         return true;

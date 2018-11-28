@@ -79,7 +79,6 @@ public class StatementComputador {
         query.setString(4, computador.getProcessadorOshi());
         query.setLong(5, computador.getTotalMemoriaOshi());
         query.setLong(6, computador.getTotalDiscoOshi());
-        System.out.println("FEZ O UPDATE DE COMPUTADOURO");
         return query.execute();
     
     }
