@@ -432,9 +432,10 @@ body {
 
 .tituloCpu {
     height: 15%;
-    width: 100%;
+    width: 95%;
     float: left;
-    text-align: center;
+    text-align: left;
+    padding-left: 10%;
     font-size: 1.5vmax;
 }
 

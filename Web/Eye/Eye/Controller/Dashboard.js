@@ -52,7 +52,7 @@ function onError(result) {
 function getLeitura() {
 
     for (i = 0; i < computadoresUsuarios.length; i++) {
-        //console.log(computadoresUsuarios[i]);
+        console.log(computadoresUsuarios[i]);
 
         for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
 
