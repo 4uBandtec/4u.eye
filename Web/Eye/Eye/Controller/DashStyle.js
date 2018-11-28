@@ -5,7 +5,7 @@ var mouseY;
 function getCoordenadas() {
     mouseX = event.clientX;
     mouseY = event.clientY;
-    
+
 }
 
 
@@ -68,7 +68,7 @@ function addEvento(i) {
     var icon = itemIcons[i];
     itemMenus[i].addEventListener("mousemove", function () { efeitoHoverIcon(background, item, icon) });
     itemMenus[i].addEventListener("mouseout", function () { efeitoOutIcon(background, item, icon) });
-    
+
 }
 
 
@@ -86,7 +86,7 @@ function efeitoHoverIcon(itembgs, items, icon) {
     var width = items.getBoundingClientRect().width;
     var itemX = items.getBoundingClientRect().x;
     var backgroundX = (mouseX - itemX) - ((width));
-    
+
 
     var widthIcon = icon.getBoundingClientRect().width;
     var iconX = icon.getBoundingClientRect().x;
@@ -97,8 +97,8 @@ function efeitoHoverIcon(itembgs, items, icon) {
     var backgroundIconY = (mouseY - iconY) - ((heightIcon));
 
     itembgs.style.left = backgroundX + "px";
-    icon.style.left = (backgroundIconX / 4)*-1 + "px";
-    icon.style.top = (backgroundIconY / 4)* -1 + "px";
+    icon.style.left = (backgroundIconX / 4) + "px";
+    icon.style.top = (backgroundIconY / 4) * -1 + "px";
 }
 
 function addEstilo(i) {
@@ -114,8 +114,8 @@ function addEstilo(i) {
 
     var color = getCor(i);
     item.style.borderColor = color;
-    background.style.background = "radial-gradient(circle, rgba(0,0,0,0.3), " + color + "," + getCor(i+1) + ")";
-    
+    background.style.background = "radial-gradient(circle, rgba(0,0,0,0.3), " + color + "," + getCor(i + 1) + ")";
+
 }
 
 function getCor(i) {
@@ -144,10 +144,10 @@ function getCor(i) {
 }
 
 function efeitoOutIcon(itembgs, items, icon) {
-    
-    
-    icon.style.left = -10+"%";
-    icon.style.top = 0+"%";
+
+
+    icon.style.left = -10 + "%";
+    icon.style.top = 0 + "%";
 }
 
 

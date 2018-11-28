@@ -116,13 +116,15 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-    background: var(--lighter-bg-color);
-    border-left: solid 1px var(--purple-color);
+    background: var(--bg-color);
     transition: 0.3s;
+    border-radius: 20px;
+    border: solid 1px var(--pink-color);
 }
 
     ::-webkit-scrollbar-thumb:hover {
-        background: var(--red-color-a);
+        background: linear-gradient(180deg, var(--red-color), var(--pink-color), var(--red-color));
+        opacity: 0.6;
     }
 
 
@@ -300,12 +302,13 @@ body {
     float: left;
     transition-duration: 0s;
     border-radius: 0px;
+    box-shadow: 0px 0px 50px 1px var(--black-color);
 }
 
 
 .tituloComputador {
     height: 2.5vw;
-    width: 102%;
+    width: 98%;
     color: var(--txt-color);
     border-bottom: solid 1px var(--to-invisible);
     border-image: linear-gradient(to bottom right, var(--yellow-color) 0%, var(--green-color) 25%, var(--blue-color) 50%, var(--purple-color) 75%, var(--pink-color) 100%);
@@ -316,9 +319,12 @@ body {
     font-size: 1.3em;
     padding-top: 1%;
     padding-left: 2%;
-    left: -2%;
-    background: linear-gradient(90deg, var(--bg-color), var(--bg-color));
+    left: 0%;
+    background: var(--black-color-a);
     font-weight: lighter;
+    box-shadow: 0px 0px 50px 1px var(--black-color);
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .localChart {
@@ -340,7 +346,8 @@ body {
     margin: 9%;
     top: 0;
     border-radius: 100%;
-    overflow: hidden
+    overflow: hidden;
+    box-shadow: 0px 0px 50px 1px var(--black-color);
 }
 
 .tituloLabel {
@@ -384,36 +391,51 @@ body {
 }
 
 .areaCPU {
-    height: auto;
+    height: 17vw;
     width: 35vw;
     position: relative;
     float: left;
     margin: 2%;
+    margin-top: 5%;
 }
 
 .labelCpu {
-    height: 90%;
-    width: 15%;
+    height: 76%;
+    width: 20%;
     margin: 0;
     right: 0;
     float: left;
     position: absolute;
     text-align: center;
-    line-height: 200%;
+    bottom: 5%;
     padding-bottom: 0;
-    font-size: 2vw;
+    font-size: 1.5vw;
     color: var(--txt-color);
-    background: linear-gradient(180deg, var(--red-color-a), var(--pink-color));
-    padding: 2%;
-    border-left: solid var(--txt-color) 0.3vw;
-    border-bottom-right-radius: 10%;
-    border-top-right-radius: 10%;
+    background: var(--to-invisible);
+    padding: 0;
+    border-left: solid var(--txt-color) 0.1vw;
+}
+
+.porcentagemCpu{
+    height: 10px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 25%;
 }
 
 .graficoCpu {
-    height: 13vw;
+    height: 80%;
     width: 80%;
     float: left;
+}
+
+.tituloCpu {
+    height: 15%;
+    width: 100%;
+    float: left;
+    text-align: center;
+    font-size: 1.5vmax;
 }
 
 
@@ -833,12 +855,12 @@ label {
             overflow-x: visible;
             height: 85%;
             z-index: 1;
-            border-right: solid var(--txt-color) 0.5vw;
         }
 
         .itemMenu {
             width: 100%;
             transition-delay: 0.1s;
+            background: var(--black-color-a9);
         }
 
             .itemMenu:hover {
@@ -917,10 +939,10 @@ label {
             width: 30vw;
             float: none;
             position: relative;
-            margin-right: 40%;
+            margin-right: 50%;
             float: left;
             left: 50%;
-            transform: translate(-50%, 0%);
+            transform: translate(-65%, 0%);
         }
 
         .tituloLabel {

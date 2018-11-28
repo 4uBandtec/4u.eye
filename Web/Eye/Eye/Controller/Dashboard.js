@@ -418,6 +418,13 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
     infoGeralComputador.appendChild(areaCPU);
 
 
+    var tituloCpu = document.createElement("div");
+    tituloCpu.setAttribute("class", "tituloCpu");
+    tituloCpu.setAttribute("id", "tituloCpu" + componente + cod);
+
+    areaCPU.appendChild(tituloCpu);
+
+    tituloCpu.textContent = "CPU";
 
 
     var graficoCpu = document.createElement("div");
@@ -439,9 +446,15 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
     labelCpu.setAttribute("id", "labelCpu" + componente + cod);
 
     areaCPU.appendChild(labelCpu);
+    
 
-    labelCpu.textContent = "CPU " + atual + " %";
+    var porcentagemCpu = document.createElement("div");
+    porcentagemCpu.setAttribute("class", "porcentagemCpu");
+    porcentagemCpu.setAttribute("id", "porcentagemCpu" + componente + cod);
 
+    labelCpu.appendChild(porcentagemCpu);
+
+    porcentagemCpu.textContent = atual + "%";
 
 
 
@@ -470,7 +483,7 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
             fill: true,
             borderColor: "rgba(230,230,230,1)",
             borderWidth: 2,
-            pointRadius: 10,
+            pointRadius: 8,
             pointHoverRadius: 12,
             showLine: true
         }],
@@ -561,6 +574,11 @@ function AtualizarCPU(componente, infoGeralComputador, atual, cod) {
                 chart.data.labels.shift()
                 chart.data.datasets[0].data.shift()
             }
+
+
+            var porcentagem = document.getElementById("porcentagemCpu" + componente + cod);
+            porcentagem.style.top = (100 - atual - 10) + "%";
+            porcentagem.textContent = atual + "%";
 
             chart.update();
 
