@@ -493,7 +493,7 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
                 ticks: {
                     stepSize: 1,
                     fontColor: cor2,
-                    beginAtZero: true,
+                    beginAtZero: true
                 }
             }],
             yAxes: [{
@@ -505,6 +505,8 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
                     display: false
                 },
                 ticks: {
+                    max: 100,
+                    min: 0,
                     fontColor: cor2,
                     beginAtZero: true
                 }
