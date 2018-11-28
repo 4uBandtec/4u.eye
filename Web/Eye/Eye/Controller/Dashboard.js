@@ -1,4 +1,6 @@
 ﻿
+var firstLoaded = false;
+
 function LoadingAll() {
 
 
@@ -13,13 +15,17 @@ function LoadingAll() {
 }
 
 function Loaded() {
-    document.getElementById("loading").parentNode.removeChild(document.getElementById("loading"));
+    document.getElementById("loading").parentNode.removeChild(document.getElementById("loading")); firstLoaded = false;
+    firstLoaded = true;
 }
 
 
 function GetUsuariosWorkspace() {
-    LoadingAll();
+    if (!firstLoaded) {
+        LoadingAll();
+    }
     PageMethods.GetUsuariosWorkspace(setCodComputadores, onError);
+    setTimeout(GetUsuariosWorkspace, 30000);
 }
 
 
@@ -29,9 +35,11 @@ var computadoresUsuarios = [];
 
 function setCodComputadores(usuarios) {
     computadoresUsuarios = usuarios;
-    getLeitura();
-    Loaded();
-    return computadoresUsuarios;
+    if (!firstLoaded) {
+        getLeitura();
+        Loaded();
+        return computadoresUsuarios;
+    }
 }
 
 
@@ -403,12 +411,20 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
     var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
 
 
+    var areaCPU = document.createElement("div");
+    areaCPU.setAttribute("class", "areaCPU");
+    areaCPU.setAttribute("id", "areaCPU" + componente + cod);
+
+    infoGeralComputador.appendChild(areaCPU);
+
+
+
 
     var graficoCpu = document.createElement("div");
     graficoCpu.setAttribute("class", "graficoCpu");
     graficoCpu.setAttribute("id", "graficoCpu" + componente + cod);
 
-    infoGeralComputador.appendChild(graficoCpu);
+    areaCPU.appendChild(graficoCpu);
 
     var lineChartInfo = document.createElement("canvas");
 
@@ -417,6 +433,14 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
 
     graficoCpu.appendChild(lineChartInfo);
 
+
+    var labelCpu = document.createElement("div");
+    labelCpu.setAttribute("class", "labelCpu");
+    labelCpu.setAttribute("id", "labelCpu" + componente + cod);
+
+    areaCPU.appendChild(labelCpu);
+
+    labelCpu.textContent = "CPU " + atual + " %";
 
 
 
@@ -531,7 +555,7 @@ function AtualizarCPU(componente, infoGeralComputador, atual, cod) {
             chart.data.labels.push("CPU");
             chart.data.datasets[0].data.push(atual)
 
-            if (chart.data.labels.length > 10) {
+            if (chart.data.labels.length > 6) {
                 chart.data.labels.shift()
                 chart.data.datasets[0].data.shift()
             }

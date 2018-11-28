@@ -374,20 +374,46 @@ body {
     margin: 2%;
 }
 
-.campoDetalhe{
+.campoDetalhe {
     float: none;
     position: relative;
     height: 15%;
     margin: 2%;
     text-align: center;
+    font-size: 1em;
 }
 
-.graficoCpu {
-    height: 13vw;
+.areaCPU {
+    height: auto;
     width: 35vw;
     position: relative;
     float: left;
     margin: 2%;
+}
+
+.labelCpu {
+    height: 90%;
+    width: 15%;
+    margin: 0;
+    right: 0;
+    float: left;
+    position: absolute;
+    text-align: center;
+    line-height: 200%;
+    padding-bottom: 0;
+    font-size: 2vw;
+    color: var(--txt-color);
+    background: linear-gradient(180deg, var(--red-color-a), var(--pink-color));
+    padding: 2%;
+    border-left: solid var(--txt-color) 0.3vw;
+    border-bottom-right-radius: 10%;
+    border-top-right-radius: 10%;
+}
+
+.graficoCpu {
+    height: 13vw;
+    width: 80%;
+    float: left;
 }
 
 
@@ -784,7 +810,7 @@ label {
 
 
     .campoDetalhe {
-        font-size: 1.5vmax;
+        font-size: 1.3vmax;
     }
 
 }
@@ -802,15 +828,16 @@ label {
 
 
         #sideMenu {
-            width: 10vmax;
+            width: 15%;
             overflow-y: visible;
             overflow-x: visible;
             height: 85%;
             z-index: 1;
+            border-right: solid var(--txt-color) 0.5vw;
         }
 
         .itemMenu {
-            width: 10vmax;
+            width: 100%;
             transition-delay: 0.1s;
         }
 
@@ -838,7 +865,7 @@ label {
         }
 
         .itemIcon {
-            height: 100%;
+            width: 100%;
         }
 
             .itemIcon img {
@@ -926,16 +953,28 @@ label {
             position: relative;
             height: 15%;
             margin: 3%;
+            margin-top: 5%;
             text-align: center;
-            font-size: 1.5vmax;
+            font-size: 1.3vmax;
         }
 
-        .graficoCpu {
+
+        .areaCPU {
             height: 40%;
             width: 96%;
             position: relative;
             float: left;
             margin: 2%;
+        }
+
+        .labelCpu {
+           font-size: 2.5vw;
+        }
+
+        .graficoCpu {
+            height: 100%;
+            width: 80%;
+            float: left;
         }
 
 
