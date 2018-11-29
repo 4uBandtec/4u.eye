@@ -27,12 +27,11 @@ public class Computador {
     public boolean equals(Computador computador) {
 
         return (this.sistemaOperacional.equalsIgnoreCase(computador.getSistemaOperacional())
-                || this.getVersaoSistema().equalsIgnoreCase(computador.getVersaoSistema())
-                || Objects.equals(this.getVersaoBits(), computador.getVersaoBits())
-                || this.getProcessador().equalsIgnoreCase(computador.getProcessador())
-                || Objects.equals(this.getTotalDisco(), computador.getTotalDisco())
-                || this.getTotalMemoria() == computador.getTotalMemoria());
-
+                && this.getVersaoSistema().equalsIgnoreCase(computador.getVersaoSistema())
+                && Objects.equals(this.getVersaoBits(), computador.getVersaoBits())
+                && this.getProcessador().equalsIgnoreCase(computador.getProcessador())
+                && Objects.equals(this.getTotalDisco(), computador.getTotalDisco())
+                && Objects.equals(this.getTotalMemoria(), computador.getTotalMemoria()));
     }
 
     public Computador() {

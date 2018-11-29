@@ -100,9 +100,9 @@ public class TelaWorkspace extends JFrame implements ActionListener {
                     dispose();
                     new TelaLogin();
                 }
-            } catch (SQLException ex) {
-                Logger.getLogger(TelaWorkspace.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-    }
+             } catch (SQLException ex) {
+                 Logger.getLogger(TelaWorkspace.class.getName()).log(Level.SEVERE, null, ex);
+             }
+         }
+     }
 }

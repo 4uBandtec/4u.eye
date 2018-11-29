@@ -1,8 +1,31 @@
 ﻿
+var firstLoaded = false;
+
+function LoadingAll() {
+
+
+
+    var loading = document.createElement("div");
+    loading.setAttribute("class", "loading");
+    loading.setAttribute("id", "loading");
+
+    document.getElementById("areaInfo").appendChild(loading);
+
+    loading.textContent = "Carregando Informações..."
+}
+
+function Loaded() {
+    document.getElementById("loading").parentNode.removeChild(document.getElementById("loading")); firstLoaded = false;
+    firstLoaded = true;
+}
 
 
 function GetUsuariosWorkspace() {
+    if (!firstLoaded) {
+        LoadingAll();
+    }
     PageMethods.GetUsuariosWorkspace(setCodComputadores, onError);
+    setTimeout(GetUsuariosWorkspace, 30000);
 }
 
 
@@ -12,8 +35,11 @@ var computadoresUsuarios = [];
 
 function setCodComputadores(usuarios) {
     computadoresUsuarios = usuarios;
-    setTimeout(getLeitura(), 1000);
-    return computadoresUsuarios;
+    if (!firstLoaded) {
+        getLeitura();
+        Loaded();
+        return computadoresUsuarios;
+    }
 }
 
 
@@ -26,7 +52,7 @@ function onError(result) {
 function getLeitura() {
 
     for (i = 0; i < computadoresUsuarios.length; i++) {
-        //console.log(computadoresUsuarios[i]);
+        console.log(computadoresUsuarios[i]);
 
         for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
 
@@ -34,6 +60,7 @@ function getLeitura() {
 
 
             PageMethods.AtualizarComputadores(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador, AtualizarDashboard, onError);
+
         }
 
     }
@@ -43,8 +70,8 @@ function getLeitura() {
 
 
 function AtualizarDashboard(leituraAtual) {
-    if (!!leituraAtual) {
 
+    if (!!leituraAtual) {
         SetDadosMonitor(leituraAtual);
 
     }
@@ -58,7 +85,6 @@ function AtualizarDashboard(leituraAtual) {
 
 
 function SetDadosMonitor(leituraMonitor) {
-
     var computadorMonitor;
 
     for (i = 0; i < computadoresUsuarios.length; i++) {
@@ -71,25 +97,24 @@ function SetDadosMonitor(leituraMonitor) {
                 break;
             }
         }
-    }
-    
 
-    
-    
+    }
+
+
+
+
+
 
     if (!document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador)) {
         IniciarMonitor(computadorMonitor, leituraMonitor);
     }
-    else {
-        updateChart(computadorMonitor, leituraMonitor);
-    }
+    updateChart(computadorMonitor, leituraMonitor);
 }
 
 
 
 
 function IniciarMonitor(computadorMonitor, leituraMonitor) {
-
 
 
     var areaInfo = document.getElementById('areaInfo');
@@ -107,23 +132,18 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
     tituloComputador.setAttribute("id", "tituloComputador" + computadorMonitor.CodComputador);
 
     infoGeralComputador.appendChild(tituloComputador);
-    
+
 
     tituloComputador.textContent = computadorMonitor.NomeComputador;
-    
 
     Desenhar("HD", infoGeralComputador, (computadorMonitor.HdTotal / 1e+9).toFixed(2), (leituraMonitor.HdAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
     Desenhar("RAM", infoGeralComputador, (computadorMonitor.RamTotal / 1e+9).toFixed(2), (leituraMonitor.RamAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
     //Desenhar("CPU", infoGeralComputador, computadorMonitor.CpuAtual, leituraMonitor.CpuAtual);
-    
-    var graficoCpu = document.createElement("div");
-    graficoCpu.setAttribute("class", "graficoCpu");
-    graficoCpu.setAttribute("id", "graficoCpu" + computadorMonitor.CodComputador);
 
-    infoGeralComputador.appendChild(graficoCpu);
 
-    graficoCpu.textContent="Finge q tem um gráfico da Cê pê uh aqui"
 
+
+    DesenharCPU("CPU", infoGeralComputador, 100, leituraMonitor.CpuAtual.toFixed(2), computadorMonitor.CodComputador);
 
 
     var detalhesMonitor = document.createElement("div");
@@ -136,12 +156,12 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
     addDetalhe(detalhesMonitor, "Perfil", computadorMonitor.Perfil, computadorMonitor.CodComputador);
     addDetalhe(detalhesMonitor, "Processador", computadorMonitor.Processador, computadorMonitor.CodComputador);
     addDetalhe(detalhesMonitor, "SO", computadorMonitor.SistemaOperacional + " " + computadorMonitor.VersaoSistema + " " + computadorMonitor.VersaoBits + " BITS ", computadorMonitor.CodComputador);
-    
+
 
 }
 
 
-function addDetalhe(detalhesMonitor, titulo, info, cod){
+function addDetalhe(detalhesMonitor, titulo, info, cod) {
     var campoDetalhe = document.createElement("div");
     campoDetalhe.setAttribute("class", "campoDetalhe");
     campoDetalhe.setAttribute("id", "campoDetalhe" + titulo + cod);
@@ -157,6 +177,7 @@ var chartsOptions = [];
 var chartsComp = [];
 
 var charts = [];
+var lineCharts = [];
 
 function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
@@ -165,21 +186,20 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
     var style = getComputedStyle(document.body);
     var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
     var angulo = 0,
-        cor = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
-    var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+        cor = (style.getPropertyValue('--blue-color')).replace(/\s/g, '');
+    var cor2 = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
 
 
     if (componente == "RAM") {
-        angulo = 3.2;
-        cor = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
+        cor = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
     }
 
 
-    
+
     var localChart = document.createElement("div");
     localChart.setAttribute("class", "localChart");
     localChart.setAttribute("id", "localChart" + componente + cod);
-    
+
     infoGeralComputador.appendChild(localChart);
 
     var pieChartInfo = document.createElement("canvas");
@@ -265,9 +285,13 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
     var rect = c.getBoundingClientRect();
 
-    var gradientStroke = ctx.createLinearGradient(rect.x, rect.y, rect.x - rect.width, rect.y - rect.height);
+    console.log(rect.x, rect.width, rect.x - rect.width);
+
+    var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+
     gradientStroke.addColorStop(0, cor);
-    gradientStroke.addColorStop(1, cor2);
+    gradientStroke.addColorStop(0.1, cor2);
+    gradientStroke.addColorStop(0.2, cor);
 
 
     data = {
@@ -282,10 +306,10 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
             componente + ' Usado',
             componente + ' Livre'
         ]
-        
+
     };
 
-    
+
 
 
     var options = {
@@ -297,8 +321,10 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
         legend: {
             display: false
         },
+        tooltips: {
+            enabled: false
+        },
         segmentShowStroke: false,
-        rotation: angulo,
         cutoutPercentage: 90,
         animationSteps: 100,
         animationEasing: "easeOutBounce",
@@ -320,39 +346,38 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
         data: data,
         options: options
     }));
-    
-    
+
+
 
 
     //console.log(total, total - atual, atual);
 
-}    
+}
 
 
 
 function updateChart(computadorMonitor, leituraMonitor) {
     var infoGeralComputador = document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador);
 
+    console.log(leituraMonitor.RamAtual);
+
     Atualizar("HD", infoGeralComputador, (computadorMonitor.HdTotal / 1e+9).toFixed(2), (leituraMonitor.HdAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
     Atualizar("RAM", infoGeralComputador, (computadorMonitor.RamTotal / 1e+9).toFixed(2), (leituraMonitor.RamAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
-
+    AtualizarCPU("CPU", infoGeralComputador, leituraMonitor.CpuAtual.toFixed(2), computadorMonitor.CodComputador)
 
 }
 
 
 function Atualizar(componente, infoGeralComputador, total, atual, cod) {
-
-
     var style = getComputedStyle(document.body);
     var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
 
+    document.getElementById("conteudoTotal" + componente + cod).textContent = total + " GB";
 
-    if (componente == "RAM") {
-        angulo = 3.2;
-        cor = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
-    }
-    
-    
+    document.getElementById("conteudoAtual" + componente + cod).textContent = atual + " GB";
+
+
+
 
     for (i = 0; i < charts.length; i++) {
 
@@ -361,20 +386,211 @@ function Atualizar(componente, infoGeralComputador, total, atual, cod) {
             var chart = charts[i];
 
             chart.data.datasets[0].data = [atual, total - atual];
-            
+
+
 
             chart.update();
 
-            //console.log("Update",total, total - atual, atual);
         }
 
     }
 
 
-}    
+}
+
+
+
+function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
+
+
+
+    var style = getComputedStyle(document.body);
+    var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
+    var angulo = 0,
+        cor = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
+    var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+
+
+    var areaCPU = document.createElement("div");
+    areaCPU.setAttribute("class", "areaCPU");
+    areaCPU.setAttribute("id", "areaCPU" + componente + cod);
+
+    infoGeralComputador.appendChild(areaCPU);
+
+
+    var tituloCpu = document.createElement("div");
+    tituloCpu.setAttribute("class", "tituloCpu");
+    tituloCpu.setAttribute("id", "tituloCpu" + componente + cod);
+
+    areaCPU.appendChild(tituloCpu);
+
+    tituloCpu.textContent = "CPU";
+
+
+    var graficoCpu = document.createElement("div");
+    graficoCpu.setAttribute("class", "graficoCpu");
+    graficoCpu.setAttribute("id", "graficoCpu" + componente + cod);
+
+    areaCPU.appendChild(graficoCpu);
+
+    var lineChartInfo = document.createElement("canvas");
+
+    lineChartInfo.setAttribute("class", "lineChart" + componente);
+    lineChartInfo.setAttribute("id", "lineChart" + componente + cod);
+
+    graficoCpu.appendChild(lineChartInfo);
+
+
+    var labelCpu = document.createElement("div");
+    labelCpu.setAttribute("class", "labelCpu");
+    labelCpu.setAttribute("id", "labelCpu" + componente + cod);
+
+    areaCPU.appendChild(labelCpu);
+    
+
+    var porcentagemCpu = document.createElement("div");
+    porcentagemCpu.setAttribute("class", "porcentagemCpu");
+    porcentagemCpu.setAttribute("id", "porcentagemCpu" + componente + cod);
+
+    labelCpu.appendChild(porcentagemCpu);
+
+    porcentagemCpu.textContent = atual + "%";
+
+
+
+    var c = document.getElementById("lineChart" + componente + cod);
+    var ctx = c.getContext("2d");
+
+
+    var rect = c.getBoundingClientRect();
+
+    console.log(rect.x, rect.width, rect.x - rect.width);
+
+    var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+
+    gradientStroke.addColorStop(0, cor);
+    gradientStroke.addColorStop(0.2, cor2);
+    gradientStroke.addColorStop(0.4, cor);
+
+
+
+    data = {
+
+        datasets: [{
+            data: [],
+            backgroundColor: gradientStroke,
+            hoverBackgroundColor: [cor, "#000"],
+            fill: true,
+            borderColor: "rgba(230,230,230,1)",
+            borderWidth: 2,
+            pointRadius: 8,
+            pointHoverRadius: 12,
+            showLine: true
+        }],
+
+        labels: []
+
+    };
+
+
+
+
+    var options = {
+        legend: {
+            display: false
+        },
+        scales: {
+            xAxes: [{
+                fontColor: cor,
+                display: false,
+                ticks: {
+                    stepSize: 1,
+                    fontColor: cor2,
+                    beginAtZero: true
+                }
+            }],
+            yAxes: [{
+                scaleLabel: {
+                    stepSize: 1,
+                    max: 100,
+                    min: 0,
+                    fontColor: cor,
+                    display: false
+                },
+                ticks: {
+                    max: 100,
+                    min: 0,
+                    fontColor: cor2,
+                    beginAtZero: true
+                }
+            }]
+        },
+        animationSteps: 100,
+        animationEasing: "easeOutBounce",
+        responsive: true,
+        maintainAspectRatio: false,
+        animateScale: false,
+        scaleOverride: false,
+        scaleSteps: 1,
+        scaleStartValue: 0,
+        scaleEndValue: 100
+
+
+    };
+
+    chartsComp.push(componente);
+    chartsCod.push(cod);
+    chartsData.push(data);
+    chartsOptions.push(options);
+
+    charts.push(new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+    }));
+
+
+
+
+}
+
+
+
+function AtualizarCPU(componente, infoGeralComputador, atual, cod) {
+    var style = getComputedStyle(document.body);
+
+
+
+    for (i = 0; i < charts.length; i++) {
+
+        if (chartsCod[i] == cod && chartsComp[i] == componente) {
+
+            var chart = charts[i];
+
+            chart.data.labels.push("CPU");
+            chart.data.datasets[0].data.push(atual)
+
+            if (chart.data.labels.length > 6) {
+                chart.data.labels.shift()
+                chart.data.datasets[0].data.shift()
+            }
+
+
+            var porcentagem = document.getElementById("porcentagemCpu" + componente + cod);
+            porcentagem.style.top = (100 - atual - 10) + "%";
+            porcentagem.textContent = atual + "%";
+
+            chart.update();
+
+        }
+
+    }
+}
 
 
 
 function breakSession() {
     PageMethods.BreakSession(function () { window.location = "Login.aspx" }, onError);
 }
+
+

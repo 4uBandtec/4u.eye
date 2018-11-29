@@ -148,11 +148,19 @@
 			<asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
 		</div>
 
+<<<<<<< HEAD
 
 		<!--Area com os containers dos computadores-->
 		<div id="areaInfo">
 
 			<!--Eles são adds através da função iniciarDash() no script EYEDash.js-->
+=======
+        <!--Area com os containers dos computadores-->
+        <div id="areaInfo">
+
+
+            <!--Eles são adds através da função iniciarDash() no script EYEDash.js-->
+>>>>>>> develop
 
 		</div>
 

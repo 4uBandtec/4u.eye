@@ -23,7 +23,15 @@ namespace Eye.View
 
         public int returnSession()
         {
-            return int.Parse((String)Session["codWorkspace"]);
+            var codWorkspace = (string)Session["codWorkspace"];
+            if (codWorkspace == null || codWorkspace == "0")
+            {
+                return 0;
+            }
+            else
+            {
+                return int.Parse((String)Session["codWorkspace"]);
+            }
         }
 
 
