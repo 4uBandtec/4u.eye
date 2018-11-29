@@ -5,6 +5,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
+    <link runat="server" rel="shortcut icon" href="../Component/favicon.ico" type="image/x-icon" />
+    <link runat="server" rel="icon" href="../Component/favicon.ico" type="image/ico" />
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Dashboard | EYE by 4U</title>
     <link href="../Model/EYE.css" rel="stylesheet" type="text/css" />
@@ -126,7 +130,7 @@
 
                 </div>
             </a>
-            
+
 
             <a href="Dashboard.aspx">
                 <div class="itemMenu" onclick="breakSession()">

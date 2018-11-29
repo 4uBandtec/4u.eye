@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="Component\AddUsuarios.png" />
     <Content Include="Component\Dashboard.png" />
+    <Content Include="Component\favicon.ico" />
     <Content Include="Component\icon.png" />
     <Content Include="Component\Logout.png" />
     <Content Include="Component\Opcoes.png" />
