@@ -77,7 +77,7 @@
             </a>
 
 
-            <a href="Dashboard.aspx">
+            <a href="CadastroTarefas.aspx">
                 <div class="itemMenu">
 
                     <div class="itemIcon">

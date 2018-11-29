@@ -136,8 +136,8 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
 
     tituloComputador.textContent = computadorMonitor.NomeComputador;
 
-    Desenhar("HD", infoGeralComputador, (computadorMonitor.HdTotal / 1e+9).toFixed(2), (leituraMonitor.HdAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
-    Desenhar("RAM", infoGeralComputador, (computadorMonitor.RamTotal / 1e+9).toFixed(2), (leituraMonitor.RamAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    Desenhar("HD", infoGeralComputador, computadorMonitor.HdTotal, leituraMonitor.HdAtual, computadorMonitor.CodComputador);
+    Desenhar("RAM", infoGeralComputador, computadorMonitor.RamTotal, leituraMonitor.RamAtual, computadorMonitor.CodComputador);
     //Desenhar("CPU", infoGeralComputador, computadorMonitor.CpuAtual, leituraMonitor.CpuAtual);
 
 
@@ -181,7 +181,21 @@ var lineCharts = [];
 
 function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
+    var unidade = "GB";
 
+    if (total / 1e+12 >= 1) {
+        unidade = "TB"
+        total /= 1e+12;
+        atual /= 1e+12;
+    }
+    else {
+        total /= 1e+9;
+        atual /= 1e+9;
+    }
+
+    total = total.toFixed(2);
+
+    atual = atual.toFixed(2);
 
     var style = getComputedStyle(document.body);
     var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
@@ -244,7 +258,7 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
     labelChart.appendChild(atualValor);
 
-    atualValor.textContent = atual + " GB";
+    atualValor.textContent = atual + " " + unidade;
 
 
 
@@ -267,7 +281,7 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
     labelChart.appendChild(totalValor);
 
-    totalValor.textContent = total + " GB";
+    totalValor.textContent = total + " " + unidade;
 
 
 
@@ -361,20 +375,36 @@ function updateChart(computadorMonitor, leituraMonitor) {
 
     console.log(leituraMonitor.RamAtual);
 
-    Atualizar("HD", infoGeralComputador, (computadorMonitor.HdTotal / 1e+9).toFixed(2), (leituraMonitor.HdAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
-    Atualizar("RAM", infoGeralComputador, (computadorMonitor.RamTotal / 1e+9).toFixed(2), (leituraMonitor.RamAtual / 1e+9).toFixed(2), computadorMonitor.CodComputador);
+    Atualizar("HD", infoGeralComputador, computadorMonitor.HdTotal, leituraMonitor.HdAtual, computadorMonitor.CodComputador);
+    Atualizar("RAM", infoGeralComputador, computadorMonitor.RamTotal, leituraMonitor.RamAtual, computadorMonitor.CodComputador);
     AtualizarCPU("CPU", infoGeralComputador, leituraMonitor.CpuAtual.toFixed(2), computadorMonitor.CodComputador)
 
 }
 
 
 function Atualizar(componente, infoGeralComputador, total, atual, cod) {
+    var unidade = "GB";
+
+    if (total / 1e+12 >= 1) {
+        unidade = "TB"
+        total /= 1e+12;
+        atual /= 1e+12;
+    }
+    else {
+        total /= 1e+9;
+        atual /= 1e+9;
+    }
+
+    total = total.toFixed(2);
+
+    atual = atual.toFixed(2);
+
     var style = getComputedStyle(document.body);
     var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
 
-    document.getElementById("conteudoTotal" + componente + cod).textContent = total + " GB";
+    document.getElementById("conteudoTotal" + componente + cod).textContent = total + " " + unidade;
 
-    document.getElementById("conteudoAtual" + componente + cod).textContent = atual + " GB";
+    document.getElementById("conteudoAtual" + componente + cod).textContent = atual + " " + unidade;
 
 
 
@@ -446,7 +476,7 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
     labelCpu.setAttribute("id", "labelCpu" + componente + cod);
 
     areaCPU.appendChild(labelCpu);
-    
+
 
     var porcentagemCpu = document.createElement("div");
     porcentagemCpu.setAttribute("class", "porcentagemCpu");
