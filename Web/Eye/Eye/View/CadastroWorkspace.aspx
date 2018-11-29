@@ -32,7 +32,7 @@
 
                 <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
 
-                <div class="campos" onkeydown="tabPress(event)" onkeyup="keyUp()">
+                <div class="campos" onkeydown="tabPress(event)" onkeyup="keyUp(event)">
 
                     <asp:TextBox ID="txtNome" runat="server" Placeholder="Seu nome" CssClass="campoCadastro"></asp:TextBox>
 

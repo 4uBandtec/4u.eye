@@ -1,5 +1,5 @@
 ﻿function mascaraData(campo) {
-    
+
 
     var position = 2;
     var texto = campo.value;
@@ -25,7 +25,7 @@
     }
 
     if (campo.value.length > 10) {
-        
+
         var barra = "/";
         var output = [texto.slice(0, 10)].join('');
         campo.value = output;
@@ -81,8 +81,8 @@ function validaData(dia, mes, ano) {
         }
     }
 
-    var trintaEUm = [1,3,5,7,8,10,12];
-    var trinta = [4,6,9,11];
+    var trintaEUm = [1, 3, 5, 7, 8, 10, 12];
+    var trinta = [4, 6, 9, 11];
     var bissexto = (ano % 4 == 0) ? true : false;
 
     if (mes > 12) {
@@ -92,7 +92,7 @@ function validaData(dia, mes, ano) {
         dia = bissexto ? 28 : 29;
     }
     else {
-        for (i = 0; i < trinta.length; i++){
+        for (i = 0; i < trinta.length; i++) {
             if (trinta[i] == mes) {
                 dia = (dia > 30) ? 30 : dia;
             }
@@ -112,7 +112,7 @@ function validaData(dia, mes, ano) {
         ano = anoAtual - 120;
     }
 
-    return(dia+"/"+mes+"/"+ano)
+    return (dia + "/" + mes + "/" + ano)
 }
 
 
@@ -242,12 +242,12 @@ function mudarTexto() {
 
             case DATA_NASCIMENTO:
                 info = decide[0] == 1 ? "Quando ele nasceu? Só por curiosidade mesmo" : "Qual a data de nascimento dele?";
-                
+
                 break;
 
             case SEXO:
                 info = decide[0] == 1 ? "Qual o sexo dele... dela...???" : "Você é capaz de identificar o sexo dessa pessoa?";
-                
+
                 break;
 
             case SENHA:
@@ -269,10 +269,10 @@ function mudarTexto() {
 
                 break;
 
-            
+
         }
     }
-    
+
     lblTexto.innerHTML = mensagem + info;
 }
 
@@ -464,35 +464,50 @@ function tabPress(e) {
         if (e.preventDefault) e.preventDefault();
         previousCampo();
     }
-    else if (e.which == 9) {
+    else if (e.which == 9 || e.keyCode === 13) {
 
         if (campoAtual == totalCamposCadastro - 2) {
             if (e.preventDefault) e.preventDefault();
         }
-        if (telaAtual == "workspace" && campoAtual == 3 && camposCadastro[campoAtual].value != camposCadastro[campoAtual - 1].value) {
 
-            showCampoCadastro(campoAtual);
+        if (telaAtual == "workspace") {
+            if (campoAtual == 3 && camposCadastro[campoAtual].value != camposCadastro[campoAtual - 1].value) {
+                showCampoCadastro(campoAtual);
+            }
+            else {
+                if (!msgErro) {
+                    nextCampo();
+                }
+            }
 
         }
-        if (telaAtual == "usuario" && ((campoAtual == 2 && !checaEmail(campoAtual))
-            || (campoAtual == 3 && camposCadastro[campoAtual].value.length < 10))) {
-            showCampoCadastroUsuario(campoAtual);
-        }
-        else {
-            nextCampo();
+        if (telaAtual == "usuario") {
+            if ((campoAtual == 2 && !checaEmail(campoAtual))
+                || (campoAtual == 3 && camposCadastro[campoAtual].value.length < 10)) {
+                showCampoCadastroUsuario(campoAtual);
+            }
+            else {
+                if (!msgErro) {
+                    nextCampo();
+                }
+            }
         }
     }
-
-
-
 }
 
-function keyUp() {
-    if (telaAtual == "workspace") {
-        showCampoCadastro(campoAtual);
-    }
-    else if (telaAtual == "usuario") {
-        showCampoCadastroUsuario(campoAtual);
+
+
+
+
+
+function keyUp(e) {
+    if (e.keyCode !== 13) {
+        if (telaAtual == "workspace") {
+            showCampoCadastro(campoAtual);
+        }
+        else if (telaAtual == "usuario") {
+            showCampoCadastroUsuario(campoAtual);
+        }
     }
 }
 
