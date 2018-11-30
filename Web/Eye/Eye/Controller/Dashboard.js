@@ -132,9 +132,8 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
     tituloComputador.setAttribute("id", "tituloComputador" + computadorMonitor.CodComputador);
 
     infoGeralComputador.appendChild(tituloComputador);
-
-
-    tituloComputador.textContent = computadorMonitor.NomeComputador;
+    
+    tituloComputador.textContent = computadorMonitor.NomeComputador + computadorMonitor.User;
 
     Desenhar("HD", infoGeralComputador, computadorMonitor.HdTotal, leituraMonitor.HdAtual, computadorMonitor.CodComputador);
     Desenhar("RAM", infoGeralComputador, computadorMonitor.RamTotal, leituraMonitor.RamAtual, computadorMonitor.CodComputador);
