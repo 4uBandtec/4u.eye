@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Eye.View.Dashboard" %>
 
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -94,7 +93,7 @@
             </a>
 
 
-            <a href="Dashboard.aspx">
+            <a href="CadastroSlack.aspx">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
