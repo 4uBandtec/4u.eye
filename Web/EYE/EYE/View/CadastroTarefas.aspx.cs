@@ -1,6 +1,9 @@
 ﻿using EYE.Controller;
 using System;
+using System.Collections.Generic;
 using System.Globalization;
+using System.Web.Script.Services;
+using System.Web.Services;
 
 namespace EYE.View
 {
@@ -31,8 +34,16 @@ namespace EYE.View
         {
             var codWorkspace = (string)Session["codWorkspace"];
             var conteudo = new ControllerTarefa().CarregarPainel(int.Parse(codWorkspace));
-            lbl.Text += pnlConfiguracao.Controls.Count.ToString();
             pnlConfiguracao.Controls.Add(conteudo);
+        }
+
+        [ScriptMethod, WebMethod]
+        public static bool CadastraTarefa(List<string> listaCodUsersTarefa, List<string> listaProcTarefa, List<string> listaTempoTarefa)
+        {
+            //Livia coloca a função de cadastrar tarefa aqui;
+            
+
+            return true;
         }
     }
 }

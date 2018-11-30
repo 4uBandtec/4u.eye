@@ -28,15 +28,26 @@ namespace EYE.Model
 
         public Panel ConstruirConteudo(DropDownList ddlUsuarios, DropDownList ddlProcessos)
         {
+
+
             var conteudo = new Panel();
             var lblUsuario = new Label();
             lblUsuario.Text = "Escolha um usuario para realizar a tarefa";
+
+
             var lblProcesso = new Label();
             lblProcesso.Text = "Escolha o processo utilizado";
 
             var lblTempo = new Label();
             lblTempo.Text = "Quanto tempo o usuario vai fazer isso?";
             var txtTempo = new TextBox();
+
+
+            ddlUsuarios.CssClass = "ddlUsuarios";
+            ddlProcessos.CssClass = "ddlProcessos";
+            txtTempo.CssClass = "txtTempo";
+
+
             conteudo.Controls.Add(lblUsuario);
             conteudo.Controls.Add(ddlUsuarios);
             conteudo.Controls.Add(lblProcesso);

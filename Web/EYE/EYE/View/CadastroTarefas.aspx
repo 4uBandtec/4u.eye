@@ -51,7 +51,7 @@
             <asp:TextBox ID="txtDataConclusao" runat="server"></asp:TextBox>
                 </p>
             </div>
-            <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click" />
+            <input type="button" id="btnCadastrar" runat="server" value="Cadastrar" onclick="cadastrarClick()" />
             <asp:Label Text="" ID="lblMensagem" runat="server" />
         </div>
     </form>

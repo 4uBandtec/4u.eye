@@ -31,15 +31,6 @@ namespace EYE.View {
         protected global::System.Web.UI.ScriptManager ScriptManager;
         
         /// <summary>
-        /// Controle lbl.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl;
-        
-        /// <summary>
         /// Controle pnlConfiguracao.
         /// </summary>
         /// <remarks>
@@ -109,7 +100,7 @@ namespace EYE.View {
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCadastrar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton btnCadastrar;
         
         /// <summary>
         /// Controle lblMensagem.
