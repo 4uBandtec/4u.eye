@@ -46,7 +46,7 @@
                     <asp:TextBox ID="txtDataNascimento" runat="server" Placeholder="Data de Nascimento" CssClass="campoCadastro" MaxLength="10"></asp:TextBox>
 
 
-                    <asp:DropDownList runat="server" ID="ddlSexo" CssClass="campoCadastro"  onchange="keyUp()">
+                    <asp:DropDownList runat="server" ID="ddlSexo" CssClass="campoCadastro"  onchange="keyUp(event)">
                             <asp:ListItem Text="Qual o sexo?" Value="" Selected="True" />
                             <asp:ListItem Text="Feminino" Value="F" />
                             <asp:ListItem Text="Masculino" Value="M" />
