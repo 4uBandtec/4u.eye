@@ -27,11 +27,11 @@ namespace EYE.View
 				return;
 			}
 		}
-
         protected void btnAdicionar_Click(object sender, EventArgs e)
         {
             var codWorkspace = (string)Session["codWorkspace"];
             var conteudo = new ControllerTarefa().CarregarPainel(int.Parse(codWorkspace));
+            lbl.Text += pnlConfiguracao.Controls.Count.ToString();
             pnlConfiguracao.Controls.Add(conteudo);
         }
     }

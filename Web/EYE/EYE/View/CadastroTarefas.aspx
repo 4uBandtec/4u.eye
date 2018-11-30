@@ -8,42 +8,57 @@
     <link runat="server" rel="shortcut icon" href="../Component/favicon.ico" type="image/x-icon" />
     <link runat="server" rel="icon" href="../Component/favicon.ico" type="image/ico" />
 
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<title></title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
 </head>
 <body>
-	<form id="form1" runat="server">
-		<div>
-            <asp:Panel ID="pnlConfiguracao" runat="server" BackColor="#FFF"> </asp:Panel>
-            <asp:Button ID="btnAdicionar" Text="+" runat="server"  OnClick="btnAdicionar_Click"/>
-			<div>
-				<p>
-					Tarefa
-				</p>
-				<p>
-					Nome:
+    <form id="form1" runat="server">
+
+        <div>
+            <asp:ScriptManager ID="ScriptManager1" runat="server">
+            </asp:ScriptManager>
+
+            <asp:UpdatePanel ID="updtPnlConfiguracao" runat="server">
+                <ContentTemplate>
+                    <asp:Label Text="text" runat="server" ID="lbl"/>
+                    <asp:Panel ID="pnlConfiguracao" runat="server" BackColor="#FFF">
+                    </asp:Panel>
+                    <asp:Button ID="btnAdicionar" Text="+" runat="server" OnClick="btnAdicionar_Click" />
+                </ContentTemplate>
+                <Triggers>
+                    <asp:AsyncPostBackTrigger ControlID="btnAdicionar" EventName="Click"/>
+                </Triggers>
+            </asp:UpdatePanel>
+
+
+            <div>
+                <p>
+                    Tarefa
+                </p>
+                <p>
+                    Nome:
             <asp:TextBox ID="txtNome" runat="server"></asp:TextBox>
-				</p>
-				<p>
-					Descrição:
+                </p>
+                <p>
+                    Descrição:
             <asp:TextBox ID="txtDescricao" runat="server"></asp:TextBox>
-				</p>
-				<p>
-					Data Inicio:
+                </p>
+                <p>
+                    Data Inicio:
             <asp:TextBox ID="txtDataInicio" runat="server"></asp:TextBox>
-				</p>
-				<p>
-					Data: Fim:
+                </p>
+                <p>
+                    Data: Fim:
             <asp:TextBox ID="txtDataFim" runat="server"></asp:TextBox>
-				</p>
-				<p>
-					Data Conclusão:
+                </p>
+                <p>
+                    Data Conclusão:
             <asp:TextBox ID="txtDataConclusao" runat="server"></asp:TextBox>
-				</p>
-			</div>
-			<asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click" />
-			<asp:Label Text="" ID="lblMensagem" runat="server" />
-		</div>
-	</form>
+                </p>
+            </div>
+            <asp:Button ID="btnCadastrar" runat="server" Text="Cadastrar" OnClick="btnCadastrar_Click" />
+            <asp:Label Text="" ID="lblMensagem" runat="server" />
+        </div>
+    </form>
 </body>
 </html>
