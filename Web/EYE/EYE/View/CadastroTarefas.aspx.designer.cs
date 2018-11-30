@@ -22,22 +22,13 @@ namespace EYE.View {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
-        /// Controle ScriptManager1.
+        /// Controle ScriptManager.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.ScriptManager ScriptManager1;
-        
-        /// <summary>
-        /// Controle updtPnlConfiguracao.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.UpdatePanel updtPnlConfiguracao;
+        protected global::System.Web.UI.ScriptManager ScriptManager;
         
         /// <summary>
         /// Controle lbl.
@@ -64,7 +55,7 @@ namespace EYE.View {
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAdicionar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton btnAdicionar;
         
         /// <summary>
         /// Controle txtNome.

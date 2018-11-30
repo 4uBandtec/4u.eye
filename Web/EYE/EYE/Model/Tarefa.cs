@@ -43,6 +43,9 @@ namespace EYE.Model
             conteudo.Controls.Add(ddlProcessos);
             conteudo.Controls.Add(lblTempo);
             conteudo.Controls.Add(txtTempo);
+
+            conteudo.ID = "conteudo0";
+            conteudo.CssClass = "conteudoTarefa";
             return conteudo;
         }
     }

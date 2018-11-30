@@ -10,25 +10,20 @@
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title></title>
+
+    <script type="text/javascript" src="../Controller/Tarefas.js"></script>
 </head>
 <body>
     <form id="form1" runat="server">
 
         <div>
-            <asp:ScriptManager ID="ScriptManager1" runat="server">
-            </asp:ScriptManager>
+            <asp:ScriptManager ID="ScriptManager" runat="server"
+            EnablePageMethods="true" />
 
-            <asp:UpdatePanel ID="updtPnlConfiguracao" runat="server">
-                <ContentTemplate>
-                    <asp:Label Text="text" runat="server" ID="lbl"/>
-                    <asp:Panel ID="pnlConfiguracao" runat="server" BackColor="#FFF">
-                    </asp:Panel>
-                    <asp:Button ID="btnAdicionar" Text="+" runat="server" OnClick="btnAdicionar_Click" />
-                </ContentTemplate>
-                <Triggers>
-                    <asp:AsyncPostBackTrigger ControlID="btnAdicionar" EventName="Click"/>
-                </Triggers>
-            </asp:UpdatePanel>
+            <asp:Panel ID="pnlConfiguracao" runat="server" BackColor="#FFF">
+            </asp:Panel>
+            <input type="button" id="btnAdicionar" value="Novo" runat="server" onclick="AdicionarPainel()" />
+
 
 
             <div>
