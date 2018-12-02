@@ -22,7 +22,7 @@ namespace EYE.View
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
             var codWorkspace = (string)Session["codWorkspace"];
-            if (!new ControllerSlack().Cadastrar(txtUrl, txtNome, txtCanal, codWorkspace, lblMensagem))
+            if (!new ControllerSlack().Cadastrar(txtUrl, txtCanal, codWorkspace, lblMensagem))
             {
                 return;
             }

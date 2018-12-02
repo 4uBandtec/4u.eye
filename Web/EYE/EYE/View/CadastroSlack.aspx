@@ -17,10 +17,6 @@
                 Url:
             <asp:TextBox ID="txtUrl" runat="server"></asp:TextBox>
             </p>
-            <p>
-                Slack:
-            <asp:TextBox ID="txtNome" runat="server"></asp:TextBox>
-            </p>
 
             <p>
                 Canal:
