@@ -4,6 +4,9 @@ import br.com.eye.model.LeituraComputador;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.FormatStyle;
 
 public class StatementLeituraComputador {
 
@@ -16,22 +19,24 @@ public class StatementLeituraComputador {
     }
 
     public boolean setPrimeiraLeitura(LeituraComputador leitura, int codComputador) throws SQLException {
-        String sql = "INSERT INTO leitura_atual (cod_computador, ram, cpu, hd) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO leitura_atual (cod_computador, ram, cpu, hd, ultima_leitura) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setInt(1, codComputador);
         query.setDouble(2, leitura.getMemoriaDisponivel());
         query.setDouble(3, leitura.getCpuUsada());
         query.setLong(4, leitura.getDiscoDisponivel());
+        query.setString(5,LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
         return query.execute();
     }
 
     public boolean updateLeitura(LeituraComputador leitura, int codComputador) throws SQLException {
-        String sql = "UPDATE leitura_atual SET ram = ?, cpu= ?, hd= ? WHERE cod_computador = ?";
+        String sql = "UPDATE leitura_atual SET ram = ?, cpu= ?, hd= ?, ultima_leitura = ? WHERE cod_computador = ?";
         PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setDouble(1, leitura.getMemoriaDisponivel());
         query.setDouble(2, leitura.getCpuUsada());
         query.setLong(3, leitura.getDiscoDisponivel());
-        query.setInt(4, codComputador);
+        query.setString(4,LocalDateTime.now().format(DateTimeFormatter.ofLocalizedDateTime(FormatStyle.MEDIUM)));
+        query.setInt(5, codComputador);
 
         return query.execute();
     }
