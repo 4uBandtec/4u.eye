@@ -1,17 +1,21 @@
 ﻿
 var firstLoaded = false;
+var startLoading = false;
 
 function LoadingAll() {
 
 
+    if (!startLoading) {
 
-    var loading = document.createElement("div");
-    loading.setAttribute("class", "loading");
-    loading.setAttribute("id", "loading");
+        var loading = document.createElement("div");
+        loading.setAttribute("class", "loading");
+        loading.setAttribute("id", "loading");
 
-    document.getElementById("areaInfo").appendChild(loading);
+        document.getElementById("areaInfo").appendChild(loading);
 
-    loading.textContent = "Carregando Informações..."
+        loading.textContent = "Carregando Informações..."
+        startLoading = true;
+    }
 }
 
 function Loaded() {

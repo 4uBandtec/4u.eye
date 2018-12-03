@@ -88,7 +88,7 @@ function validaData(dia, mes, ano) {
     if (mes > 12) {
         mes = 12;
     }
-    else if (mes == 2 && dia > ((bissexto) ? 28 : 29)) {
+    if (mes == 2 && dia > ((bissexto) ? 28 : 29)) {
         dia = bissexto ? 28 : 29;
     }
     else {

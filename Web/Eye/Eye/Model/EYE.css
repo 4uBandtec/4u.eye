@@ -520,7 +520,7 @@ body {
 }
 
     .btnForm:hover {
-        border-color: var(--to-invisible);
+        border-color: var(--txt-color);
     }
 
     .btnForm input {

@@ -40,19 +40,15 @@
                 </p>
                 <p>
                     Data Inicio:
-            <asp:TextBox ID="txtDataInicio" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtDataInicio" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataInicio')"></asp:TextBox>
                 </p>
                 <p>
                     Data: Fim:
-            <asp:TextBox ID="txtDataFim" runat="server"></asp:TextBox>
-                </p>
-                <p>
-                    Data Conclusão:
-            <asp:TextBox ID="txtDataConclusao" runat="server"></asp:TextBox>
+            <asp:TextBox ID="txtDataFim" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataFim')"></asp:TextBox>
                 </p>
             </div>
             <input type="button" id="btnCadastrar" runat="server" value="Cadastrar" onclick="cadastrarClick()" />
-            <asp:Label Text="" ID="lblMensagem" runat="server" />
+            <asp:Label Text="aaa" ID="lblMensagem" runat="server" />
         </div>
     </form>
 </body>
