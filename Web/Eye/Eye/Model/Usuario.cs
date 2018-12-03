@@ -13,8 +13,6 @@ namespace EYE.Model
         private int salt;
         private int codWorkspace;
 		private int perfil;
-		private Computador[] computadoresUsuario;
-
 
 		public int CodUsuario { get => codUsuario; set => codUsuario = value; }
 		public string Username { get => username; set => username = value; }
@@ -25,6 +23,8 @@ namespace EYE.Model
 		public string Sexo { get => sexo; set => sexo = value; }
 		public int Salt { get => salt; set => salt = value; }
 		public int CodWorkspace { get => codWorkspace; set => codWorkspace = value; }
-		public Computador[] ComputadoresUsuario { get => computadoresUsuario; set => computadoresUsuario = value; }
+		public int Perfil { get => perfil; set => perfil = value; }
+		public Computador[] ComputadoresUsuario { get; set; }
+
 	}
 }

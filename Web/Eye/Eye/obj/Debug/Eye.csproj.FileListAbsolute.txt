@@ -286,3 +286,7 @@ C:\Users\aluno\Desktop\4u.eye\Web\EYE\EYE\bin\Microsoft.CodeDom.Providers.DotNet
 C:\Users\aluno\Desktop\4u.eye\Web\EYE\EYE\obj\Debug\EYE.dll
 C:\Users\aluno\Desktop\4u.eye\Web\EYE\EYE\obj\Debug\EYE.pdb
 C:\Users\aluno\Desktop\4u.eye\Web\EYE\EYE\obj\Debug\EYE.csprojResolveAssemblyReference.cache
+C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.csprojAssemblyReference.cache
+C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.csproj.CoreCompileInputs.cache
+C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.dll
+C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.pdb

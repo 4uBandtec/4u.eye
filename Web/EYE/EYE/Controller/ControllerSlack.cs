@@ -6,9 +6,9 @@ namespace EYE.Controller
 {
     public class ControllerSlack
     {
-        public bool Cadastrar(TextBox txtUrl, TextBox txtNome, TextBox txtCanal, string cod_workspace, Label lblMensagem)
+        public bool Cadastrar(TextBox txtUrl, TextBox txtCanal, string cod_workspace, Label lblMensagem)
         {
-            if (!Validacao.StringVazia(txtUrl, txtNome, txtCanal))
+            if (!Validacao.StringVazia(txtUrl, txtCanal))
             {
                 lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";
                 return false;
@@ -16,14 +16,12 @@ namespace EYE.Controller
 
             var slack = new Slack();
             slack.Url = txtUrl.Text;
-            slack.Nome = txtNome.Text;
             slack.Canal = txtCanal.Text;
             slack.CodWorkspace = int.Parse(cod_workspace);
             if (StatementSlack.InserirSlack(slack))
             {
                 lblMensagem.Text = "O cadastro funcionou, henrique troca essa mensahe, pq ta feio";
                 txtUrl.Text = "";
-                txtNome.Text = "";
                 txtCanal.Text = "";
                 return true;
             }
