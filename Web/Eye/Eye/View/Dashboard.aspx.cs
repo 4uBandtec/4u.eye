@@ -18,8 +18,15 @@ namespace Eye.View
             {
                 Response.Redirect("./Login.aspx");
             }
+			var lista = ControllerUsuario.RetornaUsuariosOnline(int.Parse(codWorkspace));
+			var texto = "";
+			foreach (var item in lista ) {
+				texto += item.ToString();
+			}
+			lblMensagem.Text = texto;
 
-        }
+
+		}
 
         public int returnSession()
         {
