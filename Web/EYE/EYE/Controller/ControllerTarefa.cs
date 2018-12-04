@@ -6,9 +6,9 @@ namespace EYE.Controller
 {
 	public class ControllerTarefa
 	{
-		public bool Cadastrar(TextBox txtNome, TextBox txtDescricao, TextBox txtDataInicio, TextBox txtDataFim, TextBox txtDataConclusao, string codWorkspace, Label lblMensagem)
+		public bool Cadastrar(TextBox txtNome, TextBox txtDescricao, TextBox txtDataInicio, TextBox txtDataFim, string codWorkspace, Label lblMensagem)
 		{
-			if (!Validacao.StringVazia(txtNome, txtDescricao, txtDataInicio, txtDataFim, txtDataConclusao))
+			if (!Validacao.StringVazia(txtNome, txtDescricao, txtDataInicio, txtDataFim))
 			{
 				lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";
 				return false;
@@ -17,10 +17,10 @@ namespace EYE.Controller
 			var tarefa = new Tarefa();
 			tarefa.Nome = txtNome.Text;
 			tarefa.Descricao = txtDescricao.Text;
-			tarefa.DataInicio = txtDataInicio.Text;//Colocar data de hoje
+			tarefa.DataInicio = txtDataInicio.Text;
 			tarefa.DataFim = txtDataFim.Text;
-			tarefa.DataConclusao = txtDataConclusao.Text;  
-			tarefa.CodWorkspace = int.Parse(codWorkspace);
+			tarefa.DataConclusao = "";  //Colocar data
+            tarefa.CodWorkspace = int.Parse(codWorkspace);
 
 
 			if (StatementTarefa.InserirTarefa(tarefa))
@@ -31,7 +31,6 @@ namespace EYE.Controller
 				txtDescricao.Text = "";
 				txtDataInicio.Text = "";
 				txtDataFim.Text = "";
-				txtDataConclusao.Text = "";
 
 				return true;
 			}

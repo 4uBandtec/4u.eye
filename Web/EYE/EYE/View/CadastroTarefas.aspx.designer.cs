@@ -31,22 +31,13 @@ namespace EYE.View {
         protected global::System.Web.UI.ScriptManager ScriptManager;
         
         /// <summary>
-        /// Controle pnlConfiguracao.
+        /// Controle lblMensagem.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel pnlConfiguracao;
-        
-        /// <summary>
-        /// Controle btnAdicionar.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton btnAdicionar;
+        protected global::System.Web.UI.WebControls.Label lblMensagem;
         
         /// <summary>
         /// Controle txtNome.
@@ -85,13 +76,22 @@ namespace EYE.View {
         protected global::System.Web.UI.WebControls.TextBox txtDataFim;
         
         /// <summary>
-        /// Controle txtDataConclusao.
+        /// Controle pnlConfiguracao.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDataConclusao;
+        protected global::System.Web.UI.WebControls.Panel pnlConfiguracao;
+        
+        /// <summary>
+        /// Controle btnAdicionar.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton btnAdicionar;
         
         /// <summary>
         /// Controle btnCadastrar.
@@ -101,14 +101,5 @@ namespace EYE.View {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputButton btnCadastrar;
-        
-        /// <summary>
-        /// Controle lblMensagem.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblMensagem;
     }
 }

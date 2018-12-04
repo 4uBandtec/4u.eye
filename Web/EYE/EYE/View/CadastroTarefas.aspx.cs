@@ -25,7 +25,7 @@ namespace EYE.View
 		protected void btnCadastrar_Click(object sender, EventArgs e)
 		{
 			var codWorkspace = (string)Session["codWorkspace"];
-			if (!new ControllerTarefa().Cadastrar(txtNome, txtDescricao, txtDataInicio, txtDataFim, txtDataConclusao, codWorkspace, lblMensagem))
+			if (!new ControllerTarefa().Cadastrar(txtNome, txtDescricao, txtDataInicio, txtDataFim, codWorkspace, lblMensagem))
 			{
 				return;
 			}

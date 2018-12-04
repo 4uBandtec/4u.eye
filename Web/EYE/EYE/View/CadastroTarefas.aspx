@@ -9,47 +9,218 @@
     <link runat="server" rel="icon" href="../Component/favicon.ico" type="image/ico" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title></title>
+    <title>Tarefas | EYE by 4U</title>
+    <link href="../Model/EYE.css" rel="stylesheet" type="text/css" />
+
+    <script type="text/javascript" src="../Controller/DashStyle.js"></script>
 
     <script type="text/javascript" src="../Controller/Tarefas.js"></script>
 </head>
-<body>
+<body onload="iniciarEstilo()">
     <form id="form1" runat="server">
 
-        <div>
-            <asp:ScriptManager ID="ScriptManager" runat="server"
+
+        <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />
 
-            <asp:Panel ID="pnlConfiguracao" runat="server" BackColor="#FFF">
-            </asp:Panel>
-            <input type="button" id="btnAdicionar" value="Novo" runat="server" onclick="AdicionarPainel()" />
+        <!--MENU 
+            precisa ter o script dashStyle.js e 
+            função "iniciarEstilo" no onLoad do body-->
+        <div id="sideMenu" onmousemove="getCoordenadas()">
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
+
+
+                    <div class="itemIcon">
+                        <img src="../Component/Dashboard.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Dashboard
+               
+                    </div>
+
+                </div>
+
+            </a>
 
 
 
-            <div>
-                <p>
-                    Tarefa
-                </p>
-                <p>
-                    Nome:
-            <asp:TextBox ID="txtNome" runat="server"></asp:TextBox>
-                </p>
-                <p>
-                    Descrição:
-            <asp:TextBox ID="txtDescricao" runat="server"></asp:TextBox>
-                </p>
-                <p>
-                    Data Inicio:
-            <asp:TextBox ID="txtDataInicio" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataInicio')"></asp:TextBox>
-                </p>
-                <p>
-                    Data: Fim:
-            <asp:TextBox ID="txtDataFim" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataFim')"></asp:TextBox>
-                </p>
-            </div>
-            <input type="button" id="btnCadastrar" runat="server" value="Cadastrar" onclick="cadastrarClick()" />
-            <asp:Label Text="aaa" ID="lblMensagem" runat="server" />
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/Usuarios.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Usuários
+               
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a href="CadastroUsuario.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/AddUsuarios.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Cadastrar Usuário
+               
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a href="CadastroTarefas.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/Tarefa.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Cadastrar Tarefas
+               
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/Slack.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Cadastrar SlackBot
+               
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/Opcoes.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Opções
+               
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a href="Dashboard.aspx">
+                <div class="itemMenu" onclick="breakSession()">
+                    <div class="itemIcon">
+                        <img src="../Component/Logout.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Logout
+                    </div>
+
+                </div>
+            </a>
+
         </div>
+        <!--/MENU-->
+        <div id="meuResumo">
+            <div class="txtMeuResumo">TIME:</div>
+        </div>
+
+        <div id="areaInfo">
+
+            <div id="AreaCadastroTarefa" class="AreaTarefa">
+
+                <div class="tituloComputador">
+                    Quer cadastrar uma tarefa?
+                </div>
+
+
+                <asp:Label Text="" ID="lblMensagem" runat="server" />
+
+                <div class="campos">
+                    <div class="tituloCampo">
+                        Dê um título para ela:
+                    </div>
+                    <asp:TextBox ID="txtNome" Placeholder="Qual é a tarefa?" runat="server"></asp:TextBox>
+                </div>
+                <div class="campos">
+
+                    <div class="tituloCampo">
+                        Descreva essa tarefa pra sua equipe:
+                    </div>
+                <asp:TextBox ID="txtDescricao" Placeholder="Descreva ela..." runat="server"></asp:TextBox>
+            </div>
+            <div class="campos">
+
+                <div class="tituloCampo">
+                    Quando essa tarefa será INICIADA?
+                </div>
+            <asp:TextBox ID="txtDataInicio" Placeholder="Quando ela começa?" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataInicio')"></asp:TextBox>
+        </div>
+        <div class="campos">
+
+            <div class="tituloCampo">
+                Até quando ela pode ser FINALIZADA?:
+            </div>
+        <asp:TextBox ID="txtDataFim" Placeholder="Até quando?" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataFim')"></asp:TextBox>
+        </div>
+
+
+
+                <div class="campos" >
+
+
+                    <input type="button" id="btnProximo" value="+ Adicionar pessoas" />
+                </div>
+
+
+
+        </div>
+
+
+
+            <div id="areaConfig" class="AreaTarefa">
+                
+                <div class="tituloComputador">
+                    Quem vai participar?
+                </div>
+                <asp:Panel ID="pnlConfiguracao" runat="server">
+                </asp:Panel>
+                <input type="button" id="btnAdicionar" value="+ Usuário" runat="server" onclick="AdicionarPainel()" />
+            </div>
+
+
+
+        <input type="button" id="btnCadastrar" runat="server" value="Cadastrar" onclick="cadastrarClick()" />
+
+        </div>
+
     </form>
 </body>
 </html>
