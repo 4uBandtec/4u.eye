@@ -1,4 +1,3 @@
-
 using EYE.Controller;
 using EYE.Model;
 using System;
@@ -18,12 +17,10 @@ namespace Eye.View
             {
                 Response.Redirect("./Login.aspx");
             }
-			var lista = ControllerUsuario.RetornaUsuariosOnline(int.Parse(codWorkspace));
-			var texto = "";
+			var lista = ControllerComputador.RetornaUsuariosOnline(int.Parse(codWorkspace));
 			foreach (var item in lista ) {
-				texto += item.ToString();
+				lblMensagem.Text += $"{item}\n" ;
 			}
-			lblMensagem.Text = texto;
 
 
 		}

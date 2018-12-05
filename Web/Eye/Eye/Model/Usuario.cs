@@ -1,13 +1,7 @@
-﻿
-using System;
-
-namespace EYE.Model
+﻿namespace EYE.Model
 {
 	public class Usuario
 	{
-		private const int INDEX_DATA = 0;
-		private const int INDEX_HORA = 0;
-
 		private int codUsuario;
 		private string username;
 		private string nome;
@@ -19,7 +13,7 @@ namespace EYE.Model
 		private int codWorkspace;
 		private int perfil;
 		private Computador[] computadoresUsuario;
-		private string ultimaLeitura;
+
 
 		public int CodUsuario { get => codUsuario; set => codUsuario = value; }
 		public string Username { get => username; set => username = value; }
@@ -32,23 +26,5 @@ namespace EYE.Model
 		public int CodWorkspace { get => codWorkspace; set => codWorkspace = value; }
 		public int Perfil { get => perfil; set => perfil = value; }
 		public Computador[] ComputadoresUsuario { get => computadoresUsuario; set => computadoresUsuario = value; }
-		public string UltimaLeitura { get => ultimaLeitura; set => ultimaLeitura = value; }
-
-		public static bool HoraAtualizada(string tempoCompleto)
-		{
-			var dataCompleta = tempoCompleto.Split(' ');
-			var datas =dataCompleta[INDEX_DATA].Split('/');
-			var horas = dataCompleta[INDEX_DATA].Split(':');
-			var ano = int.Parse(datas[2]);
-			var mes = int.Parse(datas[1]);
-			var dia = int.Parse(datas[0]);
-			var segundo = int.Parse(horas[2]);
-			var minuto = int.Parse(horas[1]);
-			var hora = int.Parse(horas[0]);
-
-			var dataBanco = new DateTime(ano, mes, dia, hora, minuto, segundo);
-			var dataAtrasada = DateTime.Now.AddMinutes(-5);
-			return dataBanco > dataAtrasada;
-		}
 	}
 }

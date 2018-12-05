@@ -1,6 +1,4 @@
-﻿
-using System.Collections.Generic;
-using System.Web.UI.WebControls;
+﻿using System.Web.UI.WebControls;
 using EYE.Model;
 using EYE.Model.DAO;
 
@@ -39,9 +37,6 @@ namespace EYE.Controller
 			usuario.DataNascimento = txtDataNascimento.Text;
 			usuario.Sexo = ddlSexo.SelectedValue;
 			usuario.CodWorkspace = int.Parse(codWorkspace);
-
-
-
 			usuario.Salt = Criptografia.GerarSalt();
 			usuario.Senha = Criptografia.GerarSenhaHash(usuario.Senha, usuario.Salt);
 
@@ -80,18 +75,6 @@ namespace EYE.Controller
 		public Usuario[] ListarUsuarios(int codWorkspace)
 		{
 			return StatementUsuario.ListarUsuarios(codWorkspace);
-		}
-
-		public static List<int> RetornaUsuariosOnline(int codWorkspace)
-		{
-			var usuarios = StatementUsuario.ListaUltimaLeituraUsuario(codWorkspace);
-			var lista = new List<int>();
-			for (var contador = 0; contador > usuarios.Length; contador++)
-			{
-				if (!Usuario.HoraAtualizada(usuarios[contador].UltimaLeitura))
-					lista.Add(usuarios[contador].CodUsuario);
-			}
-			return lista;
 		}
 	}
 }
