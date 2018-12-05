@@ -16,7 +16,7 @@
 
     <script type="text/javascript" src="../Controller/Tarefas.js"></script>
 </head>
-<body onload="iniciarEstilo()">
+<body onload="iniciarEstilo(), iniciarPainelTarefas()">
     <form id="form1" runat="server">
 
 
@@ -148,11 +148,11 @@
 
         </div>
         <!--/MENU-->
-        <div id="meuResumo">
-            <div class="txtMeuResumo">TIME:</div>
-        </div>
 
-        <div id="areaInfo">
+        <div id="areaInfo" onkeyup="validaCamposTarefa()" onchange="validaCamposTarefa()">
+
+
+            <asp:Label Text="" ID="lblMensagem" CssClass="msgTarefa" runat="server" />
 
             <div id="AreaCadastroTarefa" class="AreaTarefa">
 
@@ -161,7 +161,6 @@
                 </div>
 
 
-                <asp:Label Text="" ID="lblMensagem" runat="server" />
 
                 <div class="campos">
                     <div class="tituloCampo">
@@ -174,50 +173,52 @@
                     <div class="tituloCampo">
                         Descreva essa tarefa pra sua equipe:
                     </div>
-                <asp:TextBox ID="txtDescricao" Placeholder="Descreva ela..." runat="server"></asp:TextBox>
-            </div>
-            <div class="campos">
-
-                <div class="tituloCampo">
-                    Quando essa tarefa será INICIADA?
+                    <asp:TextBox ID="txtDescricao" Placeholder="Descreva ela..." runat="server"></asp:TextBox>
                 </div>
-            <asp:TextBox ID="txtDataInicio" Placeholder="Quando ela começa?" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataInicio')"></asp:TextBox>
-        </div>
-        <div class="campos">
+                <div class="campos">
 
-            <div class="tituloCampo">
-                Até quando ela pode ser FINALIZADA?:
-            </div>
-        <asp:TextBox ID="txtDataFim" Placeholder="Até quando?" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataFim')"></asp:TextBox>
-        </div>
+                    <div class="tituloCampo">
+                        Quando essa tarefa será INICIADA?
+                    </div>
+                    <asp:TextBox ID="txtDataInicio" Placeholder="Quando ela começa?" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataInicio')"></asp:TextBox>
+                </div>
+                <div class="campos">
 
-
-
-                <div class="campos" >
-
-
-                    <input type="button" id="btnProximo" value="+ Adicionar pessoas" />
+                    <div class="tituloCampo">
+                        Até quando ela pode ser FINALIZADA?:
+                    </div>
+                    <asp:TextBox ID="txtDataFim" Placeholder="Até quando?" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataFim')"></asp:TextBox>
                 </div>
 
 
 
-        </div>
+
+            </div>
 
 
 
-            <div id="areaConfig" class="AreaTarefa">
-                
+            <div id="AreaConfig" class="AreaTarefa">
+
                 <div class="tituloComputador">
                     Quem vai participar?
                 </div>
                 <asp:Panel ID="pnlConfiguracao" runat="server">
                 </asp:Panel>
-                <input type="button" id="btnAdicionar" value="+ Usuário" runat="server" onclick="AdicionarPainel()" />
+                <input type="button" id="btnAdicionar" value="+ Usuário" runat="server" onclick="AdicionarPainel()" disabled="disabled" />
+            </div>
+
+
+            <div class="btnForm" id="btnFormCadastrarTarefa" onmousemove="getCoordenadas(), startaHover('itemMenuBackGround', 'btnFormCadastrarTarefa')">
+
+
+                <div class="itemMenuBackGround" id="itemMenuBackGround"></div>
+                <input type="button" id="btnCadastrarTarefa" runat="server" value="Cadastrar Tarefa" onclick="cadastrarClick()" disabled="disabled" />
+
             </div>
 
 
 
-        <input type="button" id="btnCadastrar" runat="server" value="Cadastrar" onclick="cadastrarClick()" />
+
 
         </div>
 

@@ -94,12 +94,12 @@ namespace EYE.View {
         protected global::System.Web.UI.HtmlControls.HtmlInputButton btnAdicionar;
         
         /// <summary>
-        /// Controle btnCadastrar.
+        /// Controle btnCadastrarTarefa.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputButton btnCadastrar;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton btnCadastrarTarefa;
     }
 }

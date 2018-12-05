@@ -43,7 +43,8 @@ function iniciarEstilo() {
 
 function getItemMenu() {
 
-    var itemMenuBackgrounds = document.getElementsByClassName("itemMenuBackGround");
+    var menu = document.getElementById("sideMenu");
+    var itemMenuBackgrounds = menu.getElementsByClassName("itemMenuBackGround");
     var totalItens = itemMenuBackgrounds.length;
 
 

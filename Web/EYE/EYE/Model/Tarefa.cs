@@ -32,14 +32,14 @@ namespace EYE.Model
 
             var conteudo = new Panel();
             var lblUsuario = new Label();
-            lblUsuario.Text = "Escolha um usuario para realizar a tarefa";
+            lblUsuario.Text = "Quem vai participar dessa tarefa?";
 
 
             var lblProcesso = new Label();
-            lblProcesso.Text = "Escolha o processo utilizado";
+            lblProcesso.Text = "Que processo será utilizado?";
 
             var lblTempo = new Label();
-            lblTempo.Text = "Quanto tempo o usuario vai fazer isso?";
+            lblTempo.Text = "Quanto tempo essa pessoa vai demorar?";
             var txtTempo = new TextBox();
 
 
@@ -47,6 +47,9 @@ namespace EYE.Model
             ddlProcessos.CssClass = "ddlProcessos";
             txtTempo.CssClass = "txtTempo";
 
+            ddlUsuarios.Enabled = false;
+            ddlProcessos.Enabled = false;
+            txtTempo.Enabled = false;
 
             conteudo.Controls.Add(lblUsuario);
             conteudo.Controls.Add(ddlUsuarios);

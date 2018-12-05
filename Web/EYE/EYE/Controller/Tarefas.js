@@ -1,79 +1,166 @@
-﻿//DataFim > DataInicio
+﻿
+var listaCodUsersTarefa = [];
+var listaProcTarefa = [];
+var listaTempoTarefa = [];
 
-function cadastrarClick() {
-    var listaCodUsersTarefa = [];
-    var listaProcTarefa = [];
-    var listaTempoTarefa = [];
 
+function iniciarPainelTarefas() {
+
+    var AreaCadastroTarefa = document.getElementById("AreaCadastroTarefa");
+    var AreaConfig = document.getElementById("AreaConfig");
+    var btnFormCadastrarTarefa = document.getElementById("btnFormCadastrarTarefa");
+
+    AreaConfig.style.opacity = 0;
+    btnFormCadastrarTarefa.style.opacity = 0;
+
+}
+
+
+function validaCamposTarefa() {
     txtNome = document.getElementById("txtNome");
     txtDescricao = document.getElementById("txtDescricao");
     txtDataInicio = document.getElementById("txtDataInicio");
     txtDataFim = document.getElementById("txtDataFim");
 
+    var AreaCadastroTarefa = document.getElementById("AreaCadastroTarefa");
+    var AreaConfig = document.getElementById("AreaConfig");
+    var btnFormCadastrarTarefa = document.getElementById("btnFormCadastrarTarefa");
+
+
+    btnFormCadastrarTarefa.style.opacity = 0;
+
     if (txtNome.value == "") {
-        lblMensagem.textContent = "Digita o nome aí";
+        return [false, "Digita o nome aí"];
     }
     else if (txtDescricao.value == "") {
-        lblMensagem.textContent = "Digita o txtDescricao aí";
+        return [false, "Digita o txtDescricao aí"];
     }
     else if (txtDataInicio.value == "") {
-        lblMensagem.textContent = "Digita o txtDataInicio aí";
+        return [false, "Digita o txtDataInicio aí"];
     }
     else if (txtDataFim.value == "") {
-        lblMensagem.textContent = "Digita o txtDataFim aí";
+        return [false, "Digita o txtDataFim aí"];
     }
     else if (!fimMaiorQueInicio(txtDataFim.value, txtDataInicio.value)) {
-        lblMensagem.textContent = "O fim deve ser maior";
+        return [false, "O fim deve ser maior"];
     }
     else {
-        let index = 0
-        var allItens = document.querySelectorAll(".conteudoTarefa");
-        allItens.forEach(item => {
-            console.log(item);
-            console.log(allItens.length);
 
-            if (item.value == "") {
+
+
+        AreaConfig.style.opacity = 1;
+        btnFormCadastrarTarefa.style.opacity = 0;
+
+        desbloqueiaCamposConfig();
+
+        return [validaCamposConfig(), "Essa tarefa deve estar associada a pelo menos 1 usuário"];
+    }
+    return [false, "Algo deu errado"];
+}
+
+function validaCamposConfig() {
+
+
+    let index = 0
+    var allItens = document.querySelectorAll(".conteudoTarefa");
+
+    var btnAdicionar = document.getElementById("btnAdicionar");
+
+    var btnCadastrarTarefa = document.getElementById("btnCadastrarTarefa");
+
+
+
+    allItens.forEach(item => {
+        console.log(item);
+        console.log(allItens.length);
+
+        if (item.value == "") {
+        }
+        else {
+            if (item.querySelector(".ddlUsuarios").value != "" && item.querySelector(".ddlProcessos").value != "" && item.querySelector(".txtTempo").value != "") {
+                listaCodUsersTarefa[index] = item.querySelector(".ddlUsuarios").value;
+                listaProcTarefa[index] = item.querySelector(".ddlProcessos").value;
+                listaTempoTarefa[index] = item.querySelector(".txtTempo").value;
+                index++;
+
             }
             else {
-                if (item.querySelector(".ddlUsuarios").value != "" && item.querySelector(".ddlProcessos").value != "" && item.querySelector(".txtTempo").value != "") {
-                    listaCodUsersTarefa[index] = item.querySelector(".ddlUsuarios").value;
-                    listaProcTarefa[index] = item.querySelector(".ddlProcessos").value;
-                    listaTempoTarefa[index] = item.querySelector(".txtTempo").value;
-                    lblMensagem.textContent = "Cradastado";
-                    index++;
+
+                btnAdicionar.disabled = true;
+                btnCadastrarTarefa.disabled = true;
+
+                if (document.querySelectorAll(".conteudoTarefa").length == 1) {
+
+                    return false;
                 }
                 else {
-                    if (document.querySelectorAll(".conteudoTarefa").length == 1) {
-                        lblMensagem.textContent = "PREENCHe 1";
-                    }
-                    else {
-                        item.remove();
-                    }
+                    return [true, false];
+                    //item.remove();
                 }
             }
-        })
+        }
+
+        btnAdicionar.disabled = false;
+        btnCadastrarTarefa.disabled = false;
+
+        var AreaCadastroTarefa = document.getElementById("AreaCadastroTarefa");
+        var AreaConfig = document.getElementById("AreaConfig");
+        var btnFormCadastrarTarefa = document.getElementById("btnFormCadastrarTarefa");
+
+        btnFormCadastrarTarefa.style.opacity = 1;
+
+        return [true, true];
+
+    })
+
+    return false;
+}
+
+function desbloqueiaCamposConfig() {
+    var allItens = document.querySelectorAll(".conteudoTarefa");
+    allItens.forEach(item => {
+        item.querySelector(".ddlUsuarios").disabled = false;
+        item.querySelector(".ddlProcessos").disabled = false;
+        item.querySelector(".txtTempo").disabled = false;
+
+    });
+}
+
+
+function cadastrarClick() {
+    if (validaCamposTarefa()[0]) {
+        PageMethods.CadastraTarefa(listaCodUsersTarefa, listaProcTarefa, listaTempoTarefa, onSuccess, onError);
+
+        return true
     }
-
-    PageMethods.CadastraTarefa(listaCodUsersTarefa, listaProcTarefa, listaTempoTarefa, onSuccess, onError);
-
-    return true
+    else {
+        lblMensagem.textContent = validaCamposTarefa()[1];
+        return false
+    }
 }
 
 function AdicionarPainel() {
-    const pnlConfiguracao = document.getElementById("pnlConfiguracao")
+    //ARRUMAR
+    //TIRAR BTNS DA TELA
+    //ARUMAR CADASTRAR
+    if (!validaCamposConfig()[1]) {
+        const pnlConfiguracao = document.getElementById("pnlConfiguracao")
 
 
-    const listaDeUsers = pnlConfiguracao.querySelectorAll(".conteudoTarefa")
-    const ultimoUser = listaDeUsers[listaDeUsers.length - 1]
-    const ultimaPosicaoOcupada = parseInt(listaDeUsers.length - 1)
-    let novoUser = ultimoUser.cloneNode(true)
-    novoUser.id = ("conteudo" + (ultimaPosicaoOcupada + 1))
+        const listaDeUsers = pnlConfiguracao.querySelectorAll(".conteudoTarefa")
+        const ultimoUser = listaDeUsers[listaDeUsers.length - 1]
+        const ultimaPosicaoOcupada = parseInt(listaDeUsers.length - 1)
+        let novoUser = ultimoUser.cloneNode(true)
+        novoUser.id = ("conteudo" + (ultimaPosicaoOcupada + 1))
 
 
-    pnlConfiguracao.appendChild(novoUser)
+        pnlConfiguracao.appendChild(novoUser)
+    }
 
 }
 function onSuccess(sucesso) {
+
+    lblMensagem.textContent = "Cradastado";
     console.log(sucesso);
 };
 function onError(erro) { console.log("DEU ERROOOOOOOOOO ONKNKSA KBAD J<B JDMB " + erro) };
