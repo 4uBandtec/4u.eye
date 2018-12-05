@@ -1,17 +1,21 @@
 ﻿
+using EYE.Controller;
+using EYE.Model.DAO;
+using System.Web.UI.WebControls;
+
 namespace EYE.Model
 {
-    public class Usuario
-    {
-        private int codUsuario;
-        private string username;
-        private string nome;
-        private string email;
-        private string senha;
-        private string dataNascimento;
-        private string sexo;
-        private int salt;
-        private int codWorkspace;
+	public class Usuario
+	{
+		private int codUsuario;
+		private string username;
+		private string nome;
+		private string email;
+		private string senha;
+		private string dataNascimento;
+		private string sexo;
+		private int salt;
+		private int codWorkspace;
 		private int perfil;
 
 		public int CodUsuario { get => codUsuario; set => codUsuario = value; }
@@ -26,5 +30,20 @@ namespace EYE.Model
 		public int Perfil { get => perfil; set => perfil = value; }
 		public Computador[] ComputadoresUsuario { get; set; }
 
+		public Panel ConstruirPainelUsuario(Usuario[] usuarios)
+		{
+			var painel = new Panel();
+			foreach (var item in usuarios)
+			{
+				var conteudo = new Panel();
+
+				var lblUsuario = new Label();
+				lblUsuario.Text = item.Nome;
+				conteudo.Controls.Add(lblUsuario);
+
+				painel.Controls.Add(conteudo);
+			}
+			return painel;
+		}
 	}
 }

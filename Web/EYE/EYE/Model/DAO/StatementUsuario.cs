@@ -1,4 +1,6 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
+using System.Web.UI.WebControls;
 
 namespace EYE.Model.DAO
 {
@@ -104,5 +106,41 @@ namespace EYE.Model.DAO
 			return usuarios;
 		}
 
+		public static bool ExcluirComputador(int codUsuario)
+		{
+			using (var conexao = Conexao.GetConexao())
+			{
+				using (SqlCommand cmd = new SqlCommand("DELETE FROM Computador WHERE cod_usuario = @cod_usuario", conexao))
+				{
+					cmd.Parameters.AddWithValue("@cod_usuario", codUsuario);
+					return (cmd.ExecuteNonQuery() >= MINIMO_DE_ALTERACAO);
+				}
+			}
+		}
+
+		public static bool ExcluirUsuario(int codUsuario) {
+			using (var conexao = Conexao.GetConexao())
+			{
+				using (SqlCommand cmd = new SqlCommand("DELETE FROM Usuario WHERE cod_usuario = @cod_usuario", conexao))
+				{
+					cmd.Parameters.AddWithValue("@cod_usuario", codUsuario);
+					return (cmd.ExecuteNonQuery() >= MINIMO_DE_ALTERACAO);
+				}
+			}
+		}
+		public static bool ExisteComputadorUsuario(int codUsuario)
+		{
+			using (var conexao = Conexao.GetConexao())
+			{
+				using (SqlCommand cmd = new SqlCommand("SELECT * FROM computador WHERE cod_usuario = @cod_usuario", conexao))
+				{
+					cmd.Parameters.AddWithValue("@cod_usuario", codUsuario);
+					using (SqlDataReader leitor = cmd.ExecuteReader())
+					{
+						return !(leitor.Read());
+					}
+				}
+			}
+		}
 	}
 }
