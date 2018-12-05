@@ -103,37 +103,5 @@ namespace EYE.Model.DAO
 			}
 			return usuarios;
 		}
-
-		public static Usuario[] ListaUltimaLeituraUsuario(int codWorkspace)
-		{
-			var usuarios = new Usuario[ContaUsuario(codWorkspace)];
-			var contador = 0;
-			using (var conexao = Conexao.GetConexao())
-			{
-				using (SqlCommand cmd = new SqlCommand($"SELECT cod_computador, ultima_leitura FROM leitura_atual" +
-													   $" WHERE cod_computador " +
-													   $"IN( SELECT cod_computador FROM computador " +
-													   $"WHERE cod_usuario " +
-													   $"IN(SELECT cod_usuario FROM usuario WHERE cod_workspace = cod_workspace)) ; ", conexao))
-				{
-					cmd.Parameters.AddWithValue("@cod_workspace", codWorkspace);
-					using (SqlDataReader leitor = cmd.ExecuteReader())
-					{
-						do
-						{
-							while (leitor.Read())
-							{
-								usuarios[contador] = new Usuario();
-								usuarios[contador].CodUsuario = leitor.GetInt32(0);
-								usuarios[contador].UltimaLeitura = leitor.GetString(1);
-								++contador;
-							}
-						}
-						while (leitor.NextResult());
-					}
-				}
-			}
-			return usuarios;
-		}
 	}
 }
