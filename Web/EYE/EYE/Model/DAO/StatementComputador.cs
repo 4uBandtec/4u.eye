@@ -65,7 +65,7 @@ namespace EYE.Model.DAO
 													   $"IN( SELECT cod_computador FROM computador " +
 													   $"WHERE cod_usuario " +
 													   $"IN(SELECT cod_usuario FROM usuario" +
-													$" WHERE cod_workspace = @cod_workspace)); ", conexao))
+													   $" WHERE cod_workspace = @cod_workspace)); ", conexao))
 				{
 					cmd.Parameters.AddWithValue("@cod_workspace", codWorkspace);
 					using (SqlDataReader leitor = cmd.ExecuteReader())
