@@ -148,6 +148,13 @@
 
         </div>
         <!--/MENU-->
+        
+        <div id="meuResumo">
+            <div class="txtMeuResumo">TIME:</div>
+
+            <asp:Label ID="Label1" Text="" CssClass="mensagem" runat="server" />
+        </div>
+
 
         <div id="areaInfo" onkeyup="validaCamposTarefa()" onchange="validaCamposTarefa()">
 
@@ -185,7 +192,7 @@
                 <div class="campos">
 
                     <div class="tituloCampo">
-                        Até quando ela pode ser FINALIZADA?:
+                        Até quando ela pode ser FINALIZADA?
                     </div>
                     <asp:TextBox ID="txtDataFim" Placeholder="Até quando?" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataFim')"></asp:TextBox>
                 </div>

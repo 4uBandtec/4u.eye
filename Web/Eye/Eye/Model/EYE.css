@@ -1020,10 +1020,13 @@ label {
         font-size: 1.5em;
         text-align: center;
         z-index: 2;
-        background: var(--bg-color);
         
     }
 
+
+input[type=number]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
 
 
 /*                                                                                                */

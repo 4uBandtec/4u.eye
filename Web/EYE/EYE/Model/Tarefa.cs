@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace EYE.Model
@@ -39,9 +40,9 @@ namespace EYE.Model
             lblProcesso.Text = "Que processo será utilizado?";
 
             var lblTempo = new Label();
-            lblTempo.Text = "Quanto tempo essa pessoa vai demorar?";
+            lblTempo.Text = "Quantas horas essa pessoa vai demorar?";
             var txtTempo = new TextBox();
-
+            
 
             ddlUsuarios.CssClass = "ddlUsuarios";
             ddlProcessos.CssClass = "ddlProcessos";
@@ -50,6 +51,12 @@ namespace EYE.Model
             ddlUsuarios.Enabled = false;
             ddlProcessos.Enabled = false;
             txtTempo.Enabled = false;
+
+            txtTempo.Attributes.Add("type", "Number");
+            
+
+
+
 
             conteudo.Controls.Add(lblUsuario);
             conteudo.Controls.Add(ddlUsuarios);

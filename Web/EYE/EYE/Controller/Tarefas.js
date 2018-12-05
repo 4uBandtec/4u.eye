@@ -4,6 +4,8 @@ var listaProcTarefa = [];
 var listaTempoTarefa = [];
 
 
+var taVerde = false;
+
 function iniciarPainelTarefas() {
 
     var AreaCadastroTarefa = document.getElementById("AreaCadastroTarefa");
@@ -17,6 +19,17 @@ function iniciarPainelTarefas() {
 
 
 function validaCamposTarefa() {
+
+    var style = getComputedStyle(document.body);
+    var greencolor = style.getPropertyValue('--green-color').replace(/\s/g, '');
+    var redcolor = style.getPropertyValue('--red-color').replace(/\s/g, '');
+
+    if (taVerde) {
+        lblMensagem.style.color = redcolor;
+        lblMensagem.textContent = "";
+        taVerde = false;
+    }
+
     txtNome = document.getElementById("txtNome");
     txtDescricao = document.getElementById("txtDescricao");
     txtDataInicio = document.getElementById("txtDataInicio");
@@ -30,19 +43,19 @@ function validaCamposTarefa() {
     btnFormCadastrarTarefa.style.opacity = 0;
 
     if (txtNome.value == "") {
-        return [false, "Digita o nome aí"];
+        return [false, "Você esqueceu o nome da tarefa"];
     }
     else if (txtDescricao.value == "") {
-        return [false, "Digita o txtDescricao aí"];
+        return [false, "Oops, faltou descrever a tarefa"];
     }
     else if (txtDataInicio.value == "") {
-        return [false, "Digita o txtDataInicio aí"];
+        return [false, "Você não me disse quando a tarefa vai começar"];
     }
     else if (txtDataFim.value == "") {
-        return [false, "Digita o txtDataFim aí"];
+        return [false, "Faltou a data limite pra fializar a tarefa"];
     }
     else if (!fimMaiorQueInicio(txtDataFim.value, txtDataInicio.value)) {
-        return [false, "O fim deve ser maior"];
+        return [false, "Tem algo de errado com as datas, lembre-se de deixar o fim maior que o começo"];
     }
     else {
 
@@ -59,7 +72,7 @@ function validaCamposTarefa() {
 }
 
 function validaCamposConfig() {
-
+    
 
     let index = 0
     var allItens = document.querySelectorAll(".conteudoTarefa");
@@ -68,52 +81,60 @@ function validaCamposConfig() {
 
     var btnCadastrarTarefa = document.getElementById("btnCadastrarTarefa");
 
+    var tudoPreenchido = true;
+    var retorno = false;
 
+    btnAdicionar.disabled = true;
+    btnCadastrarTarefa.disabled = true;
 
     allItens.forEach(item => {
         console.log(item);
         console.log(allItens.length);
-
         if (item.value == "") {
+
         }
         else {
+
             if (item.querySelector(".ddlUsuarios").value != "" && item.querySelector(".ddlProcessos").value != "" && item.querySelector(".txtTempo").value != "") {
+                
                 listaCodUsersTarefa[index] = item.querySelector(".ddlUsuarios").value;
                 listaProcTarefa[index] = item.querySelector(".ddlProcessos").value;
                 listaTempoTarefa[index] = item.querySelector(".txtTempo").value;
                 index++;
+                
+                btnCadastrarTarefa.disabled = false;
 
+                var AreaCadastroTarefa = document.getElementById("AreaCadastroTarefa");
+                var AreaConfig = document.getElementById("AreaConfig");
+                var btnFormCadastrarTarefa = document.getElementById("btnFormCadastrarTarefa");
+
+                btnFormCadastrarTarefa.style.opacity = 1;
+                if (tudoPreenchido) {
+                    btnAdicionar.style.opacity = 1;
+                    btnAdicionar.disabled = false;
+
+                }
+                
             }
             else {
+                
+                tudoPreenchido = false;
 
                 btnAdicionar.disabled = true;
-                btnCadastrarTarefa.disabled = true;
+                btnAdicionar.style.opacity = 0;
 
                 if (document.querySelectorAll(".conteudoTarefa").length == 1) {
-
-                    return false;
+                    
                 }
-                else {
-                    return [true, false];
-                    //item.remove();
-                }
+                
+                
             }
+            
         }
 
-        btnAdicionar.disabled = false;
-        btnCadastrarTarefa.disabled = false;
-
-        var AreaCadastroTarefa = document.getElementById("AreaCadastroTarefa");
-        var AreaConfig = document.getElementById("AreaConfig");
-        var btnFormCadastrarTarefa = document.getElementById("btnFormCadastrarTarefa");
-
-        btnFormCadastrarTarefa.style.opacity = 1;
-
-        return [true, true];
-
+        
     })
-
-    return false;
+    return tudoPreenchido;
 }
 
 function desbloqueiaCamposConfig() {
@@ -126,24 +147,24 @@ function desbloqueiaCamposConfig() {
     });
 }
 
+function bloqueiaCamposConfig() {
+    var allItens = document.querySelectorAll(".conteudoTarefa");
+    allItens.forEach(item => {
+        item.querySelector(".ddlUsuarios").disabled = true;
+        item.querySelector(".ddlProcessos").disabled = true;
+        item.querySelector(".txtTempo").disabled = true;
+
+    });
+}
+
 
 function cadastrarClick() {
-    if (validaCamposTarefa()[0]) {
         PageMethods.CadastraTarefa(listaCodUsersTarefa, listaProcTarefa, listaTempoTarefa, onSuccess, onError);
-
-        return true
-    }
-    else {
-        lblMensagem.textContent = validaCamposTarefa()[1];
-        return false
-    }
+    
 }
 
 function AdicionarPainel() {
-    //ARRUMAR
-    //TIRAR BTNS DA TELA
-    //ARUMAR CADASTRAR
-    if (!validaCamposConfig()[1]) {
+    if (validaCamposConfig()) {
         const pnlConfiguracao = document.getElementById("pnlConfiguracao")
 
 
@@ -155,15 +176,76 @@ function AdicionarPainel() {
 
 
         pnlConfiguracao.appendChild(novoUser)
+        novoUser.querySelector(".txtTempo").value = "";
+        validaCamposTarefa();
     }
 
 }
 function onSuccess(sucesso) {
 
-    lblMensagem.textContent = "Cradastado";
-    console.log(sucesso);
+    var style = getComputedStyle(document.body);
+    var greencolor = style.getPropertyValue('--green-color').replace(/\s/g, '');
+    var redcolor = style.getPropertyValue('--red-color').replace(/\s/g, '');
+
+    taVerde = true;
+    lblMensagem.style.color = greencolor;
+    lblMensagem.textContent = "Agora seu time tem mais uma tarefa pra fazer!!!";
+    console.log(sucesso + greencolor);
+
+    resetaCampos();
 };
-function onError(erro) { console.log("DEU ERROOOOOOOOOO ONKNKSA KBAD J<B JDMB " + erro) };
+function onError(erro) { console.log("Ops, deu algo errado " + erro) };
+
+
+
+function resetaCampos() {
+
+    txtNome = document.getElementById("txtNome");
+    txtDescricao = document.getElementById("txtDescricao");
+    txtDataInicio = document.getElementById("txtDataInicio");
+    txtDataFim = document.getElementById("txtDataFim");
+
+    txtNome.value = "";
+    txtDescricao.value = "";
+    txtDataInicio.value = "";
+    txtDataFim.value = "";
+
+    resetaConfig();
+
+    validaCamposConfig();
+    bloqueiaCamposConfig();
+
+    document.getElementById("AreaConfig").style.opacity = 0;
+
+}
+
+
+
+
+
+function resetaConfig() {
+
+
+    let index = 0
+    var allItens = document.querySelectorAll(".conteudoTarefa");
+
+    
+    allItens.forEach(item => {
+
+        item.querySelector(".ddlUsuarios").value = "";
+        item.querySelector(".ddlProcessos").value = "";
+        item.querySelector(".txtTempo").value = "";
+
+
+        if (allItens[0] != item) {
+            item.remove();
+        }
+    });
+}
+
+
+
+
 
 
 
