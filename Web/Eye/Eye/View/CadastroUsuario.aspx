@@ -17,11 +17,144 @@
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
     <script type="text/javascript" src="../Controller/CamposFormulario.js"></script>
 </head>
-<body onload="getCamposCadastroUsuario()">
+<body onload="getCamposCadastroUsuario(), iniciarEstilo()">
 
     <div class="radialBlack" id="radialBlack"></div>
 
     <form id="formCadastroUsuario" runat="server">
+
+        <!--MENU 
+            precisa ter o script dashStyle.js e 
+            função "iniciarEstilo" no onLoad do body-->
+        <div id="sideMenu" onmousemove="getCoordenadas()">
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
+
+
+                    <div class="itemIcon">
+                        <img src="../Component/Dashboard.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Dashboard
+               
+                    </div>
+
+                </div>
+
+            </a>
+
+
+
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/Usuarios.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Usuários
+               
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a href="CadastroUsuario.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/AddUsuarios.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Cadastrar Usuário
+               
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a href="CadastroTarefas.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/Tarefa.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Cadastrar Tarefas
+               
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/Slack.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Cadastrar SlackBot
+               
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a href="Dashboard.aspx">
+                <div class="itemMenu">
+
+                    <div class="itemIcon">
+                        <img src="../Component/Opcoes.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Opções
+               
+                    </div>
+
+                </div>
+            </a>
+
+
+            <a href="Dashboard.aspx">
+                <div class="itemMenu" onclick="breakSession()">
+                    <div class="itemIcon">
+                        <img src="../Component/Logout.png" />
+                    </div>
+                    <div class="itemMenuBackGround"></div>
+
+                    <div class="itemTxt">
+                        Logout
+                    </div>
+
+                </div>
+            </a>
+
+        </div>
+        <!--/MENU-->
+        
+        <div id="meuResumo">
+            <div class="txtMeuResumo">TIME:</div>
+
+            <asp:Label ID="Label1" Text="" CssClass="mensagem" runat="server" />
+        </div>
+
 
         <div id="progressTrack">
             <div id="progressBar">
@@ -92,9 +225,9 @@
 
             </div>
         </div>
-        
+       <!-- 
         <asp:Button ID="btnIrPara" runat="server" Text="Ir para a Dashboard" OnClick="btnIrPara_Click" CssClass="defaultButton" />
-   
+        -->   
     </form>
 </body>
 </html>

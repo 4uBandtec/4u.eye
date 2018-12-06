@@ -55,11 +55,14 @@ function validaCamposTarefa() {
         return [false, "Faltou a data limite pra fializar a tarefa"];
     }
     else if (!fimMaiorQueInicio(txtDataFim.value, txtDataInicio.value)) {
+        if (txtDataFim.value.length >= 10 && txtDataInicio.value.length >= 10) {
+            lblMensagem.textContent = "Tem algo de errado com as datas, lembre-se de deixar o fim maior que o começo"
+        }
         return [false, "Tem algo de errado com as datas, lembre-se de deixar o fim maior que o começo"];
     }
     else {
 
-
+        lblMensagem.textContent = "";
 
         AreaConfig.style.opacity = 1;
         btnFormCadastrarTarefa.style.opacity = 0;
@@ -216,6 +219,7 @@ function resetaCampos() {
     bloqueiaCamposConfig();
 
     document.getElementById("AreaConfig").style.opacity = 0;
+    document.getElementById("btnFormCadastrarTarefa").style.opacity = 0;
 
 }
 
