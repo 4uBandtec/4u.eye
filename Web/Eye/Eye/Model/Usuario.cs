@@ -30,7 +30,7 @@ namespace EYE.Model
 		public int Perfil { get => perfil; set => perfil = value; }
 		public Computador[] ComputadoresUsuario { get; set; }
 
-		public Panel ConstruirPainelUsuario(Usuario[] usuarios)
+		public  Panel ConstruirPainelUsuario(Usuario[] usuarios)
 		{
 			var painel = new Panel();
 			foreach (var item in usuarios)
@@ -40,6 +40,12 @@ namespace EYE.Model
 				var lblUsuario = new Label();
 				lblUsuario.Text = item.Nome;
 				conteudo.Controls.Add(lblUsuario);
+
+				var btnExcluir = new Button();
+				btnExcluir.Text = "Excluir";
+				btnExcluir.Command += new ControllerUsuario().ExcluirUsuario;
+				btnExcluir.CommandArgument =item.CodUsuario.ToString();
+				conteudo.Controls.Add(btnExcluir);
 
 				painel.Controls.Add(conteudo);
 			}

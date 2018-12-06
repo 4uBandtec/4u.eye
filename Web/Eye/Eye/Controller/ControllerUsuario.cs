@@ -82,10 +82,17 @@ namespace EYE.Controller
 			return StatementUsuario.ListarUsuarios(codWorkspace);
 		}
 
-		public static Panel CarregarPainel(Panel pnlUsuario, int codWorkspace)
+		public static Panel CarregarPainel(int codWorkspace)
 		{
 			var listaUsuarios = StatementUsuario.ListarUsuarios(codWorkspace);
 			return new Usuario().ConstruirPainelUsuario(listaUsuarios);
+		}
+		public void ExcluirUsuario(object sender, CommandEventArgs e)
+		{
+			var codUsuario = int.Parse(e.CommandArgument.ToString());
+			if (StatementUsuario.ExisteComputadorUsuario(codUsuario))
+				StatementUsuario.ExcluirComputador(codUsuario);
+			StatementUsuario.ExcluirUsuario(codUsuario);
 		}
 	}
 }

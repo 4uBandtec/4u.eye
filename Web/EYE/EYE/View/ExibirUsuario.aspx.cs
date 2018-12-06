@@ -1,10 +1,5 @@
 ﻿using EYE.Controller;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace EYE.View
 {
@@ -17,9 +12,14 @@ namespace EYE.View
 			if (codWorkspace == null || codWorkspace == "0")
 			{
 				Response.Redirect("./Login.aspx");
-			}
-			var conteudo = ControllerUsuario.CarregarPainel(pnlUsuario, int.Parse(codWorkspace));
-			pnlUsuario.Controls.Add(conteudo);
+			}			
+				CarregarPainel();
+		}
+		public void CarregarPainel() {
+			var codWorkspace = (string)Session["codWorkspace"];
+			//pnlUsuario.Controls.Clear();
+			//pnlUsuario.Dispose();
+			pnlUsuario.Controls.Add(ControllerUsuario.CarregarPainel(int.Parse(codWorkspace)));
 		}
 	}
 }
