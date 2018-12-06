@@ -37,11 +37,33 @@ namespace EYE.View
             pnlConfiguracao.Controls.Add(conteudo);
         }
 
+        public int returnSession()
+        {
+            var codWorkspace = (string)Session["codWorkspace"];
+            if (codWorkspace == null || codWorkspace == "0")
+            {
+                return 0;
+            }
+            else
+            {
+                return int.Parse((String)Session["codWorkspace"]);
+            }
+        }
+
+        [ScriptMethod, WebMethod]
+        public static void BreakSession()
+        {
+            CadastroTarefas cadTarefa = new CadastroTarefas();
+            cadTarefa.Session.Abandon();
+        }
+
         [ScriptMethod, WebMethod]
         public static bool CadastraTarefa(List<string> listaCodUsersTarefa, List<string> listaProcTarefa, List<string> listaTempoTarefa)
         {
+            int codWorkspace = new CadastroTarefas().returnSession();
+
             //Livia coloca a função de cadastrar tarefa aqui;
-            
+            //AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
             return true;
         }

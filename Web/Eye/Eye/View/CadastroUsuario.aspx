@@ -15,6 +15,7 @@
 
     <script type="text/javascript" src="../Controller/Dashboard.js"></script>
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
+    <script type="text/javascript" src="../Controller/BreakSession.js"></script>
     <script type="text/javascript" src="../Controller/CamposFormulario.js"></script>
 </head>
 <body onload="getCamposCadastroUsuario(), iniciarEstilo()">
@@ -22,6 +23,9 @@
     <div class="radialBlack" id="radialBlack"></div>
 
     <form id="formCadastroUsuario" runat="server">
+
+        <asp:ScriptManager ID="ScriptManager" runat="server"
+            EnablePageMethods="true" />
 
         <!--MENU 
             precisa ter o script dashStyle.js e 

@@ -909,6 +909,7 @@ label {
             border-bottom-right-radius: 20%;
             width: 92%;
             padding-left: 4%;
+            margin-right: 4%;
             color: var(--orange-color);
         }
 

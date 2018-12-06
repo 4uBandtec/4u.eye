@@ -1,5 +1,7 @@
 ﻿using EYE.Controller;
 using System;
+using System.Web.Script.Services;
+using System.Web.Services;
 
 namespace Eye.View
 {
@@ -21,6 +23,13 @@ namespace Eye.View
             {
                 return;
             }
+        }
+
+        [ScriptMethod, WebMethod]
+        public static void BreakSession()
+        {
+            CadastroUsuario cadUser = new CadastroUsuario();
+            cadUser.Session.Abandon();
         }
 
         protected void btnIrPara_Click(object sender, EventArgs e)

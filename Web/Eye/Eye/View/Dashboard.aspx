@@ -19,6 +19,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script type="text/javascript" src="../Controller/Dashboard.js"></script>
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
+    <script type="text/javascript" src="../Controller/BreakSession.js"></script>
 
 </head>
 <body onload="iniciarEstilo(), GetUsuariosWorkspace()">

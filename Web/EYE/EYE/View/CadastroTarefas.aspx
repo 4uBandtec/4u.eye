@@ -13,6 +13,7 @@
     <link href="../Model/EYE.css" rel="stylesheet" type="text/css" />
 
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
+    <script type="text/javascript" src="../Controller/BreakSession.js"></script>
 
     <script type="text/javascript" src="../Controller/Tarefas.js"></script>
 </head>

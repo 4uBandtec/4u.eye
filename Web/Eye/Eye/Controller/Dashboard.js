@@ -622,8 +622,3 @@ function AtualizarCPU(componente, infoGeralComputador, atual, cod) {
 
 
 
-function breakSession() {
-    PageMethods.BreakSession(function () { window.location = "Login.aspx" }, onError);
-}
-
-
