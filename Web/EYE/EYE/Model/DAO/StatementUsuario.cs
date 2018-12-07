@@ -93,7 +93,6 @@ namespace EYE.Model.DAO
                                 usuarios[contador].Sexo = leitor.GetString(4);
                                 usuarios[contador].DataNascimento = leitor.GetString(5);
                                 usuarios[contador].CodWorkspace = leitor.GetInt32(6);
-
                                 ++contador;
                             }
                         }

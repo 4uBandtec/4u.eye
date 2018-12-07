@@ -1,6 +1,7 @@
 package br.com.eye.view;
 
 import br.com.eye.controller.ControllerWorkspace;
+import br.com.eye.model.LogMensagem;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -8,6 +9,7 @@ import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -98,11 +100,13 @@ public class TelaWorkspace extends JFrame implements ActionListener {
             try {
                 if (new ControllerWorkspace().ValidarWorkspace(txtWorkspacename.getText())) {
                     dispose();
+                    LogMensagem.GravarLog("Workspace Identificado");
                     new TelaLogin();
                 }
-             } catch (SQLException ex) {
-                 Logger.getLogger(TelaWorkspace.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         }
-     }
+            } catch (SQLException | IOException ex) {
+                Logger.getLogger(TelaWorkspace.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+        }
+    }
 }
