@@ -25,45 +25,7 @@ namespace EYE.Controller
 					lista.Add(item.Nome);
 			}
 
-            lista.Add("teste1");
-            lista.Add("teste da silva");
-            lista.Add("testerônimo soares");
-            lista.Add("gadwuhjkok ijmca kinkjkjk");
-            lista.Add("teste1");
-            lista.Add("teste da silva");
-            lista.Add("testerônimo soares");
-            lista.Add("gadwuhjkok ijmca kinkjkjk");
-            lista.Add("NomeMuitoGrandeSemEspaçoPraTestarSeDáPraColocarUmNomeMuitoGrandeSemEspaço");
-            lista.Add("teste1");
-            lista.Add("teste da silva");
-            lista.Add("testerônimo soares");
-            lista.Add("gadwuhjkok ijmca kinkjkjk");
-            lista.Add("teste1");
-            lista.Add("teste da silva");
-            lista.Add("testerônimo soares");
-            lista.Add("gadwuhjkok ijmca kinkjkjk");
-            lista.Add("teste1");
-            lista.Add("teste da silva");
-            lista.Add("testerônimo soares");
-            lista.Add("gadwuhjkok ijmca kinkjkjk");
-            lista.Add("NomeMuitoGrandeSemEspaçoPraTestarSeDáPraColocarUmNomeMuitoGrandeSemEspaço");
-            lista.Add("teste1");
-            lista.Add("teste da silva");
-            lista.Add("testerônimo soares");
-            lista.Add("gadwuhjkok ijmca kinkjkjk");
-            lista.Add("teste1");
-            lista.Add("teste da silva");
-            lista.Add("testerônimo soares");
-            lista.Add("gadwuhjkok ijmca kinkjkjk");
-            lista.Add("teste1");
-            lista.Add("teste da silva");
-            lista.Add("testerônimo soares");
-            lista.Add("gadwuhjkok ijmca kinkjkjk");
-            lista.Add("NomeMuitoGrandeSemEspaçoPraTestarSeDáPraColocarUmNomeMuitoGrandeSemEspaço");
-            lista.Add("teste1");
-            lista.Add("teste da silva");
-            lista.Add("testerônimo soares");
-            lista.Add("gadwuhjkok ijmca kinkjkjk");
+            
             return lista;
 		}
 	}
