@@ -256,7 +256,7 @@ body {
     margin-top: 0%;
     transition-duration: 0.5s;
     z-index: 2;
-    background: radial-gradient(circle, var(--black-color), var(--black-color-a));
+    background: linear-gradient(90deg, var(--darker-bg-color), var(--black-color), var(--darker-bg-color));
 }
 
 .txtMeuResumo {
@@ -268,6 +268,7 @@ body {
     transition-duration: 0.5s;
     float: left;
     margin-top: 10%;
+    padding-bottom: 10%;
 }
 
 #areaInfo {
@@ -284,15 +285,61 @@ body {
     width: 100%;
     padding: 0;
     height: 30%;
-    background: var(--black-color);
+    background: linear-gradient(90deg, var(--black-color), var(--bg-color));
+    border-top: solid 1px var(--blue-color);
 }
 
 
     #meuResumo:hover .txtMeuResumo {
-        text-align: left;
-        width: 10%;
+        text-align: center;
+        width: 15%;
         margin: 0;
+        float: left;
+        left: 0;
+        padding: 0;
+        padding-top: 1%;
     }
+
+#pnlOnline {
+    height: 90%;
+    padding-bottom: 10%;
+    width: 80%;
+    padding-left: 10%;
+    padding-right: 10%;
+    position: relative;
+    overflow: auto;
+    overflow-x: hidden;
+    left: 0;
+    float: left;
+}
+
+.lblUser {
+    font-weight: lighter;
+    float: left;
+    margin: 2%;
+    width: 100%;
+    margin-bottom: 3%;
+}
+
+#meuResumo:hover .lblUser {
+    margin: 1%;
+    width: auto;
+    color: var(--blue-color);
+}
+
+#meuResumo .lblUser:before {
+    content: "• ";
+    color: var(--green-color);
+}
+
+#meuResumo:hover .lblUser:before {
+    color: var(--txt-color);
+}
+
+#meuResumo:hover #pnlOnline {
+    height: 80%;
+}
+
 
 
 .infoGeralComputador {
@@ -803,8 +850,6 @@ label {
 }
 
 
-
-
 .AreaTarefa {
     margin: 2%;
     top: 50%;
@@ -1121,10 +1166,11 @@ input[type=number]::-webkit-inner-spin-button {
         }
 
     #meuResumo {
-        width: 11vmax;
-        height: 5vmax;
+        width: 15%;
+        height: 14.9%;
         border-right: 1px solid var(--purple-color);
         overflow: hidden;
+        padding: 0;
     }
 
         #meuResumo:hover {
@@ -1134,13 +1180,17 @@ input[type=number]::-webkit-inner-spin-button {
         }
 
             #meuResumo:hover .txtMeuResumo {
-                width: 50%;
+                width: 100%;
                 height: auto;
+                padding-bottom: 4%;
             }
 
     .txtMeuResumo {
         width: 60%;
         height: 50px;
+        font-size: 1.5vmax;
+        padding: 0;
+        margin: 0;
     }
 
     #areaInfo {
@@ -1152,6 +1202,10 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: auto;
     }
 
+
+    .lblUser {
+        font-size: 1.5vmax;
+    }
 
 
     .infoGeralComputador {
@@ -1188,6 +1242,7 @@ input[type=number]::-webkit-inner-spin-button {
         font-size: 2vmax;
     }
 
+
     .detalhesMonitor {
         height: 30%;
         width: 96%;
@@ -1195,6 +1250,8 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 2%;
     }
+
+
 
     .campoDetalhe {
         float: none;
@@ -1214,6 +1271,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 2%;
     }
+	
 
     .labelCpu {
         font-size: 2.5vw;
@@ -1224,10 +1282,6 @@ input[type=number]::-webkit-inner-spin-button {
         width: 80%;
         float: left;
     }
-
-
-
-
 
     .areaCampos {
         left: 5%;
@@ -1241,6 +1295,7 @@ input[type=number]::-webkit-inner-spin-button {
         width: 90%;
         top: 10%
     }
+	
 
     .cadastroCampos .mensagem {
         top: 23%;
@@ -1261,8 +1316,6 @@ input[type=number]::-webkit-inner-spin-button {
         padding: 2vw;
         font-size: 6vmin;
     }
-
-
 
 
     .btnForm {
@@ -1292,12 +1345,14 @@ input[type=number]::-webkit-inner-spin-button {
         .btnForm:hover .itemMenuBackGround {
             background: linear-gradient(90deg, var(--to-invisible),var(--black-color-a), var(--red-color-a), var(--black-color-a),var(--to-invisible));
         }
-
+		
 
 
     #progressTrack {
         width: 90vw;
     }
+
+
 
 
 
@@ -1328,7 +1383,6 @@ input[type=number]::-webkit-inner-spin-button {
             position: relative;
             top: 36vh;
         }
-
 
 
     #btnFormCadastrar {
@@ -1373,7 +1427,6 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
 
-
     .defaultButton {
         width: 90vw;
         min-width: 90vw;
@@ -1407,8 +1460,6 @@ input[type=number]::-webkit-inner-spin-button {
         border: none;
         font-size: 2.5vh;
     }
-
-
 
 
 
