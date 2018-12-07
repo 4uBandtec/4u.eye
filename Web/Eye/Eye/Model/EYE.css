@@ -1202,6 +1202,9 @@ input[type=number]::-webkit-inner-spin-button {
         overflow: auto;
     }
 
+    .lblUser {
+        font-size: 1.5vmax;
+    }
 
     .lblUser {
         font-size: 1.5vmax;
@@ -1212,7 +1215,6 @@ input[type=number]::-webkit-inner-spin-button {
         width: 60vw;
         height: auto;
     }
-
 
     .localChart {
         height: 30vw;
@@ -1252,7 +1254,6 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
 
-
     .campoDetalhe {
         float: none;
         position: relative;
@@ -1263,6 +1264,9 @@ input[type=number]::-webkit-inner-spin-button {
         font-size: 1.3vmax;
     }
 
+    .labelCpu {
+        font-size: 2.5vw;
+    }
 
     .areaCPU {
         height: 40%;
@@ -1272,7 +1276,6 @@ input[type=number]::-webkit-inner-spin-button {
         margin: 2%;
     }
 	
-
     .labelCpu {
         font-size: 2.5vw;
     }
@@ -1309,7 +1312,17 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
     }
 
+    .cadastroCampos .mensagem {
+        top: 23%;
+    }
 
+    .campos {
+        width: 100%;
+        left: 0;
+        top: 10%;
+        position: relative;
+        float: left;
+    }
 
     .areaCampos input[type="text"], .areaCampos input[type="password"], .areaCampos input[type="email"], .areaCampos input[type="date"], .areaCampos select {
         width: 86vw;
@@ -1398,7 +1411,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 
-    #btnFormNext {
+   #btnFormNext {
         width: 30%;
         border-bottom-left-radius: 0;
         height: 13vh;
@@ -1452,6 +1465,10 @@ input[type=number]::-webkit-inner-spin-button {
         z-index: 2;
     }
 
+    #btnFormPrevious input {
+        font-size: 5vw;
+        height: 120%;
+    }
 
     .cadastroCampos option {
         height: 100%;
@@ -1488,5 +1505,4 @@ input[type=number]::-webkit-inner-spin-button {
         margin-bottom: 12vh;
     }
         
-
 }

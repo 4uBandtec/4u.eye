@@ -1,6 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Eye.View.Dashboard" %>
 
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -99,7 +98,7 @@
             </a>
 
 
-            <a href="Dashboard.aspx">
+            <a href="CadastroSlack.aspx">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
@@ -152,12 +151,22 @@
         <!--/MENU-->
 
 
+        <asp:UpdatePanel ID="updtPnlConfiguracao" runat="server">
+            <ContentTemplate>
+                <div id="meuResumo">
 
-        <div id="meuResumo">
-            <div class="txtMeuResumo">TIME:</div>
+                    <div class="txtMeuResumo">Online:</div>
+                    <asp:Panel runat="server" ID="pnlOnline">
 
-            <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
-        </div>
+                        <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
+                    </asp:Panel>
+                </div>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Timer" EventName="Tick" />
+            </Triggers>
+        </asp:UpdatePanel>
+        <asp:Timer ID="Timer" runat="server" Interval="5000" OnTick="Timer_Tick"></asp:Timer>
 
         <!--Area com os containers dos computadores-->
         <div id="areaInfo">
