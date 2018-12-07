@@ -3,6 +3,7 @@ using EYE.Model;
 using System;
 using System.Web.Script.Services;
 using System.Web.Services;
+using System.Web.UI.WebControls;
 
 namespace Eye.View
 {
@@ -18,8 +19,14 @@ namespace Eye.View
                 Response.Redirect("./Login.aspx");
             }
 			var lista = ControllerComputador.RetornaUsuariosOnline(int.Parse(codWorkspace));
+            var index = 0;
 			foreach (var item in lista ) {
-				lblMensagem.Text += $"{item}\n" ;
+                Label lblUser = new Label();
+                lblUser.ID = "lblUser" + index;
+                lblUser.CssClass = "lblUser";
+                lblUser.Text = $"{item}";
+                index++;
+                pnlOnline.Controls.Add(lblUser);
 			}
 
 

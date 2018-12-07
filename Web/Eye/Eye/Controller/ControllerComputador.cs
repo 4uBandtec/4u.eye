@@ -24,7 +24,47 @@ namespace EYE.Controller
 				if (Computador.HoraAtualizada(item.UltimaLeitura))
 					lista.Add(item.Nome);
 			}
-			return lista;
+
+            lista.Add("teste1");
+            lista.Add("teste da silva");
+            lista.Add("testerônimo soares");
+            lista.Add("gadwuhjkok ijmca kinkjkjk");
+            lista.Add("teste1");
+            lista.Add("teste da silva");
+            lista.Add("testerônimo soares");
+            lista.Add("gadwuhjkok ijmca kinkjkjk");
+            lista.Add("NomeMuitoGrandeSemEspaçoPraTestarSeDáPraColocarUmNomeMuitoGrandeSemEspaço");
+            lista.Add("teste1");
+            lista.Add("teste da silva");
+            lista.Add("testerônimo soares");
+            lista.Add("gadwuhjkok ijmca kinkjkjk");
+            lista.Add("teste1");
+            lista.Add("teste da silva");
+            lista.Add("testerônimo soares");
+            lista.Add("gadwuhjkok ijmca kinkjkjk");
+            lista.Add("teste1");
+            lista.Add("teste da silva");
+            lista.Add("testerônimo soares");
+            lista.Add("gadwuhjkok ijmca kinkjkjk");
+            lista.Add("NomeMuitoGrandeSemEspaçoPraTestarSeDáPraColocarUmNomeMuitoGrandeSemEspaço");
+            lista.Add("teste1");
+            lista.Add("teste da silva");
+            lista.Add("testerônimo soares");
+            lista.Add("gadwuhjkok ijmca kinkjkjk");
+            lista.Add("teste1");
+            lista.Add("teste da silva");
+            lista.Add("testerônimo soares");
+            lista.Add("gadwuhjkok ijmca kinkjkjk");
+            lista.Add("teste1");
+            lista.Add("teste da silva");
+            lista.Add("testerônimo soares");
+            lista.Add("gadwuhjkok ijmca kinkjkjk");
+            lista.Add("NomeMuitoGrandeSemEspaçoPraTestarSeDáPraColocarUmNomeMuitoGrandeSemEspaço");
+            lista.Add("teste1");
+            lista.Add("teste da silva");
+            lista.Add("testerônimo soares");
+            lista.Add("gadwuhjkok ijmca kinkjkjk");
+            return lista;
 		}
 	}
 }
