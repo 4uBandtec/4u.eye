@@ -103,6 +103,5 @@ namespace EYE.Model.DAO
 			}
 			return usuarios;
 		}
-
 	}
 }

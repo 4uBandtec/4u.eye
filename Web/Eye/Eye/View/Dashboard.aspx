@@ -125,7 +125,7 @@
 
                 </div>
             </a>
-            
+
 
             <a href="Dashboard.aspx">
                 <div class="itemMenu" onclick="breakSession()">
@@ -148,9 +148,11 @@
 
 
         <div id="meuResumo">
-            <div class="txtMeuResumo">TIME:</div>
+            <asp:Panel runat="server" ID="pnlOnline">
+                <div class="txtMeuResumo">Online:</div>
 
-            <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
+                <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
+            </asp:Panel>
         </div>
 
         <!--Area com os containers dos computadores-->
