@@ -146,14 +146,22 @@
         <!--/MENU-->
 
 
+        <asp:UpdatePanel ID="updtPnlConfiguracao" runat="server">
+            <ContentTemplate>
+                <div id="meuResumo">
 
-        <div id="meuResumo">
-            <asp:Panel runat="server" ID="pnlOnline">
-                <div class="txtMeuResumo">Online:</div>
+                    <div class="txtMeuResumo">Online:</div>
+                    <asp:Panel runat="server" ID="pnlOnline">
 
-                <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
-            </asp:Panel>
-        </div>
+                        <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
+                    </asp:Panel>
+                </div>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Timer" EventName="Tick" />
+            </Triggers>
+        </asp:UpdatePanel>
+        <asp:Timer ID="Timer" runat="server" Interval="5000" OnTick="Timer_Tick"></asp:Timer>
 
         <!--Area com os containers dos computadores-->
         <div id="areaInfo">

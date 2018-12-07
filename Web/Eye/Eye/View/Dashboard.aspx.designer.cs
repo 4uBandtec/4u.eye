@@ -31,6 +31,15 @@ namespace Eye.View {
         protected global::System.Web.UI.ScriptManager ScriptManager;
         
         /// <summary>
+        /// Controle updtPnlConfiguracao.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updtPnlConfiguracao;
+        
+        /// <summary>
         /// Controle pnlOnline.
         /// </summary>
         /// <remarks>
@@ -47,5 +56,14 @@ namespace Eye.View {
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblMensagem;
+        
+        /// <summary>
+        /// Controle Timer.
+        /// </summary>
+        /// <remarks>
+        /// Campo gerado automaticamente.
+        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
+        /// </remarks>
+        protected global::System.Web.UI.Timer Timer;
     }
 }
