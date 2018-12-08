@@ -87,10 +87,6 @@ public class LeituraComputador {
         return disponivel;
     }
 
-    
-
-   
-
     public void setLeitura(int codComputador) throws SQLException, InterruptedException {
 
         while (true) {
