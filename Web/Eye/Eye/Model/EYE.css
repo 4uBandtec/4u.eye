@@ -1074,6 +1074,109 @@ input[type=number]::-webkit-inner-spin-button {
     -webkit-appearance: none;
 }
 
+.areaCamposSlack {
+    left: 5%;
+    right: 5%;
+    top: 20%;
+    width: 90%;
+    height: 80%;
+}
+
+    .areaCamposSlack input[type="text"], .areaCamposSlack input[type="password"], .areaCamposSlack input[type="email"], .areaCamposSlack input[type="date"], .areaCamposSlack select {
+        background: none;
+        border: none;
+        border: none;
+        width: 96%;
+        height: 7vh;
+        border-bottom: solid 1px var(--yellow-color);
+        font-size: 2vmax;
+        font-weight: lighter;
+        padding: 2vh;
+        padding-right: 0.5vw;
+        padding-left: 1vw;
+        position: relative;
+        float: left;
+        margin: 0;
+        margin-top: 0vh;
+        margin-bottom: 5%;
+    }
+
+
+.areaCamposSlack input[type="text"]:focus, .areaCamposSlack input[type="password"]:focus, .areaCamposSlack input[type="email"]:focus, .areaCamposSlack input[type="date"]:focus, .areaCamposSlack select:focus,
+.areaCamposSlack input[type="text"]:active, .areaCamposSlack input[type="password"]:active, .areaCamposSlack input[type="email"]:active, .areaCamposSlack input[type="date"]:active, .areaCamposSlack select:active,
+.areaCamposSlack input[type="text"]:target, .areaCamposSlack input[type="password"]:target, .areaCamposSlack input[type="email"]:target, .areaCamposSlack input[type="date"]:target, .areaCamposSlack select:target {
+    border-bottom: 1px solid var(--blue-color);
+    border-bottom-left-radius: 20%;
+    width: 92%;
+    padding-left: 4%;
+    color: var(--blue-color);
+}
+
+    .areaCamposSlack .tituloCampo {
+        color: var(--txt-color);
+        margin-bottom: 1%;
+        font-size: 1.5em;   
+        font-weight: lighter;
+    }
+
+    .areaCamposSlack .mensagem {
+        position: relative;
+        font-size: 1.3em;
+        float: left;
+        text-align: left;
+        width: 100%;
+        margin-bottom: 0;
+    }
+
+#areaInfoSlack {
+    width: 70%;
+    height: 100%;
+    position: fixed;
+    right: 0;
+    top: 0;
+    overflow: auto;
+    float: left;
+}
+
+#btnFormCadastrarSlack {
+    position: absolute;
+    bottom: 0;
+    width: 50%;
+    left: 10%;
+    padding: 0;
+    float: left;
+    border-radius: 0;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    border: 1px solid var(--yellow-color);
+    border-bottom: none;
+}
+
+#btnFormCadastrarSlack input{
+    width: 100%;
+    text-align: center;
+}
+
+
+    #btnFormCadastrarSlack:hover input {
+        width: 100%;
+        color: var(--darker-bg-color);
+        text-align: center;
+        font-size: 1.1em;
+        padding: 0;
+    }
+
+    #btnFormCadastrarSlack input:focus, #btnFormCadastrarSlack input:active, #btnFormCadastrarSlack input:target {
+        width: 100%;
+        text-align: center;
+        font-size: 1.1em;
+        padding: 0;
+        color: var(--blue-color);
+    }
+
+    #btnFormCadastrarSlack .itemMenuBackGround {
+        background: radial-gradient(circle, var(--yellow-color), var(--to-invisible));
+    }
 
 /*                                                                                                */
 /*------------------------------------------Responsive--------------------------------------------*/
@@ -1194,7 +1297,8 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     #areaInfo {
-        width: 75%;
+        width: 80%;
+        padding-left: 5%;
         height: 100%;
         position: fixed;
         right: 0;
@@ -1212,7 +1316,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 
     .infoGeralComputador {
-        width: 60vw;
+        width: 70vw;
         height: auto;
     }
 
@@ -1504,5 +1608,42 @@ input[type=number]::-webkit-inner-spin-button {
         height: auto;
         margin-bottom: 12vh;
     }
-        
+
+
+    
+
+        .areaCamposSlack input[type="text"], .areaCamposSlack input[type="password"], .areaCamposSlack input[type="email"], .areaCamposSlack input[type="date"], .areaCamposSlack select {
+            font-size: 1.5em;
+            width: 100%;
+        }
+
+
+    
+
+    #areaInfoSlack {
+        width: 85%;
+        font-size: 2vmax;
+    }
+
+
+    #btnFormCadastrarSlack{
+        width: 70%;
+        left: 15%;
+    }
+
+    #btnFormCadastrarSlack input {
+        width: 100%;
+        text-align: center;
+    }
+
+
+        #btnFormCadastrarSlack:hover input {
+            font-size: 2.4em;
+        }
+
+        #btnFormCadastrarSlack input:focus, #btnFormCadastrarSlack input:active, #btnFormCadastrarSlack input:target {
+            
+            font-size: 2.4em;
+        }
+
 }
