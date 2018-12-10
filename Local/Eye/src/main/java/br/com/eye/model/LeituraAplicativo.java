@@ -9,10 +9,10 @@ import oshi.software.os.OperatingSystem;
 
 public class LeituraAplicativo {
 
-    String codAplicativo;
-    String nome;
-    String nomeNativo;
-    long tempo;
+    private String codAplicativo;
+    private String nome;
+    private String nomeNativo;
+    private long tempo;
 
     public LeituraAplicativo() {
     }
@@ -62,16 +62,12 @@ public class LeituraAplicativo {
                     processo.getName(),
                     processo.getUserTime()
             );
-            System.out.println(proc.getNomeNativo());
-            System.out.println(proc.getTempo());
-            System.out.println("");
-
             if (leituras.isEmpty()) {
                 leituras.add(proc);
             } else {
                 for (int i = 0; i < leituras.size(); i++) {
                     if (proc.getNomeNativo().equals(leituras.get(i).getNomeNativo())) {
-                        proc.setTempo(proc.getTempo() + leituras.get(i).getTempo()); 
+                        leituras.get(i).setTempo(proc.getTempo() + leituras.get(i).getTempo());
                     } else if (i == leituras.size() - 1) {
                         leituras.add(proc);
                     }
@@ -79,5 +75,18 @@ public class LeituraAplicativo {
             }
         }
         return leituras;
+    }
+
+    public static String retornaNomeCampo(int codPerfil) {
+        switch (codPerfil) {
+            case 1:
+                return "minutos_jogos";
+            case 2:
+                return "minutos_trabalho";
+            case 3:
+                return "minutos_social";
+            default:
+                return "minutos_outros";
+        }
     }
 }
