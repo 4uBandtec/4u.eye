@@ -34,9 +34,26 @@ namespace EYE.View
 		}
 
 		[ScriptMethod, WebMethod]
-		public static bool CadastraTarefa(TextBox txtNome, TextBox txtDescricao, TextBox txtDataInicio, TextBox txtDataFim, Label lblMensagem,  List<string> listaCodUsersTarefa, List<string> listaProcTarefa, List<string> listaTempoTarefa)
+		public static bool CadastraTarefa(string txtNome, string txtDescricao, string txtDataInicio, string txtDataFim, string lblMensagem,  List<string> listaCodUsersTarefa, List<string> listaProcTarefa, List<string> listaTempoTarefa)
 		{
 			return !new ControllerTarefa().Cadastrar(txtNome, txtDescricao, txtDataInicio, txtDataFim, new Sessao().RetornaSessaoWorkspace(), lblMensagem, listaCodUsersTarefa, listaProcTarefa, listaTempoTarefa);
         }
-	}
+
+        protected void Timer_Tick(object sender, EventArgs e)
+        {
+
+            pnlOnline.Controls.Clear();
+            var lista = ControllerComputador.RetornaUsuariosOnline(int.Parse((string)Session["codWorkspace"]));
+            var index = 0;
+            foreach (var item in lista)
+            {
+                Label lblUser = new Label();
+                lblUser.ID = "lblUser" + index;
+                lblUser.CssClass = "lblUser";
+                lblUser.Text = $"{item}";
+                index++;
+                pnlOnline.Controls.Add(lblUser);
+            }
+        }
+    }
 }

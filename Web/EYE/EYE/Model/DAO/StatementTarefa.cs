@@ -10,7 +10,7 @@ namespace EYE.Model.DAO
 		{
 			using (var conexao = Conexao.GetConexao())
 			{
-				using (SqlCommand cmd = new SqlCommand("INSERT INTO tarefa (nome, descricao, data_inicio, data_fim, cod_andamento, status_vida, cod_workspace) VALUES (@nome, @descricao, @data_inicio, @data_fim, @cod_andamento, @status_vida, @cod_workspace)", conexao))
+				using (SqlCommand cmd = new SqlCommand("INSERT INTO tarefa (nome, descricao, data_inicio, data_fim, cod_andamento, status_vida, cod_workspace) OUTPUT INSERTED.cod_tarefa VALUES (@nome, @descricao, @data_inicio, @data_fim, @cod_andamento, @status_vida, @cod_workspace)", conexao))
 				{
 					cmd.Parameters.AddWithValue("@nome", tarefa.Nome);
 					cmd.Parameters.AddWithValue("@descricao", tarefa.Descricao);
@@ -20,8 +20,12 @@ namespace EYE.Model.DAO
 					cmd.Parameters.AddWithValue("@status_vida", tarefa.StatusVida);
 					cmd.Parameters.AddWithValue("@cod_workspace", tarefa.CodWorkspace);
 
-					return (int)cmd.ExecuteScalar();
-				}
+                    int modified = (int)cmd.ExecuteScalar();
+
+                    return modified;
+                    
+
+                }
 			}
 		}
 
@@ -35,10 +39,12 @@ namespace EYE.Model.DAO
 					{
 						cmd.Parameters.AddWithValue("@cod_tarefa", codTarefa);
 						cmd.Parameters.AddWithValue("@cod_processo", item.CodProcesso);
-						cmd.Parameters.AddWithValue("@cod_usuario", item.CodUsuario);
+                        cmd.Parameters.AddWithValue("@nome_aplicacao", item.CodProcesso);
+                        cmd.Parameters.AddWithValue("@cod_usuario", item.CodUsuario);
 						cmd.Parameters.AddWithValue("@minutos_meta", item.TempoTarefa);
 
-						return (cmd.ExecuteNonQuery() == lista.Count);
+                        var oi = (cmd.ExecuteNonQuery() == lista.Count);
+                        return oi;
 					}
 				}
 			}

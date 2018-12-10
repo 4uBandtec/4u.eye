@@ -19,6 +19,7 @@
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />
         <!--MENU-->
+        <!--MENU-->
         <div id="sideMenu" onmousemove="getCoordenadas()">
             <a href="Dashboard.aspx">
                 <div class="itemMenu">
@@ -150,10 +151,17 @@
 
                     <div class="txtMeuResumo">Online:</div>
                     <asp:Panel runat="server" ID="pnlOnline">
+
+                        <asp:Label ID="Label1" Text="" CssClass="mensagem" runat="server" />
                     </asp:Panel>
                 </div>
             </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Timer" EventName="Tick" />
+            </Triggers>
         </asp:UpdatePanel>
+        <asp:Timer ID="Timer" runat="server" Interval="5000" OnTick="Timer_Tick"></asp:Timer>
+
 
         <div id="areaInfoSlack">
             <div class="areaCamposSlack">

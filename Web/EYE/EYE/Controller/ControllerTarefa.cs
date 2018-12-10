@@ -9,26 +9,25 @@ namespace EYE.Controller
 {
 	public class ControllerTarefa
 	{
-		public bool Cadastrar(TextBox txtNome, TextBox txtDescricao, TextBox txtDataInicio, TextBox txtDataFim, int codWorkspace, Label lblMensagem, List<string> listaCodUsersTarefa, List<string> listaProcTarefa, List<string> listaTempoTarefa)
+		public bool Cadastrar(string txtNome, string txtDescricao, string txtDataInicio, string txtDataFim, int codWorkspace, string lblMensagem, List<string> listaCodUsersTarefa, List<string> listaProcTarefa, List<string> listaTempoTarefa)
 		{
 			if (!Validacao.StringVazia(txtNome, txtDescricao, txtDataInicio, txtDataFim))
 			{
-				lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";
 				return false;
 			}
 			var codTarefa = CadastrarTarefa(txtNome, txtDescricao, txtDataInicio, txtDataFim, codWorkspace, lblMensagem);
-			var lista = ProcessoTarefa.ConstruirLista(listaCodUsersTarefa, listaCodUsersTarefa, listaTempoTarefa);
+			var lista = ProcessoTarefa.ConstruirLista(listaCodUsersTarefa, listaProcTarefa, listaTempoTarefa);
 			return StatementTarefa.CadastrarProcessos(lista, codTarefa);
 		}
 
-		private static int CadastrarTarefa(TextBox txtNome, TextBox txtDescricao, TextBox txtDataInicio, TextBox txtDataFim, int codWorkspace, Label lblMensagem)
+		private static int CadastrarTarefa(string txtNome, string txtDescricao, string txtDataInicio, string txtDataFim, int codWorkspace, string lblMensagem)
 		{
 			var tarefa = new Tarefa
 			{
-				Nome = txtNome.Text,
-				Descricao = txtDescricao.Text,
-				DataInicio = txtDataInicio.Text,
-				DataFim = txtDataFim.Text,
+				Nome = txtNome,
+				Descricao = txtDescricao,
+				DataInicio = txtDataInicio,
+				DataFim = txtDataFim,
 				CodAndamento = Andamento.NaoIniciada,
 				StatusVida = StatusVida.Ativo,
 				CodWorkspace = codWorkspace
@@ -38,15 +37,15 @@ namespace EYE.Controller
 
 			if (codTarefa > 0)
 			{
-				lblMensagem.Text = "A nova tarefa ja foi cadastrada, coloque os funcinarios pra trabalhar";
-				txtNome.Text = "";
-				txtDescricao.Text = "";
-				txtDataInicio.Text = "";
-				txtDataFim.Text = "";
+				lblMensagem = "A nova tarefa ja foi cadastrada, coloque os funcinarios pra trabalhar";
+				txtNome = "";
+				txtDescricao = "";
+				txtDataInicio = "";
+				txtDataFim = "";
 			}
 			else
 			{
-				lblMensagem.Text = "Ops, deu algo errado, acho que a culpa é nossa";
+				lblMensagem = "Ops, deu algo errado, acho que a culpa é nossa";
 			}
 			return codTarefa;
 		}

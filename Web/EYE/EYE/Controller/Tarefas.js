@@ -163,13 +163,15 @@ function bloqueiaCamposConfig() {
 
 function cadastrarClick() {
 
-	var txtNome = document.getElementById('txtNome');
-	var txtDescricao = document.getElementById('txtDescricao');
-	var txtDataInicio = document.getElementById('txtDataInicio');
-	var txtDataFim = document.getElementById('txtDataFim');
-	var lblMensagem = document.getElementById('lblMensagem');
+	var txtNome = document.getElementById('txtNome').value;
+    var txtDescricao = document.getElementById('txtDescricao').value;
+    var txtDataInicio = document.getElementById('txtDataInicio').value;
+    var txtDataFim = document.getElementById('txtDataFim').value;
+    var lblMensagem = document.getElementById('lblMensagem').textContent;
 
-	PageMethods.CadastraTarefa(txtNome, txtDescricao, txtDataInicio, txtDataFim, lblMensagem, listaCodUsersTarefa, listaProcTarefa, listaTempoTarefa, onSuccess, onError);
+    console.log(txtNome, txtDescricao, txtDataInicio, txtDataFim, lblMensagem);
+
+    PageMethods.CadastraTarefa(txtNome, txtDescricao, txtDataInicio, txtDataFim, lblMensagem, listaCodUsersTarefa, listaProcTarefa, listaTempoTarefa, onSuccess, onError);
     
 }
 

@@ -169,3 +169,4 @@ C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.csproj.CoreCompile
 C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.csproj.CopyComplete
 C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.dll
 C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.pdb
+C:\Users\aluno\Desktop\4u.eye\Web\EYE\EYE\obj\Debug\EYE.csprojResolveAssemblyReference.cache

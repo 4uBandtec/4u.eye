@@ -30,6 +30,7 @@
         <!--MENU 
             precisa ter o script dashStyle.js e 
             função "iniciarEstilo" no onLoad do body-->
+       <!--MENU-->
         <div id="sideMenu" onmousemove="getCoordenadas()">
             <a href="Dashboard.aspx">
                 <div class="itemMenu">
@@ -102,7 +103,7 @@
             </a>
 
 
-            <a href="Dashboard.aspx">
+            <a href="CadastroSlack.aspx">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
@@ -151,13 +152,27 @@
             </a>
 
         </div>
-        <!--/MENU-->
-        
-        <div id="meuResumo">
-            <div class="txtMeuResumo">TIME:</div>
 
-            <asp:Label ID="Label1" Text="" CssClass="mensagem" runat="server" />
-        </div>
+        <!--/MENU-->
+
+
+        <asp:UpdatePanel ID="updtPnlConfiguracao" runat="server">
+            <ContentTemplate>
+                <div id="meuResumo">
+
+                    <div class="txtMeuResumo">Online:</div>
+                    <asp:Panel runat="server" ID="pnlOnline">
+
+                        <asp:Label ID="Label1" Text="" CssClass="mensagem" runat="server" />
+                    </asp:Panel>
+                </div>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Timer" EventName="Tick" />
+            </Triggers>
+        </asp:UpdatePanel>
+        <asp:Timer ID="Timer" runat="server" Interval="5000" OnTick="Timer_Tick"></asp:Timer>
+
 
 
         <div id="progressTrack">
