@@ -113,9 +113,15 @@
     <Compile Include="Model\DAO\StatementTarefa.cs" />
     <Compile Include="Model\DAO\StatementUsuario.cs" />
     <Compile Include="Model\DAO\StatementWorkspace.cs" />
+    <Compile Include="Model\Enum\Andamento.cs" />
+    <Compile Include="Model\Enum\StatusVida.cs" />
     <Compile Include="Model\LeituraAtual.cs" />
     <Compile Include="Model\Perfil.cs" />
     <Compile Include="Model\Enum\TiposDePerfil.cs" />
+    <Compile Include="Model\ProcessoTarefa.cs" />
+    <Compile Include="Model\Sessao.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Model\Slack.cs" />
     <Compile Include="Model\Processo.cs" />
     <Compile Include="Model\Tarefa.cs" />

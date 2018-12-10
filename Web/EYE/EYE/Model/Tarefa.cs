@@ -1,6 +1,5 @@
-﻿using System;
+﻿using EYE.Model.Enum;
 using System.Collections.Generic;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace EYE.Model
@@ -13,24 +12,24 @@ namespace EYE.Model
         private string dataInicio;
         private string dataFim;
         private string dataConclusao;
-        private int statusVida;
-        private int codAndamento;
+        private StatusVida statusVida;
+        private Andamento codAndamento;
         private int codWorkspace;
-
-        public int CodTarefa { get => codTarefa; set => codTarefa = value; }
+		private List<ProcessoTarefa> processoTarefa;
+		
+		public int CodTarefa { get => codTarefa; set => codTarefa = value; }
         public string Nome { get => nome; set => nome = value; }
         public string Descricao { get => descricao; set => descricao = value; }
         public string DataInicio { get => dataInicio; set => dataInicio = value; }
         public string DataFim { get => dataFim; set => dataFim = value; }
         public string DataConclusao { get => dataConclusao; set => dataConclusao = value; }
-        public int StatusVida { get => statusVida; set => statusVida = value; }
-        public int CodAndamento { get => codAndamento; set => codAndamento = value; }
+        public StatusVida StatusVida { get => statusVida; set => statusVida = value; }
+        public Andamento CodAndamento { get => codAndamento; set => codAndamento = value; }
         public int CodWorkspace { get => codWorkspace; set => codWorkspace = value; }
+		public List<ProcessoTarefa> ProcessoTarefa { get => processoTarefa; set => processoTarefa = value; }
 
-        public Panel ConstruirConteudo(DropDownList ddlUsuarios, DropDownList ddlProcessos)
+		public Panel ConstruirConteudo(DropDownList ddlUsuarios, DropDownList ddlProcessos)
         {
-
-
             var conteudo = new Panel();
             var lblUsuario = new Label();
             lblUsuario.Text = "Quem vai participar dessa tarefa?";
@@ -53,10 +52,6 @@ namespace EYE.Model
             txtTempo.Enabled = false;
 
             txtTempo.Attributes.Add("type", "Number");
-            
-
-
-
 
             conteudo.Controls.Add(lblUsuario);
             conteudo.Controls.Add(ddlUsuarios);
