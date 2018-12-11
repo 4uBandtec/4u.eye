@@ -18,6 +18,18 @@ namespace EYE.Model
             }
             return true;
         }
+
+        public static bool StringVazia(params string[] campos)
+        {
+            foreach (var campo in campos)
+            {
+                if (campo == null || string.IsNullOrWhiteSpace(campo))
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
         public static bool  DropDownListVazia(params DropDownList[] listas)
         {
             foreach (var lista in listas)

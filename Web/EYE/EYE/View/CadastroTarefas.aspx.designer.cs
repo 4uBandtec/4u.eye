@@ -7,19 +7,19 @@
 // </gerado automaticamente>
 //------------------------------------------------------------------------------
 
-namespace Eye.View {
+namespace EYE.View {
     
     
-    public partial class CadastroUsuario {
+    public partial class CadastroTarefas {
         
         /// <summary>
-        /// Controle formCadastroUsuario.
+        /// Controle form1.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlForm formCadastroUsuario;
+        protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
         /// Controle ScriptManager.
@@ -67,15 +67,6 @@ namespace Eye.View {
         protected global::System.Web.UI.Timer Timer;
         
         /// <summary>
-        /// Controle lblTexto.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblTexto;
-        
-        /// <summary>
         /// Controle lblMensagem.
         /// </summary>
         /// <remarks>
@@ -94,75 +85,57 @@ namespace Eye.View {
         protected global::System.Web.UI.WebControls.TextBox txtNome;
         
         /// <summary>
-        /// Controle txtUsername.
+        /// Controle txtDescricao.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtUsername;
+        protected global::System.Web.UI.WebControls.TextBox txtDescricao;
         
         /// <summary>
-        /// Controle txtEmail.
+        /// Controle txtDataInicio.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtDataInicio;
         
         /// <summary>
-        /// Controle txtDataNascimento.
+        /// Controle txtDataFim.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDataNascimento;
+        protected global::System.Web.UI.WebControls.TextBox txtDataFim;
         
         /// <summary>
-        /// Controle ddlSexo.
+        /// Controle pnlConfiguracao.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlSexo;
+        protected global::System.Web.UI.WebControls.Panel pnlConfiguracao;
         
         /// <summary>
-        /// Controle txtSenha.
+        /// Controle btnAdicionar.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSenha;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton btnAdicionar;
         
         /// <summary>
-        /// Controle txtConfirmarSenha.
+        /// Controle btnCadastrarTarefa.
         /// </summary>
         /// <remarks>
         /// Campo gerado automaticamente.
         /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtConfirmarSenha;
-        
-        /// <summary>
-        /// Controle btnCadastrar.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCadastrar;
-        
-        /// <summary>
-        /// Controle btnIrPara.
-        /// </summary>
-        /// <remarks>
-        /// Campo gerado automaticamente.
-        /// Modificar a declaração do campo de movimento do arquivo de designer para o arquivo code-behind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnIrPara;
+        protected global::System.Web.UI.HtmlControls.HtmlInputButton btnCadastrarTarefa;
     }
 }
