@@ -127,7 +127,7 @@ public class TelaLogin extends JFrame implements ActionListener {
                 if (new ControllerUsuario().Logar(txtUsername.getText(), txtSenha.getText())) {
                     dispose();
                      LogMensagem.GravarLog("Login Identificado");
-                    new TelaFuncionou(new ControllerUsuario().getCodUsuario(txtUsername.getText()));
+                    new TelaCaptacao(new ControllerUsuario().getCodUsuario(txtUsername.getText()));
                 }
             }
         } catch (InterruptedException | SQLException ex) {
