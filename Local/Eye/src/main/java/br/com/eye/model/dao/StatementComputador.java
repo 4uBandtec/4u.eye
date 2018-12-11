@@ -66,12 +66,12 @@ public class StatementComputador {
 
         return (resultado.next());
     }
-    
-    public boolean updateComputador(int codComputador) throws SQLException{
-        
+
+    public boolean updateComputador(int codComputador) throws SQLException {
+
         Computador computador = new Computador();
-        
-        String sql = "UPDATE computador set sistema_operacional = ?, versao_sistema = ?, versao_bits = ?, processador = ?, total_ram = ?, total_hd = ? where cod_computador = "+codComputador;
+
+        String sql = "UPDATE computador set sistema_operacional = ?, versao_sistema = ?, versao_bits = ?, processador = ?, total_ram = ?, total_hd = ? where cod_computador = ?";
         PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setString(1, computador.getSistemaOperacionalOshi());
         query.setString(2, computador.getVersaoSistemaOshi());
@@ -79,7 +79,8 @@ public class StatementComputador {
         query.setString(4, computador.getProcessadorOshi());
         query.setLong(5, computador.getTotalMemoriaOshi());
         query.setLong(6, computador.getTotalDiscoOshi());
+        query.setInt(7, codComputador);
         return query.execute();
-    
+
     }
 }
