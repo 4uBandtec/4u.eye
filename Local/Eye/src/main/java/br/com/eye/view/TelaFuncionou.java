@@ -9,6 +9,7 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JFrame;
@@ -29,7 +30,7 @@ public class TelaFuncionou extends JFrame implements ActionListener {
 
     LineBorder borderRed = new LineBorder(redColor, 1);
 
-    public TelaFuncionou(int codUsuario) throws InterruptedException, SQLException {
+    public TelaFuncionou(int codUsuario) throws InterruptedException, SQLException, IOException {
         setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
@@ -60,7 +61,6 @@ public class TelaFuncionou extends JFrame implements ActionListener {
             new ControllerLeituraComputador().setLeitura(codUsuario);
         }
     }
-
     @Override
     public void actionPerformed(ActionEvent e) {
     }
