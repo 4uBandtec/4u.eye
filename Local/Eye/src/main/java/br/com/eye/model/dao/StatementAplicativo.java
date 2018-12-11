@@ -79,10 +79,10 @@ public class StatementAplicativo {
         return resultado.next() ? (resultado.getInt(1)) : 0;
     }
 
-    public static boolean acumulaMinutos(int codUsuario, long minutos, String perfil) throws SQLException {
+    public static boolean acumulaMinutos(int codUsuario, int minutos, String perfil) throws SQLException {
         String sql = "UPDATE perfil_usuario set "+ perfil + " = ? WHERE cod_usuario = ?";
         PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
-        query.setLong(1, minutos);
+        query.setInt(1, minutos);
         query.setInt(2, codUsuario);
         return query.execute();
     }

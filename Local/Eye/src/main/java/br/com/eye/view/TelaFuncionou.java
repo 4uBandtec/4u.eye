@@ -2,6 +2,7 @@ package br.com.eye.view;
 
 import br.com.eye.controller.ControllerLeituraComputador;
 import br.com.eye.controller.ControllerComputador;
+import br.com.eye.model.LeituraAplicativo;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -9,6 +10,7 @@ import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
@@ -55,7 +57,7 @@ public class TelaFuncionou extends JFrame implements ActionListener {
         setVisible(true);
 
         if (new ControllerComputador().inserePrimeiroComputador(codUsuario)) {
-            new ControllerLeituraComputador().setLeitura(new ControllerLeituraComputador().getCodComputador(codUsuario));
+            new ControllerLeituraComputador().setLeitura(codUsuario);
         }
     }
 

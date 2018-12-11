@@ -7,8 +7,8 @@ import java.util.List;
 
 public class ControllerAplicativo {
 
-    public static void setLeituraAplicativo(int codUsuario) throws SQLException {
-        List<LeituraAplicativo> leituras = LeituraAplicativo.getProcesso();
+    public static List<LeituraAplicativo> setLeituraAplicativo(int codUsuario, List<LeituraAplicativo> leituras) throws SQLException {
+       leituras = LeituraAplicativo.getProcesso(leituras);
         for (LeituraAplicativo leitura : leituras) {
             int codProcesso = StatementAplicativo.getProcesso(leitura.getNomeNativo());
             if (codProcesso == 0) {
@@ -24,11 +24,11 @@ public class ControllerAplicativo {
                     StatementAplicativo.insereUsuario(codUsuario);
                 }
                 String campoPerfil = LeituraAplicativo.retornaNomeCampo(codPerfil);
-                long minutos = StatementAplicativo.getMinutosAcumulados(codUsuario, campoPerfil);
-                minutos = minutos + leitura.getTempo();
-                StatementAplicativo.acumulaMinutos(codUsuario, minutos, campoPerfil);   
+                int minutos = StatementAplicativo.getMinutosAcumulados(codUsuario, campoPerfil);
+                minutos = (int) (minutos + leitura.getTempo() / 60);
+                StatementAplicativo.acumulaMinutos(codUsuario, minutos, campoPerfil);
             }
-
-        }
+        }     
+        return leituras;
     }
 }

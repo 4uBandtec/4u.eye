@@ -12,12 +12,12 @@ public class LeituraAplicativo {
     private String codAplicativo;
     private String nome;
     private String nomeNativo;
-    private long tempo;
+    private double tempo;
 
     public LeituraAplicativo() {
     }
 
-    public LeituraAplicativo(String nomeNativo, long tempo) {
+    public LeituraAplicativo(String nomeNativo, double tempo) {
         this.nomeNativo = nomeNativo;
         this.tempo = tempo;
     }
@@ -46,28 +46,37 @@ public class LeituraAplicativo {
         this.nomeNativo = nomeNativo;
     }
 
-    public long getTempo() {
+    public double getTempo() {
         return tempo;
     }
 
-    public void setTempo(long tempo) {
+    public void setTempo(double tempo) {
         this.tempo = tempo;
     }
 
-    public static List<LeituraAplicativo> getProcesso() {
+    public static List<LeituraAplicativo> getProcesso(List<LeituraAplicativo> leituras) {
         List<OSProcess> processos = Arrays.asList(new SystemInfo().getOperatingSystem().getProcesses(10, OperatingSystem.ProcessSort.CPU));
-        List<LeituraAplicativo> leituras = new ArrayList();
+        if (!leituras.isEmpty()) {
+            for (LeituraAplicativo leitura : leituras) {
+                leitura.setTempo(-leitura.getTempo());
+            }
+        }
         for (OSProcess processo : processos) {
             LeituraAplicativo proc = new LeituraAplicativo(
                     processo.getName(),
-                    processo.getUserTime()
+                    processo.getUserTime() / 1000
             );
             if (leituras.isEmpty()) {
                 leituras.add(proc);
             } else {
                 for (int i = 0; i < leituras.size(); i++) {
                     if (proc.getNomeNativo().equals(leituras.get(i).getNomeNativo())) {
-                        leituras.get(i).setTempo(proc.getTempo() + leituras.get(i).getTempo());
+                        double tempo = proc.getTempo() + leituras.get(i).getTempo();
+                        if (tempo > 0) {
+                            leituras.get(i).setTempo(tempo);
+                        } else {
+                            leituras.get(i).setTempo(0);
+                        }
                     } else if (i == leituras.size() - 1) {
                         leituras.add(proc);
                     }

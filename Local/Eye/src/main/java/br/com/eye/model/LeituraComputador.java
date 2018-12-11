@@ -1,9 +1,12 @@
 package br.com.eye.model;
 
+import br.com.eye.controller.ControllerAplicativo;
 import br.com.eye.model.dao.StatementLeituraComputador;
 import br.com.eye.model.Computador;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
+import java.util.List;
 import static jdk.nashorn.internal.objects.NativeMath.round;
 import oshi.SystemInfo;
 import oshi.hardware.CentralProcessor;
@@ -87,15 +90,22 @@ public class LeituraComputador {
         return disponivel;
     }
 
-    public void setLeitura(int codComputador) throws SQLException, InterruptedException {
-
+    public void setLeitura(int codComputador, int codUsuario) throws SQLException, InterruptedException {
+        int contador = 0;
+        List<LeituraAplicativo> leituras= new ArrayList();
         while (true) {
-            Thread.sleep(1000);
+            contador++;
+            Thread.sleep(5000);
             if (new StatementLeituraComputador().existeLeituraRegistrada(codComputador)) {
                 new StatementLeituraComputador().updateLeitura(new LeituraComputador().leituraOshi(), codComputador);
             } else {
                 new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codComputador);
             }
+            if(contador==12){            
+             leituras=ControllerAplicativo.setLeituraAplicativo(codUsuario, leituras);
+             contador=0;
+            }
+            
         }
     }
     

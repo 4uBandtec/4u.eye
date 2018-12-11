@@ -26,7 +26,8 @@ public class ControllerLeituraComputador {
         return new StatementLeituraComputador().getCodComputador(codUsuario);
     }
     
-    public void setLeitura(int codComputador) throws SQLException, InterruptedException {
-        leituraComputador.setLeitura(codComputador);
+    public void setLeitura(int codUsuario) throws SQLException, InterruptedException {
+        int codComputador = getCodComputador(codUsuario);
+        leituraComputador.setLeitura(codComputador,codUsuario);
     }
 }
