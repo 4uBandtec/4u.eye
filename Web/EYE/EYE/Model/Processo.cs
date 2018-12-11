@@ -20,7 +20,7 @@ namespace EYE.Model
         {
             ddlProcesso.Items.Add(new ListItem("", null));
             foreach (Processo item in lista) {
-                if (item.NomeAplicacao == "null" || item.NomeAplicacao == null || item.NomeAplicacao.Equals("") || item.NomeAplicacao.Equals("null"))
+                if (item.NomeAplicacao == "NULL" || item.NomeAplicacao == null || item.NomeAplicacao.Equals("") || item.NomeAplicacao.Equals("NULL"))
                     ddlProcesso.Items.Add(new ListItem(item.NomeProcesso, item.CodProcesso.ToString()));
                 else
                     ddlProcesso.Items.Add(new ListItem(item.NomeAplicacao, item.CodProcesso.ToString()));
