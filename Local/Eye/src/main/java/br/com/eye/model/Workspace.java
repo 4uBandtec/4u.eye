@@ -12,6 +12,4 @@ public class Workspace {
     public void setCodWorkspace(int codWorkspace) {
         this.codWorkspace = codWorkspace;
     }
-
-
 }

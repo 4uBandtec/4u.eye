@@ -70,18 +70,22 @@
   <ItemGroup>
     <Content Include="Component\AddUsuarios.png" />
     <Content Include="Component\Dashboard.png" />
+    <Content Include="Component\favicon.ico" />
     <Content Include="Component\icon.png" />
     <Content Include="Component\Logout.png" />
     <Content Include="Component\Opcoes.png" />
     <Content Include="Component\Slack.png" />
     <Content Include="Component\Tarefa.png" />
     <Content Include="Component\Usuarios.png" />
+    <Content Include="Controller\BreakSession.js" />
     <Content Include="Controller\CamposFormulario.js" />
     <Content Include="Controller\Dashboard.js" />
     <Content Include="Controller\DashStyle.js" />
+    <Content Include="Controller\Tarefas.js" />
     <Content Include="Global.asax" />
     <Content Include="Model\EYE.css" />
     <Content Include="View\CadastroSlack.aspx" />
+    <Content Include="View\CadastroTarefas.aspx" />
     <Content Include="View\CadastroUsuario.aspx" />
     <Content Include="View\CadastroWorkspace.aspx" />
     <Content Include="View\Dashboard.aspx" />
@@ -92,6 +96,7 @@
     <Compile Include="Controller\ControllerComputador.cs" />
     <Compile Include="Controller\ControllerLeituraAtual.cs" />
     <Compile Include="Controller\ControllerSlack.cs" />
+    <Compile Include="Controller\ControllerTarefa.cs" />
     <Compile Include="Controller\ControllerUsuario.cs" />
     <Compile Include="Controller\ControllerWorkspace.cs" />
     <Compile Include="Global.asax.cs">
@@ -104,12 +109,22 @@
     <Compile Include="Model\DAO\StatementLeituraAtual.cs" />
     <Compile Include="Model\DAO\StatementPerfil.cs" />
     <Compile Include="Model\DAO\StatementSlack.cs" />
+    <Compile Include="Model\DAO\StatementProcesso.cs" />
+    <Compile Include="Model\DAO\StatementTarefa.cs" />
     <Compile Include="Model\DAO\StatementUsuario.cs" />
     <Compile Include="Model\DAO\StatementWorkspace.cs" />
+    <Compile Include="Model\Enum\Andamento.cs" />
+    <Compile Include="Model\Enum\StatusVida.cs" />
     <Compile Include="Model\LeituraAtual.cs" />
     <Compile Include="Model\Perfil.cs" />
     <Compile Include="Model\Enum\TiposDePerfil.cs" />
+    <Compile Include="Model\ProcessoTarefa.cs" />
+    <Compile Include="Model\Sessao.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Model\Slack.cs" />
+    <Compile Include="Model\Processo.cs" />
+    <Compile Include="Model\Tarefa.cs" />
     <Compile Include="Model\Usuario.cs" />
     <Compile Include="Model\Validacao.cs" />
     <Compile Include="Model\Workspace.cs" />
@@ -120,6 +135,13 @@
     </Compile>
     <Compile Include="View\CadastroSlack.aspx.designer.cs">
       <DependentUpon>CadastroSlack.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\CadastroTarefas.aspx.cs">
+      <DependentUpon>CadastroTarefas.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\CadastroTarefas.aspx.designer.cs">
+      <DependentUpon>CadastroTarefas.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\CadastroUsuario.aspx.cs">
       <DependentUpon>CadastroUsuario.aspx</DependentUpon>

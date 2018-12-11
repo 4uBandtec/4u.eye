@@ -1,5 +1,8 @@
 ﻿using EYE.Controller;
 using System;
+using System.Web.Script.Services;
+using System.Web.Services;
+using System.Web.UI.WebControls;
 
 namespace Eye.View
 {
@@ -23,9 +26,33 @@ namespace Eye.View
             }
         }
 
+        [ScriptMethod, WebMethod]
+        public static void BreakSession()
+        {
+            CadastroUsuario cadUser = new CadastroUsuario();
+            cadUser.Session.Abandon();
+        }
+
         protected void btnIrPara_Click(object sender, EventArgs e)
         {
             Response.Redirect("./Dashboard.aspx");
+        }
+
+        protected void Timer_Tick(object sender, EventArgs e)
+        {
+
+            pnlOnline.Controls.Clear();
+            var lista = ControllerComputador.RetornaUsuariosOnline(int.Parse((string)Session["codWorkspace"]));
+            var index = 0;
+            foreach (var item in lista)
+            {
+                Label lblUser = new Label();
+                lblUser.ID = "lblUser" + index;
+                lblUser.CssClass = "lblUser";
+                lblUser.Text = $"{item}";
+                index++;
+                pnlOnline.Controls.Add(lblUser);
+            }
         }
     }
 }

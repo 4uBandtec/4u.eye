@@ -4,6 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
+    <link runat="server" rel="shortcut icon" href="../Component/favicon.ico" type="image/x-icon" />
+    <link runat="server" rel="icon" href="../Component/favicon.ico" type="image/ico" />
+
     <title>Cadastro | EYE by 4U</title>
     <link href="../Model/EYE.css" rel="stylesheet" type="text/css" />
 
@@ -32,7 +36,7 @@
 
                 <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
 
-                <div class="campos" onkeydown="tabPress(event)" onkeyup="keyUp()">
+                <div class="campos" onkeydown="tabPress(event)" onkeyup="keyUp(event)">
 
                     <asp:TextBox ID="txtNome" runat="server" Placeholder="Seu nome" CssClass="campoCadastro"></asp:TextBox>
 
