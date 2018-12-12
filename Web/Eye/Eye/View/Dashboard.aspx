@@ -25,6 +25,33 @@
     <form id="formDashboard" runat="server">
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />
+
+        <!--<div id="blockArea">
+            <div id="popup">
+
+                <div class="areaConfig">
+
+                    <div class="areaTextoSwitch">
+                        <div class="switch__container">
+                            <input id="switch-tema" class="switch switch--shadow" type="checkbox" />
+                            <label for="switch-tema"></label>
+                        </div>
+                    </div>
+                    <div class="areaTextoSwitch">
+                        Mudar Tema de Cores
+                    </div>
+                </div>
+
+                <div class="areaConfig">
+                    <div class="switch__container">
+                        <input id="switch-notificacao" class="switch switch--shadow" type="checkbox" />
+                        <label for="switch-notificacao"></label>
+                    </div>
+                </div>
+
+            </div>
+        </div>-->
+
         <!--MENU-->
         <div id="sideMenu" onmousemove="getCoordenadas()">
             <a href="Dashboard.aspx">
@@ -46,17 +73,17 @@
             </a>
 
 
-
+            <!--Coloca o link do app no lugar desse de baixo-->
             <a href="Dashboard.aspx">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
-                        <img src="../Component/Usuarios.png" />
+                        <img src="../Component/download.png" />
                     </div>
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Usuários
+                        Baixar App Local
                
                     </div>
 
@@ -115,7 +142,7 @@
             </a>
 
 
-            <a href="Dashboard.aspx">
+            <a onclick="mudarTema()">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
@@ -124,7 +151,7 @@
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Opções
+                        Trocar Cores do Tema
                
                     </div>
 
@@ -146,7 +173,11 @@
                 </div>
             </a>
 
+
+
+
         </div>
+
 
         <!--/MENU-->
 

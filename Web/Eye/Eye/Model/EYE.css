@@ -351,6 +351,7 @@ body {
     transition-duration: 0.3s;
     border-radius: 0px;
     box-shadow: 0px 0px 50px 1px var(--black-color);
+    border-radius: 20px;
 }
 
 
@@ -867,7 +868,13 @@ label {
     display: flex;
     flex-direction: column;
     padding-top: 0;
+    border-radius: 20px;
 }
+
+    .AreaTarefa .tituloComputador {
+        background: var(--darker-bg-color);
+        box-shadow: none;
+    }
 
 #AreaCadastroTarefa input {
     background: none;
@@ -1047,27 +1054,25 @@ label {
 
     #btnFormCadastrarTarefa #btnCadastrarTarefa:active,
     #btnFormCadastrarTarefa #btnCadastrarTarefa:target,
-    #btnFormCadastrarTarefa #btnCadastrarTarefa:focus
-    {
+    #btnFormCadastrarTarefa #btnCadastrarTarefa:focus {
         color: var(--txt-color);
         padding: 0;
         width: 100%;
     }
 
-    .msgTarefa{
-        width: 80vw;
-        color: red;
-        height: auto;
-        padding-bottom: 2%;
-        margin-bottom: 2%;
-        position: fixed;
-        top: 2%;
-        font-weight: 600;
-        font-size: 1.5em;
-        text-align: center;
-        z-index: 2;
-        
-    }
+.msgTarefa {
+    width: 80vw;
+    color: red;
+    height: auto;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+    position: fixed;
+    top: 2%;
+    font-weight: 600;
+    font-size: 1.5em;
+    text-align: center;
+    z-index: 2;
+}
 
 
 input[type=number]::-webkit-inner-spin-button {
@@ -1102,20 +1107,20 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
 
-.areaCamposSlack input[type="text"]:focus, .areaCamposSlack input[type="password"]:focus, .areaCamposSlack input[type="email"]:focus, .areaCamposSlack input[type="date"]:focus, .areaCamposSlack select:focus,
-.areaCamposSlack input[type="text"]:active, .areaCamposSlack input[type="password"]:active, .areaCamposSlack input[type="email"]:active, .areaCamposSlack input[type="date"]:active, .areaCamposSlack select:active,
-.areaCamposSlack input[type="text"]:target, .areaCamposSlack input[type="password"]:target, .areaCamposSlack input[type="email"]:target, .areaCamposSlack input[type="date"]:target, .areaCamposSlack select:target {
-    border-bottom: 1px solid var(--blue-color);
-    border-bottom-left-radius: 20%;
-    width: 92%;
-    padding-left: 4%;
-    color: var(--blue-color);
-}
+        .areaCamposSlack input[type="text"]:focus, .areaCamposSlack input[type="password"]:focus, .areaCamposSlack input[type="email"]:focus, .areaCamposSlack input[type="date"]:focus, .areaCamposSlack select:focus,
+        .areaCamposSlack input[type="text"]:active, .areaCamposSlack input[type="password"]:active, .areaCamposSlack input[type="email"]:active, .areaCamposSlack input[type="date"]:active, .areaCamposSlack select:active,
+        .areaCamposSlack input[type="text"]:target, .areaCamposSlack input[type="password"]:target, .areaCamposSlack input[type="email"]:target, .areaCamposSlack input[type="date"]:target, .areaCamposSlack select:target {
+            border-bottom: 1px solid var(--blue-color);
+            border-bottom-left-radius: 20%;
+            width: 92%;
+            padding-left: 4%;
+            color: var(--blue-color);
+        }
 
     .areaCamposSlack .tituloCampo {
         color: var(--txt-color);
         margin-bottom: 1%;
-        font-size: 1.5em;   
+        font-size: 1.5em;
         font-weight: lighter;
     }
 
@@ -1152,10 +1157,10 @@ input[type=number]::-webkit-inner-spin-button {
     border-bottom: none;
 }
 
-#btnFormCadastrarSlack input{
-    width: 100%;
-    text-align: center;
-}
+    #btnFormCadastrarSlack input {
+        width: 100%;
+        text-align: center;
+    }
 
 
     #btnFormCadastrarSlack:hover input {
@@ -1177,6 +1182,110 @@ input[type=number]::-webkit-inner-spin-button {
     #btnFormCadastrarSlack .itemMenuBackGround {
         background: radial-gradient(circle, var(--yellow-color), var(--to-invisible));
     }
+
+
+#blockArea {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: var(--black-color-a9);
+    z-index: 5;
+}
+
+#popup {
+    position: fixed;
+    height: auto;
+    overflow-y: auto;
+    overflow-x: no-display;
+    width: 80%;
+    min-height: 20%;
+    max-height: 75%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--darker-bg-color);
+    box-shadow: 0px 0px 50px 1px var(--black-color);
+    border-radius: 20px;
+    padding-bottom: 5%;
+}
+
+.areaConfig{
+    width: 40%;
+    height: auto;
+    margin: 10%;
+}
+
+.switch__container {
+    float: left;
+}
+.switch {
+    position: relative;
+    margin-left: -9999px;
+    visibility: hidden;
+    float: left;
+
+}
+
+    .switch + label {
+        display: block;
+        position: relative;
+        cursor: pointer;
+        outline: none;
+        user-select: none;
+        float: left;
+    }
+
+.switch--shadow + label {
+    padding: 2px;
+    width: 120px;
+    height: 60px;
+    background-color: #dddddd;
+    border-radius: 60px;
+    float: left;
+}
+    .switch--shadow + label:before,
+    .switch--shadow + label:after {
+        display: block;
+        position: absolute;
+        top: 1px;
+        left: 1px;
+        bottom: 1px;
+        content: "";
+        float: left;
+    }
+
+    .switch--shadow + label:before {
+        right: 1px;
+        background-color: #f1f1f1;
+        border-radius: 60px;
+        transition: all 0.4s;
+        float: left;
+    }
+
+    .switch--shadow + label:after {
+        width: 62px;
+        background-color: #fff;
+        border-radius: 100%;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        transition: all 0.4s;
+        float: left;
+    }
+.switch--shadow:checked + label:before {
+    background-color: #8ce196;
+    float: left;
+}
+
+.switch--shadow:checked + label:after {
+    transform: translateX(60px);
+}
+
+.areaTextoSwitch{
+    float: left;
+    width: auto;
+    position: relative;
+    font-size: 2em;
+    padding-left: 5%;
+}
 
 /*                                                                                                */
 /*------------------------------------------Responsive--------------------------------------------*/
@@ -1379,7 +1488,7 @@ input[type=number]::-webkit-inner-spin-button {
         float: left;
         margin: 2%;
     }
-	
+
     .labelCpu {
         font-size: 2.5vw;
     }
@@ -1402,7 +1511,7 @@ input[type=number]::-webkit-inner-spin-button {
         width: 90%;
         top: 10%
     }
-	
+
 
     .cadastroCampos .mensagem {
         top: 23%;
@@ -1434,6 +1543,13 @@ input[type=number]::-webkit-inner-spin-button {
         font-size: 6vmin;
     }
 
+    #areaTela {
+        float: right;
+        width: 80%;
+        height: auto;
+        position: absolute;
+        background: red;
+    }
 
     .btnForm {
         width: 89.7vw;
@@ -1462,19 +1578,41 @@ input[type=number]::-webkit-inner-spin-button {
         .btnForm:hover .itemMenuBackGround {
             background: linear-gradient(90deg, var(--to-invisible),var(--black-color-a), var(--red-color-a), var(--black-color-a),var(--to-invisible));
         }
-		
+
 
 
     #progressTrack {
-        width: 90vw;
+        width: 90%;
     }
 
 
+    #areaTela #progressTrack {
+        width: 50%;
+    }
 
+
+    #areaTela #lblTexto {
+        width: 50%;
+        left: 53%;
+    }
+
+    .mensagem, .loading {
+        font-size: 3em;
+    }
+
+
+    #areaTela .areaCampos {
+        width: 60%;
+        max-width: 60%;
+        min-width: 60%;
+        float: right;
+        left: auto;
+        right: 15%;
+    }
 
 
     #lblTexto {
-        width: 70vw;
+        width: 70%;
         top: 15%;
         font-size: 4vmax;
         max-width: 70vw;
@@ -1485,9 +1623,9 @@ input[type=number]::-webkit-inner-spin-button {
 
 
     .cadastroCampos .areaCampos {
-        width: 90vw;
-        max-width: 90vw;
-        min-width: 90vw;
+        width: 90%;
+        max-width: 90%;
+        min-width: 90%;
     }
 
 
@@ -1515,7 +1653,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 
-   #btnFormNext {
+    #btnFormNext {
         width: 30%;
         border-bottom-left-radius: 0;
         height: 13vh;
@@ -1604,21 +1742,21 @@ input[type=number]::-webkit-inner-spin-button {
         margin-left: 6vw;
     }
 
-    #AreaConfig{
+    #AreaConfig {
         height: auto;
         margin-bottom: 12vh;
     }
 
 
-    
-
-        .areaCamposSlack input[type="text"], .areaCamposSlack input[type="password"], .areaCamposSlack input[type="email"], .areaCamposSlack input[type="date"], .areaCamposSlack select {
-            font-size: 1.5em;
-            width: 100%;
-        }
 
 
-    
+    .areaCamposSlack input[type="text"], .areaCamposSlack input[type="password"], .areaCamposSlack input[type="email"], .areaCamposSlack input[type="date"], .areaCamposSlack select {
+        font-size: 1.5em;
+        width: 100%;
+    }
+
+
+
 
     #areaInfoSlack {
         width: 85%;
@@ -1626,15 +1764,15 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
 
-    #btnFormCadastrarSlack{
+    #btnFormCadastrarSlack {
         width: 70%;
         left: 15%;
     }
 
-    #btnFormCadastrarSlack input {
-        width: 100%;
-        text-align: center;
-    }
+        #btnFormCadastrarSlack input {
+            width: 100%;
+            text-align: center;
+        }
 
 
         #btnFormCadastrarSlack:hover input {
@@ -1642,8 +1780,6 @@ input[type=number]::-webkit-inner-spin-button {
         }
 
         #btnFormCadastrarSlack input:focus, #btnFormCadastrarSlack input:active, #btnFormCadastrarSlack input:target {
-            
             font-size: 2.4em;
         }
-
 }

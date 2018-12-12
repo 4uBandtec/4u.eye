@@ -19,6 +19,7 @@
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />
         <!--MENU-->
+        <!--MENU-->
         <div id="sideMenu" onmousemove="getCoordenadas()">
             <a href="Dashboard.aspx">
                 <div class="itemMenu">
@@ -44,12 +45,12 @@
                 <div class="itemMenu">
 
                     <div class="itemIcon">
-                        <img src="../Component/Usuarios.png" />
+                        <img src="../Component/download.png" />
                     </div>
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Usuários
+                        Baixar App Local
                
                     </div>
 
@@ -108,7 +109,7 @@
             </a>
 
 
-            <a href="Dashboard.aspx">
+            <a onclick="mudarTema()">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
@@ -117,7 +118,7 @@
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Opções
+                        Trocar Cores do Tema
                
                     </div>
 
