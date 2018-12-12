@@ -1,6 +1,7 @@
 package br.com.eye.model;
 
 import br.com.eye.controller.ControllerAplicativo;
+import br.com.eye.controller.Threads;
 import br.com.eye.model.dao.StatementLeituraComputador;
 import br.com.eye.model.Computador;
 import java.io.IOException;
@@ -88,24 +89,9 @@ public class LeituraComputador {
     }
 
     public void setLeitura(int codComputador, int codUsuario) throws SQLException, InterruptedException, IOException {
-        int contador = 0;
-        List<LeituraAplicativo> leituras = new ArrayList();
-        while (true) {
-            contador++;
-            Thread.sleep(5000);
-            if (new StatementLeituraComputador().existeLeituraRegistrada(codComputador)) {
-                new StatementLeituraComputador().updateLeitura(new LeituraComputador().leituraOshi(), codComputador);
-            } else {
-                new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codComputador);
-            }
-            LogMensagem.GravarLog("Leitura Armazenada");
-            if (contador % 12 == 0) {
-                leituras = ControllerAplicativo.setLeituraAplicativo(codUsuario, leituras);
-                contador = contador == 120000 ? 0 : contador;
-                LogMensagem.GravarLog("Processos Armazenados");
-            }
-
-        }
+        
+        
+        new Threads(codComputador, codUsuario);
     }
 
 }

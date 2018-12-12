@@ -37,6 +37,52 @@
             <artifactId>jslack</artifactId>
             <version>1.1.6</version>
         </dependency>
+        <dependency>
+            <groupId>com.github.PlusHaze</groupId>
+            <artifactId>TrayNotification</artifactId>
+            <version>446c33b60c</version>
+        </dependency>
     </dependencies>
+	
+    <build>
+        <plugins>            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                        <configuration>
+                            <archive>
+                                <manifest>
+                                    <mainClass>
+                                        br.com.eye.view.index
+                                    </mainClass>
+                                </manifest>
+                            </archive>
+                            <deorRefs>
+                                <deorRef>jar-with-dependencies</deorRef>
+                            </deorRefs>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+	
+    <repositories>
+        <repository>
+            <id>unknown-jars-temp-repo</id>
+            <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
+            <url>file:${project.basedir}/lib</url>
+        </repository>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
     
 </project>

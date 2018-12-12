@@ -16,7 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 
-public class TelaFuncionou extends JFrame implements ActionListener {
+public class TelaCaptacao extends JFrame implements ActionListener {
 
     JLabel lblFuncionou = new JLabel("Pegando informações");
 
@@ -30,7 +30,7 @@ public class TelaFuncionou extends JFrame implements ActionListener {
 
     LineBorder borderRed = new LineBorder(redColor, 1);
 
-    public TelaFuncionou(int codUsuario) throws InterruptedException, SQLException, IOException {
+    public TelaCaptacao(int codUsuario) throws InterruptedException, SQLException, IOException {
         setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);

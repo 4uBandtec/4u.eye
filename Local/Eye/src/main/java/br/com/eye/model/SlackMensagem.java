@@ -35,9 +35,9 @@ public class SlackMensagem {
         this.cod_workspace = cod_workspace;
     }
 
-    public void EnviaMensagem(SlackMensagem obj, String mensagem) throws IOException {
+    public static void EnviaMensagem(SlackMensagem obj, String mensagem) throws IOException {
         Payload payload = Payload.builder()
-                .channel("#" + obj.getCanal())
+                .channel(obj.getCanal())
                 .username("Eye Bot")
                 .text(mensagem)
                 .build();
