@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EYE.Controller;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
@@ -42,11 +43,11 @@ namespace EYE.Model.DAO
                         cmd.Parameters.AddWithValue("@nome_aplicacao", item.CodProcesso);
                         cmd.Parameters.AddWithValue("@cod_usuario", item.CodUsuario);
 						cmd.Parameters.AddWithValue("@minutos_meta", item.TempoTarefa);
-
-                        var oi = (cmd.ExecuteNonQuery() == lista.Count);
-                        return oi;
+                        
+                        return cmd.ExecuteNonQuery() == lista.Count;
 					}
-				}
+
+                }
 			}
 			return false;
 		}
