@@ -4,6 +4,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
+    <link runat="server" rel="shortcut icon" href="../Component/favicon.ico" type="image/x-icon" />
+    <link runat="server" rel="icon" href="../Component/favicon.ico" type="image/ico" />
+
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Dashboard | EYE by 4U</title>
     <link href="../Model/EYE.css" rel="stylesheet" type="text/css" />
@@ -14,6 +18,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script type="text/javascript" src="../Controller/Dashboard.js"></script>
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
+    <script type="text/javascript" src="../Controller/BreakSession.js"></script>
 
 </head>
 <body onload="iniciarEstilo(), GetUsuariosWorkspace()">
@@ -76,7 +81,7 @@
             </a>
 
 
-            <a href="Dashboard.aspx">
+            <a href="CadastroTarefas.aspx">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
@@ -125,7 +130,7 @@
 
                 </div>
             </a>
-            
+
 
             <a href="Dashboard.aspx">
                 <div class="itemMenu" onclick="breakSession()">
@@ -146,12 +151,22 @@
         <!--/MENU-->
 
 
+        <asp:UpdatePanel ID="updtPnlConfiguracao" runat="server">
+            <ContentTemplate>
+                <div id="meuResumo">
 
-        <div id="meuResumo">
-            <div class="txtMeuResumo">TIME:</div>
+                    <div class="txtMeuResumo">Online:</div>
+                    <asp:Panel runat="server" ID="pnlOnline">
 
-            <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
-        </div>
+                        <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
+                    </asp:Panel>
+                </div>
+            </ContentTemplate>
+            <Triggers>
+                <asp:AsyncPostBackTrigger ControlID="Timer" EventName="Tick" />
+            </Triggers>
+        </asp:UpdatePanel>
+        <asp:Timer ID="Timer" runat="server" Interval="5000" OnTick="Timer_Tick"></asp:Timer>
 
         <!--Area com os containers dos computadores-->
         <div id="areaInfo">

@@ -1,5 +1,6 @@
 ﻿using EYE.Model;
 using EYE.Model.DAO;
+using System.Drawing;
 using System.Web.UI.WebControls;
 
 namespace EYE.Controller
@@ -10,7 +11,8 @@ namespace EYE.Controller
         {
             if (!Validacao.StringVazia(txtUrl, txtCanal))
             {
-                lblMensagem.Text = "Parece que você digitou algo errado, certifique-se de que não esqueceu nada";
+                lblMensagem.ForeColor = Color.Red;
+                lblMensagem.Text = "Ops, acho que faltou digitar algo";
                 return false;
             }
 
@@ -20,7 +22,9 @@ namespace EYE.Controller
             slack.CodWorkspace = int.Parse(cod_workspace);
             if (StatementSlack.InserirSlack(slack))
             {
-                lblMensagem.Text = "O cadastro funcionou, henrique troca essa mensahe, pq ta feio";
+
+                lblMensagem.ForeColor = Color.YellowGreen;
+                lblMensagem.Text = "Agora o EYE está no canal "+txtCanal.Text+" do seu workspace no Slack :)";
                 txtUrl.Text = "";
                 txtCanal.Text = "";
                 return true;

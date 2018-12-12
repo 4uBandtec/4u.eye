@@ -1,5 +1,4 @@
-﻿
-using System.Web.UI.WebControls;
+﻿using System.Web.UI.WebControls;
 using EYE.Model;
 using EYE.Model.DAO;
 using EYE.View;
@@ -39,9 +38,6 @@ namespace EYE.Controller
 			usuario.DataNascimento = txtDataNascimento.Text;
 			usuario.Sexo = ddlSexo.SelectedValue;
 			usuario.CodWorkspace = int.Parse(codWorkspace);
-
-
-
 			usuario.Salt = Criptografia.GerarSalt();
 			usuario.Senha = Criptografia.GerarSenhaHash(usuario.Senha, usuario.Salt);
 
@@ -55,8 +51,6 @@ namespace EYE.Controller
 				txtSenha.Text = "";
 				txtDataNascimento.Text = "";
 				ddlSexo.SelectedValue = "";
-
-				return true;
 			}
 			lblMensagem.Text = "Ops, deu algo errado, acho que a culpa é nossa";
 			return false;
@@ -81,6 +75,8 @@ namespace EYE.Controller
 		{
 			return StatementUsuario.ListarUsuarios(codWorkspace);
 		}
+<<<<<<< HEAD
+=======
 
 		public static Panel CarregarPainel(int codWorkspace)
 		{
@@ -94,5 +90,6 @@ namespace EYE.Controller
 				StatementUsuario.ExcluirComputador(codUsuario);
 			StatementUsuario.ExcluirUsuario(codUsuario);
 		}
+>>>>>>> 1b317c30a7fb56efcce4d01d3363816e89c50cde
 	}
 }
