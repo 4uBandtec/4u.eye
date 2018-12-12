@@ -86,7 +86,6 @@ namespace EYE.Model.DAO
                         {
                             while (leitor.Read())
                             {
-
 								usuarios[contador] = new Usuario();
 								usuarios[contador].CodUsuario = leitor.GetInt32(0);
 								usuarios[contador].Nome = leitor.GetString(1);
