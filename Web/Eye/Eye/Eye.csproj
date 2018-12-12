@@ -117,6 +117,8 @@
     <Compile Include="Model\DAO\StatementWorkspace.cs" />
     <Compile Include="Model\Enum\Andamento.cs" />
     <Compile Include="Model\Enum\CanalNotificacao.cs" />
+    <Compile Include="Model\Enum\Mensagens.cs" />
+    <Compile Include="Model\Enum\Remetente.cs" />
     <Compile Include="Model\Enum\StatusVida.cs" />
     <Compile Include="Model\LeituraAtual.cs" />
     <Compile Include="Model\Notificacao.cs" />
