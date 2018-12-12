@@ -65,7 +65,6 @@ public class Threads extends Thread {
                     Logger.getLogger(Threads.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-
             try {
                 sleep(5000);
             } catch (InterruptedException ex) {
