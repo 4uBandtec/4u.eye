@@ -385,3 +385,6 @@
 [11/12/2018 21:30:16] Leitura Armazenada
 [11/12/2018 21:30:22] Leitura Armazenada
 [11/12/2018 21:30:28] Leitura Armazenada
+[12/12/2018 18:42:55] Workspace Identificado
+[12/12/2018 18:42:59] Login Identificado
+[12/12/2018 18:43:04] Leitura Armazenada
