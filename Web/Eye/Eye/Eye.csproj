@@ -95,6 +95,7 @@
   <ItemGroup>
     <Compile Include="Controller\ControllerComputador.cs" />
     <Compile Include="Controller\ControllerLeituraAtual.cs" />
+    <Compile Include="Controller\ControllerNotificacao.cs" />
     <Compile Include="Controller\ControllerSlack.cs" />
     <Compile Include="Controller\ControllerTarefa.cs" />
     <Compile Include="Controller\ControllerUsuario.cs" />
@@ -107,6 +108,7 @@
     <Compile Include="Model\DAO\Conexao.cs" />
     <Compile Include="Model\DAO\StatementComputador.cs" />
     <Compile Include="Model\DAO\StatementLeituraAtual.cs" />
+    <Compile Include="Model\DAO\StatementNotificacao.cs" />
     <Compile Include="Model\DAO\StatementPerfil.cs" />
     <Compile Include="Model\DAO\StatementSlack.cs" />
     <Compile Include="Model\DAO\StatementProcesso.cs" />
@@ -114,8 +116,10 @@
     <Compile Include="Model\DAO\StatementUsuario.cs" />
     <Compile Include="Model\DAO\StatementWorkspace.cs" />
     <Compile Include="Model\Enum\Andamento.cs" />
+    <Compile Include="Model\Enum\CanalNotificacao.cs" />
     <Compile Include="Model\Enum\StatusVida.cs" />
     <Compile Include="Model\LeituraAtual.cs" />
+    <Compile Include="Model\Notificacao.cs" />
     <Compile Include="Model\Perfil.cs" />
     <Compile Include="Model\Enum\TiposDePerfil.cs" />
     <Compile Include="Model\ProcessoTarefa.cs" />

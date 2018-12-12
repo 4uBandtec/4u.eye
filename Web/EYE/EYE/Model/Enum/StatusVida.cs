@@ -2,7 +2,7 @@
 {
 	public enum StatusVida
 	{
-		Excluido = 0,
+		Desativo = 0,
 		Ativo = 1
 	}
 }
