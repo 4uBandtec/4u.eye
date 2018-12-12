@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>br.com.4u</groupId>
     <artifactId>Eye</artifactId>
-    <version>0.1</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -38,12 +38,11 @@
             <version>1.1.6</version>
         </dependency>
         <dependency>
-            <groupId>com.github.PlusHaze</groupId>
-            <artifactId>TrayNotification</artifactId>
-            <version>446c33b60c</version>
+            <groupId>unknown.binary</groupId>
+            <artifactId>AbsoluteLayout</artifactId>
+            <version>SNAPSHOT</version>
         </dependency>
     </dependencies>
-	
     <build>
         <plugins>            
             <plugin>
@@ -63,26 +62,20 @@
                                     </mainClass>
                                 </manifest>
                             </archive>
-                            <deorRefs>
-                                <deorRef>jar-with-dependencies</deorRef>
-                            </deorRefs>
+                            <descriptorRefs>
+                                <descriptorRef>jar-with-dependencies</descriptorRef>
+                            </descriptorRefs>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
         </plugins>
     </build>
-	
     <repositories>
         <repository>
             <id>unknown-jars-temp-repo</id>
             <name>A temporary repository created by NetBeans for libraries and jars it could not identify. Please replace the dependencies in this repository with correct ones and delete this repository.</name>
             <url>file:${project.basedir}/lib</url>
         </repository>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
     </repositories>
-    
 </project>

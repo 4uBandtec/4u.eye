@@ -16,13 +16,14 @@ import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
 
 public class TelaLogin extends JFrame implements ActionListener {
 
-    JTextField txtUsername = new JTextField(),
-            txtSenha = new JTextField();
+    JTextField txtUsername = new JTextField();
+    JPasswordField txtSenha = new JPasswordField();
 
     JLabel lblNome = new JLabel("Nome"),
             lblSenha = new JLabel("Senha");
@@ -124,9 +125,9 @@ public class TelaLogin extends JFrame implements ActionListener {
         try {
             if (e.getSource() == btnLogar) {
 
-                if (new ControllerUsuario().Logar(txtUsername.getText(), txtSenha.getText())) {
+                if (new ControllerUsuario().Logar(txtUsername.getText(), txtSenha.getPassword().toString())) {
                     dispose();
-                     LogMensagem.GravarLog("Login Identificado");
+                    LogMensagem.GravarLog("Login Identificado");
                     new TelaCaptacao(new ControllerUsuario().getCodUsuario(txtUsername.getText()));
                 }
             }
