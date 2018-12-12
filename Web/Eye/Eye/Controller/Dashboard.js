@@ -153,10 +153,32 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
     detalhesMonitor.setAttribute("class", "detalhesMonitor");
     detalhesMonitor.setAttribute("id", "detalhesMonitor" + computadorMonitor.CodComputador);
 
+    var perfil = computadorMonitor.Perfil;
+
+    switch (computadorMonitor.Perfil){
+        case 0:
+            perfil = "Calculando...";
+            break;
+        case 1:
+            perfil = "Jogo";
+            break;
+        case 2:
+            perfil = "Trabalho";
+            break;
+        case 3:
+            perfil = "Social";
+            break;
+        case 4:
+            perfil = "Outros";
+            break;
+            
+        
+    }
+
     infoGeralComputador.appendChild(detalhesMonitor);
 
     addDetalhe(detalhesMonitor, "Usuário", computadorMonitor.User, computadorMonitor.CodComputador);
-    addDetalhe(detalhesMonitor, "Perfil", computadorMonitor.Perfil, computadorMonitor.CodComputador);
+    addDetalhe(detalhesMonitor, "Perfil", perfil, computadorMonitor.CodComputador);
     addDetalhe(detalhesMonitor, "Processador", computadorMonitor.Processador, computadorMonitor.CodComputador);
     addDetalhe(detalhesMonitor, "SO", computadorMonitor.SistemaOperacional + " " + computadorMonitor.VersaoSistema + " " + computadorMonitor.VersaoBits + " BITS ", computadorMonitor.CodComputador);
 

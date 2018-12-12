@@ -48,7 +48,7 @@ namespace EYE.Model
 			var hora = int.Parse(horas[0]);
 
 			var dataBanco = new DateTime(ano, mes, dia, hora, minuto, segundo);
-			var dataAtrasada = DateTime.Now.AddMinutes(-5);
+			var dataAtrasada = DateTime.Now.AddMinutes(-1);
 			return dataBanco > dataAtrasada;
 		}
 	}

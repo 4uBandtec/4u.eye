@@ -19,6 +19,7 @@ table, caption, tbody, tfoot, thead, tr, th, td {
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
+    text-decoration: none;
 }
 
 body {
@@ -1286,6 +1287,24 @@ input[type=number]::-webkit-inner-spin-button {
     font-size: 2em;
     padding-left: 5%;
 }
+
+.btnDownload {
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 2%;
+    height: 6%;
+    border: none;
+    border-bottom: solid 1px var(--pink-color);
+    border-bottom-right-radius: 20%;
+    padding-left: 1%;
+}
+
+    .btnDownload:hover, .btnDownload:focus, .btnDownload:active, .btnDownload:target {
+        color: var(--pink-color);
+    }
+
+
 
 /*                                                                                                */
 /*------------------------------------------Responsive--------------------------------------------*/
