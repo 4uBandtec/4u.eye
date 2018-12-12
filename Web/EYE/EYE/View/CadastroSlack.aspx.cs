@@ -3,6 +3,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Script.Services;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -43,6 +45,31 @@ namespace EYE.View
                 index++;
                 pnlOnline.Controls.Add(lblUser);
             }
+        }
+
+        public int returnSession()
+        {
+            var codWorkspace = (string)Session["codWorkspace"];
+            if (codWorkspace == null || codWorkspace == "0")
+            {
+                return 0;
+            }
+            else
+            {
+                return int.Parse((String)Session["codWorkspace"]);
+            }
+        }
+
+        [ScriptMethod, WebMethod]
+        public static int BuscaTema()
+        {
+            return ControllerTema.BuscaTema(new CadastroSlack().returnSession());
+        }
+
+        [ScriptMethod, WebMethod]
+        public static bool TrocaTema(int novoTema)
+        {
+            return ControllerTema.TrocaTema(new CadastroSlack().returnSession(), novoTema);
         }
     }
 }

@@ -10,35 +10,78 @@ function getCoordenadas() {
 
 
 function iniciarEstilo() {
+    buscarTema();
     getItemMenu();
-    /*
-    var html = document.getElementsByTagName('html')[0];
-    html.style.setProperty("--bg-color", "rgb(" + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() * 250 + ")");
-    html.style.setProperty("--txt-color", "rgb(" + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() * 250 + ")");
-    html.style.setProperty("--pink-color", "rgb(" + (Math.random() * 250).toFixed(0) + "," + (Math.random() * 250).toFixed(0) + "," + (Math.random() * 250).toFixed(0) + ")");
-    html.style.setProperty("--red-color", "rgb(" + (Math.random() * 250).toFixed(0) + "," + (Math.random() * 250).toFixed(0) + "," + (Math.random() * 250).toFixed(0) + ")");
-    html.style.setProperty("--purple-color", "rgb(" + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() * 250 + ")");
-    html.style.setProperty("--darker-bg-color", "rgb(" + (Math.random() * 250).toFixed(0) + "," + (Math.random() * 250).toFixed(0) + "," + (Math.random() * 200).toFixed(0) + ")");
-    html.style.setProperty("--lighter-bg-color", "rgb(" + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() * 250 + ")");
-    html.style.setProperty("--red-color-a", "rgb(" + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() + ")");
-    html.style.setProperty("--purple-color-a", "rgb(" + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() + ")");
-    html.style.setProperty("--to-invisible", "rgb(" + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() * 250 + ", 0)");
-    html.style.setProperty("--black-color-a", "rgb(" + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random() * 250 + "," + Math.random()/2 + ")");
-    */
-
-
-
-    /*
-    var html = document.getElementsByTagName('html')[0];
-    html.style.setProperty("--bg-color", "rgb(220,220,220)");
-    html.style.setProperty("--txt-color", "rgb(20,20,20)");
-    html.style.setProperty("--darker-bg-color", "rgb(210,210,210)");
-    html.style.setProperty("--lighter-bg-color", "rgb(240,240,240)");
-    html.style.setProperty("--to-invisible", "rgba(255,255,255, 0)");
-    html.style.setProperty("--black-color-a", "rgba(255,255,255,0.5)");
-    */
 }
 
+
+function mudarTema() {
+    PageMethods.BuscaTema(aplicarMudança, onError);
+}
+
+function buscarTema() {
+    PageMethods.BuscaTema(inserirTema, onError);
+}
+
+function aplicarMudança(temaAtual) {
+    novoTema = temaAtual == 0 ? 1 : 0;
+
+    inserirTema(novoTema);
+    PageMethods.TrocaTema(novoTema, console.log(novoTema), console.log("erro"));
+}
+
+function inserirTema(novoTema) {
+    
+    var html = document.getElementsByTagName('html')[0];
+    var icones = document.getElementsByClassName("itemIcon");
+    if (novoTema == 0) {
+        html.style.setProperty("--bg-color", "rgb(200,200,200)");
+        html.style.setProperty("--txt-color", "rgb(23,23,23)");
+        html.style.setProperty("--darker-bg-color", "rgb(189,189,189)");
+        html.style.setProperty("--lighter-bg-color", "rgb(217,217,217)");
+        html.style.setProperty("--to-invisible", "rgba(255,255,255, 0)");
+        html.style.setProperty("--black-color-a", "rgba(255,255,255,0.5)");
+        html.style.setProperty("--green-color", "rgb(97,255,51)");
+        html.style.setProperty("--blue-color", "rgb(22,135,153)");
+        html.style.setProperty("--red-color", "rgb(127,2,49)");
+        html.style.setProperty("--yellow-color", "rgb(96, 92, 35)");
+        html.style.setProperty("--purple-color", "rgba(85,49,224)");
+        html.style.setProperty("--pink-color", "rgba(205,37,229)");
+        html.style.setProperty("--orange-color", "rgba(213,75,41)");
+        html.style.setProperty("--red-color-a", "rgba(127,2,49,0.5)");
+        html.style.setProperty("--blue-color-a", "rgba(22,135,153,0.5)");
+        html.style.setProperty("--purple-color-a", "rgba(85,49,224,0.5)");
+        html.style.setProperty("--black-color-a9", "rgba(220,220,220, 0.9)");
+        html.style.setProperty("--black-color", "rgba(220,220,220)");
+        for (i = 0; i < icones.length; i++) {
+            icones[i].style.filter = "invert(100%)";
+        }
+    }
+    else {
+        html.style.setProperty("--bg-color", "rgb(26,26,26)");
+        html.style.setProperty("--txt-color", "rgb(200,200,200)");
+        html.style.setProperty("--darker-bg-color", "rgb(16,16,16)");
+        html.style.setProperty("--lighter-bg-color", "rgb(50,50,50)");
+        html.style.setProperty("--to-invisible", "rgba(50,50,50,0)");
+        html.style.setProperty("--black-color-a", "rgba(0,0,0,0.3)");
+        html.style.setProperty("--green-color", "rgb(0, 198, 19)");
+        html.style.setProperty("--blue-color", "rgb(0, 185, 226)");
+        html.style.setProperty("--red-color", "rgb(226,26,47)");
+        html.style.setProperty("--yellow-color", "rgb(246, 255, 0)");
+        html.style.setProperty("--purple-color", "rgba(86,13,196)");
+        html.style.setProperty("--pink-color", "rgba(150,20,110)");
+        html.style.setProperty("--orange-color", "rgba(255, 136, 0)");
+        html.style.setProperty("--red-color-a", "rgba(226,26,47,0.5)");
+        html.style.setProperty("--blue-color-a", "rgba(0, 185, 226, 0.5)");
+        html.style.setProperty("--purple-color-a", "rgba(86,13,196,0.5)");
+        html.style.setProperty("--black-color-a9", "rgba(0,0,0,0.9)");
+        html.style.setProperty("--black-color", "rgba(0,0,0)");
+        for (i = 0; i < icones.length; i++) {
+            icones[i].style.filter = "invert(0%)";
+        }
+    }
+
+}
 
 
 function getItemMenu() {
@@ -178,6 +221,9 @@ function radial(id) {
     item.style.top = backgroundY + "px";
 }
 
+function onError(e) {
+    console.log(e);
+}
 
 var btnCadastrar = null, btnNext = null, btnPrevious = null;
 
