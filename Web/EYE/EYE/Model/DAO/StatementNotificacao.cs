@@ -16,7 +16,7 @@ namespace EYE.Model.DAO
 					cmd.Parameters.AddWithValue("@cod_remetente", codRemetente);
 					cmd.Parameters.AddWithValue("@canal_envio", canal);
 					cmd.Parameters.AddWithValue("@remetente", remetente);
-					cmd.Parameters.AddWithValue("@enviado", StatusVida.Ativo);
+					cmd.Parameters.AddWithValue("@enviado", StatusVida.Desativado);
 					return (cmd.ExecuteNonQuery() >= MINIMO_DE_ALTERACAO);
 				}
 			}
