@@ -25,6 +25,33 @@
     <form id="formDashboard" runat="server">
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />
+
+        <!--<div id="blockArea">
+            <div id="popup">
+
+                <div class="areaConfig">
+
+                    <div class="areaTextoSwitch">
+                        <div class="switch__container">
+                            <input id="switch-tema" class="switch switch--shadow" type="checkbox" />
+                            <label for="switch-tema"></label>
+                        </div>
+                    </div>
+                    <div class="areaTextoSwitch">
+                        Mudar Tema de Cores
+                    </div>
+                </div>
+
+                <div class="areaConfig">
+                    <div class="switch__container">
+                        <input id="switch-notificacao" class="switch switch--shadow" type="checkbox" />
+                        <label for="switch-notificacao"></label>
+                    </div>
+                </div>
+
+            </div>
+        </div>-->
+
         <!--MENU-->
         <div id="sideMenu" onmousemove="getCoordenadas()">
             <a href="Dashboard.aspx">
@@ -146,7 +173,11 @@
                 </div>
             </a>
 
+
+
+
         </div>
+
 
         <!--/MENU-->
 
