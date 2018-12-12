@@ -39,7 +39,7 @@ namespace EYE.Model
             lblProcesso.Text = "Que processo será utilizado?";
 
             var lblTempo = new Label();
-            lblTempo.Text = "Quantas horas essa pessoa vai demorar?";
+            lblTempo.Text = "Quantos minutos isso deve demorar?";
             var txtTempo = new TextBox();
             
 

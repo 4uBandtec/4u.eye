@@ -70,6 +70,7 @@
   <ItemGroup>
     <Content Include="Component\AddUsuarios.png" />
     <Content Include="Component\Dashboard.png" />
+    <Content Include="Component\download.png" />
     <Content Include="Component\favicon.ico" />
     <Content Include="Component\icon.png" />
     <Content Include="Component\Logout.png" />
@@ -98,6 +99,7 @@
     <Compile Include="Controller\ControllerNotificacao.cs" />
     <Compile Include="Controller\ControllerSlack.cs" />
     <Compile Include="Controller\ControllerTarefa.cs" />
+    <Compile Include="Controller\ControllerTema.cs" />
     <Compile Include="Controller\ControllerUsuario.cs" />
     <Compile Include="Controller\ControllerWorkspace.cs" />
     <Compile Include="Global.asax.cs">
@@ -113,6 +115,7 @@
     <Compile Include="Model\DAO\StatementSlack.cs" />
     <Compile Include="Model\DAO\StatementProcesso.cs" />
     <Compile Include="Model\DAO\StatementTarefa.cs" />
+    <Compile Include="Model\DAO\StatementTema.cs" />
     <Compile Include="Model\DAO\StatementUsuario.cs" />
     <Compile Include="Model\DAO\StatementWorkspace.cs" />
     <Compile Include="Model\Enum\Andamento.cs" />

@@ -54,5 +54,30 @@ namespace Eye.View
                 pnlOnline.Controls.Add(lblUser);
             }
         }
+
+        public int returnSession()
+        {
+            var codWorkspace = (string)Session["codWorkspace"];
+            if (codWorkspace == null || codWorkspace == "0")
+            {
+                return 0;
+            }
+            else
+            {
+                return int.Parse((String)Session["codWorkspace"]);
+            }
+        }
+
+        [ScriptMethod, WebMethod]
+        public static int BuscaTema()
+        {
+            return ControllerTema.BuscaTema(new CadastroUsuario().returnSession());
+        }
+
+        [ScriptMethod, WebMethod]
+        public static bool TrocaTema(int novoTema)
+        {
+            return ControllerTema.TrocaTema(new CadastroUsuario().returnSession(), novoTema);
+        }
     }
 }

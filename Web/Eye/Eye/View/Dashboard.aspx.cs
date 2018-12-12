@@ -103,5 +103,18 @@ namespace Eye.View
                 pnlOnline.Controls.Add(lblUser);
             }
         }
+
+
+        [ScriptMethod, WebMethod]
+        public static int BuscaTema()
+        {
+            return ControllerTema.BuscaTema(new Dashboard().returnSession());
+        }
+
+        [ScriptMethod, WebMethod]
+        public static bool TrocaTema(int novoTema)
+        {
+            return ControllerTema.TrocaTema(new Dashboard().returnSession(), novoTema);
+        }
     }
 }
