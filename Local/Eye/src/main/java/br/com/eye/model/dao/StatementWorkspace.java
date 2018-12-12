@@ -13,4 +13,12 @@ public class StatementWorkspace {
         ResultSet resultado = query.executeQuery();
         return (resultado.next());
     }
+
+    public static int getCodWorkspace(int codUsuario) throws SQLException {
+        String sql = "SELECT cod_workspace FROM usuario WHERE cod_usuario = ?";
+        PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
+        query.setInt(1, codUsuario);
+        ResultSet resultado = query.executeQuery();
+        return resultado.next() ? resultado.getInt("cod_workspace") : 0;
+    }
 }
