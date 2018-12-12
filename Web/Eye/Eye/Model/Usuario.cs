@@ -1,22 +1,22 @@
 ﻿
+using EYE.Controller;
+using EYE.Model.DAO;
 using System.Web.UI.WebControls;
 
 namespace EYE.Model
 {
-    public class Usuario
-    {
-        private int codUsuario;
-        private string username;
-        private string nome;
-        private string email;
-        private string senha;
-        private string dataNascimento;
-        private string sexo;
-        private int salt;
-        private int codWorkspace;
-        private int perfil;
-        private Computador[] computadoresUsuario;
-
+	public class Usuario
+	{
+		private int codUsuario;
+		private string username;
+		private string nome;
+		private string email;
+		private string senha;
+		private string dataNascimento;
+		private string sexo;
+		private int salt;
+		private int codWorkspace;
+		private int perfil;
 
         public int CodUsuario { get => codUsuario; set => codUsuario = value; }
         public string Username { get => username; set => username = value; }
@@ -30,14 +30,26 @@ namespace EYE.Model
         public int Perfil { get => perfil; set => perfil = value; }
         public Computador[] ComputadoresUsuario { get => computadoresUsuario; set => computadoresUsuario = value; }
 
-        public static DropDownList AlimentarUsuarios(DropDownList ddlUsuarios, Usuario[] lista)
-        {
-            ddlUsuarios.Items.Add(new ListItem("", null));
-            foreach (Usuario item in lista)
-            {
-                ddlUsuarios.Items.Add(new ListItem(item.Nome, item.CodUsuario.ToString()));
-            }
-            return ddlUsuarios;
-        }
-    }
+		public  Panel ConstruirPainelUsuario(Usuario[] usuarios)
+		{
+			var painel = new Panel();
+			foreach (var item in usuarios)
+			{
+				var conteudo = new Panel();
+
+				var lblUsuario = new Label();
+				lblUsuario.Text = item.Nome;
+				conteudo.Controls.Add(lblUsuario);
+
+				var btnExcluir = new Button();
+				btnExcluir.Text = "Excluir";
+				btnExcluir.Command += new ControllerUsuario().ExcluirUsuario;
+				btnExcluir.CommandArgument =item.CodUsuario.ToString();
+				conteudo.Controls.Add(btnExcluir);
+
+				painel.Controls.Add(conteudo);
+			}
+			return painel;
+		}
+	}
 }
