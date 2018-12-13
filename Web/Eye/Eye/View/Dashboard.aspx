@@ -26,31 +26,38 @@
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />
 
-        <!--<div id="blockArea">
-            <div id="popup">
+        <div id="blockArea" onclick="hidePopup()">
+        </div>
+        <div id="popup">
 
-                <div class="areaConfig">
+            <div class="areaConfig">
 
-                    <div class="areaTextoSwitch">
-                        <div class="switch__container">
-                            <input id="switch-tema" class="switch switch--shadow" type="checkbox" />
-                            <label for="switch-tema"></label>
-                        </div>
+                <div class="areaTextoSwitch">
+                    <div class="switch__container">
+                        <input id="switch-tema" class="switch switch--shadow" type="checkbox" onchange="mudarTema()" />
+                        <label for="switch-tema"></label>
                     </div>
-                    <div class="areaTextoSwitch">
-                        Mudar Tema de Cores
+                    <div class="switchText">
+                        Modo Claro
                     </div>
+
+
                 </div>
-
-                <div class="areaConfig">
+                <div class="areaTextoSwitch">
                     <div class="switch__container">
                         <input id="switch-notificacao" class="switch switch--shadow" type="checkbox" />
                         <label for="switch-notificacao"></label>
                     </div>
+                    
+                    <div class="switchText">
+                        Ativar Notificações
+                    </div>
                 </div>
 
             </div>
-        </div>-->
+
+
+        </div>
 
         <!--MENU-->
         <div id="sideMenu" onmousemove="getCoordenadas()">
@@ -142,7 +149,7 @@
             </a>
 
 
-            <a onclick="mudarTema()">
+            <a onclick="displayPopup()">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
@@ -151,7 +158,7 @@
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Trocar Cores do Tema
+                        Opções
                
                     </div>
 

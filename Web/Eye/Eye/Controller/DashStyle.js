@@ -56,6 +56,7 @@ function inserirTema(novoTema) {
         for (i = 0; i < icones.length; i++) {
             icones[i].style.filter = "invert(100%)";
         }
+        document.getElementById("switch-tema").checked = true;
     }
     else {
         html.style.setProperty("--bg-color", "rgb(26,26,26)");
@@ -79,6 +80,7 @@ function inserirTema(novoTema) {
         for (i = 0; i < icones.length; i++) {
             icones[i].style.filter = "invert(0%)";
         }
+        document.getElementById("switch-tema").checked = false;
     }
 
 }
@@ -236,3 +238,14 @@ var campoAtual = 0;
 
 var telaAtual = "";
 
+
+
+function displayPopup() {
+    document.getElementById("blockArea").style.display = "block";
+    document.getElementById("popup").style.display = "block";
+}
+
+function hidePopup() {
+    document.getElementById("blockArea").style.display = "none";
+    document.getElementById("popup").style.display = "none";
+}
