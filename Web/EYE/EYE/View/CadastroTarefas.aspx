@@ -197,7 +197,7 @@
                     <div class="tituloCampo">
                         Descreva essa tarefa pra sua equipe:
                     </div>
-                    <asp:TextBox ID="txtDescricao" Placeholder="Descreva ela..." runat="server" MaxLength="50"></asp:TextBox>
+                    <asp:TextBox ID="txtDescricao" Placeholder="Descreva ela..." runat="server" MaxLength="199"></asp:TextBox>
                 </div>
                 <div class="campos">
 

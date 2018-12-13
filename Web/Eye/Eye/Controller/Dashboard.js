@@ -38,6 +38,7 @@ var computadoresUsuarios = [];
 
 
 function setCodComputadores(usuarios) {
+
     computadoresUsuarios = usuarios;
     if (!firstLoaded) {
         getLeitura();
@@ -56,7 +57,7 @@ function onError(result) {
 function getLeitura() {
 
     for (i = 0; i < computadoresUsuarios.length; i++) {
-        console.log(computadoresUsuarios[i]);
+        //console.log(computadoresUsuarios[i]);
 
         for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
 
@@ -103,11 +104,7 @@ function SetDadosMonitor(leituraMonitor) {
         }
 
     }
-
-
-
-
-
+    
 
     if (!document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador)) {
         IniciarMonitor(computadorMonitor, leituraMonitor);
@@ -398,7 +395,7 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 function updateChart(computadorMonitor, leituraMonitor) {
     var infoGeralComputador = document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador);
 
-    console.log(leituraMonitor.RamAtual);
+    //console.log(leituraMonitor.RamAtual);
 
     Atualizar("HD", infoGeralComputador, computadorMonitor.HdTotal, leituraMonitor.HdAtual, computadorMonitor.CodComputador);
     Atualizar("RAM", infoGeralComputador, computadorMonitor.RamTotal, leituraMonitor.RamAtual, computadorMonitor.CodComputador);

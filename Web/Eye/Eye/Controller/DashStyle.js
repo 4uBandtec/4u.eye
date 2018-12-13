@@ -35,7 +35,7 @@ function inserirTema(novoTema) {
     var html = document.getElementsByTagName('html')[0];
     var icones = document.getElementsByClassName("itemIcon");
     if (novoTema == 0) {
-        html.style.setProperty("--bg-color", "rgb(200,200,200)");
+        html.style.setProperty("--bg-color", "");
         html.style.setProperty("--txt-color", "rgb(23,23,23)");
         html.style.setProperty("--darker-bg-color", "rgb(189,189,189)");
         html.style.setProperty("--lighter-bg-color", "rgb(217,217,217)");
