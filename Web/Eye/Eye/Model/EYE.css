@@ -87,6 +87,8 @@ table {
     --black-color-a9: rgba(0,0,0,0.9);
     --black-color: rgb(0,0,0);
     --orange-color: rgb(255, 136, 0);
+    
+    --filtro: grayscale(0%);
 }
 
 * {
@@ -100,7 +102,6 @@ table {
 body {
     background: var(--bg-color);
 }
-
 
 
 ::selection {
@@ -149,6 +150,7 @@ body {
     top: 0;
     display: flex;
     flex-direction: column;
+    filter: var(--filtro);
 }
 
     #sideMenu a {
@@ -163,7 +165,7 @@ body {
     top: 0;
     height: 100%;
     width: 100%;
-    background: var(--bg-color);
+    background: var(--darker-bg-color);
     cursor: pointer;
     overflow: hidden;
     transition-timing-function: ease-out;
@@ -258,6 +260,7 @@ body {
     transition-duration: 0.5s;
     z-index: 2;
     background: linear-gradient(90deg, var(--darker-bg-color), var(--black-color), var(--darker-bg-color));
+    filter: var(--filtro);
 }
 
 .txtMeuResumo {
@@ -280,6 +283,7 @@ body {
     top: 0;
     overflow: auto;
     float: left;
+    filter: var(--filtro);
 }
 
 #meuResumo:hover {
@@ -1139,6 +1143,7 @@ input[type=number]::-webkit-inner-spin-button {
     top: 0;
     overflow: auto;
     float: left;
+    filter: var(--filtro);
 }
 
 #btnFormCadastrarSlack {
@@ -1208,6 +1213,7 @@ input[type=number]::-webkit-inner-spin-button {
     padding-bottom: 5%;
     z-index: 6;
     display: none;
+    filter: var(--filtro);
 }
 
 .areaConfig{
@@ -1245,7 +1251,6 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: var(--darker-bg-color);
     border-radius: 60px;
     float: left;
-    box-shadow: 0px 0px 35px 1px var(--txt-color);
     margin-right: 2%;
     transform: translate(15%, 0%);
 }
@@ -1266,19 +1271,24 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     .switch--shadow + label:after {
-        width: 50%;
+        width: 55%;
+        left: -2.5%;
+        top: -5%;
+        height: 110%;
         background-color: var(--bg-color);
         border-radius: 100%;
         box-shadow: 0 2px 2px var(--black-color);
-        transition: all 0.4s;
+        transition: all 0.2s ease-in;
         float: left;
     }
 .switch--shadow:checked + label:before {
     background-color: var(--txt-color);
+    box-shadow: 0px 0px 35px 1px var(--purple-color);
 }
 
 .switch--shadow:checked + label:after {
     transform: translateX(100%);
+    box-shadow: 0px 0px 35px 1px var(--blue-color);
 }
 
 .areaTextoSwitch{
@@ -1314,6 +1324,55 @@ input[type=number]::-webkit-inner-spin-button {
         margin-left: 5%;
         padding: 2%;
     }
+
+
+
+.slidecontainer {
+    width: 90%;
+    font-size: 2em;
+    transition: 0.5s;
+    margin-left: 5%;
+}
+
+/* The slider itself */
+.slider {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 15px;
+    border-radius: 5px;
+    background: var(--blue-color);
+    outline: none; /* Remove outline */
+    opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+    -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+    transition: opacity .2s;
+    margin-top: 2%;
+    margin-bottom: 5%;
+    transition: 0.5s;
+}
+
+    .slider:hover {
+        opacity: 1;
+        box-shadow: 0px 0px 35px 1px var(--blue-color);
+        transition: 0.5s;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 3vmin;
+        height: 3vmin;
+        background-color: var(--darker-bg-color);
+        border: double 3vmin var(--blue-color);
+        border-radius: 100%;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+        .slider::-webkit-slider-thumb:hover {
+            box-shadow: 0px 0px 35px 1px var(--purple-color);
+            transition: 0.5s;
+        }
 
 
 /*                                                                                                */

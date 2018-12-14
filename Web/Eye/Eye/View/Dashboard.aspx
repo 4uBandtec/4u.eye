@@ -31,6 +31,11 @@
         <div id="popup">
 
             <div class="areaConfig">
+                
+                <div class="slidecontainer">
+                    Intensidade das cores:
+                    <input type="range" min="1" max="100" value="100" class="slider" id="slideCor" oninput="grayscale()"/>
+                </div>
 
                 <div class="areaTextoSwitch">
                     <div class="switch__container">
@@ -48,11 +53,12 @@
                         <input id="switch-notificacao" class="switch switch--shadow" type="checkbox" />
                         <label for="switch-notificacao"></label>
                     </div>
-                    
+
                     <div class="switchText">
                         Ativar Notificações
                     </div>
                 </div>
+
 
             </div>
 
@@ -158,7 +164,7 @@
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Opções
+                        Personalizar Cores
                
                     </div>
 
