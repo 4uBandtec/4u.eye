@@ -29,7 +29,9 @@
         <div id="blockArea" onclick="hidePopup()">
         </div>
         <div id="popup">
-
+            
+                <div id="demoCoresBW"></div>
+                <div id="demoCores"></div>
             <div class="areaConfig">
                 
                 <div class="slidecontainer">
