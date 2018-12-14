@@ -8,9 +8,20 @@ namespace EYE.Controller
 {
     public class ControllerTema
     {
+        public static int BuscaModo(int codWorkspace)
+        {
+            return StatementTema.BuscaModo(codWorkspace);
+        }
+        
         public static int BuscaTema(int codWorkspace)
         {
             return StatementTema.BuscaTema(codWorkspace);
+        }
+
+
+        public static bool TrocaModo(int codWorkspace, int novoModo)
+        {
+            return StatementTema.TrocarModo(codWorkspace, novoModo);
         }
 
         public static bool TrocaTema(int codWorkspace, int novoTema)

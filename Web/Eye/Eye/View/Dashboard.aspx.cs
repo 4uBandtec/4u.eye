@@ -106,15 +106,26 @@ namespace Eye.View
 
 
         [ScriptMethod, WebMethod]
-        public static int BuscaTema()
+        public static int[] BuscaTema()
         {
-            return ControllerTema.BuscaTema(new Dashboard().returnSession());
+
+            var tema = ControllerTema.BuscaTema(new Dashboard().returnSession());
+            var modo = ControllerTema.BuscaModo(new Dashboard().returnSession());
+
+            int[] retorno = new int[2];
+            retorno[0] = modo;
+            retorno[1] = tema;
+
+            return retorno;
         }
 
         [ScriptMethod, WebMethod]
-        public static bool TrocaTema(int novoTema)
+        public static bool TrocaTema(int novoModo, int novoTema)
         {
-            return ControllerTema.TrocaTema(new Dashboard().returnSession(), novoTema);
+            bool modo = ControllerTema.TrocaModo(new Dashboard().returnSession(), novoModo);
+            bool tema = ControllerTema.TrocaTema(new Dashboard().returnSession(), novoTema);
+
+            return (tema && modo);
         }
     }
 }

@@ -87,7 +87,6 @@ table {
     --black-color-a9: rgba(0,0,0,0.9);
     --black-color: rgb(0,0,0);
     --orange-color: rgb(255, 136, 0);
-    
     --filtro: grayscale(0%);
 }
 
@@ -1194,6 +1193,8 @@ input[type=number]::-webkit-inner-spin-button {
     background: var(--black-color-a9);
     z-index: 5;
     display: none;
+    opacity: 0;
+    transition: 0.5s ease-in;
 }
 
 #popup {
@@ -1203,10 +1204,10 @@ input[type=number]::-webkit-inner-spin-button {
     overflow-x: no-display;
     width: 80%;
     min-height: 20%;
-    max-height: 75%;
+    max-height: 80%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 100%);
     background: var(--darker-bg-color);
     box-shadow: 0px 0px 50px 1px var(--black-color);
     border-radius: 20px;
@@ -1214,6 +1215,7 @@ input[type=number]::-webkit-inner-spin-button {
     z-index: 6;
     display: none;
     filter: var(--filtro);
+    transition: 0.5s ease-in;
 }
 
 #demoCoresBW {
@@ -1223,6 +1225,7 @@ input[type=number]::-webkit-inner-spin-button {
     width: 30%;
     background: linear-gradient(90deg, var(--txt-color), var(--lighter-bg-color), var(--bg-color), var(--darker-bg-color), var(--black-color), var(--black-color-a9), var(--black-color-a), var(--red-color));
 }
+
 #demoCores {
     position: absolute;
     height: 10%;
@@ -1231,7 +1234,7 @@ input[type=number]::-webkit-inner-spin-button {
     background: linear-gradient(90deg, var(--red-color), var(--pink-color), var(--purple-color), var(--blue-color), var(--green-color), var(--yellow-color), var(--orange-color));
 }
 
-.areaConfig{
+.areaConfig {
     width: 80%;
     height: auto;
     margin: 10%;
@@ -1247,7 +1250,6 @@ input[type=number]::-webkit-inner-spin-button {
     visibility: hidden;
     float: left;
     width: auto;
-
 }
 
     .switch + label {
@@ -1266,9 +1268,11 @@ input[type=number]::-webkit-inner-spin-button {
     background-color: var(--darker-bg-color);
     border-radius: 60px;
     float: left;
-    margin-right: 2%;
-    transform: translate(15%, 0%);
+    right: 50%;
+    margin-top: 14%;
+    transform: translate(150%, 0%);
 }
+
     .switch--shadow + label:before,
     .switch--shadow + label:after {
         position: absolute;
@@ -1296,6 +1300,7 @@ input[type=number]::-webkit-inner-spin-button {
         transition: all 0.2s ease-in;
         float: left;
     }
+
 .switch--shadow:checked + label:before {
     background-color: var(--txt-color);
     box-shadow: 0px 0px 35px 1px var(--purple-color);
@@ -1306,12 +1311,12 @@ input[type=number]::-webkit-inner-spin-button {
     box-shadow: 0px 0px 35px 1px var(--blue-color);
 }
 
-.areaTextoSwitch{
+.areaTextoSwitch {
     float: left;
-    width: 100%;
+    width: 50%;
     position: relative;
     font-size: 2em;
-    padding: 5%;
+    padding: 0%;
     text-align: center;
 }
 
@@ -1331,14 +1336,7 @@ input[type=number]::-webkit-inner-spin-button {
         color: var(--pink-color);
     }
 
-    .switchText{
-        float: left;
-        position: relative;
-        width: auto;
-        max-width: 60%;
-        margin-left: 5%;
-        padding: 2%;
-    }
+
 
 
 
@@ -1390,10 +1388,38 @@ input[type=number]::-webkit-inner-spin-button {
         }
 
 
-/*                                                                                                */
-/*------------------------------------------Responsive--------------------------------------------*/
-@media only screen and (max-aspect-ratio: 6/4) {
-    * {
+.radioTema input[type="radio"] {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+    float: left;
+    width: auto;
+}
+
+    .radioTema input[type="radio"] + label {
+        padding: 0px;
+        background-color: var(--darker-bg-color);
+        border: 1px solid var(--blue-color);
+        border-radius: 10px;
+        float: left;
+        width: 70%;
+        margin: 2%;
+        margin-left: 13%;
+        padding: 2%;
+        text-transform: uppercase;
+        letter-spacing: 0.5vmin;
+    }
+
+    .radioTema input[type="radio"]:checked + label {
+        background: var(--blue-color);
+        color: var(--darker-bg-color);
+        font-weight: 500;
+        box-shadow: 0px 0px 35px 1px var(--blue-color);
+    }
+        /*                                                                                                */
+        /*------------------------------------------Responsive--------------------------------------------*/
+        @media only screen and (max-aspect-ratio: 6/4) {
+            * {
         font-size: 1.5vmax;
     }
 

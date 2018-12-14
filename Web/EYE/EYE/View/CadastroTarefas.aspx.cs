@@ -72,13 +72,13 @@ namespace EYE.View
         [ScriptMethod, WebMethod]
         public static int BuscaTema()
         {
-            return ControllerTema.BuscaTema(new CadastroTarefas().returnSession());
+            return ControllerTema.BuscaModo(new CadastroTarefas().returnSession());
         }
 
         [ScriptMethod, WebMethod]
         public static bool TrocaTema(int novoTema)
         {
-            return ControllerTema.TrocaTema(new CadastroTarefas().returnSession(), novoTema);
+            return ControllerTema.TrocaModo(new CadastroTarefas().returnSession(), novoTema);
         }
     }
 }

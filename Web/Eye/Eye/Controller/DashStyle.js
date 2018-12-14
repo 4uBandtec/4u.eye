@@ -15,48 +15,69 @@ function iniciarEstilo() {
 }
 
 
-function mudarTema() {
+function mudarModo() {
     PageMethods.BuscaTema(aplicarMudança, onError);
+}
+
+function mudarTema() {
+    var novoTema = 0;
+    var temas = document.getElementsByName('tema');
+    for (var i = 0; i < temas.length; i++) {
+        if (temas[i].checked) {
+            novoTema = temas[i].value;
+        }
+    }
 }
 
 function buscarTema() {
     PageMethods.BuscaTema(inserirTema, onError);
 }
 
-function aplicarMudança(temaAtual) {
-    novoTema = temaAtual == 0 ? 1 : 0;
 
-    inserirTema(novoTema);
-    PageMethods.TrocaTema(novoTema, console.log(novoTema), console.log("aaa"));
+
+function aplicarMudança(modoAtual) {
+    var novoModo = modoAtual;
+
+    novoModo[0] = modoAtual[0] == 0 ? 1 : 0;
+
+
+
+    inserirTema(novoModo);
+    
+    PageMethods.TrocaTema(novoModo[0], novoModo[1], console.log(novoModo), console.log("Erro"));
 }
 
 function inserirTema(novoTema) {
     
     var html = document.getElementsByTagName('html')[0];
     var icones = document.getElementsByClassName("itemIcon");
-    if (novoTema == 0) {
+    if (novoTema[0] == 0) {
         html.style.setProperty("--bg-color", "rgb(223,231,240)");
         html.style.setProperty("--txt-color", "rgb(28,23,20)");
         html.style.setProperty("--darker-bg-color", "rgb(180,197,206)");
         html.style.setProperty("--lighter-bg-color", "rgb(217,227,237)");
         html.style.setProperty("--to-invisible", "rgba(215,225,230, 0)");
         html.style.setProperty("--black-color-a", "rgba(215,225,235,0.5)");
-        html.style.setProperty("--green-color", "rgb(77,170,51)");
-        html.style.setProperty("--blue-color", "rgb(22,135,153)");
-        html.style.setProperty("--red-color", "rgb(127,2,49)");
-        html.style.setProperty("--yellow-color", "rgb(96, 92, 35)");
-        html.style.setProperty("--purple-color", "rgba(85,49,224)");
-        html.style.setProperty("--pink-color", "rgba(205,37,229)");
-        html.style.setProperty("--orange-color", "rgba(150,75,41)");
-        html.style.setProperty("--red-color-a", "rgba(127,2,49,0.5)");
-        html.style.setProperty("--blue-color-a", "rgba(22,135,153,0.5)");
-        html.style.setProperty("--purple-color-a", "rgba(85,49,224,0.5)");
         html.style.setProperty("--black-color-a9", "rgba(200,210,215,0.9)");
         html.style.setProperty("--black-color", "rgba(210,210,210)");
         for (i = 0; i < icones.length; i++) {
             icones[i].style.filter = "invert(100%)";
         }
         document.getElementById("switch-tema").checked = true;
+
+        if (novoTema[1] == 0) {
+            html.style.setProperty("--green-color", "rgb(77,170,51)");
+            html.style.setProperty("--blue-color", "rgb(22,135,153)");
+            html.style.setProperty("--red-color", "rgb(127,2,49)");
+            html.style.setProperty("--yellow-color", "rgb(96, 92, 35)");
+            html.style.setProperty("--purple-color", "rgba(85,49,224)");
+            html.style.setProperty("--pink-color", "rgba(205,37,229)");
+            html.style.setProperty("--orange-color", "rgba(150,75,41)");
+            html.style.setProperty("--red-color-a", "rgba(127,2,49,0.5)");
+            html.style.setProperty("--blue-color-a", "rgba(22,135,153,0.5)");
+            html.style.setProperty("--purple-color-a", "rgba(85,49,224,0.5)");
+        }
+
     }
     else {
         html.style.setProperty("--bg-color", "rgb(26,26,26)");
@@ -65,24 +86,81 @@ function inserirTema(novoTema) {
         html.style.setProperty("--lighter-bg-color", "rgb(50,50,50)");
         html.style.setProperty("--to-invisible", "rgba(50,50,50,0)");
         html.style.setProperty("--black-color-a", "rgba(0,0,0,0.3)");
-        html.style.setProperty("--green-color", "rgb(0, 198, 19)");
-        html.style.setProperty("--blue-color", "rgb(0, 185, 226)");
-        html.style.setProperty("--red-color", "rgb(226,26,47)");
-        html.style.setProperty("--yellow-color", "rgb(246, 255, 0)");
-        html.style.setProperty("--purple-color", "rgba(86,13,196)");
-        html.style.setProperty("--pink-color", "rgba(150,20,110)");
-        html.style.setProperty("--orange-color", "rgba(255, 136, 0)");
-        html.style.setProperty("--red-color-a", "rgba(226,26,47,0.5)");
-        html.style.setProperty("--blue-color-a", "rgba(0, 185, 226, 0.5)");
-        html.style.setProperty("--purple-color-a", "rgba(86,13,196,0.5)");
         html.style.setProperty("--black-color-a9", "rgba(0,0,0,0.9)");
         html.style.setProperty("--black-color", "rgba(0,0,0)");
         for (i = 0; i < icones.length; i++) {
             icones[i].style.filter = "invert(0%)";
         }
         document.getElementById("switch-tema").checked = false;
+        if (novoTema[1] == 0) {
+            
+            html.style.setProperty("--green-color", "rgb(0, 198, 19)");
+            html.style.setProperty("--blue-color", "rgb(0, 185, 226)");
+            html.style.setProperty("--red-color", "rgb(226,26,47)");
+            html.style.setProperty("--yellow-color", "rgb(246, 255, 0)");
+            html.style.setProperty("--purple-color", "rgba(86,13,196)");
+            html.style.setProperty("--pink-color", "rgba(150,20,110)");
+            html.style.setProperty("--orange-color", "rgba(255, 136, 0)");
+            html.style.setProperty("--red-color-a", "rgba(226,26,47,0.5)");
+            html.style.setProperty("--blue-color-a", "rgba(0, 185, 226, 0.5)");
+            html.style.setProperty("--purple-color-a", "rgba(86,13,196,0.5)");
+        }
     }
 
+
+
+    if (novoTema[1] == 1) {
+        html.style.setProperty("--pink-color", "rgb(239,203,2)");
+        html.style.setProperty("--purple-color", "rgb(114,112,0)");
+        html.style.setProperty("--blue-color", "rgb(244, 158, 1)");
+        html.style.setProperty("--green-color", "rgb(114,112,0)");
+        html.style.setProperty("--yellow-color", "rgb(239,203,2)");
+        html.style.setProperty("--orange-color", "rgb(114,112,0)");
+        html.style.setProperty("--red-color", "rgb(244, 158, 1)");
+        html.style.setProperty("--red-color-a", "rgba(244, 158, 1,0.5)");
+        html.style.setProperty("--blue-color-a", "rgba(244, 158, 1,0.5)");
+        html.style.setProperty("--purple-color-a", "rgba(114,112,0,0.5)");
+    }
+
+    if (novoTema[1] == 2) {
+        html.style.setProperty("--pink-color", "rgb(242, 6, 70)");
+        html.style.setProperty("--purple-color", "rgb(241,15,120)");
+        html.style.setProperty("--blue-color", "rgb(244, 30, 183)");
+        html.style.setProperty("--green-color", "rgb(241,15,120)");
+        html.style.setProperty("--yellow-color", "rgb(242, 6, 70)");
+        html.style.setProperty("--orange-color", "rgb(241,15,120)");
+        html.style.setProperty("--red-color", "rgb(244, 30, 183)");
+        html.style.setProperty("--red-color-a", "rgba(244, 30, 183,0.5)");
+        html.style.setProperty("--blue-color-a", "rgba(244, 30, 183,0.5)");
+        html.style.setProperty("--purple-color-a", "rgba(241,15,120,0.5)");
+    }
+    if (novoTema[1] == 3) {
+        html.style.setProperty("--pink-color", "rgb(6, 162, 121)");
+        html.style.setProperty("--purple-color", "rgb(0,228,221)");
+        html.style.setProperty("--blue-color", "rgb(0, 189, 158)");
+        html.style.setProperty("--green-color", "rgb(0,228,221)");
+        html.style.setProperty("--yellow-color", "rgb(6, 162, 121)");
+        html.style.setProperty("--orange-color", "rgb(0,228,221)");
+        html.style.setProperty("--red-color", "rgb(0, 189, 158)");
+        html.style.setProperty("--red-color-a", "rgba(0, 189, 158,0.5)");
+        html.style.setProperty("--blue-color-a", "rgba(0, 189, 158,0.5)");
+        html.style.setProperty("--purple-color-a", "rgba(0,228,221,0.5)");
+    }
+    if (novoTema[1] == 4) {
+        html.style.setProperty("--pink-color", "rgb(47, 63, 34)");
+        html.style.setProperty("--purple-color", "rgb(0,229,0)");
+        html.style.setProperty("--blue-color", "rgb(41, 47, 35)");
+        html.style.setProperty("--green-color", "rgb(0,229,0)");
+        html.style.setProperty("--yellow-color", "rgb(47, 63, 34)");
+        html.style.setProperty("--orange-color", "rgb(0,229,0)");
+        html.style.setProperty("--red-color", "rgb(41, 47, 35)");
+        html.style.setProperty("--red-color-a", "rgba(41, 47, 35,0.5)");
+        html.style.setProperty("--blue-color-a", "rgba(41, 47, 35,0.5)");
+        html.style.setProperty("--purple-color-a", "rgba(0,229,0,0.5)");
+    }
+
+
+    getItemMenu();
 }
 
 
@@ -243,9 +321,18 @@ var telaAtual = "";
 function displayPopup() {
     document.getElementById("blockArea").style.display = "block";
     document.getElementById("popup").style.display = "block";
+
+    document.getElementById("blockArea").style.opacity = "1";
+    document.getElementById("popup").style.transform = "translate(-50%, -50%)";
+    
+
 }
 
 function hidePopup() {
+
+    document.getElementById("blockArea").style.opacity = "0";
+    document.getElementById("popup").style.transform = "translate(-50%, 100%)";
+
     document.getElementById("blockArea").style.display = "none";
     document.getElementById("popup").style.display = "none";
 }

@@ -109,7 +109,7 @@
             </a>
 
 
-            <a onclick="mudarTema()">
+            <a onclick="mudarModo()">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
