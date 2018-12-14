@@ -46,7 +46,7 @@
                         Modo Claro
                     </div>
                     <div class="switch__container">
-                        <input id="switch-tema" class="switch switch--shadow" type="checkbox" onchange="mudarTema()" />
+                        <input id="switch-tema" class="switch switch--shadow" type="checkbox" onchange="mudarModo()" />
                         <label for="switch-tema"></label>
                     </div>
                     
@@ -59,28 +59,28 @@
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema0" value="0" checked="checked" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema0" value="0" checked="checked" onchange="mudarModo()"/>
                         <label for="tema0">Padrão</label>
                     </div>
 
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema1" value="1" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema1" value="1" onchange="mudarModo()"/>
                         <label for="tema1">Godez</label>
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema2" value="2" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema2" value="2" onchange="mudarModo()"/>
                         <label for="tema2">Martins</label>
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema3" value="3" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema3" value="3" onchange="mudarModo()"/>
                         <label for="tema3">Sayuri</label>
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema4" value="4" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema4" value="4" onchange="mudarModo()"/>
                         <label for="tema4">Volpe</label>
                     </div>
                 </div>
