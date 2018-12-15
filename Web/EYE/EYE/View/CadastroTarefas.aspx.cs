@@ -14,7 +14,7 @@ namespace EYE.View
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			new Sessao().PageLoadRedirecionaLogin();
+			new Sessao().PageLoadRedireciona();
 			txtDataInicio.Text = DateTime.Now.ToString("dd/M/yyyy", CultureInfo.InvariantCulture);
 			var conteudo = new ControllerTarefa().CarregarPainel(new Sessao().RetornaSessaoWorkspace());
 			pnlConfiguracao.Controls.Add(conteudo);
@@ -43,7 +43,7 @@ namespace EYE.View
         {
 
             pnlOnline.Controls.Clear();
-            var lista = ControllerComputador.RetornaUsuariosOnline(int.Parse((string)Session["codWorkspace"]));
+            var lista = ControllerComputador.RetornaUsuariosOnline(new Sessao().RetornaSessaoWorkspace());
             var index = 0;
             foreach (var item in lista)
             {
@@ -56,29 +56,16 @@ namespace EYE.View
             }
         }
 
-        public int returnSession()
-        {
-            var codWorkspace = (string)Session["codWorkspace"];
-            if (codWorkspace == null || codWorkspace == "0")
-            {
-                return 0;
-            }
-            else
-            {
-                return int.Parse((String)Session["codWorkspace"]);
-            }
-        }
-
         [ScriptMethod, WebMethod]
         public static int BuscaTema()
         {
-            return ControllerTema.BuscaTema(new CadastroTarefas().returnSession());
+            return ControllerTema.BuscaTema(new Sessao().RetornaSessaoWorkspace());
         }
 
         [ScriptMethod, WebMethod]
         public static bool TrocaTema(int novoTema)
         {
-            return ControllerTema.TrocaTema(new CadastroTarefas().returnSession(), novoTema);
+            return ControllerTema.TrocaTema(new Sessao().RetornaSessaoWorkspace(), novoTema);
         }
     }
 }

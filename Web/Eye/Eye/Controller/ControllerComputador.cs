@@ -24,8 +24,6 @@ namespace EYE.Controller
 				if (Computador.HoraAtualizada(item.UltimaLeitura))
 					lista.Add(item.Nome);
 			}
-
-            
             return lista;
 		}
 	}

@@ -7,7 +7,7 @@ namespace EYE.Controller
 {
     public class ControllerSlack
     {
-        public bool Cadastrar(TextBox txtUrl, TextBox txtCanal, string cod_workspace, Label lblMensagem)
+        public bool Cadastrar(TextBox txtUrl, TextBox txtCanal, int cod_workspace, Label lblMensagem)
         {
             if (!Validacao.StringVazia(txtUrl, txtCanal))
             {
@@ -19,7 +19,7 @@ namespace EYE.Controller
             var slack = new Slack();
             slack.Url = txtUrl.Text;
             slack.Canal = txtCanal.Text;
-            slack.CodWorkspace = int.Parse(cod_workspace);
+            slack.CodWorkspace = cod_workspace;
             if (StatementSlack.InserirSlack(slack))
             {
 

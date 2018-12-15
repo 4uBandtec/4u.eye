@@ -1,4 +1,5 @@
 ﻿using EYE.Controller;
+using EYE.Model;
 using System;
 
 namespace Eye.View
@@ -7,13 +8,8 @@ namespace Eye.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            var codWorkspace =(string)Session["codWorkspace"];
-            if (codWorkspace != null && codWorkspace!="0")
-            {
-                Response.Redirect("./Dashboard.aspx");
-            }
-        }
+			new Sessao().PageLoadRedireciona();
+		}
 
         protected void btnLogar_Click(object sender, EventArgs e)
         {

@@ -1,5 +1,4 @@
-﻿
-using EYE.Model.DAO;
+﻿using EYE.Model.DAO;
 
 namespace EYE.Controller
 {

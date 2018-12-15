@@ -1,15 +1,15 @@
-﻿
-namespace EYE.Model
+﻿namespace EYE.Model
 {
 	public class Sessao : System.Web.UI.Page
 	{
-		public void PageLoadRedirecionaLogin()
+		public void PageLoadRedireciona()
 		{
 			var codWorkspace = (string)Session["codWorkspace"];
 			if (int.Parse(codWorkspace) == 0)
-			{
-				Response.Redirect("./Login.aspx");
-			}
+
+				Response.Redirect("./Login.aspx");			
+			else 
+				Response.Redirect("./Dashboard.aspx");			
 		}
 		public int RetornaSessaoWorkspace()
 		{

@@ -56,9 +56,7 @@ namespace EYE.Controller
             var ddlUsuarios = Usuario.AlimentarUsuarios(new DropDownList(), listaUsuarios);
             var listaProcessos = StatementProcesso.ListarProcessos();
             var ddlProcesso=Processo.AlimentarProcessos(new DropDownList(), listaProcessos);
-            return new Tarefa().ConstruirConteudo(ddlUsuarios, ddlProcesso);          
-            
-
+            return new Tarefa().ConstruirConteudo(ddlUsuarios, ddlProcesso);
         }
     }
 }
