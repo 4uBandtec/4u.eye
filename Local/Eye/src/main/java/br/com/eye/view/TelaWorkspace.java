@@ -100,7 +100,7 @@ public class TelaWorkspace extends JFrame implements ActionListener {
             try {
                 if (new ControllerWorkspace().ValidarWorkspace(txtWorkspacename.getText())) {
                     dispose();
-                    LogMensagem.GravarLog("Workspace Identificado");
+                    LogMensagem.GravarLog("Workspace Identificado "+txtWorkspacename.getText());
                     new TelaLogin();
                 }
             } catch (SQLException | IOException ex) {

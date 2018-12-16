@@ -89,8 +89,6 @@ public class LeituraComputador {
     }
 
     public void setLeitura(int codComputador, int codUsuario) throws SQLException, InterruptedException, IOException {
-        
-        
         new Threads(codComputador, codUsuario);
     }
 
