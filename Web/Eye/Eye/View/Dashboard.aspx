@@ -36,7 +36,7 @@
 
                 <div class="slidecontainer">
                     Intensidade das cores:
-                    <input type="range" min="1" max="100" value="100" class="slider" id="slideCor" oninput="grayscale()" />
+                    <input type="range" min="1" max="100" value="100" class="slider" id="slideCor" oninput="grayscale()" onmouseup="mudarIntensidade()"/>
                 </div>
 
                 <div class="areaTextoSwitch">

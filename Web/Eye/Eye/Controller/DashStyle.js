@@ -12,6 +12,7 @@ function getCoordenadas() {
 function iniciarEstilo() {
     buscarModo();
     buscarTema();
+    buscarIntensidade();
     getItemMenu();
 }
 
@@ -72,7 +73,7 @@ function inserirModo(novoModo) {
 
     var html = document.getElementsByTagName('html')[0];
     var icones = document.getElementsByClassName("itemIcon");
-    if (novoModo == 0) {
+    if (novoModo == 1) {
         html.style.setProperty("--bg-color", "rgb(223,231,240)");
         html.style.setProperty("--txt-color", "rgb(28,23,20)");
         html.style.setProperty("--darker-bg-color", "rgb(180,197,206)");
@@ -192,6 +193,7 @@ function inserirTema(novoTema) {
 
     getItemMenu();
 }
+
 
 
 function getItemMenu() {
@@ -376,3 +378,30 @@ function grayscale() {
     var valor = 100 - slider.value;
     html.style.setProperty("--filtro", "grayscale(" + valor + "%)");
 }
+
+function buscarIntensidade() {
+
+    PageMethods.BuscaIntensidade(aplicarIntensidade, onError);
+}
+
+function mudarIntensidade() {
+
+    var slider = document.getElementById("slideCor");
+
+    var intensidade = slider.value;
+
+    PageMethods.TrocaIntensidade(intensidade, console.log(intensidade), onError);
+
+    aplicarIntensidade(intensidade);
+
+}
+
+function aplicarIntensidade(intensidade) {
+
+    var slider = document.getElementById("slideCor");
+
+    slider.value = intensidade;
+
+    grayscale();
+}
+

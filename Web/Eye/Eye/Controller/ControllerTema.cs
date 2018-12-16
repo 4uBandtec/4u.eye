@@ -28,5 +28,16 @@ namespace EYE.Controller
         {
             return StatementTema.TrocarTema(codWorkspace, novoTema);
         }
+
+
+        public static int BuscaIntensidade(int codWorkspace)
+        {
+            return StatementTema.BuscaIntensidade(codWorkspace);
+        }
+
+        public static bool TrocaIntensidade(int codWorkspace, int novaIntensidade)
+        {
+            return StatementTema.TrocarIntensidade(codWorkspace, novaIntensidade);
+        }
     }
 }

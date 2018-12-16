@@ -64,5 +64,34 @@ namespace EYE.Model.DAO
                 }
             }
         }
+
+
+        public static int BuscaIntensidade(int codWorkspace)
+        {
+            using (var conexao = Conexao.GetConexao())
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT intensidade FROM workspace WHERE cod_workspace = @cod_workspace", conexao))
+                {
+                    cmd.Parameters.AddWithValue("@cod_workspace", codWorkspace);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
+                    {
+                        return (leitor.Read()) ? leitor.GetInt32(0) : 0;
+                    }
+                }
+            }
+        }
+
+        public static bool TrocarIntensidade(int codWorkspace, int novaIntensidade)
+        {
+            using (var conexao = Conexao.GetConexao())
+            {
+                using (SqlCommand cmd = new SqlCommand("UPDATE workspace set intensidade = @nova_intensidade where cod_workspace = @cod_workspace", conexao))
+                {
+                    cmd.Parameters.AddWithValue("@nova_intensidade", novaIntensidade);
+                    cmd.Parameters.AddWithValue("@cod_workspace", codWorkspace);
+                    return (cmd.ExecuteNonQuery() >= MINIMO_DE_ALTERACAO);
+                }
+            }
+        }
     }
 }
