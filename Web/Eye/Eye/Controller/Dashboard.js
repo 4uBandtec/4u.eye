@@ -38,6 +38,7 @@ var computadoresUsuarios = [];
 
 
 function setCodComputadores(usuarios) {
+
     computadoresUsuarios = usuarios;
     if (!firstLoaded) {
         getLeitura();
@@ -56,7 +57,7 @@ function onError(result) {
 function getLeitura() {
 
     for (i = 0; i < computadoresUsuarios.length; i++) {
-        console.log(computadoresUsuarios[i]);
+        //console.log(computadoresUsuarios[i]);
 
         for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
 
@@ -105,10 +106,6 @@ function SetDadosMonitor(leituraMonitor) {
     }
 
 
-
-
-
-
     if (!document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador)) {
         IniciarMonitor(computadorMonitor, leituraMonitor);
     }
@@ -136,7 +133,7 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
     tituloComputador.setAttribute("id", "tituloComputador" + computadorMonitor.CodComputador);
 
     infoGeralComputador.appendChild(tituloComputador);
-    
+
     tituloComputador.textContent = computadorMonitor.NomeComputador + computadorMonitor.User;
 
     Desenhar("HD", infoGeralComputador, computadorMonitor.HdTotal, leituraMonitor.HdAtual, computadorMonitor.CodComputador);
@@ -155,7 +152,7 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
 
     var perfil = computadorMonitor.Perfil;
 
-    switch (computadorMonitor.Perfil){
+    switch (computadorMonitor.Perfil) {
         case 0:
             perfil = "Calculando...";
             break;
@@ -171,8 +168,8 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
         case 4:
             perfil = "Outros";
             break;
-            
-        
+
+
     }
 
     infoGeralComputador.appendChild(detalhesMonitor);
@@ -398,7 +395,7 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 function updateChart(computadorMonitor, leituraMonitor) {
     var infoGeralComputador = document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador);
 
-    console.log(leituraMonitor.RamAtual);
+    //console.log(leituraMonitor.RamAtual);
 
     Atualizar("HD", infoGeralComputador, computadorMonitor.HdTotal, leituraMonitor.HdAtual, computadorMonitor.CodComputador);
     Atualizar("RAM", infoGeralComputador, computadorMonitor.RamTotal, leituraMonitor.RamAtual, computadorMonitor.CodComputador);
@@ -427,14 +424,37 @@ function Atualizar(componente, infoGeralComputador, total, atual, cod) {
     var style = getComputedStyle(document.body);
     var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
 
+    var cor = (style.getPropertyValue('--blue-color')).replace(/\s/g, '');
+    var cor2 = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
+
+    if (componente == "RAM") {
+        cor = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+    }
+
+
+
+    var c = document.getElementById("donutchart" + componente + cod);
+    var ctx = c.getContext("2d");
+
+    var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+
+    gradientStroke.addColorStop(0, cor);
+    gradientStroke.addColorStop(0.1, cor2);
+    gradientStroke.addColorStop(0.2, cor);
+
+    var tituloLabel = document.getElementById("tituloLabel" + componente + cod);
+
+    tituloLabel.style.backgroundColor = cor;
+
+
+
+
     document.getElementById("conteudoTotal" + componente + cod).textContent = total + " " + unidade;
 
     document.getElementById("conteudoAtual" + componente + cod).textContent = atual + " " + unidade;
 
-
-
-
     for (i = 0; i < charts.length; i++) {
+
 
         if (chartsCod[i] == cod && chartsComp[i] == componente) {
 
@@ -442,8 +462,10 @@ function Atualizar(componente, infoGeralComputador, total, atual, cod) {
 
             chart.data.datasets[0].data = [atual, total - atual];
 
+            chart.data.datasets[0].backgroundColor = [gradientStroke, darkerBgColor];
 
-
+            chart.data.datasets[0].hoverBackgroundColor = [cor, "#000"];
+            
             chart.update();
 
         }
@@ -613,7 +635,24 @@ function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
 
 function AtualizarCPU(componente, infoGeralComputador, atual, cod) {
     var style = getComputedStyle(document.body);
+    var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
 
+    var cor = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
+    var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+
+    if (componente == "RAM") {
+        cor = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+    }
+
+    var c = document.getElementById("lineChart" + componente + cod);
+    var ctx = c.getContext("2d");
+
+    var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+
+    gradientStroke.addColorStop(0, cor);
+    gradientStroke.addColorStop(0.1, cor2);
+    gradientStroke.addColorStop(0.2, cor);
+    
 
 
     for (i = 0; i < charts.length; i++) {
@@ -624,6 +663,17 @@ function AtualizarCPU(componente, infoGeralComputador, atual, cod) {
 
             chart.data.labels.push("CPU");
             chart.data.datasets[0].data.push(atual)
+
+
+            chart.data.datasets[0].backgroundColor = gradientStroke;
+
+            chart.data.datasets[0].hoverBackgroundColor = cor;
+
+            chart.options.scales.xAxes[0].fontColor = cor;
+            chart.options.scales.xAxes[0].ticks.fontColor = cor2;
+
+            chart.options.scales.yAxes[0].scaleLabel.fontColor = cor;
+            chart.options.scales.yAxes[0].ticks.fontColor = cor2;
 
             if (chart.data.labels.length > 6) {
                 chart.data.labels.shift()

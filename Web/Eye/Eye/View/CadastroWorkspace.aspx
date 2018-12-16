@@ -15,6 +15,7 @@
     <script type="text/javascript" src="../Controller/Dashboard.js"></script>
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
     <script type="text/javascript" src="../Controller/CamposFormulario.js"></script>
+    <script type="text/javascript" src="../Controller/download.js"></script>
 </head>
 <body onload="getCamposCadastro()">
 

@@ -10,52 +10,83 @@ function getCoordenadas() {
 
 
 function iniciarEstilo() {
+    buscarModo();
     buscarTema();
+    buscarIntensidade();
     getItemMenu();
 }
 
-
-function mudarTema() {
-    PageMethods.BuscaTema(aplicarMudança, onError);
-}
 
 function buscarTema() {
     PageMethods.BuscaTema(inserirTema, onError);
 }
 
-function aplicarMudança(temaAtual) {
-    novoTema = temaAtual == 0 ? 1 : 0;
-
-    inserirTema(novoTema);
-    PageMethods.TrocaTema(novoTema, console.log(novoTema), console.log("erro"));
+function buscarModo() {
+    PageMethods.BuscaModo(inserirModo, onError);
 }
 
-function inserirTema(novoTema) {
+
+function mudarModo() {
+
+    PageMethods.BuscaModo(aplicarMudançaModo, onError);
+
+}
+
+function mudarTema() {
+    var temas = document.getElementsByName('tema');
+    var novoTema = 0;
+
+    for (var i = 0; i < temas.length; i++) {
+        if (temas[i].checked) {
+            novoTema = i;
+        }
+    }
     
+    
+    inserirTema(novoTema);
+
+    PageMethods.TrocaTema(novoTema, console.log(novoTema), console.log("Erro"));
+
+}
+
+
+
+
+function aplicarMudançaModo(modoAtual) {
+    var novoModo = modoAtual;
+
+    novoModo = modoAtual == 0 ? 1 : 0;
+
+
+
+    inserirModo(novoModo);
+
+    PageMethods.TrocaModo(novoModo, mudarTema, console.log("Erro"));
+}
+
+
+
+function inserirModo(novoModo) {
+
     var html = document.getElementsByTagName('html')[0];
     var icones = document.getElementsByClassName("itemIcon");
-    if (novoTema == 0) {
-        html.style.setProperty("--bg-color", "rgb(200,200,200)");
-        html.style.setProperty("--txt-color", "rgb(23,23,23)");
-        html.style.setProperty("--darker-bg-color", "rgb(189,189,189)");
-        html.style.setProperty("--lighter-bg-color", "rgb(217,217,217)");
-        html.style.setProperty("--to-invisible", "rgba(255,255,255, 0)");
-        html.style.setProperty("--black-color-a", "rgba(255,255,255,0.5)");
-        html.style.setProperty("--green-color", "rgb(97,255,51)");
-        html.style.setProperty("--blue-color", "rgb(22,135,153)");
-        html.style.setProperty("--red-color", "rgb(127,2,49)");
-        html.style.setProperty("--yellow-color", "rgb(96, 92, 35)");
-        html.style.setProperty("--purple-color", "rgba(85,49,224)");
-        html.style.setProperty("--pink-color", "rgba(205,37,229)");
-        html.style.setProperty("--orange-color", "rgba(213,75,41)");
-        html.style.setProperty("--red-color-a", "rgba(127,2,49,0.5)");
-        html.style.setProperty("--blue-color-a", "rgba(22,135,153,0.5)");
-        html.style.setProperty("--purple-color-a", "rgba(85,49,224,0.5)");
-        html.style.setProperty("--black-color-a9", "rgba(220,220,220, 0.9)");
-        html.style.setProperty("--black-color", "rgba(220,220,220)");
+
+    var html = document.getElementsByTagName('html')[0];
+    var icones = document.getElementsByClassName("itemIcon");
+    if (novoModo == 1) {
+        html.style.setProperty("--bg-color", "rgb(163,168,168)");
+        html.style.setProperty("--txt-color", "rgb(28,23,20)");
+        html.style.setProperty("--darker-bg-color", "rgb(190,195,197)");
+        html.style.setProperty("--lighter-bg-color", "rgb(171,174,161)");
+        html.style.setProperty("--to-invisible", "rgba(205,215,220, 0)");
+        html.style.setProperty("--black-color-a", "rgba(190,195,197,0.5)");
+        html.style.setProperty("--black-color-a9", "rgba(190,195,197,0.9)");
+        html.style.setProperty("--black-color", "rgba(190,195,197)");
         for (i = 0; i < icones.length; i++) {
             icones[i].style.filter = "invert(100%)";
         }
+        document.getElementById("switch-tema").checked = true;
+
     }
     else {
         html.style.setProperty("--bg-color", "rgb(26,26,26)");
@@ -64,6 +95,38 @@ function inserirTema(novoTema) {
         html.style.setProperty("--lighter-bg-color", "rgb(50,50,50)");
         html.style.setProperty("--to-invisible", "rgba(50,50,50,0)");
         html.style.setProperty("--black-color-a", "rgba(0,0,0,0.3)");
+        html.style.setProperty("--black-color-a9", "rgba(0,0,0,0.9)");
+        html.style.setProperty("--black-color", "rgba(0,0,0)");
+        for (i = 0; i < icones.length; i++) {
+            icones[i].style.filter = "invert(0%)";
+        }
+        document.getElementById("switch-tema").checked = false;
+
+    }
+}
+
+
+function inserirTema(novoTema) {
+
+    var html = document.getElementsByTagName('html')[0];
+    var icones = document.getElementsByClassName("itemIcon");
+    var checkTema = document.getElementById("switch-tema").checked;
+
+    if (novoTema == 0 && checkTema) {
+        html.style.setProperty("--green-color", "rgb(77,170,51)");
+        html.style.setProperty("--blue-color", "rgb(22,135,153)");
+        html.style.setProperty("--red-color", "rgb(127,2,49)");
+        html.style.setProperty("--yellow-color", "rgb(96, 92, 35)");
+        html.style.setProperty("--purple-color", "rgba(85,49,224)");
+        html.style.setProperty("--pink-color", "rgba(205,37,229)");
+        html.style.setProperty("--orange-color", "rgba(150,75,41)");
+        html.style.setProperty("--red-color-a", "rgba(127,2,49,0.5)");
+        html.style.setProperty("--blue-color-a", "rgba(22,135,153,0.5)");
+        html.style.setProperty("--purple-color-a", "rgba(85,49,224,0.5)");
+    }
+
+    else if (novoTema == 0 && !checkTema) {
+
         html.style.setProperty("--green-color", "rgb(0, 198, 19)");
         html.style.setProperty("--blue-color", "rgb(0, 185, 226)");
         html.style.setProperty("--red-color", "rgb(226,26,47)");
@@ -74,14 +137,63 @@ function inserirTema(novoTema) {
         html.style.setProperty("--red-color-a", "rgba(226,26,47,0.5)");
         html.style.setProperty("--blue-color-a", "rgba(0, 185, 226, 0.5)");
         html.style.setProperty("--purple-color-a", "rgba(86,13,196,0.5)");
-        html.style.setProperty("--black-color-a9", "rgba(0,0,0,0.9)");
-        html.style.setProperty("--black-color", "rgba(0,0,0)");
-        for (i = 0; i < icones.length; i++) {
-            icones[i].style.filter = "invert(0%)";
-        }
     }
 
+    else if (novoTema == 1) {
+        html.style.setProperty("--pink-color", "rgb(239,203,2)");
+        html.style.setProperty("--purple-color", "rgb(114,112,0)");
+        html.style.setProperty("--blue-color", "rgb(244, 158, 1)");
+        html.style.setProperty("--green-color", "rgb(114,112,0)");
+        html.style.setProperty("--yellow-color", "rgb(239,203,2)");
+        html.style.setProperty("--orange-color", "rgb(114,112,0)");
+        html.style.setProperty("--red-color", "rgb(244, 158, 1)");
+        html.style.setProperty("--red-color-a", "rgba(244, 158, 1,0.5)");
+        html.style.setProperty("--blue-color-a", "rgba(244, 158, 1,0.5)");
+        html.style.setProperty("--purple-color-a", "rgba(114,112,0,0.5)");
+    }
+
+    else if (novoTema == 2) {
+        html.style.setProperty("--pink-color", "rgb(242, 6, 70)");
+        html.style.setProperty("--purple-color", "rgb(241,15,120)");
+        html.style.setProperty("--blue-color", "rgb(244, 30, 183)");
+        html.style.setProperty("--green-color", "rgb(241,15,120)");
+        html.style.setProperty("--yellow-color", "rgb(242, 6, 70)");
+        html.style.setProperty("--orange-color", "rgb(241,15,120)");
+        html.style.setProperty("--red-color", "rgb(244, 30, 183)");
+        html.style.setProperty("--red-color-a", "rgba(244, 30, 183,0.5)");
+        html.style.setProperty("--blue-color-a", "rgba(244, 30, 183,0.5)");
+        html.style.setProperty("--purple-color-a", "rgba(241,15,120,0.5)");
+    }
+    else if (novoTema == 3) {
+        html.style.setProperty("--pink-color", "rgb(6, 162, 121)");
+        html.style.setProperty("--purple-color", "rgb(0,228,221)");
+        html.style.setProperty("--blue-color", "rgb(0, 189, 158)");
+        html.style.setProperty("--green-color", "rgb(0,228,221)");
+        html.style.setProperty("--yellow-color", "rgb(6, 162, 121)");
+        html.style.setProperty("--orange-color", "rgb(0,228,221)");
+        html.style.setProperty("--red-color", "rgb(0, 189, 158)");
+        html.style.setProperty("--red-color-a", "rgba(0, 189, 158,0.5)");
+        html.style.setProperty("--blue-color-a", "rgba(0, 189, 158,0.5)");
+        html.style.setProperty("--purple-color-a", "rgba(0,228,221,0.5)");
+    }
+    else if (novoTema == 4) {
+        html.style.setProperty("--pink-color", "rgb(47, 63, 34)");
+        html.style.setProperty("--purple-color", "rgb(0,229,0)");
+        html.style.setProperty("--blue-color", "rgb(41, 47, 35)");
+        html.style.setProperty("--green-color", "rgb(0,229,0)");
+        html.style.setProperty("--yellow-color", "rgb(47, 63, 34)");
+        html.style.setProperty("--orange-color", "rgb(0,229,0)");
+        html.style.setProperty("--red-color", "rgb(41, 47, 35)");
+        html.style.setProperty("--red-color-a", "rgba(41, 47, 35,0.5)");
+        html.style.setProperty("--blue-color-a", "rgba(41, 47, 35,0.5)");
+        html.style.setProperty("--purple-color-a", "rgba(0,229,0,0.5)");
+    }
+
+    document.getElementById('tema' + novoTema).checked = true;
+
+    getItemMenu();
 }
+
 
 
 function getItemMenu() {
@@ -235,4 +347,61 @@ var totalCamposCadastro = 0;
 var campoAtual = 0;
 
 var telaAtual = "";
+
+
+
+function displayPopup() {
+    document.getElementById("blockArea").style.display = "block";
+    document.getElementById("popup").style.display = "block";
+
+    document.getElementById("blockArea").style.opacity = "1";
+    document.getElementById("popup").style.transform = "translate(-50%, -50%)";
+
+
+}
+
+function hidePopup() {
+
+    document.getElementById("blockArea").style.opacity = "0";
+    document.getElementById("popup").style.transform = "translate(-50%, 100%)";
+
+    document.getElementById("blockArea").style.display = "none";
+    document.getElementById("popup").style.display = "none";
+}
+
+
+
+function grayscale() {
+
+    var slider = document.getElementById("slideCor");
+    var html = document.getElementsByTagName('html')[0];
+    var valor = 100 - slider.value;
+    html.style.setProperty("--filtro", "grayscale(" + valor + "%)");
+}
+
+function buscarIntensidade() {
+
+    PageMethods.BuscaIntensidade(aplicarIntensidade, onError);
+}
+
+function mudarIntensidade() {
+
+    var slider = document.getElementById("slideCor");
+
+    var intensidade = slider.value;
+
+    PageMethods.TrocaIntensidade(intensidade, console.log(intensidade), onError);
+
+    aplicarIntensidade(intensidade);
+
+}
+
+function aplicarIntensidade(intensidade) {
+
+    var slider = document.getElementById("slideCor");
+
+    slider.value = intensidade;
+
+    grayscale();
+}
 

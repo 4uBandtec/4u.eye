@@ -87,6 +87,7 @@ table {
     --black-color-a9: rgba(0,0,0,0.9);
     --black-color: rgb(0,0,0);
     --orange-color: rgb(255, 136, 0);
+    --filtro: grayscale(0%);
 }
 
 * {
@@ -100,7 +101,6 @@ table {
 body {
     background: var(--bg-color);
 }
-
 
 
 ::selection {
@@ -149,6 +149,7 @@ body {
     top: 0;
     display: flex;
     flex-direction: column;
+    filter: var(--filtro);
 }
 
     #sideMenu a {
@@ -163,7 +164,7 @@ body {
     top: 0;
     height: 100%;
     width: 100%;
-    background: var(--bg-color);
+    background: var(--darker-bg-color);
     cursor: pointer;
     overflow: hidden;
     transition-timing-function: ease-out;
@@ -202,16 +203,16 @@ body {
 
 
 .itemTxt {
-    height: 30%;
+    height: 37%;
     width: 70%;
     position: absolute;
     left: 0;
     top: 0;
-    font-size: 1.3em;
+    font-size: 1.1em;
     text-align: center;
     padding: 2%;
     padding-left: 28%;
-    padding-top: 10%;
+    padding-top: 3%;
     padding-bottom: 40%;
     background: radial-gradient(circle, var(--black-color-a9), var(--black-color-a));
 }
@@ -258,6 +259,7 @@ body {
     transition-duration: 0.5s;
     z-index: 2;
     background: linear-gradient(90deg, var(--darker-bg-color), var(--black-color), var(--darker-bg-color));
+    filter: var(--filtro);
 }
 
 .txtMeuResumo {
@@ -280,6 +282,7 @@ body {
     top: 0;
     overflow: auto;
     float: left;
+    filter: var(--filtro);
 }
 
 #meuResumo:hover {
@@ -370,7 +373,7 @@ body {
     padding-top: 1%;
     padding-left: 2%;
     left: 0%;
-    background: var(--black-color-a);
+    background: var(--darker-bg-color);
     font-weight: lighter;
     box-shadow: 0px 0px 50px 1px var(--black-color);
     border-top-left-radius: 20px;
@@ -569,9 +572,6 @@ body {
     cursor: pointer;
 }
 
-    .btnForm:hover {
-        border-color: var(--txt-color);
-    }
 
     .btnForm input {
         background: none;
@@ -641,7 +641,8 @@ label {
     top: 0;
     transition-duration: 0.5s;
     height: 1vh;
-    background: var(--purple-color)
+    background: var(--purple-color);
+    filter: var(--filtro);
 }
 
 #lblTexto {
@@ -665,6 +666,7 @@ label {
     max-width: 50vw;
     min-width: 50vw;
     position: fixed;
+    filter: var(--filtro);
 }
 
 .cadastroCampos .campos {
@@ -856,7 +858,7 @@ label {
     margin: 2%;
     top: 50%;
     margin-top: 0;
-    height: 70vh;
+    height: 75vh;
     width: 40%;
     position: relative;
     padding: 2%;
@@ -875,6 +877,10 @@ label {
     .AreaTarefa .tituloComputador {
         background: var(--darker-bg-color);
         box-shadow: none;
+    }
+    .AreaTarefa .tituloCampo {
+        margin-bottom: 0;
+        margin-top: 1%;
     }
 
 #AreaCadastroTarefa input {
@@ -1024,7 +1030,7 @@ label {
     position: absolute;
     float: left;
     bottom: 0;
-    height: 10vh;
+    height: 7vh;
     right: 15%;
     left: 15%;
     width: 70%;
@@ -1039,7 +1045,7 @@ label {
 
     #btnFormCadastrarTarefa #btnCadastrarTarefa {
         width: 100%;
-        font-size: 1.5em;
+        font-size: 1.3em;
         height: 100%;
         font-weight: lighter;
     }
@@ -1142,6 +1148,7 @@ input[type=number]::-webkit-inner-spin-button {
     top: 0;
     overflow: auto;
     float: left;
+    filter: var(--filtro);
 }
 
 #btnFormCadastrarSlack {
@@ -1191,6 +1198,9 @@ input[type=number]::-webkit-inner-spin-button {
     width: 100%;
     background: var(--black-color-a9);
     z-index: 5;
+    display: none;
+    opacity: 0;
+    transition: 0.5s ease-in;
 }
 
 #popup {
@@ -1200,31 +1210,55 @@ input[type=number]::-webkit-inner-spin-button {
     overflow-x: no-display;
     width: 80%;
     min-height: 20%;
-    max-height: 75%;
+    max-height: 85%;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, 100%);
     background: var(--darker-bg-color);
     box-shadow: 0px 0px 50px 1px var(--black-color);
+    border: var(--blue-color) 1px solid;
     border-radius: 20px;
-    padding-bottom: 5%;
+    padding-bottom: 0%;
+    z-index: 6;
+    display: none;
+    filter: var(--filtro);
+    transition: 0.5s ease-in;
+    padding-bottom: 3%;
 }
 
-.areaConfig{
-    width: 40%;
+#demoCoresBW {
+    position: absolute;
+    height: 5%;
+    left: 0;
+    width: 30%;
+    background: linear-gradient(90deg, var(--txt-color), var(--lighter-bg-color), var(--bg-color), var(--darker-bg-color), var(--black-color), var(--black-color-a9), var(--black-color-a), var(--red-color));
+}
+
+#demoCores {
+    position: absolute;
+    height: 5%;
+    right: 0;
+    width: 70%;
+    background: linear-gradient(90deg, var(--red-color), var(--pink-color), var(--purple-color), var(--blue-color), var(--green-color), var(--yellow-color), var(--orange-color));
+}
+
+.areaConfig {
+    width: 80%;
     height: auto;
     margin: 10%;
+    margin-top: 5%;
 }
 
 .switch__container {
     float: left;
 }
+
 .switch {
-    position: relative;
+    position: absolute;
     margin-left: -9999px;
     visibility: hidden;
     float: left;
-
+    width: auto;
 }
 
     .switch + label {
@@ -1237,55 +1271,83 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
 .switch--shadow + label {
-    padding: 2px;
-    width: 120px;
-    height: 60px;
-    background-color: #dddddd;
+    padding: 0px;
+    width: 8vw;
+    height: 4vw;
+    background-color: var(--darker-bg-color);
     border-radius: 60px;
     float: left;
+    right: 50%;
+    margin-top: 14%;
+    transform: translate(200%, 0%);
 }
+
     .switch--shadow + label:before,
     .switch--shadow + label:after {
-        display: block;
         position: absolute;
-        top: 1px;
-        left: 1px;
-        bottom: 1px;
+        top: 0px;
+        left: 0px;
+        bottom: 0px;
         content: "";
-        float: left;
     }
 
     .switch--shadow + label:before {
-        right: 1px;
-        background-color: #f1f1f1;
+        right: 0px;
+        background-color: var(--blue-color);
         border-radius: 60px;
         transition: all 0.4s;
-        float: left;
     }
 
     .switch--shadow + label:after {
-        width: 62px;
-        background-color: #fff;
+        width: 55%;
+        left: -2.5%;
+        top: -5%;
+        height: 110%;
+        background-color: var(--bg-color);
         border-radius: 100%;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        transition: all 0.4s;
+        box-shadow: 0 2px 2px var(--black-color);
+        transition: all 0.2s ease-in;
         float: left;
     }
+
 .switch--shadow:checked + label:before {
-    background-color: #8ce196;
-    float: left;
+    background-color: var(--txt-color);
+    box-shadow: 0px 0px 35px 1px var(--purple-color);
 }
 
 .switch--shadow:checked + label:after {
-    transform: translateX(60px);
+    transform: translateX(100%);
+    box-shadow: 0px 0px 35px 1px var(--blue-color);
 }
 
-.areaTextoSwitch{
+.areaTextoSwitch {
     float: left;
-    width: auto;
+    width: 50%;
     position: relative;
     font-size: 2em;
-    padding-left: 5%;
+    padding: 0%;
+    text-align: center;
+}
+
+
+
+.campos .switch--shadow + label {
+    width: 6vw;
+    height: 3vw;
+    right: 50%;
+    margin-top: 0;
+    transform: translate(200%, 0%);
+}
+
+.campos .switch__container{
+    margin-top: 5%;
+    width: 50%;
+    text-align: center;
+}
+
+
+
+.tituloSwitchNotificacao {
 }
 
 .btnDownload {
@@ -1306,10 +1368,88 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 
-/*                                                                                                */
-/*------------------------------------------Responsive--------------------------------------------*/
-@media only screen and (max-aspect-ratio: 6/4) {
-    * {
+
+
+.slidecontainer {
+    width: 90%;
+    font-size: 2em;
+    transition: 0.5s;
+    margin-left: 5%;
+}
+
+
+
+.slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: var(--blue-color);
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+    margin-top: 2%;
+    margin-bottom: 5%;
+}
+
+    .slider:hover {
+        opacity: 1;
+        box-shadow: 0px 0px 35px 1px var(--blue-color);
+        transition: 0.5s;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 3vmin;
+        height: 3vmin;
+        background-color: var(--darker-bg-color);
+        border: double 3vmin var(--blue-color);
+        border-radius: 100%;
+        transition: 0.5s;
+        cursor: pointer;
+    }
+
+        .slider::-webkit-slider-thumb:hover {
+            box-shadow: 0px 0px 35px 1px var(--purple-color);
+            transition: 0.5s;
+        }
+
+
+.radioTema input[type="radio"] {
+    position: absolute;
+    margin-left: -9999px;
+    visibility: hidden;
+    float: left;
+    width: auto;
+}
+
+    .radioTema input[type="radio"] + label {
+        padding: 0px;
+        background-color: var(--darker-bg-color);
+        border: 1px solid var(--blue-color);
+        border-radius: 10px;
+        float: left;
+        width: 70%;
+        margin: 2%;
+        margin-left: 13%;
+        padding: 2%;
+        text-transform: uppercase;
+        letter-spacing: 0.5vmin;
+    }
+
+    .radioTema input[type="radio"]:checked + label {
+        background: var(--blue-color);
+        color: var(--darker-bg-color);
+        font-weight: 500;
+        box-shadow: 0px 0px 35px 1px var(--blue-color);
+    }
+        /*                                                                                                */
+        /*------------------------------------------Responsive--------------------------------------------*/
+        @media only screen and (max-aspect-ratio: 6/4) {
+            * {
         font-size: 1.5vmax;
     }
 
@@ -1341,7 +1481,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 
 
-@media only screen and (max-aspect-ratio: 7/8) {
+@media only screen and (max-aspect-ratio: 13/9) {
     * {
         font-size: 2vmax;
     }
@@ -1567,7 +1707,11 @@ input[type=number]::-webkit-inner-spin-button {
         width: 80%;
         height: auto;
         position: absolute;
-        background: red;
+        filter: var(--filtro);
+    }
+
+    .areaFiltro {
+        filter: var(--filtro);
     }
 
     .btnForm {
@@ -1757,8 +1901,9 @@ input[type=number]::-webkit-inner-spin-button {
 
     #btnFormCadastrarTarefa {
         position: fixed;
-        width: 70vw;
-        margin-left: 6vw;
+        width: 50vw;
+        margin-left: 0vw;
+        height: 9vh;
     }
 
     #AreaConfig {

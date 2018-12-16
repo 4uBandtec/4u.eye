@@ -82,15 +82,62 @@ namespace Eye.View
 
 
         [ScriptMethod, WebMethod]
+        public static int[] BuscaTemaModo()
+        {
+
+            var tema = ControllerTema.BuscaTema(new Dashboard().returnSession());
+            var modo = ControllerTema.BuscaModo(new Dashboard().returnSession());
+
+            int[] retorno = new int[2];
+            retorno[0] = modo;
+            retorno[1] = tema;
+
+            return retorno;
+        }
+
+        [ScriptMethod, WebMethod]
         public static int BuscaTema()
         {
             return ControllerTema.BuscaTema(new Sessao().RetornaSessaoWorkspace());
         }
 
         [ScriptMethod, WebMethod]
+        public static int BuscaModo()
+        {
+            return ControllerTema.BuscaModo(new Dashboard().returnSession());
+        }
+
+        [ScriptMethod, WebMethod]
+        public static int BuscaIntensidade()
+        {
+            return ControllerTema.BuscaIntensidade(new Sessao().RetornaSessaoWorkspace());
+        }
+
+
+        [ScriptMethod, WebMethod]
         public static bool TrocaTema(int novoTema)
         {
-            return ControllerTema.TrocaTema(new Sessao().RetornaSessaoWorkspace(), novoTema);
+            bool tema = ControllerTema.TrocaTema(new Sessao().RetornaSessaoWorkspace(), novoTema);
+
+            return (tema);
+        }
+
+
+        [ScriptMethod, WebMethod]
+        public static bool TrocaModo(int novoModo)
+        {
+            bool modo = ControllerTema.TrocaModo(new Sessao().RetornaSessaoWorkspace(), novoModo);
+
+            return (modo);
+        }
+
+
+        [ScriptMethod, WebMethod]
+        public static bool TrocaIntensidade(int novaIntensidade)
+        {
+            bool intensidade = ControllerTema.TrocaIntensidade(new Sessao().RetornaSessaoWorkspace()), novaIntensidade);
+
+            return (intensidade);
         }
     }
 }
