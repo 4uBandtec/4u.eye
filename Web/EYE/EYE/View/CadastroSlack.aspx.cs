@@ -1,4 +1,5 @@
-﻿using EYE.Controller;
+﻿﻿using EYE.Controller;
+using EYE.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,27 +15,28 @@ namespace EYE.View
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            var codWorkspace = (string)Session["codWorkspace"];
-            if (codWorkspace == null || codWorkspace == "0")
-            {
-                Response.Redirect("./Login.aspx");
-            }
-        }
+			if (new Sessao().RetornaSessaoWorkspace() == 0)
+				Response.Redirect("./Login.aspx");
+
+			new ControllerSlack().VerificaSlackCadastrado(txtUrl, btnCadastrar, new Sessao().RetornaSessaoWorkspace());
+
+		}
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
-            var codWorkspace = (string)Session["codWorkspace"];
-            if (!new ControllerSlack().Cadastrar(txtUrl, txtCanal, codWorkspace, lblMensagem))
-            {
-                return;
-            }
+			if (!new ControllerSlack().Cadastrar(txtUrl, new Sessao().RetornaSessaoWorkspace(), lblMensagem))
+			{
+				return;
+			}
+			else
+				Response.Redirect("./CadastroSlack.aspx");
         }
 
         protected void Timer_Tick(object sender, EventArgs e)
         {
 
             pnlOnline.Controls.Clear();
-            var lista = ControllerComputador.RetornaUsuariosOnline(int.Parse((string)Session["codWorkspace"]));
+            var lista = ControllerComputador.RetornaUsuariosOnline(new Sessao().RetornaSessaoWorkspace());
             var index = 0;
             foreach (var item in lista)
             {
@@ -46,58 +48,29 @@ namespace EYE.View
                 pnlOnline.Controls.Add(lblUser);
             }
         }
-
-        public int returnSession()
-        {
-            var codWorkspace = (string)Session["codWorkspace"];
-            if (codWorkspace == null || codWorkspace == "0")
-            {
-                return 0;
-            }
-            else
-            {
-                return int.Parse((String)Session["codWorkspace"]);
-            }
-        }
-
-
-        [ScriptMethod, WebMethod]
-        public static int[] BuscaTemaModo()
-        {
-
-            var tema = ControllerTema.BuscaTema(new CadastroSlack().returnSession());
-            var modo = ControllerTema.BuscaModo(new CadastroSlack().returnSession());
-
-            int[] retorno = new int[2];
-            retorno[0] = modo;
-            retorno[1] = tema;
-
-            return retorno;
-        }
-
         [ScriptMethod, WebMethod]
         public static int BuscaTema()
         {
-            return ControllerTema.BuscaTema(new CadastroSlack().returnSession());
+            return ControllerTema.BuscaTema(new Sessao().RetornaSessaoWorkspace());
         }
 
         [ScriptMethod, WebMethod]
         public static int BuscaModo()
         {
-            return ControllerTema.BuscaModo(new CadastroSlack().returnSession());
+            return ControllerTema.BuscaModo(new Sessao().RetornaSessaoWorkspace());
         }
 
         [ScriptMethod, WebMethod]
         public static int BuscaIntensidade()
         {
-            return ControllerTema.BuscaIntensidade(new CadastroSlack().returnSession());
+            return ControllerTema.BuscaIntensidade(new Sessao().RetornaSessaoWorkspace());
         }
 
 
         [ScriptMethod, WebMethod]
         public static bool TrocaTema(int novoTema)
         {
-            bool tema = ControllerTema.TrocaTema(new CadastroSlack().returnSession(), novoTema);
+            bool tema = ControllerTema.TrocaTema(new Sessao().RetornaSessaoWorkspace(), novoTema);
 
             return (tema);
         }
@@ -106,7 +79,7 @@ namespace EYE.View
         [ScriptMethod, WebMethod]
         public static bool TrocaModo(int novoModo)
         {
-            bool modo = ControllerTema.TrocaModo(new CadastroSlack().returnSession(), novoModo);
+            bool modo = ControllerTema.TrocaModo(new Sessao().RetornaSessaoWorkspace(), novoModo);
 
             return (modo);
         }
@@ -115,7 +88,7 @@ namespace EYE.View
         [ScriptMethod, WebMethod]
         public static bool TrocaIntensidade(int novaIntensidade)
         {
-            bool intensidade = ControllerTema.TrocaIntensidade(new CadastroSlack().returnSession(), novaIntensidade);
+            bool intensidade = ControllerTema.TrocaIntensidade(new Sessao().RetornaSessaoWorkspace(), novaIntensidade);
 
             return (intensidade);
         }

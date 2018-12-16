@@ -14,7 +14,9 @@ namespace EYE.View
 	{
 		protected void Page_Load(object sender, EventArgs e)
 		{
-			new Sessao().PageLoadRedirecionaLogin();
+			if (new Sessao().RetornaSessaoWorkspace() == 0)
+				Response.Redirect("./Login.aspx");
+
 			txtDataInicio.Text = DateTime.Now.ToString("dd/M/yyyy", CultureInfo.InvariantCulture);
 			var conteudo = new ControllerTarefa().CarregarPainel(new Sessao().RetornaSessaoWorkspace());
 			pnlConfiguracao.Controls.Add(conteudo);
@@ -43,7 +45,7 @@ namespace EYE.View
         {
 
             pnlOnline.Controls.Clear();
-            var lista = ControllerComputador.RetornaUsuariosOnline(int.Parse((string)Session["codWorkspace"]));
+            var lista = ControllerComputador.RetornaUsuariosOnline(new Sessao().RetornaSessaoWorkspace());
             var index = 0;
             foreach (var item in lista)
             {
@@ -56,25 +58,13 @@ namespace EYE.View
             }
         }
 
-        public int returnSession()
-        {
-            var codWorkspace = (string)Session["codWorkspace"];
-            if (codWorkspace == null || codWorkspace == "0")
-            {
-                return 0;
-            }
-            else
-            {
-                return int.Parse((String)Session["codWorkspace"]);
-            }
-        }
 
         [ScriptMethod, WebMethod]
         public static int[] BuscaTemaModo()
         {
 
-            var tema = ControllerTema.BuscaTema(new CadastroTarefas().returnSession());
-            var modo = ControllerTema.BuscaModo(new CadastroTarefas().returnSession());
+            var tema = ControllerTema.BuscaTema(new Sessao().RetornaSessaoWorkspace());
+            var modo = ControllerTema.BuscaModo(new Sessao().RetornaSessaoWorkspace());
 
             int[] retorno = new int[2];
             retorno[0] = modo;
@@ -86,26 +76,26 @@ namespace EYE.View
         [ScriptMethod, WebMethod]
         public static int BuscaTema()
         {
-            return ControllerTema.BuscaTema(new CadastroTarefas().returnSession());
+            return ControllerTema.BuscaTema(new Sessao().RetornaSessaoWorkspace());
         }
 
         [ScriptMethod, WebMethod]
         public static int BuscaModo()
         {
-            return ControllerTema.BuscaModo(new CadastroTarefas().returnSession());
+            return ControllerTema.BuscaModo(new Sessao().RetornaSessaoWorkspace());
         }
 
         [ScriptMethod, WebMethod]
         public static int BuscaIntensidade()
         {
-            return ControllerTema.BuscaIntensidade(new CadastroTarefas().returnSession());
+            return ControllerTema.BuscaIntensidade(new Sessao().RetornaSessaoWorkspace());
         }
 
 
         [ScriptMethod, WebMethod]
         public static bool TrocaTema(int novoTema)
         {
-            bool tema = ControllerTema.TrocaTema(new CadastroTarefas().returnSession(), novoTema);
+            bool tema = ControllerTema.TrocaTema(new Sessao().RetornaSessaoWorkspace(), novoTema);
 
             return (tema);
         }
@@ -114,7 +104,7 @@ namespace EYE.View
         [ScriptMethod, WebMethod]
         public static bool TrocaModo(int novoModo)
         {
-            bool modo = ControllerTema.TrocaModo(new CadastroTarefas().returnSession(), novoModo);
+            bool modo = ControllerTema.TrocaModo(new Sessao().RetornaSessaoWorkspace(), novoModo);
 
             return (modo);
         }
@@ -123,7 +113,7 @@ namespace EYE.View
         [ScriptMethod, WebMethod]
         public static bool TrocaIntensidade(int novaIntensidade)
         {
-            bool intensidade = ControllerTema.TrocaIntensidade(new CadastroTarefas().returnSession(), novaIntensidade);
+            bool intensidade = ControllerTema.TrocaIntensidade(new Sessao().RetornaSessaoWorkspace(), novaIntensidade);
 
             return (intensidade);
         }

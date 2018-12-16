@@ -243,17 +243,9 @@
                 <div class="campos">
 
                     <div class="tituloCampo">
-                        Você precisa acessar <a href="https://api.slack.com/"><i>ESSE LINK</i></a> e, após cadastrar seu workspace, nos dizer a URL:
+                        Você precisa acessar <a href="https://api.slack.com/"><i>ESSE LINK</i></a> e, após cadastrar seu bot, nos dizer a URL:
                     </div>
                     <asp:TextBox ID="txtUrl" runat="server" Placeholder="(ex: https://hooks.slack.com/services/T0/B0/X)"></asp:TextBox>
-
-                </div>
-                <div class="campos">
-
-                    <div class="tituloCampo">
-                        Me diga o canal:
-                    </div>
-                    <asp:TextBox ID="txtCanal" runat="server" Placeholder="(ex: #random)"></asp:TextBox>
 
                 </div>
 

@@ -6,7 +6,7 @@ namespace EYE.Controller
 {
 	public class ControllerUsuario
 	{
-		public bool Cadastrar(TextBox txtUsername, TextBox txtNome, TextBox txtEmail, TextBox txtSenha, TextBox txtDataNascimento, DropDownList ddlSexo, string codWorkspace, Label lblMensagem)
+		public bool Cadastrar(TextBox txtUsername, TextBox txtNome, TextBox txtEmail, TextBox txtSenha, TextBox txtDataNascimento, DropDownList ddlSexo, int codWorkspace, Label lblMensagem)
 		{
 			if (!Validacao.StringVazia(txtUsername, txtNome, txtEmail, txtSenha, txtDataNascimento))
 			{
@@ -36,7 +36,7 @@ namespace EYE.Controller
 			usuario.Senha = txtSenha.Text;
 			usuario.DataNascimento = txtDataNascimento.Text;
 			usuario.Sexo = ddlSexo.SelectedValue;
-			usuario.CodWorkspace = int.Parse(codWorkspace);
+			usuario.CodWorkspace = codWorkspace;
 			usuario.Salt = Criptografia.GerarSalt();
 			usuario.Senha = Criptografia.GerarSenhaHash(usuario.Senha, usuario.Salt);
 
