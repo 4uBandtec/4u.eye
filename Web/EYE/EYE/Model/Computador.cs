@@ -46,9 +46,10 @@ namespace EYE.Model
 			var segundo = int.Parse(horas[2]);
 			var minuto = int.Parse(horas[1]);
 			var hora = int.Parse(horas[0]);
+			
 
 			var dataBanco = new DateTime(ano, mes, dia, hora, minuto, segundo);
-			var dataAtrasada = DateTime.Now.AddMinutes(-5);
+			var dataAtrasada = TimeZoneInfo.ConvertTime(DateTime.Now.AddMinutes(-1), TimeZoneInfo.FindSystemTimeZoneById("E. South America Standard Time"));
 			return dataBanco > dataAtrasada;
 		}
 	}
