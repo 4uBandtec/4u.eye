@@ -19,12 +19,14 @@
     <script type="text/javascript" src="../Controller/Dashboard.js"></script>
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
     <script type="text/javascript" src="../Controller/BreakSession.js"></script>
+    <script type="text/javascript" src="../Controller/download.js"></script>
 
 </head>
 <body onload="iniciarEstilo(), GetUsuariosWorkspace()">
     <form id="formDashboard" runat="server">
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />
+
 
         <div id="blockArea" onclick="hidePopup()">
         </div>
@@ -113,7 +115,7 @@
 
 
             <!--Coloca o link do app no lugar desse de baixo-->
-            <a href="https://4ueye.file.core.windows.net/eye/4uEye.jar?sv=2018-03-28&ss=bqtf&srt=sco&sp=rwdlacup&se=2018-12-13T05:23:46Z&sig=XK1DC3XUOCzi29g4cDi5sKu48TvDqYJMFkod%2BREsA7g%3D&_=1544649839918">
+            <a onclick="baixar()">
                 <div class="itemMenu">
 
                     <div class="itemIcon">

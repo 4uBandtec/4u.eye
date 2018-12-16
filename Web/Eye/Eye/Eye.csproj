@@ -82,6 +82,7 @@
     <Content Include="Controller\CamposFormulario.js" />
     <Content Include="Controller\Dashboard.js" />
     <Content Include="Controller\DashStyle.js" />
+    <Content Include="Controller\download.js" />
     <Content Include="Controller\Tarefas.js" />
     <Content Include="Global.asax" />
     <Content Include="Model\EYE.css" />

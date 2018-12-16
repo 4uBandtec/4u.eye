@@ -16,6 +16,7 @@
     <script type="text/javascript" src="../Controller/BreakSession.js"></script>
 
     <script type="text/javascript" src="../Controller/Tarefas.js"></script>
+    <script type="text/javascript" src="../Controller/download.js"></script>
 </head>
 <body onload="iniciarEstilo(), iniciarPainelTarefas()">
     <form id="form1" runat="server">
@@ -24,10 +25,72 @@
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />
 
-        <!--MENU 
-            precisa ter o script dashStyle.js e 
-            função "iniciarEstilo" no onLoad do body-->
-        <!--MENU-->
+
+        <div id="blockArea" onclick="hidePopup()">
+        </div>
+        <div id="popup">
+
+            <div id="demoCoresBW"></div>
+            <div id="demoCores"></div>
+            <div class="areaConfig">
+
+                <div class="slidecontainer">
+                    Intensidade das cores:
+                    <input type="range" min="1" max="100" value="100" class="slider" id="slideCor" oninput="grayscale()" onmouseup="mudarIntensidade()" />
+                </div>
+
+                <div class="areaTextoSwitch">
+
+
+                    <div class="radioTema">
+                        Modo Claro
+                    </div>
+                    <div class="switch__container">
+                        <input id="switch-tema" class="switch switch--shadow" type="checkbox" onchange="mudarModo()" />
+                        <label for="switch-tema"></label>
+                    </div>
+
+
+                </div>
+                <div class="areaTextoSwitch">
+
+                    <div class="radioTema">
+                        Escolha o tema
+                    </div>
+
+                    <div class="radioTema">
+                        <input type="radio" name="tema" id="tema0" value="0" checked="checked" onchange="mudarTema()" />
+                        <label for="tema0">Padrão</label>
+                    </div>
+
+
+                    <div class="radioTema">
+                        <input type="radio" name="tema" id="tema1" value="1" onchange="mudarTema()" />
+                        <label for="tema1">Godez</label>
+                    </div>
+
+                    <div class="radioTema">
+                        <input type="radio" name="tema" id="tema2" value="2" onchange="mudarTema()" />
+                        <label for="tema2">Martins</label>
+                    </div>
+
+                    <div class="radioTema">
+                        <input type="radio" name="tema" id="tema3" value="3" onchange="mudarTema()" />
+                        <label for="tema3">Sayuri</label>
+                    </div>
+
+                    <div class="radioTema">
+                        <input type="radio" name="tema" id="tema4" value="4" onchange="mudarTema()" />
+                        <label for="tema4">Volpe</label>
+                    </div>
+                </div>
+
+
+            </div>
+
+
+        </div>
+
         <!--MENU-->
         <div id="sideMenu" onmousemove="getCoordenadas()">
             <a href="Dashboard.aspx">
@@ -49,8 +112,8 @@
             </a>
 
 
-
-            <a href="https://4ueye.file.core.windows.net/eye/4uEye.jar?sv=2018-03-28&ss=bqtf&srt=sco&sp=rwdlacup&se=2018-12-13T05:23:46Z&sig=XK1DC3XUOCzi29g4cDi5sKu48TvDqYJMFkod%2BREsA7g%3D&_=1544649839918">
+            <!--Coloca o link do app no lugar desse de baixo-->
+            <a onclick="baixar()">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
@@ -118,7 +181,7 @@
             </a>
 
 
-            <a onclick="mudarTema()">
+            <a onclick="displayPopup()">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
@@ -127,7 +190,7 @@
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Trocar Cores do Tema
+                        Personalizar Cores
                
                     </div>
 
@@ -149,7 +212,11 @@
                 </div>
             </a>
 
+
+
+
         </div>
+
 
         <!--/MENU-->
 
@@ -190,7 +257,7 @@
                     <div class="tituloCampo">
                         Dê um título para ela:
                     </div>
-                    <asp:TextBox ID="txtNome" Placeholder="Qual é a tarefa?" runat="server"  MaxLength="50"></asp:TextBox>
+                    <asp:TextBox ID="txtNome" Placeholder="Qual é a tarefa?" runat="server" MaxLength="50"></asp:TextBox>
                 </div>
                 <div class="campos">
 
@@ -212,6 +279,27 @@
                         Até quando ela pode ser FINALIZADA?
                     </div>
                     <asp:TextBox ID="txtDataFim" Placeholder="Até quando?" runat="server" MaxLength="10" onkeyup="mascaraData('txtDataFim')"></asp:TextBox>
+                </div>
+
+                <div class="campos">
+
+                    <div class="tituloCampo">
+                        Ativar envio de notificações sobre a tarefa?
+                    </div>
+                    
+                    <div class="switch__container">
+                        <div class="tituloSwitchNotificacao">Notificar Equipe</div>
+                        <input id="cbNotificacao" class="switch switch--shadow" type="checkbox" checked="checked" />
+                        <label for="cbNotificacao" class="lblNotificacao"></label>
+                    </div>
+                    
+                    <div class="switch__container">
+                        
+                        <div class="tituloSwitchNotificacao">Notificar Usuarios</div>
+                        <input id="cbNotificacaoUser" class="switch switch--shadow" type="checkbox" checked="checked" />
+                        <label for="cbNotificacaoUser" class="lblNotificacao"></label>
+                    </div>
+
                 </div>
 
 

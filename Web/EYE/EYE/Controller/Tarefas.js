@@ -168,10 +168,12 @@ function cadastrarClick() {
     var txtDataInicio = document.getElementById('txtDataInicio').value;
     var txtDataFim = document.getElementById('txtDataFim').value;
     var lblMensagem = document.getElementById('lblMensagem').textContent;
+    var notificacaoEquipe = document.getElementById('cbNotificacao').checked;
+    var notificacaoUsuario = document.getElementById('cbNotificacaoUser').checked;
 
-    console.log(txtNome, txtDescricao, txtDataInicio, txtDataFim, lblMensagem);
+    console.log(txtNome, txtDescricao, txtDataInicio, txtDataFim, lblMensagem, notificacaoEquipe, notificacaoUsuario);
 
-    PageMethods.CadastraTarefa(txtNome, txtDescricao, txtDataInicio, txtDataFim, lblMensagem, listaCodUsersTarefa, listaProcTarefa, listaTempoTarefa, onSuccess, onError);
+    PageMethods.CadastraTarefa(txtNome, txtDescricao, txtDataInicio, txtDataFim, lblMensagem, listaCodUsersTarefa, listaProcTarefa, listaTempoTarefa, notificacaoEquipe, notificacaoUsuario, onSuccess, onError);
     
 }
 

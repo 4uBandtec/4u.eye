@@ -60,16 +60,64 @@ namespace EYE.View
             }
         }
 
+
+        [ScriptMethod, WebMethod]
+        public static int[] BuscaTemaModo()
+        {
+
+            var tema = ControllerTema.BuscaTema(new CadastroSlack().returnSession());
+            var modo = ControllerTema.BuscaModo(new CadastroSlack().returnSession());
+
+            int[] retorno = new int[2];
+            retorno[0] = modo;
+            retorno[1] = tema;
+
+            return retorno;
+        }
+
         [ScriptMethod, WebMethod]
         public static int BuscaTema()
+        {
+            return ControllerTema.BuscaTema(new CadastroSlack().returnSession());
+        }
+
+        [ScriptMethod, WebMethod]
+        public static int BuscaModo()
         {
             return ControllerTema.BuscaModo(new CadastroSlack().returnSession());
         }
 
         [ScriptMethod, WebMethod]
+        public static int BuscaIntensidade()
+        {
+            return ControllerTema.BuscaIntensidade(new CadastroSlack().returnSession());
+        }
+
+
+        [ScriptMethod, WebMethod]
         public static bool TrocaTema(int novoTema)
         {
-            return ControllerTema.TrocaModo(new CadastroSlack().returnSession(), novoTema);
+            bool tema = ControllerTema.TrocaTema(new CadastroSlack().returnSession(), novoTema);
+
+            return (tema);
+        }
+
+
+        [ScriptMethod, WebMethod]
+        public static bool TrocaModo(int novoModo)
+        {
+            bool modo = ControllerTema.TrocaModo(new CadastroSlack().returnSession(), novoModo);
+
+            return (modo);
+        }
+
+
+        [ScriptMethod, WebMethod]
+        public static bool TrocaIntensidade(int novaIntensidade)
+        {
+            bool intensidade = ControllerTema.TrocaIntensidade(new CadastroSlack().returnSession(), novaIntensidade);
+
+            return (intensidade);
         }
     }
 }

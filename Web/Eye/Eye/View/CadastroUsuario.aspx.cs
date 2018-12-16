@@ -68,16 +68,64 @@ namespace Eye.View
             }
         }
 
+
+        [ScriptMethod, WebMethod]
+        public static int[] BuscaTemaModo()
+        {
+
+            var tema = ControllerTema.BuscaTema(new CadastroUsuario().returnSession());
+            var modo = ControllerTema.BuscaModo(new CadastroUsuario().returnSession());
+
+            int[] retorno = new int[2];
+            retorno[0] = modo;
+            retorno[1] = tema;
+
+            return retorno;
+        }
+
         [ScriptMethod, WebMethod]
         public static int BuscaTema()
+        {
+            return ControllerTema.BuscaTema(new CadastroUsuario().returnSession());
+        }
+
+        [ScriptMethod, WebMethod]
+        public static int BuscaModo()
         {
             return ControllerTema.BuscaModo(new CadastroUsuario().returnSession());
         }
 
         [ScriptMethod, WebMethod]
+        public static int BuscaIntensidade()
+        {
+            return ControllerTema.BuscaIntensidade(new CadastroUsuario().returnSession());
+        }
+
+
+        [ScriptMethod, WebMethod]
         public static bool TrocaTema(int novoTema)
         {
-            return ControllerTema.TrocaModo(new CadastroUsuario().returnSession(), novoTema);
+            bool tema = ControllerTema.TrocaTema(new CadastroUsuario().returnSession(), novoTema);
+
+            return (tema);
+        }
+
+
+        [ScriptMethod, WebMethod]
+        public static bool TrocaModo(int novoModo)
+        {
+            bool modo = ControllerTema.TrocaModo(new CadastroUsuario().returnSession(), novoModo);
+
+            return (modo);
+        }
+
+
+        [ScriptMethod, WebMethod]
+        public static bool TrocaIntensidade(int novaIntensidade)
+        {
+            bool intensidade = ControllerTema.TrocaIntensidade(new CadastroUsuario().returnSession(), novaIntensidade);
+
+            return (intensidade);
         }
     }
 }

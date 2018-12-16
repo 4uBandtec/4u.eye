@@ -74,14 +74,14 @@ function inserirModo(novoModo) {
     var html = document.getElementsByTagName('html')[0];
     var icones = document.getElementsByClassName("itemIcon");
     if (novoModo == 1) {
-        html.style.setProperty("--bg-color", "rgb(223,231,240)");
+        html.style.setProperty("--bg-color", "rgb(163,168,168)");
         html.style.setProperty("--txt-color", "rgb(28,23,20)");
-        html.style.setProperty("--darker-bg-color", "rgb(180,197,206)");
-        html.style.setProperty("--lighter-bg-color", "rgb(217,227,237)");
-        html.style.setProperty("--to-invisible", "rgba(215,225,230, 0)");
-        html.style.setProperty("--black-color-a", "rgba(215,225,235,0.5)");
-        html.style.setProperty("--black-color-a9", "rgba(200,210,215,0.9)");
-        html.style.setProperty("--black-color", "rgba(210,210,210)");
+        html.style.setProperty("--darker-bg-color", "rgb(190,195,197)");
+        html.style.setProperty("--lighter-bg-color", "rgb(171,174,161)");
+        html.style.setProperty("--to-invisible", "rgba(205,215,220, 0)");
+        html.style.setProperty("--black-color-a", "rgba(190,195,197,0.5)");
+        html.style.setProperty("--black-color-a9", "rgba(190,195,197,0.9)");
+        html.style.setProperty("--black-color", "rgba(190,195,197)");
         for (i = 0; i < icones.length; i++) {
             icones[i].style.filter = "invert(100%)";
         }
