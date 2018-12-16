@@ -127,13 +127,11 @@ public class TelaLogin extends JFrame implements ActionListener {
 
                 if (new ControllerUsuario().Logar(txtUsername.getText(), txtSenha.getPassword().toString())) {
                     dispose();
-                    LogMensagem.GravarLog("Login Identificado");
+                    LogMensagem.GravarLog("Login Identificado Usuario " + txtUsername.getText());
                     new TelaCaptacao(new ControllerUsuario().getCodUsuario(txtUsername.getText()));
                 }
             }
-        } catch (InterruptedException | SQLException ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (IOException ex) {
+        } catch (InterruptedException | SQLException | IOException ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

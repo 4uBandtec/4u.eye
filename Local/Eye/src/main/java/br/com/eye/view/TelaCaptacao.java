@@ -2,7 +2,7 @@ package br.com.eye.view;
 
 import br.com.eye.controller.ControllerLeituraComputador;
 import br.com.eye.controller.ControllerComputador;
-import br.com.eye.model.LeituraAplicativo;
+import br.com.eye.model.LeituraProcesso;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;

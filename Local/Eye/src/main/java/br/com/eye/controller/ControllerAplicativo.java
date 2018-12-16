@@ -1,32 +1,32 @@
 package br.com.eye.controller;
 
-import br.com.eye.model.LeituraAplicativo;
-import br.com.eye.model.dao.StatementAplicativo;
+import br.com.eye.model.LeituraProcesso;
+import br.com.eye.model.dao.StatementProcesso;
 import java.sql.SQLException;
 import java.util.List;
 
 public class ControllerAplicativo {
 
-    public static List<LeituraAplicativo> setLeituraAplicativo(int codUsuario, List<LeituraAplicativo> leituras) throws SQLException {
-       leituras = LeituraAplicativo.getProcesso(leituras);
-        for (LeituraAplicativo leitura : leituras) {
-            int codProcesso = StatementAplicativo.getProcesso(leitura.getNomeNativo());
+    public static List<LeituraProcesso> setLeituraAplicativo(int codUsuario, List<LeituraProcesso> leituras) throws SQLException {
+       leituras = LeituraProcesso.getProcesso(leituras);
+        for (LeituraProcesso leitura : leituras) {
+            int codProcesso = StatementProcesso.getProcesso(leitura.getNomeNativo());
             if (codProcesso == 0) {
-                StatementAplicativo.setProcessoNovo(leitura.getNomeNativo());
-                codProcesso = StatementAplicativo.getProcesso(leitura.getNomeNativo());
+                StatementProcesso.setProcessoNovo(leitura.getNomeNativo());
+                codProcesso = StatementProcesso.getProcesso(leitura.getNomeNativo());
             }
-            StatementAplicativo.setLeituraProcesso(codUsuario, codProcesso);
-            int codPerfil = StatementAplicativo.verificaPerfilCadastrado(codUsuario, codProcesso);
+            StatementProcesso.setLeituraProcesso(codUsuario, codProcesso);
+            int codPerfil = StatementProcesso.verificaPerfilCadastrado(codUsuario, codProcesso);
             if (codPerfil == 0) {
-                StatementAplicativo.setPerfilProcesso(codProcesso, codUsuario);
+                StatementProcesso.setPerfilProcesso(codProcesso, codUsuario);
             } else if (codPerfil != 5) {
-                if (!StatementAplicativo.verificaUsuarioExistente(codUsuario)) {
-                    StatementAplicativo.insereUsuario(codUsuario);
+                if (!StatementProcesso.verificaUsuarioExistente(codUsuario)) {
+                    StatementProcesso.insereUsuario(codUsuario);
                 }
-                String campoPerfil = LeituraAplicativo.retornaNomeCampo(codPerfil);
-                int minutos = StatementAplicativo.getMinutosAcumulados(codUsuario, campoPerfil);
+                String campoPerfil = LeituraProcesso.retornaNomeCampo(codPerfil);
+                int minutos = StatementProcesso.getMinutosAcumulados(codUsuario, campoPerfil);
                 minutos = (int) (minutos + leitura.getTempo() / 60);
-                StatementAplicativo.acumulaMinutos(codUsuario, minutos, campoPerfil);
+                StatementProcesso.acumulaMinutos(codUsuario, minutos, campoPerfil);
             }
         }     
         return leituras;

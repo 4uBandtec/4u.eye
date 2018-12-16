@@ -1,5 +1,6 @@
 package br.com.eye.controller;
 
+import br.com.eye.model.LogMensagem;
 import br.com.eye.model.SlackMensagem;
 import br.com.eye.model.dao.StatementNotificacao;
 import br.com.eye.model.dao.StatementSlack;
@@ -16,6 +17,7 @@ public class ControllerNotificacao {
                 SlackMensagem.EnviaMensagem(slack, mensagem);
             }
         }
+        LogMensagem.GravarLog("Notificação enviada para o Slack");
     }
 
 }
