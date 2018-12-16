@@ -406,3 +406,291 @@
 [12/12/2018 19:12:33] Leitura Armazenada
 [12/12/2018 19:12:39] Leitura Armazenada
 [12/12/2018 19:12:45] Leitura Armazenada
+[16/12/2018 18:46:09] Workspace Identificado a
+[16/12/2018 18:46:13] Login Identificado Usuario a
+[16/12/2018 18:47:08] Workspace Identificado a
+[16/12/2018 18:47:11] Login Identificado Usuario a
+[16/12/2018 18:47:18] Leitura Armazenada
+[16/12/2018 18:47:26] Leitura Armazenada
+[16/12/2018 18:47:33] Leitura Armazenada
+[16/12/2018 18:47:41] Leitura Armazenada
+[16/12/2018 18:47:49] Leitura Armazenada
+[16/12/2018 18:47:56] Leitura Armazenada
+[16/12/2018 18:48:04] Leitura Armazenada
+[16/12/2018 18:48:13] Leitura Armazenada
+[16/12/2018 18:48:21] Leitura Armazenada
+[16/12/2018 18:48:29] Leitura Armazenada
+[16/12/2018 18:48:36] Leitura Armazenada
+[16/12/2018 18:48:44] Leitura Armazenada
+[16/12/2018 18:48:50] Leitura Armazenada
+[16/12/2018 18:48:57] Leitura Armazenada
+[16/12/2018 18:49:05] Leitura Armazenada
+[16/12/2018 18:49:12] Leitura Armazenada
+[16/12/2018 18:49:20] Leitura Armazenada
+[16/12/2018 18:49:27] Leitura Armazenada
+[16/12/2018 18:49:35] Leitura Armazenada
+[16/12/2018 18:49:42] Leitura Armazenada
+[16/12/2018 18:49:50] Leitura Armazenada
+[16/12/2018 18:49:57] Leitura Armazenada
+[16/12/2018 18:50:05] Leitura Armazenada
+[16/12/2018 18:50:13] Leitura Armazenada
+[16/12/2018 18:50:19] Leitura Armazenada
+[16/12/2018 18:50:27] Leitura Armazenada
+[16/12/2018 18:50:34] Leitura Armazenada
+[16/12/2018 18:59:44] Workspace Identificado a
+[16/12/2018 19:03:34] Login Identificado Usuario a
+[16/12/2018 19:03:41] Leitura Armazenada
+[16/12/2018 19:03:49] Leitura Armazenada
+[16/12/2018 19:03:56] Leitura Armazenada
+[16/12/2018 19:04:03] Leitura Armazenada
+[16/12/2018 19:04:11] Leitura Armazenada
+[16/12/2018 19:04:18] Leitura Armazenada
+[16/12/2018 19:04:26] Leitura Armazenada
+[16/12/2018 19:04:34] Leitura Armazenada
+[16/12/2018 19:04:41] Leitura Armazenada
+[16/12/2018 19:04:49] Leitura Armazenada
+[16/12/2018 19:04:57] Leitura Armazenada
+[16/12/2018 19:05:04] Leitura Armazenada
+[16/12/2018 19:05:05] Notificação enviada para o Slack
+[16/12/2018 19:05:10] Leitura Armazenada
+[16/12/2018 19:05:18] Leitura Armazenada
+[16/12/2018 19:05:25] Leitura Armazenada
+[16/12/2018 19:05:33] Leitura Armazenada
+[16/12/2018 19:05:41] Leitura Armazenada
+[16/12/2018 19:05:49] Leitura Armazenada
+[16/12/2018 19:05:57] Leitura Armazenada
+[16/12/2018 19:06:05] Leitura Armazenada
+[16/12/2018 19:06:09] Workspace Identificado a
+[16/12/2018 19:06:12] Login Identificado Usuario a
+[16/12/2018 19:06:13] Leitura Armazenada
+[16/12/2018 19:06:21] Leitura Armazenada
+[16/12/2018 19:06:21] Leitura Armazenada
+[16/12/2018 19:06:29] Leitura Armazenada
+[16/12/2018 19:06:29] Leitura Armazenada
+[16/12/2018 19:06:37] Leitura Armazenada
+[16/12/2018 19:06:37] Leitura Armazenada
+[16/12/2018 19:07:04] Workspace Identificado a
+[16/12/2018 19:07:07] Login Identificado Usuario a
+[16/12/2018 19:07:16] Leitura Armazenada
+[16/12/2018 19:07:24] Leitura Armazenada
+[16/12/2018 19:07:32] Leitura Armazenada
+[16/12/2018 19:07:39] Leitura Armazenada
+[16/12/2018 19:07:46] Leitura Armazenada
+[16/12/2018 19:07:54] Leitura Armazenada
+[16/12/2018 19:08:02] Leitura Armazenada
+[16/12/2018 19:08:10] Leitura Armazenada
+[16/12/2018 19:08:17] Leitura Armazenada
+[16/12/2018 19:08:25] Leitura Armazenada
+[16/12/2018 19:08:32] Leitura Armazenada
+[16/12/2018 19:08:40] Leitura Armazenada
+[16/12/2018 19:08:41] Notificação enviada para o Slack
+[16/12/2018 19:08:59] Leitura Armazenada
+[16/12/2018 19:09:06] Leitura Armazenada
+[16/12/2018 19:09:14] Leitura Armazenada
+[16/12/2018 19:09:21] Leitura Armazenada
+[16/12/2018 19:09:29] Leitura Armazenada
+[16/12/2018 19:09:36] Leitura Armazenada
+[16/12/2018 19:09:49] Workspace Identificado a
+[16/12/2018 19:09:53] Login Identificado Usuario a
+[16/12/2018 19:10:01] Leitura Armazenada
+[16/12/2018 19:10:09] Leitura Armazenada
+[16/12/2018 19:10:16] Leitura Armazenada
+[16/12/2018 19:10:24] Leitura Armazenada
+[16/12/2018 19:10:31] Leitura Armazenada
+[16/12/2018 19:10:39] Leitura Armazenada
+[16/12/2018 19:10:47] Leitura Armazenada
+[16/12/2018 19:10:54] Leitura Armazenada
+[16/12/2018 19:11:01] Leitura Armazenada
+[16/12/2018 19:11:09] Leitura Armazenada
+[16/12/2018 19:11:17] Leitura Armazenada
+[16/12/2018 19:11:24] Leitura Armazenada
+[16/12/2018 19:11:25] Notificação enviada para o Slack
+[16/12/2018 19:11:47] Leitura Armazenada
+[16/12/2018 19:11:54] Leitura Armazenada
+[16/12/2018 19:12:02] Leitura Armazenada
+[16/12/2018 19:12:09] Leitura Armazenada
+[16/12/2018 19:12:17] Leitura Armazenada
+[16/12/2018 19:12:25] Leitura Armazenada
+[16/12/2018 19:12:32] Leitura Armazenada
+[16/12/2018 19:12:40] Leitura Armazenada
+[16/12/2018 19:12:51] Leitura Armazenada
+[16/12/2018 19:12:58] Leitura Armazenada
+[16/12/2018 19:13:05] Leitura Armazenada
+[16/12/2018 19:13:13] Leitura Armazenada
+[16/12/2018 19:13:13] Notificação enviada para o Slack
+[16/12/2018 19:14:03] Leitura Armazenada
+[16/12/2018 19:14:11] Leitura Armazenada
+[16/12/2018 19:14:19] Leitura Armazenada
+[16/12/2018 19:14:28] Leitura Armazenada
+[16/12/2018 19:14:36] Leitura Armazenada
+[16/12/2018 19:14:44] Leitura Armazenada
+[16/12/2018 19:14:53] Leitura Armazenada
+[16/12/2018 19:15:00] Leitura Armazenada
+[16/12/2018 19:15:07] Leitura Armazenada
+[16/12/2018 19:15:14] Leitura Armazenada
+[16/12/2018 19:15:21] Leitura Armazenada
+[16/12/2018 19:15:28] Leitura Armazenada
+[16/12/2018 19:15:28] Notificação enviada para o Slack
+[16/12/2018 19:15:47] Leitura Armazenada
+[16/12/2018 19:15:54] Leitura Armazenada
+[16/12/2018 19:16:00] Leitura Armazenada
+[16/12/2018 19:16:07] Leitura Armazenada
+[16/12/2018 19:16:14] Leitura Armazenada
+[16/12/2018 19:16:21] Leitura Armazenada
+[16/12/2018 19:16:46] Workspace Identificado a
+[16/12/2018 19:16:48] Login Identificado Usuario a
+[16/12/2018 19:16:53] Leitura Armazenada
+[16/12/2018 19:17:00] Leitura Armazenada
+[16/12/2018 19:17:07] Leitura Armazenada
+[16/12/2018 19:17:13] Leitura Armazenada
+[16/12/2018 19:17:20] Leitura Armazenada
+[16/12/2018 19:17:28] Leitura Armazenada
+[16/12/2018 19:17:34] Leitura Armazenada
+[16/12/2018 19:17:41] Leitura Armazenada
+[16/12/2018 19:17:48] Leitura Armazenada
+[16/12/2018 19:17:54] Leitura Armazenada
+[16/12/2018 19:18:01] Leitura Armazenada
+[16/12/2018 19:18:08] Leitura Armazenada
+[16/12/2018 19:18:09] Notificação enviada para o Slack
+[16/12/2018 19:18:12] Leitura Armazenada
+[16/12/2018 19:18:19] Leitura Armazenada
+[16/12/2018 19:18:25] Leitura Armazenada
+[16/12/2018 19:18:32] Leitura Armazenada
+[16/12/2018 19:18:39] Leitura Armazenada
+[16/12/2018 19:18:46] Leitura Armazenada
+[16/12/2018 19:18:52] Leitura Armazenada
+[16/12/2018 19:18:59] Leitura Armazenada
+[16/12/2018 19:19:06] Leitura Armazenada
+[16/12/2018 19:19:13] Leitura Armazenada
+[16/12/2018 19:19:19] Leitura Armazenada
+[16/12/2018 19:19:26] Leitura Armazenada
+[16/12/2018 19:19:27] Notificação enviada para o Slack
+[16/12/2018 19:19:30] Leitura Armazenada
+[16/12/2018 19:19:36] Leitura Armazenada
+[16/12/2018 19:19:43] Leitura Armazenada
+[16/12/2018 19:19:50] Leitura Armazenada
+[16/12/2018 19:19:56] Leitura Armazenada
+[16/12/2018 19:20:03] Leitura Armazenada
+[16/12/2018 19:20:10] Leitura Armazenada
+[16/12/2018 19:20:17] Leitura Armazenada
+[16/12/2018 19:20:24] Leitura Armazenada
+[16/12/2018 19:20:31] Leitura Armazenada
+[16/12/2018 19:20:37] Leitura Armazenada
+[16/12/2018 19:20:44] Leitura Armazenada
+[16/12/2018 19:20:45] Notificação enviada para o Slack
+[16/12/2018 19:20:48] Leitura Armazenada
+[16/12/2018 19:20:54] Leitura Armazenada
+[16/12/2018 19:23:14] Workspace Identificado a
+[16/12/2018 19:23:18] Login Identificado Usuario a
+[16/12/2018 19:23:23] Leitura Armazenada
+[16/12/2018 19:23:30] Leitura Armazenada
+[16/12/2018 19:23:37] Leitura Armazenada
+[16/12/2018 19:23:44] Leitura Armazenada
+[16/12/2018 19:23:52] Leitura Armazenada
+[16/12/2018 19:24:00] Leitura Armazenada
+[16/12/2018 19:24:06] Leitura Armazenada
+[16/12/2018 19:24:13] Leitura Armazenada
+[16/12/2018 19:24:20] Leitura Armazenada
+[16/12/2018 19:24:26] Leitura Armazenada
+[16/12/2018 19:24:33] Leitura Armazenada
+[16/12/2018 19:24:40] Leitura Armazenada
+[16/12/2018 19:24:40] Notificação enviada para o Slack
+[16/12/2018 19:25:08] Leitura Armazenada
+[16/12/2018 19:25:15] Leitura Armazenada
+[16/12/2018 19:25:21] Leitura Armazenada
+[16/12/2018 19:25:28] Leitura Armazenada
+[16/12/2018 19:25:35] Leitura Armazenada
+[16/12/2018 19:25:42] Leitura Armazenada
+[16/12/2018 19:25:49] Leitura Armazenada
+[16/12/2018 19:25:55] Leitura Armazenada
+[16/12/2018 19:26:02] Leitura Armazenada
+[16/12/2018 19:26:09] Leitura Armazenada
+[16/12/2018 19:26:15] Leitura Armazenada
+[16/12/2018 19:26:22] Leitura Armazenada
+[16/12/2018 19:26:23] Notificação enviada para o Slack
+[16/12/2018 19:30:38] Workspace Identificado a
+[16/12/2018 19:30:53] Workspace Identificado a
+[16/12/2018 19:30:56] Login Identificado Usuario a
+[16/12/2018 19:31:02] Leitura Armazenada
+[16/12/2018 19:31:11] Leitura Armazenada
+[16/12/2018 19:31:18] Leitura Armazenada
+[16/12/2018 19:31:25] Leitura Armazenada
+[16/12/2018 19:31:32] Leitura Armazenada
+[16/12/2018 19:31:39] Leitura Armazenada
+[16/12/2018 19:31:45] Leitura Armazenada
+[16/12/2018 19:31:52] Leitura Armazenada
+[16/12/2018 19:31:59] Leitura Armazenada
+[16/12/2018 19:32:06] Leitura Armazenada
+[16/12/2018 19:32:12] Leitura Armazenada
+[16/12/2018 19:32:19] Leitura Armazenada
+[16/12/2018 19:32:20] Notificação enviada para o Slack
+[16/12/2018 19:33:04] Leitura Armazenada
+[16/12/2018 19:33:11] Leitura Armazenada
+[16/12/2018 19:33:18] Leitura Armazenada
+[16/12/2018 19:33:24] Leitura Armazenada
+[16/12/2018 19:33:31] Leitura Armazenada
+[16/12/2018 19:33:38] Leitura Armazenada
+[16/12/2018 19:33:44] Leitura Armazenada
+[16/12/2018 19:33:51] Leitura Armazenada
+[16/12/2018 19:33:58] Leitura Armazenada
+[16/12/2018 19:34:04] Leitura Armazenada
+[16/12/2018 19:34:11] Leitura Armazenada
+[16/12/2018 19:34:18] Leitura Armazenada
+[16/12/2018 19:34:19] Notificação enviada para o Slack
+[16/12/2018 19:37:12] Workspace Identificado a
+[16/12/2018 19:37:16] Login Identificado Usuario a
+[16/12/2018 19:37:22] Leitura Armazenada
+[16/12/2018 19:37:28] Leitura Armazenada
+[16/12/2018 19:37:35] Leitura Armazenada
+[16/12/2018 19:37:42] Leitura Armazenada
+[16/12/2018 19:37:49] Leitura Armazenada
+[16/12/2018 19:37:55] Leitura Armazenada
+[16/12/2018 19:38:02] Leitura Armazenada
+[16/12/2018 19:38:08] Leitura Armazenada
+[16/12/2018 19:38:15] Leitura Armazenada
+[16/12/2018 19:38:22] Leitura Armazenada
+[16/12/2018 19:38:29] Leitura Armazenada
+[16/12/2018 19:38:35] Leitura Armazenada
+[16/12/2018 19:38:36] Notificação enviada para o Slack
+[16/12/2018 19:39:05] Leitura Armazenada
+[16/12/2018 19:39:12] Leitura Armazenada
+[16/12/2018 19:39:18] Leitura Armazenada
+[16/12/2018 19:39:25] Leitura Armazenada
+[16/12/2018 19:39:32] Leitura Armazenada
+[16/12/2018 19:39:38] Leitura Armazenada
+[16/12/2018 19:39:45] Leitura Armazenada
+[16/12/2018 19:39:51] Leitura Armazenada
+[16/12/2018 19:39:58] Leitura Armazenada
+[16/12/2018 19:40:04] Leitura Armazenada
+[16/12/2018 19:40:11] Leitura Armazenada
+[16/12/2018 19:40:18] Leitura Armazenada
+[16/12/2018 19:40:18] Notificação enviada para o Slack
+[16/12/2018 20:10:29] Workspace Identificado a
+[16/12/2018 20:10:31] Login Identificado Usuario a
+[16/12/2018 20:10:36] Leitura Armazenada
+[16/12/2018 20:10:43] Leitura Armazenada
+[16/12/2018 20:10:50] Leitura Armazenada
+[16/12/2018 20:10:57] Leitura Armazenada
+[16/12/2018 20:11:04] Leitura Armazenada
+[16/12/2018 20:11:10] Leitura Armazenada
+[16/12/2018 20:11:17] Leitura Armazenada
+[16/12/2018 20:11:23] Leitura Armazenada
+[16/12/2018 20:11:30] Leitura Armazenada
+[16/12/2018 20:11:37] Leitura Armazenada
+[16/12/2018 20:11:43] Leitura Armazenada
+[16/12/2018 20:11:50] Leitura Armazenada
+[16/12/2018 20:11:51] Notificação enviada para o Slack
+[16/12/2018 20:14:32] Processos Armazenados
+[16/12/2018 20:14:39] Leitura Armazenada
+[16/12/2018 20:14:45] Leitura Armazenada
+[16/12/2018 20:14:52] Leitura Armazenada
+[16/12/2018 20:14:58] Leitura Armazenada
+[16/12/2018 20:15:05] Leitura Armazenada
+[16/12/2018 20:15:11] Leitura Armazenada
+[16/12/2018 20:15:18] Leitura Armazenada
+[16/12/2018 20:15:25] Leitura Armazenada
+[16/12/2018 20:15:31] Leitura Armazenada
+[16/12/2018 20:15:38] Leitura Armazenada
+[16/12/2018 20:15:44] Leitura Armazenada
+[16/12/2018 20:15:51] Leitura Armazenada
+[16/12/2018 20:15:51] Notificação enviada para o Slack

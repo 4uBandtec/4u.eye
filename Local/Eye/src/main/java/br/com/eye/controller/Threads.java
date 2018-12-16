@@ -1,6 +1,6 @@
 package br.com.eye.controller;
 
-import br.com.eye.model.LeituraAplicativo;
+import br.com.eye.model.LeituraProcesso;
 import br.com.eye.model.LeituraComputador;
 import br.com.eye.model.LogMensagem;
 import br.com.eye.model.dao.StatementLeituraComputador;
@@ -27,7 +27,7 @@ public class Threads extends Thread {
     public void run() {
 
         int contador = 0;
-        List<LeituraAplicativo> leituras = new ArrayList();
+        List<LeituraProcesso> leituras = new ArrayList();
         while (true) {
             contador++;
             try {

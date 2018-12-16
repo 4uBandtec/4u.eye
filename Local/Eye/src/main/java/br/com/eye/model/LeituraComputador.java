@@ -73,19 +73,18 @@ public class LeituraComputador {
     }
 
     public long getMemoriaDisponivelOshi() {
-        Computador computador = new Computador();
-        return computador.getTotalMemoriaOshi() - systemInfo.getHardware().getMemory().getAvailable();
+        return new Computador().getTotalMemoriaOshi() - systemInfo.getHardware().getMemory().getAvailable();
     }
 
     public long getDiscoDisponivelOshi() {
         OSFileStore[] fsArray = fileSystem.getFileStores();
 
-        long disponivel = 0;
+        long usado = 0;
 
         for (OSFileStore fs : fsArray) {
-            disponivel += fs.getUsableSpace();
+            usado += fs.getUsableSpace();
         }
-        return disponivel;
+        return new Computador().getTotalDiscoOshi()- usado;
     }
 
     public void setLeitura(int codComputador, int codUsuario) throws SQLException, InterruptedException, IOException {
