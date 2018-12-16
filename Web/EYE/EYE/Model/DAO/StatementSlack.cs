@@ -9,14 +9,27 @@ namespace EYE.Model.DAO
         {
             using (var conexao = Conexao.GetConexao())
             {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO slack (url, canal, cod_workspace) VALUES (@url, @canal, @cod_workspace);", conexao))
+                using (SqlCommand cmd = new SqlCommand("UPDATE workspace SET url_slack = @url_slack WHERE cod_workspace = @cod_workspace);", conexao))
                 {
-                    cmd.Parameters.AddWithValue("@url", slack.Url);
-                    cmd.Parameters.AddWithValue("@canal", slack.Canal);
+                    cmd.Parameters.AddWithValue("@url_slack", slack.Url);
                     cmd.Parameters.AddWithValue("@cod_workspace", slack.CodWorkspace);
                     return (cmd.ExecuteNonQuery() >= MINIMO_DE_ALTERACAO);
                 }
             }
         }
-    }
+		public static string VerificaUrlCadastrada(int codWorkspace)
+		{
+			using (var conexao = Conexao.GetConexao())
+			{
+				using (SqlCommand cmd = new SqlCommand("SELECT url FROM workspace WHERE cod_workspace = @cod_workspace", conexao))
+				{
+					cmd.Parameters.AddWithValue("@cod_workspace", codWorkspace);
+					using (SqlDataReader leitor = cmd.ExecuteReader())
+					{
+						return (leitor.Read()) ? leitor.GetString(0) : null;
+					}
+				}
+			}
+		}
+	}
 }
