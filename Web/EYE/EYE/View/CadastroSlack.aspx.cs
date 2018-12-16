@@ -24,10 +24,12 @@ namespace EYE.View
 
         protected void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (!new ControllerSlack().Cadastrar(txtUrl, new Sessao().RetornaSessaoWorkspace(), lblMensagem))
-            {
-                return;
-            }
+			if (!new ControllerSlack().Cadastrar(txtUrl, new Sessao().RetornaSessaoWorkspace(), lblMensagem))
+			{
+				return;
+			}
+			else
+				Response.Redirect("./CadastroSlack.aspx");
         }
 
         protected void Timer_Tick(object sender, EventArgs e)

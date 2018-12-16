@@ -9,32 +9,11 @@ namespace Eye.View
 {
     public partial class Dashboard : System.Web.UI.Page
     {
-        
-
         protected void Page_Load(object sender, EventArgs e)
         {
-            var codWorkspace = (string)Session["codWorkspace"];
-            if (codWorkspace == null || codWorkspace == "0")
-            {
-                Response.Redirect("./Login.aspx");
-            }
-
-
-        }
-
-        public int returnSession()
-        {
-            var codWorkspace = (string)Session["codWorkspace"];
-            if (codWorkspace == null || codWorkspace == "0")
-            {
-                return 0;
-            }
-            else
-            {
-                return int.Parse((String)Session["codWorkspace"]);
-            }
-        }
-
+			if (new Sessao().RetornaSessaoWorkspace() == 0)
+				Response.Redirect("./Login.aspx");
+		}
 
         [ScriptMethod, WebMethod]
         public static void BreakSession()
@@ -43,9 +22,6 @@ namespace Eye.View
             dash.Session.Abandon();
         }
 
-        
-        
-
         [ScriptMethod, WebMethod]
         public static Usuario[] GetUsuariosWorkspace()
         {
@@ -53,8 +29,8 @@ namespace Eye.View
 
             Dashboard dash = new Dashboard();
 
-            int totalUserWorkspace = controllerUsuario.ContaUsuarioWorkspace(dash.returnSession());
-            Usuario[] usuarios = controllerUsuario.ListarUsuarios(dash.returnSession());
+            int totalUserWorkspace = controllerUsuario.ContaUsuarioWorkspace(new Sessao().RetornaSessaoWorkspace());
+            Usuario[] usuarios = controllerUsuario.ListarUsuarios(new Sessao().RetornaSessaoWorkspace());
 
             ControllerComputador controllerComputador = new ControllerComputador();
             for (int i = 0; i < totalUserWorkspace; i++)
@@ -91,7 +67,7 @@ namespace Eye.View
         {
 
             pnlOnline.Controls.Clear();
-            var lista = ControllerComputador.RetornaUsuariosOnline(int.Parse((string)Session["codWorkspace"]));
+            var lista = ControllerComputador.RetornaUsuariosOnline(new Sessao().RetornaSessaoWorkspace());
             var index = 0;
             foreach (var item in lista)
             {
@@ -108,13 +84,13 @@ namespace Eye.View
         [ScriptMethod, WebMethod]
         public static int BuscaTema()
         {
-            return ControllerTema.BuscaTema(new Dashboard().returnSession());
+            return ControllerTema.BuscaTema(new Sessao().RetornaSessaoWorkspace());
         }
 
         [ScriptMethod, WebMethod]
         public static bool TrocaTema(int novoTema)
         {
-            return ControllerTema.TrocaTema(new Dashboard().returnSession(), novoTema);
+            return ControllerTema.TrocaTema(new Sessao().RetornaSessaoWorkspace(), novoTema);
         }
     }
 }

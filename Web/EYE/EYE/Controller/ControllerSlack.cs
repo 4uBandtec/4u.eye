@@ -33,7 +33,7 @@ namespace EYE.Controller
 		public void VerificaSlackCadastrado(TextBox txtUrl, Button btnCadastrar, int codWorkspace)
 		{
 			var url = StatementSlack.VerificaUrlCadastrada(codWorkspace);
-			if (url != null)
+			if (url != null && url.Length>0)
 			{
 				txtUrl.Text = url;
 				btnCadastrar.Text = "Atualizar";

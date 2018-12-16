@@ -9,11 +9,11 @@ namespace EYE.Model.DAO
         {
             using (var conexao = Conexao.GetConexao())
             {
-                using (SqlCommand cmd = new SqlCommand("UPDATE workspace SET url_slack = @url_slack WHERE cod_workspace = @cod_workspace);", conexao))
+                using (SqlCommand cmd = new SqlCommand("UPDATE workspace SET url_slack = @url_slack WHERE cod_workspace = @cod_workspace", conexao))
                 {
                     cmd.Parameters.AddWithValue("@url_slack", slack.Url);
                     cmd.Parameters.AddWithValue("@cod_workspace", slack.CodWorkspace);
-                    return (cmd.ExecuteNonQuery() >= MINIMO_DE_ALTERACAO);
+					return cmd.ExecuteNonQuery() >= MINIMO_DE_ALTERACAO;
                 }
             }
         }
@@ -21,7 +21,7 @@ namespace EYE.Model.DAO
 		{
 			using (var conexao = Conexao.GetConexao())
 			{
-				using (SqlCommand cmd = new SqlCommand("SELECT url FROM workspace WHERE cod_workspace = @cod_workspace", conexao))
+				using (SqlCommand cmd = new SqlCommand("SELECT url_slack FROM workspace WHERE cod_workspace = @cod_workspace", conexao))
 				{
 					cmd.Parameters.AddWithValue("@cod_workspace", codWorkspace);
 					using (SqlDataReader leitor = cmd.ExecuteReader())
