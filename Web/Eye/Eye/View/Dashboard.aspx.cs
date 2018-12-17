@@ -56,6 +56,7 @@ namespace Eye.View
             leitura.CpuAtual = controllerLeituraAtual.GetPorcentagemCPU(codComputador);
             leitura.HdAtual = controllerLeituraAtual.GetPorcentagemHD(codComputador);
             leitura.RamAtual = controllerLeituraAtual.GetPorcentagemRAM(codComputador);
+            leitura.UltimaLeitura = controllerLeituraAtual.getUltimaLeitura(codComputador);
             leitura.CodComputador = codComputador;
 
 

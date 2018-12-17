@@ -356,6 +356,7 @@ body {
     border-radius: 0px;
     box-shadow: 0px 0px 50px 1px var(--black-color);
     border-radius: 20px;
+    overflow: hidden;
 }
 
 
@@ -878,6 +879,7 @@ label {
         background: var(--darker-bg-color);
         box-shadow: none;
     }
+
     .AreaTarefa .tituloCampo {
         margin-bottom: 0;
         margin-top: 1%;
@@ -1312,12 +1314,12 @@ input[type=number]::-webkit-inner-spin-button {
 
 .switch--shadow:checked + label:before {
     background-color: var(--txt-color);
-    box-shadow: 0px 0px 35px 1px var(--purple-color);
+    box-shadow: 0px 0px 35px 1px var(--purple-color-a);
 }
 
 .switch--shadow:checked + label:after {
     transform: translateX(100%);
-    box-shadow: 0px 0px 35px 1px var(--blue-color);
+    box-shadow: 0px 0px 400px 100px var(--blue-color-a);
 }
 
 .areaTextoSwitch {
@@ -1339,7 +1341,7 @@ input[type=number]::-webkit-inner-spin-button {
     transform: translate(200%, 0%);
 }
 
-.campos .switch__container{
+.campos .switch__container {
     margin-top: 5%;
     width: 50%;
     text-align: center;
@@ -1446,10 +1448,41 @@ input[type=number]::-webkit-inner-spin-button {
         font-weight: 500;
         box-shadow: 0px 0px 35px 1px var(--blue-color);
     }
-        /*                                                                                                */
-        /*------------------------------------------Responsive--------------------------------------------*/
-        @media only screen and (max-aspect-ratio: 6/4) {
-            * {
+
+
+.pauseComputador:before {
+    content: 'Ops, parece que o EYE não está em execução no ';
+    color: var(--txt-color);
+    font-weight: lighter;
+}
+
+.pauseComputador {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--black-color-a9);
+    z-index: 6;
+    text-align: center;
+    padding: 10%;
+    padding-top: 40%;
+    display: none;
+    font-size: 1.2em;
+    color: var(--blue-color);
+    font-weight: bolder;
+}
+
+    .pauseComputador:after {
+        content: ' !!!';
+        color: var(--txt-color);
+        font-weight: lighter;
+    }
+
+/*                                                                                                */
+/*------------------------------------------Responsive--------------------------------------------*/
+@media only screen and (max-aspect-ratio: 6/4) {
+    * {
         font-size: 1.5vmax;
     }
 
@@ -1565,7 +1598,7 @@ input[type=number]::-webkit-inner-spin-button {
     }
 
     #areaInfo {
-        width: 80%;
+        width: 81%;
         padding-left: 5%;
         height: 100%;
         position: fixed;
@@ -1707,7 +1740,6 @@ input[type=number]::-webkit-inner-spin-button {
         width: 80%;
         height: auto;
         position: absolute;
-        filter: var(--filtro);
     }
 
     .areaFiltro {
@@ -1849,9 +1881,13 @@ input[type=number]::-webkit-inner-spin-button {
         width: 90vw;
         min-width: 90vw;
         max-width: 90vw;
+        left: 5vw;
+        border-bottom: solid 1px var(--pink-color);
         font-size: 3vmax;
         border-radius: 0;
-        height: 7vh
+        height: 7vh;
+        text-align: center;
+        padding-bottom: 0;
     }
 
         .defaultButton:hover {
@@ -1866,8 +1902,10 @@ input[type=number]::-webkit-inner-spin-button {
         border-top: solid 1px var(--pink-color);
         border-radius: 0;
         bottom: 0;
-        top: 93vh;
+        top: 92vh;
         z-index: 2;
+        height: 7vh;
+        padding-bottom: 1vh;
     }
 
     #btnFormPrevious input {
@@ -1900,10 +1938,11 @@ input[type=number]::-webkit-inner-spin-button {
 
 
     #btnFormCadastrarTarefa {
-        position: fixed;
+        position: sticky;
         width: 50vw;
         margin-left: 0vw;
         height: 9vh;
+        bottom: 0;
     }
 
     #AreaConfig {
@@ -1945,5 +1984,98 @@ input[type=number]::-webkit-inner-spin-button {
 
         #btnFormCadastrarSlack input:focus, #btnFormCadastrarSlack input:active, #btnFormCadastrarSlack input:target {
             font-size: 2.4em;
+        }
+
+    .pauseComputador {
+        font-size: 2vmax;
+    }
+
+
+
+
+
+    #popup {
+        width: 80%;
+        max-height: 85%;
+    }
+
+    #demoCoresBW {
+        position: absolute;
+        height: 6%;
+    }
+
+    #demoCores {
+        height: 6%;
+    }
+
+    .areaConfig {
+        margin-top: 20%;
+    }
+
+
+    .switch--shadow + label {
+        width: 8vmax;
+        height: 4vmax;
+        transform: translate(185%, 0%);
+    }
+
+
+
+
+    .areaTextoSwitch {
+        width: 100%;
+        font-size: 2vmax;
+        margin-top: 10%;
+    }
+
+
+
+    .campos .switch--shadow + label {
+        width: 6vw;
+        height: 3vw;
+        right: 50%;
+        margin-top: 0;
+        transform: translate(480%, 0%);
+    }
+
+    .campos .switch__container {
+        margin-top: 5%;
+        width: 50%;
+        text-align: center;
+    }
+
+
+
+
+
+
+
+
+    .slidecontainer {
+        font-size: 2vmax;
+    }
+
+
+
+    .slider {
+        margin-top: 5%;
+        margin-bottom: 5%;
+    }
+
+
+
+        .radioTema input[type="radio"] + label {
+            width: 90%;
+            margin: 5%;
+            margin-left: 0%;
+            margin-bottom: 1%;
+            padding: 5%;
+        }
+
+        .radioTema input[type="radio"]:checked + label {
+            background: var(--blue-color);
+            color: var(--darker-bg-color);
+            font-weight: 500;
+            box-shadow: 0px 0px 35px 1px var(--blue-color);
         }
 }

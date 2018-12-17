@@ -47,5 +47,20 @@ namespace EYE.Model.DAO
 				}
 			}
 		}
-	}
+
+        public static string GetUltimaLeitura(int codComputador)
+        {
+            using (var conexao = Conexao.GetConexao())
+            {
+                using (SqlCommand cmd = new SqlCommand("SELECT ULTIMA_LEITURA FROM leitura_atual WHERE cod_computador = @cod_computador", conexao))
+                {
+                    cmd.Parameters.AddWithValue("@cod_computador", codComputador);
+                    using (SqlDataReader leitor = cmd.ExecuteReader())
+                    {
+                        return leitor.Read() ? leitor.GetString(0) : "null";
+                    }
+                }
+            }
+        }
+    }
 }

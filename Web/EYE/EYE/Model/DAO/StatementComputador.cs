@@ -45,6 +45,7 @@ namespace EYE.Model.DAO
 								computadores[contador].HdTotal = leitor.GetInt64(6);
 								computadores[contador].RamTotal = leitor.GetInt64(7);
 								computadores[contador].CodUsuario = codUsuario;
+                                computadores[contador].UltimaLeitura = StatementLeituraAtual.GetUltimaLeitura(leitor.GetInt32(0));
 
 								++contador;
 							}

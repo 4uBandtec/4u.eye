@@ -84,6 +84,7 @@
     <Content Include="Controller\DashStyle.js" />
     <Content Include="Controller\download.js" />
     <Content Include="Controller\Tarefas.js" />
+    <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Model\EYE.css" />
     <Content Include="View\CadastroSlack.aspx" />
@@ -103,6 +104,13 @@
     <Compile Include="Controller\ControllerTema.cs" />
     <Compile Include="Controller\ControllerUsuario.cs" />
     <Compile Include="Controller\ControllerWorkspace.cs" />
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
