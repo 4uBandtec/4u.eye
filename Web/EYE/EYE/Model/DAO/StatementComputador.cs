@@ -38,14 +38,14 @@ namespace EYE.Model.DAO
 								computadores[contador] = new Computador();
 								computadores[contador].CodComputador = leitor.GetInt32(0);
 								computadores[contador].NomeComputador = "Computador de ";
-                                computadores[contador].SistemaOperacional = leitor.GetString(2);
+								computadores[contador].SistemaOperacional = leitor.GetString(2);
 								computadores[contador].VersaoSistema = leitor.GetString(3);
 								computadores[contador].VersaoBits = leitor.GetInt32(4);
 								computadores[contador].Processador = leitor.GetString(5);
 								computadores[contador].HdTotal = leitor.GetInt64(6);
 								computadores[contador].RamTotal = leitor.GetInt64(7);
 								computadores[contador].CodUsuario = codUsuario;
-                                computadores[contador].UltimaLeitura = StatementLeituraAtual.GetUltimaLeitura(leitor.GetInt32(0));
+								computadores[contador].UltimaLeitura = StatementLeituraAtual.GetUltimaLeitura(leitor.GetInt32(0));
 
 								++contador;
 							}
@@ -94,7 +94,7 @@ namespace EYE.Model.DAO
 			{
 				foreach (var item in computadores)
 				{
-					using (SqlCommand cmd = new SqlCommand($"SELECT cod_usuario, nome FROM usuario " +
+					using (SqlCommand cmd = new SqlCommand($"SELECT cod_usuario, username FROM usuario " +
 														   $"WHERE cod_usuario = " +
 														   $"(SELECT cod_usuario FROM computador " +
 														   $"WHERE cod_computador = @cod_computador);", conexao))
@@ -120,4 +120,3 @@ namespace EYE.Model.DAO
 		}
 	}
 }
-
