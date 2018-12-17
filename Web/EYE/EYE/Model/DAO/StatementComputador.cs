@@ -94,7 +94,7 @@ namespace EYE.Model.DAO
 			{
 				foreach (var item in computadores)
 				{
-					using (SqlCommand cmd = new SqlCommand($"SELECT cod_usuario, nome FROM usuario " +
+					using (SqlCommand cmd = new SqlCommand($"SELECT cod_usuario, username FROM usuario " +
 														   $"WHERE cod_usuario = " +
 														   $"(SELECT cod_usuario FROM computador " +
 														   $"WHERE cod_computador = @cod_computador);", conexao))

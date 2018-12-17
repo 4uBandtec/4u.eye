@@ -1,6 +1,7 @@
 using EYE.Controller;
 using EYE.Model;
 using System;
+using System.Collections.Generic;
 using System.Web.Script.Services;
 using System.Web.Services;
 using System.Web.UI.WebControls;
@@ -81,6 +82,12 @@ namespace Eye.View
             }
         }
 
+
+
+        [ScriptMethod, WebMethod]
+        public static List<string> RetornaUsuariosOnlineMonitor() { 
+            return  ControllerComputador.RetornaUsuariosOnline(new Sessao().RetornaSessaoWorkspace());
+        }
 
         [ScriptMethod, WebMethod]
         public static int[] BuscaTemaModo()

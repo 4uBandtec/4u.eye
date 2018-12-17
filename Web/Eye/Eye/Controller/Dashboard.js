@@ -1,6 +1,8 @@
 ﻿
 var firstLoaded = false;
 var startLoading = false;
+var verificaLeitura = true;
+var usersOnline = null;
 
 function LoadingAll() {
 
@@ -28,10 +30,15 @@ function GetUsuariosWorkspace() {
     if (!firstLoaded) {
         LoadingAll();
     }
+    PageMethods.RetornaUsuariosOnlineMonitor(setOnlineUsers, onError);
     PageMethods.GetUsuariosWorkspace(setCodComputadores, onError);
-    setTimeout(GetUsuariosWorkspace, 30000);
+    setTimeout(GetUsuariosWorkspace, 10000);
 }
 
+function setOnlineUsers(users) {
+    console.log(users);
+    usersOnline = users;
+}
 
 
 var computadoresUsuarios = [];
@@ -98,10 +105,6 @@ function SetDadosMonitor(leituraMonitor) {
 
             if (computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador == leituraMonitor.CodComputador) {
 
-                console.log(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador, computadoresUsuarios[i].ComputadoresUsuario[j].UltimaLeitura);
-                console.log(leituraMonitor.CodComputador, leituraMonitor.UltimaLeitura);
-
-
                 computadorMonitor = computadoresUsuarios[i].ComputadoresUsuario[j];
                 computadorMonitor.User = computadoresUsuarios[i].Nome;
                 break;
@@ -115,17 +118,65 @@ function SetDadosMonitor(leituraMonitor) {
         IniciarMonitor(computadorMonitor, leituraMonitor);
     }
 
-    if (computadorMonitor.UltimaLeitura != leituraMonitor.UltimaLeitura) {
-        
-        updateChart(computadorMonitor, leituraMonitor);
-
-        computadorMonitor.UltimaLeitura = leituraMonitor.UltimaLeitura;
+    if (usersOnline != null) {
+        for (k = 0; k < usersOnline.length; k++) {
+            if (computadorMonitor.User == usersOnline[k]) {
+                updateChart(computadorMonitor, leituraMonitor);
+                return
+            }
+        }
     }
-    else {
-        pauseChart(computadorMonitor, leituraMonitor);
-    }
+    
+    pauseChart(computadorMonitor, leituraMonitor);
+    
 }
 
+function leituraProxima(antiga, nova) {
+
+    var antiga = antiga.split(' ');
+    var datasa = antiga[0].split('/');
+    var horasa = antiga[1].split(':');
+    var anoa = Number(datasa[2]);
+    var mesa = Number(datasa[1]);
+    var diaa = Number(datasa[0]);
+    var segundoa = Number(horasa[2]);
+    var minutoa = Number(horasa[1]);
+    var horaa = Number(horasa[0]);
+
+
+
+    var nova = nova.split(' ');
+    var datasn = nova[0].split('/');
+    var horasn = nova[1].split(':');
+    var anon = Number(datasn[2]);
+    var mesn = Number(datasn[1]);
+    var dian = Number(datasn[0]);
+    var segundon = Number(horasn[2]);
+    var minuton = Number(horasn[1]);
+    var horan = Number(horasn[0]);
+
+    if (anoa < anon) {
+        return true;
+    }
+    else if (mesa < mesn) {
+        return true;
+    }
+    else if (diaa < dian) {
+        return true;
+    }
+    else if (horaa < horan) {
+        return true;
+    }
+    else if (minutoa < minuton) {
+        return true;
+    }
+    else if (segundoa < segundon) {
+        return true;
+    }
+
+    return false;
+
+}
 
 
 
@@ -491,7 +542,7 @@ function Atualizar(componente, infoGeralComputador, total, atual, cod) {
             chart.data.datasets[0].backgroundColor = [gradientStroke, darkerBgColor];
 
             chart.data.datasets[0].hoverBackgroundColor = [cor, "#000"];
-            
+
             chart.update();
 
         }
@@ -678,7 +729,7 @@ function AtualizarCPU(componente, infoGeralComputador, atual, cod) {
     gradientStroke.addColorStop(0, cor);
     gradientStroke.addColorStop(0.1, cor2);
     gradientStroke.addColorStop(0.2, cor);
-    
+
 
 
     for (i = 0; i < charts.length; i++) {
