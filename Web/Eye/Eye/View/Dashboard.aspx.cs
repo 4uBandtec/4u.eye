@@ -85,8 +85,8 @@ namespace Eye.View
         public static int[] BuscaTemaModo()
         {
 
-            var tema = ControllerTema.BuscaTema(new Dashboard().returnSession());
-            var modo = ControllerTema.BuscaModo(new Dashboard().returnSession());
+            var tema = ControllerTema.BuscaTema(new Sessao().RetornaSessaoWorkspace());
+            var modo = ControllerTema.BuscaModo(new Sessao().RetornaSessaoWorkspace());
 
             int[] retorno = new int[2];
             retorno[0] = modo;
@@ -104,7 +104,7 @@ namespace Eye.View
         [ScriptMethod, WebMethod]
         public static int BuscaModo()
         {
-            return ControllerTema.BuscaModo(new Dashboard().returnSession());
+            return ControllerTema.BuscaModo(new Sessao().RetornaSessaoWorkspace());
         }
 
         [ScriptMethod, WebMethod]
@@ -135,7 +135,7 @@ namespace Eye.View
         [ScriptMethod, WebMethod]
         public static bool TrocaIntensidade(int novaIntensidade)
         {
-            bool intensidade = ControllerTema.TrocaIntensidade(new Sessao().RetornaSessaoWorkspace()), novaIntensidade);
+            bool intensidade = ControllerTema.TrocaIntensidade(new Sessao().RetornaSessaoWorkspace(), novaIntensidade);
 
             return (intensidade);
         }
