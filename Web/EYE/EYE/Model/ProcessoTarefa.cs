@@ -6,14 +6,16 @@ namespace EYE.Model
 	{
 
 		private int codUsuario;
+	    private string nomeUsuario;
 		private int codProcesso;
 		private int tempoTarefa;
 
 		public int CodUsuario { get => codUsuario; set => codUsuario = value; }
 		public int CodProcesso { get => codProcesso; set => codProcesso = value; }
 		public int TempoTarefa { get => tempoTarefa; set => tempoTarefa = value; }
+        public string NomeUsuario { get => nomeUsuario; set => nomeUsuario = value; }
 
-		public static List<ProcessoTarefa> ConstruirLista(List<string> listaCodUsersTarefa, List<string> listaProcTarefa, List<string> listaTempoTarefa)
+        public static List<ProcessoTarefa> ConstruirLista(List<string> listaCodUsersTarefa, List<string> listaProcTarefa, List<string> listaTempoTarefa)
 		{
 			var lista = new List<ProcessoTarefa>();
 			foreach (var usuario in listaCodUsersTarefa)

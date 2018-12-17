@@ -124,6 +124,7 @@
     <Compile Include="Model\Enum\Mensagens.cs" />
     <Compile Include="Model\Enum\Remetente.cs" />
     <Compile Include="Model\Enum\StatusVida.cs" />
+    <Compile Include="Model\Enum\TipoMensagem.cs" />
     <Compile Include="Model\LeituraAtual.cs" />
     <Compile Include="Model\Notificacao.cs" />
     <Compile Include="Model\Perfil.cs" />
