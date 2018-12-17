@@ -20,11 +20,7 @@ namespace EYE.Model.DAO
 					cmd.Parameters.AddWithValue("@status_vida", tarefa.StatusVida);
 					cmd.Parameters.AddWithValue("@cod_workspace", tarefa.CodWorkspace);
 
-                    int modified = (int)cmd.ExecuteScalar();
-
-                    return modified;
-                    
-
+                    return (int)cmd.ExecuteScalar();                 
                 }
 			}
 		}

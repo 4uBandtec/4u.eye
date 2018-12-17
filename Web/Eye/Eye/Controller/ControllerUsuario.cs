@@ -39,8 +39,8 @@ namespace EYE.Controller
 			usuario.CodWorkspace = codWorkspace;
 			usuario.Salt = Criptografia.GerarSalt();
 			usuario.Senha = Criptografia.GerarSenhaHash(usuario.Senha, usuario.Salt);
-
-			if (StatementUsuario.InserirUsuario(usuario))
+			var codUsuario = StatementUsuario.InserirUsuario(usuario);
+			if (codUsuario>0)
 			{
 				lblMensagem.Text = "O novo usuário foi cadastrado, dê as boas vindas á ele por mim";
 
@@ -50,7 +50,7 @@ namespace EYE.Controller
 				txtSenha.Text = "";
 				txtDataNascimento.Text = "";
 				ddlSexo.SelectedValue = "";
-
+				ControllerNotificacao.CadastrarNotificacaoUsuario(codWorkspace, codUsuario);
 				return true;
 			}
 			lblMensagem.Text = "Ops, deu algo errado, acho que a culpa é nossa";

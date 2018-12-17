@@ -36,14 +36,14 @@ namespace EYE.Model
 			return codRemetente;
 		}
 
-	    public static string GerarMensagem(TipoMensagem tipo, string nomeUsuario)
+	    public static string GerarMensagem(TipoMensagem tipo, string parametro)
 		{
 			var numero = new Random().Next() % 3;
 			switch (tipo)
 			{
 				case TipoMensagem.CadastroUsuario:
 					if (numero == 0)
-						return "Bem vindo ao Eye " + nomeUsuario;
+						return "Bem vindo ao Eye " + parametro;
 					else if (numero == 1)
 						return "Bem vindo ao Eye";
 					else if (numero == 2)
@@ -108,7 +108,16 @@ namespace EYE.Model
 			            return "Temos uma nova tarefa";
 			        else
 			            return "Temos uma nova tarefa";
-                default:
+				case TipoMensagem.CadastroUsuarioSlack:
+					if (numero == 0)
+						return "Deem boas vindas para " + parametro;
+					else if (numero == 1)
+						return "Deem boas vindas para " + parametro;
+					else if (numero == 2)
+						return "Deem boas vindas para " + parametro;
+					else
+						return "Deem boas vindas para " + parametro;
+				default:
 					return "Parece que algo de errado não está certo";
 			}
 		}
