@@ -63,7 +63,6 @@ function getLeitura() {
 
             //console.log(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador);
 
-
             PageMethods.AtualizarComputadores(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador, AtualizarDashboard, onError);
 
         }
@@ -77,6 +76,7 @@ function getLeitura() {
 function AtualizarDashboard(leituraAtual) {
 
     if (!!leituraAtual) {
+        //console.log(leituraAtual.CodComputador, leituraAtual.UltimaLeitura);
         SetDadosMonitor(leituraAtual);
 
     }
@@ -97,6 +97,11 @@ function SetDadosMonitor(leituraMonitor) {
         for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
 
             if (computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador == leituraMonitor.CodComputador) {
+
+                console.log(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador, computadoresUsuarios[i].ComputadoresUsuario[j].UltimaLeitura);
+                console.log(leituraMonitor.CodComputador, leituraMonitor.UltimaLeitura);
+
+
                 computadorMonitor = computadoresUsuarios[i].ComputadoresUsuario[j];
                 computadorMonitor.User = computadoresUsuarios[i].Nome;
                 break;
@@ -109,7 +114,16 @@ function SetDadosMonitor(leituraMonitor) {
     if (!document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador)) {
         IniciarMonitor(computadorMonitor, leituraMonitor);
     }
-    updateChart(computadorMonitor, leituraMonitor);
+
+    if (computadorMonitor.UltimaLeitura != leituraMonitor.UltimaLeitura) {
+        
+        updateChart(computadorMonitor, leituraMonitor);
+
+        computadorMonitor.UltimaLeitura = leituraMonitor.UltimaLeitura;
+    }
+    else {
+        pauseChart(computadorMonitor, leituraMonitor);
+    }
 }
 
 
@@ -179,6 +193,14 @@ function IniciarMonitor(computadorMonitor, leituraMonitor) {
     addDetalhe(detalhesMonitor, "Processador", computadorMonitor.Processador, computadorMonitor.CodComputador);
     addDetalhe(detalhesMonitor, "SO", computadorMonitor.SistemaOperacional + " " + computadorMonitor.VersaoSistema + " " + computadorMonitor.VersaoBits + " BITS ", computadorMonitor.CodComputador);
 
+
+
+    var pauseComputador = document.createElement("div");
+    pauseComputador.setAttribute("class", "pauseComputador");
+    pauseComputador.setAttribute("id", "pauseComputador" + computadorMonitor.CodComputador);
+    infoGeralComputador.appendChild(pauseComputador);
+
+    pauseComputador.style.display = "none";
 
 }
 
@@ -394,6 +416,10 @@ function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
 function updateChart(computadorMonitor, leituraMonitor) {
     var infoGeralComputador = document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador);
+
+
+    var pauseComputador = document.getElementById("pauseComputador" + computadorMonitor.CodComputador);
+    pauseComputador.style.display = "none";
 
     //console.log(leituraMonitor.RamAtual);
 
@@ -690,6 +716,14 @@ function AtualizarCPU(componente, infoGeralComputador, atual, cod) {
         }
 
     }
+}
+
+
+function pauseChart(computadorMonitor, leituraMonitor) {
+
+    var pauseComputador = document.getElementById("pauseComputador" + computadorMonitor.CodComputador);
+    pauseComputador.style.display = "block";
+    pauseComputador.textContent = computadorMonitor.NomeComputador + computadorMonitor.User;
 }
 
 

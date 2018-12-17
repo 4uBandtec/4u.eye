@@ -356,6 +356,7 @@ body {
     border-radius: 0px;
     box-shadow: 0px 0px 50px 1px var(--black-color);
     border-radius: 20px;
+    overflow: hidden;
 }
 
 
@@ -878,6 +879,7 @@ label {
         background: var(--darker-bg-color);
         box-shadow: none;
     }
+
     .AreaTarefa .tituloCampo {
         margin-bottom: 0;
         margin-top: 1%;
@@ -1312,12 +1314,12 @@ input[type=number]::-webkit-inner-spin-button {
 
 .switch--shadow:checked + label:before {
     background-color: var(--txt-color);
-    box-shadow: 0px 0px 35px 1px var(--purple-color);
+    box-shadow: 0px 0px 35px 1px var(--purple-color-a);
 }
 
 .switch--shadow:checked + label:after {
     transform: translateX(100%);
-    box-shadow: 0px 0px 35px 1px var(--blue-color);
+    box-shadow: 0px 0px 400px 100px var(--blue-color-a);
 }
 
 .areaTextoSwitch {
@@ -1339,7 +1341,7 @@ input[type=number]::-webkit-inner-spin-button {
     transform: translate(200%, 0%);
 }
 
-.campos .switch__container{
+.campos .switch__container {
     margin-top: 5%;
     width: 50%;
     text-align: center;
@@ -1446,10 +1448,41 @@ input[type=number]::-webkit-inner-spin-button {
         font-weight: 500;
         box-shadow: 0px 0px 35px 1px var(--blue-color);
     }
-        /*                                                                                                */
-        /*------------------------------------------Responsive--------------------------------------------*/
-        @media only screen and (max-aspect-ratio: 6/4) {
-            * {
+
+
+.pauseComputador:before {
+    content: 'Ops, parece que o EYE não está em execução no ';
+    color: var(--txt-color);
+    font-weight: lighter;
+}
+
+.pauseComputador {
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: var(--black-color-a9);
+    z-index: 6;
+    text-align: center;
+    padding: 10%;
+    padding-top: 40%;
+    display: none;
+    font-size: 1.2em;
+    color: var(--blue-color);
+    font-weight: bolder;
+}
+
+    .pauseComputador:after {
+        content: ' !!!';
+        color: var(--txt-color);
+        font-weight: lighter;
+    }
+
+/*                                                                                                */
+/*------------------------------------------Responsive--------------------------------------------*/
+@media only screen and (max-aspect-ratio: 6/4) {
+    * {
         font-size: 1.5vmax;
     }
 

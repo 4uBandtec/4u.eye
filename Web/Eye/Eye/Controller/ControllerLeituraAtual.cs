@@ -17,5 +17,9 @@ namespace EYE.Controller
         {
             return StatementLeituraAtual.GetHDAtual(codComputador);
         }
+        public string getUltimaLeitura(int codComputador)
+        {
+            return StatementLeituraAtual.GetUltimaLeitura(codComputador);
+        }
     }
 }
