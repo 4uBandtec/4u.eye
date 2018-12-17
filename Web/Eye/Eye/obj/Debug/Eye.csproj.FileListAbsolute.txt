@@ -55,3 +55,4 @@ C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\bin\Microsoft.CodeDom.Providers.
 C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.csproj.CopyComplete
 C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.dll
 C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.pdb
+C:\Users\livia\Documents\Git\4u.eye\Web\EYE\EYE\obj\Debug\EYE.csprojAssemblyReference.cache
