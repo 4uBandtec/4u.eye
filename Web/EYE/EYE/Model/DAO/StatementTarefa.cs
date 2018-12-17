@@ -1,13 +1,12 @@
-﻿using EYE.Controller;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace EYE.Model.DAO
 {
 	public class StatementTarefa
 	{
-		public static int InserirTarefa(Tarefa tarefa)
+	    private const int MINIMO_DE_ALTERACAO = 1;
+        public static int InserirTarefa(Tarefa tarefa)
 		{
 			using (var conexao = Conexao.GetConexao())
 			{
@@ -32,6 +31,7 @@ namespace EYE.Model.DAO
 
 		public static bool CadastrarProcessos(List<ProcessoTarefa> lista, int codTarefa)
 		{
+		    var retorno = true;
 			using (var conexao = Conexao.GetConexao())
 			{
 				foreach (var item in lista)
@@ -44,12 +44,11 @@ namespace EYE.Model.DAO
                         cmd.Parameters.AddWithValue("@cod_usuario", item.CodUsuario);
 						cmd.Parameters.AddWithValue("@minutos_meta", item.TempoTarefa);
                         
-                        return cmd.ExecuteNonQuery() == lista.Count;
+                       retorno = retorno && (cmd.ExecuteNonQuery() >= MINIMO_DE_ALTERACAO);
 					}
-
                 }
 			}
-			return false;
+			return retorno;
 		}
 	}
 }

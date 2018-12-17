@@ -38,7 +38,7 @@ namespace EYE.View
 		[ScriptMethod, WebMethod]
 		public static bool CadastraTarefa(string txtNome, string txtDescricao, string txtDataInicio, string txtDataFim, string lblMensagem,  List<string> listaCodUsersTarefa, List<string> listaProcTarefa, List<string> listaTempoTarefa, bool notificacaoEquipe, bool notificacaoUsuarios)
 		{
-			return !new ControllerTarefa().Cadastrar(txtNome, txtDescricao, txtDataInicio, txtDataFim, new Sessao().RetornaSessaoWorkspace(), lblMensagem, listaCodUsersTarefa, listaProcTarefa, listaTempoTarefa);
+			return !new ControllerTarefa().Cadastrar(txtNome, txtDescricao, txtDataInicio, txtDataFim, new Sessao().RetornaSessaoWorkspace(), lblMensagem, listaCodUsersTarefa, listaProcTarefa, listaTempoTarefa, notificacaoEquipe, notificacaoUsuarios);
         }
 
         protected void Timer_Tick(object sender, EventArgs e)

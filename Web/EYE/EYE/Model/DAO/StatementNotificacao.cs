@@ -6,11 +6,11 @@ namespace EYE.Model.DAO
 	public class StatementNotificacao
 	{
 		private const int MINIMO_DE_ALTERACAO = 1;
-		public static bool RegistrarNotificacao(string mensagem, int codRemetente, int canal, Remetente remetente)
+		public static bool RegistrarNotificacao(string mensagem, int codRemetente, CanalNotificacao canal, Remetente remetente)
 		{
 			using (var conexao = Conexao.GetConexao())
 			{
-				using (SqlCommand cmd = new SqlCommand("INSERT INTO usuario (cod_mensagem, cod_remetente, canal_envio, remetente, enviado) VALUES (@cod_mensagem, @cod_remetente, @canal_envio, @remetente, @enviado)", conexao))
+				using (SqlCommand cmd = new SqlCommand("INSERT INTO fila_notificacao (mensagem, cod_remetente, canal_envio, remetente, enviado) VALUES (@mensagem, @cod_remetente, @canal_envio, @remetente, @enviado)", conexao))
 				{
 					cmd.Parameters.AddWithValue("@mensagem", mensagem);
 					cmd.Parameters.AddWithValue("@cod_remetente", codRemetente);

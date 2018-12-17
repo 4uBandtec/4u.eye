@@ -20,7 +20,7 @@ namespace EYE.Model
 
 		public static List<Notificacao> GetCodRemetente(bool workspace, bool usuario, int codWorkspace, int codUsuario)
 		{
-			List<Notificacao> codRemetente = null;
+			List<Notificacao> codRemetente = new List<Notificacao>();
 			if (usuario)
 				codRemetente.Add(new Notificacao
 				{
@@ -35,14 +35,15 @@ namespace EYE.Model
 				});
 			return codRemetente;
 		}
-		public static string GerarMensagem(TipoMensagem tipo)
+
+	    public static string GerarMensagem(TipoMensagem tipo, string nomeUsuario)
 		{
 			var numero = new Random().Next() % 3;
 			switch (tipo)
 			{
 				case TipoMensagem.CadastroUsuario:
 					if (numero == 0)
-						return "Bem vindo ao Eye";
+						return "Bem vindo ao Eye " + nomeUsuario;
 					else if (numero == 1)
 						return "Bem vindo ao Eye";
 					else if (numero == 2)
@@ -50,7 +51,7 @@ namespace EYE.Model
 					else
 						return "Bem vindo ao Eye";
 
-				case TipoMensagem.CadastroTarefa:
+				case TipoMensagem.CadastroProcessoTarefa:
 					if (numero == 0)
 						return "Uma nova tarefa foi cadastrada";
 					else if (numero == 1)
@@ -98,7 +99,16 @@ namespace EYE.Model
 						return "RAM alta";
 					else
 						return "RAM alta";
-				default:
+			    case TipoMensagem.CadastroTarefa:
+			        if (numero == 0)
+			            return "Uma nova tarefa foi cadastrada";
+			        else if (numero == 1)
+			            return "Temos uma nova tarefa";
+			        else if (numero == 2)
+			            return "Temos uma nova tarefa";
+			        else
+			            return "Temos uma nova tarefa";
+                default:
 					return "Parece que algo de errado não está certo";
 			}
 		}
