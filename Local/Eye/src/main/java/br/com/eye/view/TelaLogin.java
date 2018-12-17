@@ -10,6 +10,7 @@ import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -124,14 +125,20 @@ public class TelaLogin extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             if (e.getSource() == btnLogar) {
-
-                if (new ControllerUsuario().Logar(txtUsername.getText(), txtSenha.getPassword().toString())) {
+            char[] senhaChar = txtSenha.getPassword();
+            String senha = "";
+            for(char caracter : senhaChar){
+                senha+=caracter;
+            }
+                if (new ControllerUsuario().Logar(txtUsername.getText(), senha)) {
                     dispose();
                     LogMensagem.GravarLog("Login Identificado Usuario " + txtUsername.getText());
                     new TelaCaptacao(new ControllerUsuario().getCodUsuario(txtUsername.getText()));
                 }
             }
         } catch (InterruptedException | SQLException | IOException ex) {
+            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (NoSuchAlgorithmException ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
