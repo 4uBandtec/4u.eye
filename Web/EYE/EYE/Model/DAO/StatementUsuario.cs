@@ -35,11 +35,11 @@ namespace EYE.Model.DAO
             }
         }
 
-        public static bool InserirUsuario(Usuario usuario)
+        public static int InserirUsuario(Usuario usuario)
         {
             using (var conexao = Conexao.GetConexao())
             {
-                using (SqlCommand cmd = new SqlCommand("INSERT INTO usuario (username, nome, email, senha, data_nascimento, sexo, salt, cod_workspace) VALUES (@username, @nome, @email, @senha, @data_nascimento, @sexo, @salt, @cod_workspace)", conexao))
+                using (SqlCommand cmd = new SqlCommand("INSERT INTO usuario (username, nome, email, senha, data_nascimento, sexo, salt, cod_workspace) OUTPUT INSERTED.cod_usuario VALUES (@username, @nome, @email, @senha, @data_nascimento, @sexo, @salt, @cod_workspace)", conexao))
                 {
                     cmd.Parameters.AddWithValue("@username", usuario.Username);
                     cmd.Parameters.AddWithValue("@nome", usuario.Nome);
@@ -49,8 +49,8 @@ namespace EYE.Model.DAO
                     cmd.Parameters.AddWithValue("@sexo", usuario.Sexo);
                     cmd.Parameters.AddWithValue("@salt", usuario.Salt);
                     cmd.Parameters.AddWithValue("@cod_workspace", usuario.CodWorkspace);
-                    return (cmd.ExecuteNonQuery() >= MINIMO_DE_ALTERACAO);
-                }
+					return (int)cmd.ExecuteScalar();
+				}
             }
         }
 
@@ -102,5 +102,23 @@ namespace EYE.Model.DAO
             }
             return usuarios;
         }
-    }
+		public static string GetNomeUsuario(int codUsuario)
+		{
+			using (var conexao = Conexao.GetConexao())
+			{
+				
+					using (SqlCommand cmd = new SqlCommand("SELECT nome FROM usuario WHERE cod_usuario = @cod_usuario", conexao))
+					{
+						cmd.Parameters.AddWithValue("@cod_usuario", codUsuario);
+						using (SqlDataReader leitor = cmd.ExecuteReader())
+						{
+							return leitor.Read() ? leitor.GetString(0) : "";
+						}
+					}
+				}
+
+			}
+
+		}
+	}
 }
