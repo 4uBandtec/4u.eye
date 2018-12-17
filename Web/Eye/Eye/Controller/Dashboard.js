@@ -1,37 +1,43 @@
-﻿
-var firstLoaded = false;
+﻿var firstLoaded = false;
 var startLoading = false;
+var verificaLeitura = true;
+var usersOnline = null;
 
 function LoadingAll() {
 
 
-    if (!startLoading) {
+	if (!startLoading) {
 
-        var loading = document.createElement("div");
-        loading.setAttribute("class", "loading");
-        loading.setAttribute("id", "loading");
+		var loading = document.createElement("div");
+		loading.setAttribute("class", "loading");
+		loading.setAttribute("id", "loading");
 
-        document.getElementById("areaInfo").appendChild(loading);
+		document.getElementById("areaInfo").appendChild(loading);
 
-        loading.textContent = "Carregando Informações..."
-        startLoading = true;
-    }
+		loading.textContent = "Carregando Informações..."
+		startLoading = true;
+	}
 }
 
 function Loaded() {
-    document.getElementById("loading").parentNode.removeChild(document.getElementById("loading")); firstLoaded = false;
-    firstLoaded = true;
+	document.getElementById("loading").parentNode.removeChild(document.getElementById("loading")); firstLoaded = false;
+	firstLoaded = true;
 }
 
 
 function GetUsuariosWorkspace() {
-    if (!firstLoaded) {
-        LoadingAll();
-    }
-    PageMethods.GetUsuariosWorkspace(setCodComputadores, onError);
-    setTimeout(GetUsuariosWorkspace, 30000);
+	if (!firstLoaded) {
+		LoadingAll();
+	}
+	PageMethods.RetornaUsuariosOnlineMonitor(setOnlineUsers, onError);
+	PageMethods.GetUsuariosWorkspace(setCodComputadores, onError);
+	setTimeout(GetUsuariosWorkspace, 10000);
 }
 
+function setOnlineUsers(users) {
+	console.log(users);
+	usersOnline = users;
+}
 
 
 var computadoresUsuarios = [];
@@ -39,180 +45,210 @@ var computadoresUsuarios = [];
 
 function setCodComputadores(usuarios) {
 
-    computadoresUsuarios = usuarios;
-    if (!firstLoaded) {
-        getLeitura();
-        Loaded();
-        return computadoresUsuarios;
-    }
+	computadoresUsuarios = usuarios;
+	if (!firstLoaded) {
+		getLeitura();
+		Loaded();
+		return computadoresUsuarios;
+	}
 }
 
 
 function onError(result) {
-    console.log(result);
+	console.log(result);
 }
 
 
 
 function getLeitura() {
 
-    for (i = 0; i < computadoresUsuarios.length; i++) {
-        //console.log(computadoresUsuarios[i]);
+	for (i = 0; i < computadoresUsuarios.length; i++) {
 
-        for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
+		for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
 
-            //console.log(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador);
+			PageMethods.AtualizarComputadores(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador, AtualizarDashboard, onError);
 
-            PageMethods.AtualizarComputadores(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador, AtualizarDashboard, onError);
+		}
 
-        }
+	}
 
-    }
-
-    setTimeout(getLeitura, 5000);
+	setTimeout(getLeitura, 5000);
 }
 
 
 function AtualizarDashboard(leituraAtual) {
 
-    if (!!leituraAtual) {
-        //console.log(leituraAtual.CodComputador, leituraAtual.UltimaLeitura);
-        SetDadosMonitor(leituraAtual);
+	if (!!leituraAtual) {
+		SetDadosMonitor(leituraAtual);
 
-    }
-    else {
-        console.log("Não existe nenhuma leitura desse computador, certifique-se se a aplicação local está rodando nele")
+	}
+	else {
+		console.log("Não existe nenhuma leitura desse computador, certifique-se se a aplicação local está rodando nele")
 
-    }
+	}
 
 
 }
 
 
 function SetDadosMonitor(leituraMonitor) {
-    var computadorMonitor;
+	var computadorMonitor;
 
-    for (i = 0; i < computadoresUsuarios.length; i++) {
+	for (i = 0; i < computadoresUsuarios.length; i++) {
 
-        for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
+		for (j = 0; j < computadoresUsuarios[i].ComputadoresUsuario.length; j++) {
 
-            if (computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador == leituraMonitor.CodComputador) {
+			if (computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador == leituraMonitor.CodComputador) {
 
-                console.log(computadoresUsuarios[i].ComputadoresUsuario[j].CodComputador, computadoresUsuarios[i].ComputadoresUsuario[j].UltimaLeitura);
-                console.log(leituraMonitor.CodComputador, leituraMonitor.UltimaLeitura);
+				computadorMonitor = computadoresUsuarios[i].ComputadoresUsuario[j];
+				computadorMonitor.User = computadoresUsuarios[i].Nome;
+				break;
+			}
+		}
 
-
-                computadorMonitor = computadoresUsuarios[i].ComputadoresUsuario[j];
-                computadorMonitor.User = computadoresUsuarios[i].Nome;
-                break;
-            }
-        }
-
-    }
+	}
 
 
-    if (!document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador)) {
-        IniciarMonitor(computadorMonitor, leituraMonitor);
-    }
+	if (!document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador)) {
+		IniciarMonitor(computadorMonitor, leituraMonitor);
+	}
 
-    if (computadorMonitor.UltimaLeitura != leituraMonitor.UltimaLeitura) {
-        
-        updateChart(computadorMonitor, leituraMonitor);
+	if (usersOnline != null) {
+		for (k = 0; k < usersOnline.length; k++) {
+			if (computadorMonitor.User == usersOnline[k]) {
+				updateChart(computadorMonitor, leituraMonitor);
+				return
+			}
+		}
+	}
 
-        computadorMonitor.UltimaLeitura = leituraMonitor.UltimaLeitura;
-    }
-    else {
-        pauseChart(computadorMonitor, leituraMonitor);
-    }
+	pauseChart(computadorMonitor, leituraMonitor);
+
 }
 
+function leituraProxima(antiga, nova) {
+
+	var antiga = antiga.split(' ');
+	var datasa = antiga[0].split('/');
+	var horasa = antiga[1].split(':');
+	var anoa = Number(datasa[2]);
+	var mesa = Number(datasa[1]);
+	var diaa = Number(datasa[0]);
+	var segundoa = Number(horasa[2]);
+	var minutoa = Number(horasa[1]);
+	var horaa = Number(horasa[0]);
 
 
+
+	var nova = nova.split(' ');
+	var datasn = nova[0].split('/');
+	var horasn = nova[1].split(':');
+	var anon = Number(datasn[2]);
+	var mesn = Number(datasn[1]);
+	var dian = Number(datasn[0]);
+	var segundon = Number(horasn[2]);
+	var minuton = Number(horasn[1]);
+	var horan = Number(horasn[0]);
+
+	if (anoa < anon) {
+		return true;
+	}
+	else if (mesa < mesn) {
+		return true;
+	}
+	else if (diaa < dian) {
+		return true;
+	}
+	else if (horaa < horan) {
+		return true;
+	}
+	else if (minutoa < minuton) {
+		return true;
+	}
+	else if (segundoa < segundon) {
+		return true;
+	}
+
+	return false;
+
+}
 
 function IniciarMonitor(computadorMonitor, leituraMonitor) {
 
 
-    var areaInfo = document.getElementById('areaInfo');
+	var areaInfo = document.getElementById('areaInfo');
 
-    var infoGeralComputador = document.createElement("div");
+	var infoGeralComputador = document.createElement("div");
 
-    infoGeralComputador.setAttribute("class", "infoGeralComputador");
-    infoGeralComputador.setAttribute("id", "infoGeralComputador" + computadorMonitor.CodComputador);
+	infoGeralComputador.setAttribute("class", "infoGeralComputador");
+	infoGeralComputador.setAttribute("id", "infoGeralComputador" + computadorMonitor.CodComputador);
 
+	areaInfo.appendChild(infoGeralComputador);
 
-    areaInfo.appendChild(infoGeralComputador);
+	var tituloComputador = document.createElement("div");
+	tituloComputador.setAttribute("class", "tituloComputador");
+	tituloComputador.setAttribute("id", "tituloComputador" + computadorMonitor.CodComputador);
 
-    var tituloComputador = document.createElement("div");
-    tituloComputador.setAttribute("class", "tituloComputador");
-    tituloComputador.setAttribute("id", "tituloComputador" + computadorMonitor.CodComputador);
+	infoGeralComputador.appendChild(tituloComputador);
 
-    infoGeralComputador.appendChild(tituloComputador);
+	tituloComputador.textContent = computadorMonitor.NomeComputador + computadorMonitor.User;
 
-    tituloComputador.textContent = computadorMonitor.NomeComputador + computadorMonitor.User;
+	Desenhar("HD", infoGeralComputador, computadorMonitor.HdTotal, leituraMonitor.HdAtual, computadorMonitor.CodComputador);
+	Desenhar("RAM", infoGeralComputador, computadorMonitor.RamTotal, leituraMonitor.RamAtual, computadorMonitor.CodComputador);
+	DesenharCPU("CPU", infoGeralComputador, 100, leituraMonitor.CpuAtual.toFixed(2), computadorMonitor.CodComputador);
 
-    Desenhar("HD", infoGeralComputador, computadorMonitor.HdTotal, leituraMonitor.HdAtual, computadorMonitor.CodComputador);
-    Desenhar("RAM", infoGeralComputador, computadorMonitor.RamTotal, leituraMonitor.RamAtual, computadorMonitor.CodComputador);
-    //Desenhar("CPU", infoGeralComputador, computadorMonitor.CpuAtual, leituraMonitor.CpuAtual);
+	var detalhesMonitor = document.createElement("div");
+	detalhesMonitor.setAttribute("class", "detalhesMonitor");
+	detalhesMonitor.setAttribute("id", "detalhesMonitor" + computadorMonitor.CodComputador);
 
+	var perfil = computadorMonitor.Perfil;
 
+	switch (computadorMonitor.Perfil) {
+		case 0:
+			perfil = "Calculando...";
+			break;
+		case 1:
+			perfil = "Jogo";
+			break;
+		case 2:
+			perfil = "Trabalho";
+			break;
+		case 3:
+			perfil = "Social";
+			break;
+		case 4:
+			perfil = "Outros";
+			break;
 
+	}
 
-    DesenharCPU("CPU", infoGeralComputador, 100, leituraMonitor.CpuAtual.toFixed(2), computadorMonitor.CodComputador);
+	infoGeralComputador.appendChild(detalhesMonitor);
 
-
-    var detalhesMonitor = document.createElement("div");
-    detalhesMonitor.setAttribute("class", "detalhesMonitor");
-    detalhesMonitor.setAttribute("id", "detalhesMonitor" + computadorMonitor.CodComputador);
-
-    var perfil = computadorMonitor.Perfil;
-
-    switch (computadorMonitor.Perfil) {
-        case 0:
-            perfil = "Calculando...";
-            break;
-        case 1:
-            perfil = "Jogo";
-            break;
-        case 2:
-            perfil = "Trabalho";
-            break;
-        case 3:
-            perfil = "Social";
-            break;
-        case 4:
-            perfil = "Outros";
-            break;
-
-
-    }
-
-    infoGeralComputador.appendChild(detalhesMonitor);
-
-    addDetalhe(detalhesMonitor, "Usuário", computadorMonitor.User, computadorMonitor.CodComputador);
-    addDetalhe(detalhesMonitor, "Perfil", perfil, computadorMonitor.CodComputador);
-    addDetalhe(detalhesMonitor, "Processador", computadorMonitor.Processador, computadorMonitor.CodComputador);
-    addDetalhe(detalhesMonitor, "SO", computadorMonitor.SistemaOperacional + " " + computadorMonitor.VersaoSistema + " " + computadorMonitor.VersaoBits + " BITS ", computadorMonitor.CodComputador);
+	addDetalhe(detalhesMonitor, "Usuário", computadorMonitor.User, computadorMonitor.CodComputador);
+	addDetalhe(detalhesMonitor, "Perfil", perfil, computadorMonitor.CodComputador);
+	addDetalhe(detalhesMonitor, "Processador", computadorMonitor.Processador, computadorMonitor.CodComputador);
+	addDetalhe(detalhesMonitor, "SO", computadorMonitor.SistemaOperacional + " " + computadorMonitor.VersaoSistema + " " + computadorMonitor.VersaoBits + " BITS ", computadorMonitor.CodComputador);
 
 
 
-    var pauseComputador = document.createElement("div");
-    pauseComputador.setAttribute("class", "pauseComputador");
-    pauseComputador.setAttribute("id", "pauseComputador" + computadorMonitor.CodComputador);
-    infoGeralComputador.appendChild(pauseComputador);
+	var pauseComputador = document.createElement("div");
+	pauseComputador.setAttribute("class", "pauseComputador");
+	pauseComputador.setAttribute("id", "pauseComputador" + computadorMonitor.CodComputador);
+	infoGeralComputador.appendChild(pauseComputador);
 
-    pauseComputador.style.display = "none";
+	pauseComputador.style.display = "none";
 
 }
 
 
 function addDetalhe(detalhesMonitor, titulo, info, cod) {
-    var campoDetalhe = document.createElement("div");
-    campoDetalhe.setAttribute("class", "campoDetalhe");
-    campoDetalhe.setAttribute("id", "campoDetalhe" + titulo + cod);
+	var campoDetalhe = document.createElement("div");
+	campoDetalhe.setAttribute("class", "campoDetalhe");
+	campoDetalhe.setAttribute("id", "campoDetalhe" + titulo + cod);
 
-    detalhesMonitor.appendChild(campoDetalhe);
+	detalhesMonitor.appendChild(campoDetalhe);
 
-    campoDetalhe.textContent = titulo + ": " + info;
+	campoDetalhe.textContent = titulo + ": " + info;
 }
 
 var chartsData = [];
@@ -225,506 +261,462 @@ var lineCharts = [];
 
 function Desenhar(componente, infoGeralComputador, total, atual, cod) {
 
-    var unidade = "GB";
+	var unidade = "GB";
 
-    if (total / 1e+12 >= 1) {
-        unidade = "TB"
-        total /= 1e+12;
-        atual /= 1e+12;
-    }
-    else {
-        total /= 1e+9;
-        atual /= 1e+9;
-    }
+	if (total / 1e+12 >= 1) {
+		unidade = "TB"
+		total /= 1e+12;
+		atual /= 1e+12;
+	}
+	else {
+		total /= 1e+9;
+		atual /= 1e+9;
+	}
 
-    total = total.toFixed(2);
+	total = total.toFixed(2);
 
-    atual = atual.toFixed(2);
+	atual = atual.toFixed(2);
 
-    var style = getComputedStyle(document.body);
-    var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
-    var angulo = 0,
-        cor = (style.getPropertyValue('--blue-color')).replace(/\s/g, '');
-    var cor2 = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
+	var style = getComputedStyle(document.body);
+	var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
+	var angulo = 0,
+		cor = (style.getPropertyValue('--blue-color')).replace(/\s/g, '');
+	var cor2 = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
 
 
-    if (componente == "RAM") {
-        cor = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
-    }
+	if (componente == "RAM") {
+		cor = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+	}
 
+	var localChart = document.createElement("div");
+	localChart.setAttribute("class", "localChart");
+	localChart.setAttribute("id", "localChart" + componente + cod);
 
+	infoGeralComputador.appendChild(localChart);
 
-    var localChart = document.createElement("div");
-    localChart.setAttribute("class", "localChart");
-    localChart.setAttribute("id", "localChart" + componente + cod);
+	var pieChartInfo = document.createElement("canvas");
 
-    infoGeralComputador.appendChild(localChart);
+	pieChartInfo.setAttribute("class", "donutchart" + componente);
+	pieChartInfo.setAttribute("id", "donutchart" + componente + cod);
 
-    var pieChartInfo = document.createElement("canvas");
+	localChart.appendChild(pieChartInfo);
 
-    pieChartInfo.setAttribute("class", "donutchart" + componente);
-    pieChartInfo.setAttribute("id", "donutchart" + componente + cod);
+	var labelChart = document.createElement("div");
 
-    localChart.appendChild(pieChartInfo);
+	labelChart.setAttribute("class", "labelsChart");
+	labelChart.setAttribute("id", "donutchart" + componente + cod);
 
-    var labelChart = document.createElement("div");
+	localChart.appendChild(labelChart);
 
-    labelChart.setAttribute("class", "labelsChart");
-    labelChart.setAttribute("id", "donutchart" + componente + cod);
+	var tituloLabel = document.createElement("div");
 
-    localChart.appendChild(labelChart);
+	tituloLabel.setAttribute("class", "tituloLabel");
+	tituloLabel.setAttribute("id", "tituloLabel" + componente + cod);
+	tituloLabel.style.backgroundColor = cor;
 
-    var tituloLabel = document.createElement("div");
+	labelChart.appendChild(tituloLabel);
 
-    tituloLabel.setAttribute("class", "tituloLabel");
-    tituloLabel.setAttribute("id", "tituloLabel" + componente + cod);
-    tituloLabel.style.backgroundColor = cor;
+	tituloLabel.textContent = componente;
 
-    labelChart.appendChild(tituloLabel);
+	var atualLabel = document.createElement("div");
 
-    tituloLabel.textContent = componente;
+	atualLabel.setAttribute("class", "conteudoLabel");
+	atualLabel.setAttribute("id", "conteudoLabelAtual" + componente + cod);
 
-    var atualLabel = document.createElement("div");
+	labelChart.appendChild(atualLabel);
 
-    atualLabel.setAttribute("class", "conteudoLabel");
-    atualLabel.setAttribute("id", "conteudoLabelAtual" + componente + cod);
+	atualLabel.textContent = "Usado: ";
 
-    labelChart.appendChild(atualLabel);
+	var atualValor = document.createElement("div");
 
-    atualLabel.textContent = "Usado: ";
+	atualValor.setAttribute("class", "conteudoLabel");
+	atualValor.setAttribute("id", "conteudoAtual" + componente + cod);
 
+	labelChart.appendChild(atualValor);
 
+	atualValor.textContent = atual + " " + unidade;
 
-    var atualValor = document.createElement("div");
+	var totalLabel = document.createElement("div");
 
-    atualValor.setAttribute("class", "conteudoLabel");
-    atualValor.setAttribute("id", "conteudoAtual" + componente + cod);
+	totalLabel.setAttribute("class", "conteudoLabel");
+	totalLabel.setAttribute("id", "conteudoLabelTotal" + componente + cod);
 
-    labelChart.appendChild(atualValor);
+	labelChart.appendChild(totalLabel);
 
-    atualValor.textContent = atual + " " + unidade;
+	totalLabel.textContent = "De: ";
 
+	var totalValor = document.createElement("div");
 
+	totalValor.setAttribute("class", "conteudoLabel");
+	totalValor.setAttribute("id", "conteudoTotal" + componente + cod);
 
+	labelChart.appendChild(totalValor);
 
-    var totalLabel = document.createElement("div");
+	totalValor.textContent = total + " " + unidade;
 
-    totalLabel.setAttribute("class", "conteudoLabel");
-    totalLabel.setAttribute("id", "conteudoLabelTotal" + componente + cod);
+	var c = document.getElementById("donutchart" + componente + cod);
+	var ctx = c.getContext("2d");
 
-    labelChart.appendChild(totalLabel);
+	var rect = c.getBoundingClientRect();
 
-    totalLabel.textContent = "De: ";
+	console.log(rect.x, rect.width, rect.x - rect.width);
 
-
-
-    var totalValor = document.createElement("div");
-
-    totalValor.setAttribute("class", "conteudoLabel");
-    totalValor.setAttribute("id", "conteudoTotal" + componente + cod);
-
-    labelChart.appendChild(totalValor);
-
-    totalValor.textContent = total + " " + unidade;
-
-
-
-
-
-
-
-
-
-
-    var c = document.getElementById("donutchart" + componente + cod);
-    var ctx = c.getContext("2d");
-
-
-
-    var rect = c.getBoundingClientRect();
-
-    console.log(rect.x, rect.width, rect.x - rect.width);
-
-    var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
-
-    gradientStroke.addColorStop(0, cor);
-    gradientStroke.addColorStop(0.1, cor2);
-    gradientStroke.addColorStop(0.2, cor);
-
-
-    data = {
-        datasets: [{
-            data: [atual, total - atual],
-            backgroundColor: [gradientStroke, darkerBgColor],
-            hoverBackgroundColor: [cor, "#000"]
-        }],
-
-        // These labels appear in the legend and in the tooltips when hovering different arcs
-        labels: [
-            componente + ' Usado',
-            componente + ' Livre'
-        ]
-
-    };
-
-
-
-
-    var options = {
-        elements: {
-            arc: {
-                borderWidth: 0
-            }
-        },
-        legend: {
-            display: false
-        },
-        tooltips: {
-            enabled: false
-        },
-        segmentShowStroke: false,
-        cutoutPercentage: 90,
-        animationSteps: 100,
-        animationEasing: "easeOutBounce",
-        animateRotate: true,
-        responsive: true,
-        maintainAspectRatio: true,
-        animateScale: false,
-
-
-    };
-
-    chartsComp.push(componente);
-    chartsCod.push(cod);
-    chartsData.push(data);
-    chartsOptions.push(options);
-
-    charts.push(new Chart(ctx, {
-        type: 'doughnut',
-        data: data,
-        options: options
-    }));
-
-
-
-
-    //console.log(total, total - atual, atual);
+	var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+
+	gradientStroke.addColorStop(0, cor);
+	gradientStroke.addColorStop(0.1, cor2);
+	gradientStroke.addColorStop(0.2, cor);
+
+
+	data = {
+		datasets: [{
+			data: [atual, total - atual],
+			backgroundColor: [gradientStroke, darkerBgColor],
+			hoverBackgroundColor: [cor, "#000"]
+		}],
+
+		// These labels appear in the legend and in the tooltips when hovering different arcs
+		labels: [
+			componente + ' Usado',
+			componente + ' Livre'
+		]
+
+	};
+
+
+	var options = {
+		elements: {
+			arc: {
+				borderWidth: 0
+			}
+		},
+		legend: {
+			display: false
+		},
+		tooltips: {
+			enabled: false
+		},
+		segmentShowStroke: false,
+		cutoutPercentage: 90,
+		animationSteps: 100,
+		animationEasing: "easeOutBounce",
+		animateRotate: true,
+		responsive: true,
+		maintainAspectRatio: true,
+		animateScale: false,
+
+
+	};
+
+	chartsComp.push(componente);
+	chartsCod.push(cod);
+	chartsData.push(data);
+	chartsOptions.push(options);
+
+	charts.push(new Chart(ctx, {
+		type: 'doughnut',
+		data: data,
+		options: options
+	}));
 
 }
 
 
 
 function updateChart(computadorMonitor, leituraMonitor) {
-    var infoGeralComputador = document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador);
+	var infoGeralComputador = document.getElementById("infoGeralComputador" + computadorMonitor.CodComputador);
 
 
-    var pauseComputador = document.getElementById("pauseComputador" + computadorMonitor.CodComputador);
-    pauseComputador.style.display = "none";
+	var pauseComputador = document.getElementById("pauseComputador" + computadorMonitor.CodComputador);
+	pauseComputador.style.display = "none";
 
-    //console.log(leituraMonitor.RamAtual);
-
-    Atualizar("HD", infoGeralComputador, computadorMonitor.HdTotal, leituraMonitor.HdAtual, computadorMonitor.CodComputador);
-    Atualizar("RAM", infoGeralComputador, computadorMonitor.RamTotal, leituraMonitor.RamAtual, computadorMonitor.CodComputador);
-    AtualizarCPU("CPU", infoGeralComputador, leituraMonitor.CpuAtual.toFixed(2), computadorMonitor.CodComputador)
+	Atualizar("HD", infoGeralComputador, computadorMonitor.HdTotal, leituraMonitor.HdAtual, computadorMonitor.CodComputador);
+	Atualizar("RAM", infoGeralComputador, computadorMonitor.RamTotal, leituraMonitor.RamAtual, computadorMonitor.CodComputador);
+	AtualizarCPU("CPU", infoGeralComputador, leituraMonitor.CpuAtual.toFixed(2), computadorMonitor.CodComputador)
 
 }
 
 
 function Atualizar(componente, infoGeralComputador, total, atual, cod) {
-    var unidade = "GB";
+	var unidade = "GB";
 
-    if (total / 1e+12 >= 1) {
-        unidade = "TB"
-        total /= 1e+12;
-        atual /= 1e+12;
-    }
-    else {
-        total /= 1e+9;
-        atual /= 1e+9;
-    }
+	if (total / 1e+12 >= 1) {
+		unidade = "TB"
+		total /= 1e+12;
+		atual /= 1e+12;
+	}
+	else {
+		total /= 1e+9;
+		atual /= 1e+9;
+	}
 
-    total = total.toFixed(2);
+	total = total.toFixed(2);
 
-    atual = atual.toFixed(2);
+	atual = atual.toFixed(2);
 
-    var style = getComputedStyle(document.body);
-    var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
+	var style = getComputedStyle(document.body);
+	var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
 
-    var cor = (style.getPropertyValue('--blue-color')).replace(/\s/g, '');
-    var cor2 = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
+	var cor = (style.getPropertyValue('--blue-color')).replace(/\s/g, '');
+	var cor2 = (style.getPropertyValue('--purple-color')).replace(/\s/g, '');
 
-    if (componente == "RAM") {
-        cor = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
-    }
+	if (componente == "RAM") {
+		cor = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+	}
 
+	var c = document.getElementById("donutchart" + componente + cod);
+	var ctx = c.getContext("2d");
 
+	var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
 
-    var c = document.getElementById("donutchart" + componente + cod);
-    var ctx = c.getContext("2d");
+	gradientStroke.addColorStop(0, cor);
+	gradientStroke.addColorStop(0.1, cor2);
+	gradientStroke.addColorStop(0.2, cor);
 
-    var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+	var tituloLabel = document.getElementById("tituloLabel" + componente + cod);
 
-    gradientStroke.addColorStop(0, cor);
-    gradientStroke.addColorStop(0.1, cor2);
-    gradientStroke.addColorStop(0.2, cor);
+	tituloLabel.style.backgroundColor = cor;
 
-    var tituloLabel = document.getElementById("tituloLabel" + componente + cod);
+	document.getElementById("conteudoTotal" + componente + cod).textContent = total + " " + unidade;
 
-    tituloLabel.style.backgroundColor = cor;
+	document.getElementById("conteudoAtual" + componente + cod).textContent = atual + " " + unidade;
 
-
-
-
-    document.getElementById("conteudoTotal" + componente + cod).textContent = total + " " + unidade;
-
-    document.getElementById("conteudoAtual" + componente + cod).textContent = atual + " " + unidade;
-
-    for (i = 0; i < charts.length; i++) {
+	for (i = 0; i < charts.length; i++) {
 
 
-        if (chartsCod[i] == cod && chartsComp[i] == componente) {
+		if (chartsCod[i] == cod && chartsComp[i] == componente) {
 
-            var chart = charts[i];
+			var chart = charts[i];
 
-            chart.data.datasets[0].data = [atual, total - atual];
+			chart.data.datasets[0].data = [atual, total - atual];
 
-            chart.data.datasets[0].backgroundColor = [gradientStroke, darkerBgColor];
+			chart.data.datasets[0].backgroundColor = [gradientStroke, darkerBgColor];
 
-            chart.data.datasets[0].hoverBackgroundColor = [cor, "#000"];
-            
-            chart.update();
+			chart.data.datasets[0].hoverBackgroundColor = [cor, "#000"];
 
-        }
+			chart.update();
 
-    }
+		}
+
+	}
 
 
 }
-
-
 
 function DesenharCPU(componente, infoGeralComputador, total, atual, cod) {
 
 
 
-    var style = getComputedStyle(document.body);
-    var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
-    var angulo = 0,
-        cor = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
-    var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+	var style = getComputedStyle(document.body);
+	var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
+	var angulo = 0,
+		cor = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
+	var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
 
 
-    var areaCPU = document.createElement("div");
-    areaCPU.setAttribute("class", "areaCPU");
-    areaCPU.setAttribute("id", "areaCPU" + componente + cod);
+	var areaCPU = document.createElement("div");
+	areaCPU.setAttribute("class", "areaCPU");
+	areaCPU.setAttribute("id", "areaCPU" + componente + cod);
 
-    infoGeralComputador.appendChild(areaCPU);
-
-
-    var tituloCpu = document.createElement("div");
-    tituloCpu.setAttribute("class", "tituloCpu");
-    tituloCpu.setAttribute("id", "tituloCpu" + componente + cod);
-
-    areaCPU.appendChild(tituloCpu);
-
-    tituloCpu.textContent = "CPU";
+	infoGeralComputador.appendChild(areaCPU);
 
 
-    var graficoCpu = document.createElement("div");
-    graficoCpu.setAttribute("class", "graficoCpu");
-    graficoCpu.setAttribute("id", "graficoCpu" + componente + cod);
+	var tituloCpu = document.createElement("div");
+	tituloCpu.setAttribute("class", "tituloCpu");
+	tituloCpu.setAttribute("id", "tituloCpu" + componente + cod);
 
-    areaCPU.appendChild(graficoCpu);
+	areaCPU.appendChild(tituloCpu);
 
-    var lineChartInfo = document.createElement("canvas");
-
-    lineChartInfo.setAttribute("class", "lineChart" + componente);
-    lineChartInfo.setAttribute("id", "lineChart" + componente + cod);
-
-    graficoCpu.appendChild(lineChartInfo);
+	tituloCpu.textContent = "CPU";
 
 
-    var labelCpu = document.createElement("div");
-    labelCpu.setAttribute("class", "labelCpu");
-    labelCpu.setAttribute("id", "labelCpu" + componente + cod);
+	var graficoCpu = document.createElement("div");
+	graficoCpu.setAttribute("class", "graficoCpu");
+	graficoCpu.setAttribute("id", "graficoCpu" + componente + cod);
 
-    areaCPU.appendChild(labelCpu);
+	areaCPU.appendChild(graficoCpu);
 
+	var lineChartInfo = document.createElement("canvas");
 
-    var porcentagemCpu = document.createElement("div");
-    porcentagemCpu.setAttribute("class", "porcentagemCpu");
-    porcentagemCpu.setAttribute("id", "porcentagemCpu" + componente + cod);
+	lineChartInfo.setAttribute("class", "lineChart" + componente);
+	lineChartInfo.setAttribute("id", "lineChart" + componente + cod);
 
-    labelCpu.appendChild(porcentagemCpu);
-
-    porcentagemCpu.textContent = atual + "%";
+	graficoCpu.appendChild(lineChartInfo);
 
 
+	var labelCpu = document.createElement("div");
+	labelCpu.setAttribute("class", "labelCpu");
+	labelCpu.setAttribute("id", "labelCpu" + componente + cod);
 
-    var c = document.getElementById("lineChart" + componente + cod);
-    var ctx = c.getContext("2d");
+	areaCPU.appendChild(labelCpu);
 
 
-    var rect = c.getBoundingClientRect();
+	var porcentagemCpu = document.createElement("div");
+	porcentagemCpu.setAttribute("class", "porcentagemCpu");
+	porcentagemCpu.setAttribute("id", "porcentagemCpu" + componente + cod);
 
-    console.log(rect.x, rect.width, rect.x - rect.width);
+	labelCpu.appendChild(porcentagemCpu);
 
-    var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
-
-    gradientStroke.addColorStop(0, cor);
-    gradientStroke.addColorStop(0.2, cor2);
-    gradientStroke.addColorStop(0.4, cor);
+	porcentagemCpu.textContent = atual + "%";
 
 
 
-    data = {
+	var c = document.getElementById("lineChart" + componente + cod);
+	var ctx = c.getContext("2d");
 
-        datasets: [{
-            data: [],
-            backgroundColor: gradientStroke,
-            hoverBackgroundColor: [cor, "#000"],
-            fill: true,
-            borderColor: "rgba(230,230,230,1)",
-            borderWidth: 2,
-            pointRadius: 8,
-            pointHoverRadius: 12,
-            showLine: true
-        }],
 
-        labels: []
+	var rect = c.getBoundingClientRect();
 
-    };
+	console.log(rect.x, rect.width, rect.x - rect.width);
+
+	var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+
+	gradientStroke.addColorStop(0, cor);
+	gradientStroke.addColorStop(0.2, cor2);
+	gradientStroke.addColorStop(0.4, cor);
 
 
 
+	data = {
 
-    var options = {
-        legend: {
-            display: false
-        },
-        scales: {
-            xAxes: [{
-                fontColor: cor,
-                display: false,
-                ticks: {
-                    stepSize: 1,
-                    fontColor: cor2,
-                    beginAtZero: true
-                }
-            }],
-            yAxes: [{
-                scaleLabel: {
-                    stepSize: 1,
-                    max: 100,
-                    min: 0,
-                    fontColor: cor,
-                    display: false
-                },
-                ticks: {
-                    max: 100,
-                    min: 0,
-                    fontColor: cor2,
-                    beginAtZero: true
-                }
-            }]
-        },
-        animationSteps: 100,
-        animationEasing: "easeOutBounce",
-        responsive: true,
-        maintainAspectRatio: false,
-        animateScale: false,
-        scaleOverride: false,
-        scaleSteps: 1,
-        scaleStartValue: 0,
-        scaleEndValue: 100
+		datasets: [{
+			data: [],
+			backgroundColor: gradientStroke,
+			hoverBackgroundColor: [cor, "#000"],
+			fill: true,
+			borderColor: "rgba(230,230,230,1)",
+			borderWidth: 2,
+			pointRadius: 8,
+			pointHoverRadius: 12,
+			showLine: true
+		}],
+
+		labels: []
+
+	};
+
+	var options = {
+		legend: {
+			display: false
+		},
+		scales: {
+			xAxes: [{
+				fontColor: cor,
+				display: false,
+				ticks: {
+					stepSize: 1,
+					fontColor: cor2,
+					beginAtZero: true
+				}
+			}],
+			yAxes: [{
+				scaleLabel: {
+					stepSize: 1,
+					max: 100,
+					min: 0,
+					fontColor: cor,
+					display: false
+				},
+				ticks: {
+					max: 100,
+					min: 0,
+					fontColor: cor2,
+					beginAtZero: true
+				}
+			}]
+		},
+		animationSteps: 100,
+		animationEasing: "easeOutBounce",
+		responsive: true,
+		maintainAspectRatio: false,
+		animateScale: false,
+		scaleOverride: false,
+		scaleSteps: 1,
+		scaleStartValue: 0,
+		scaleEndValue: 100
 
 
-    };
+	};
 
-    chartsComp.push(componente);
-    chartsCod.push(cod);
-    chartsData.push(data);
-    chartsOptions.push(options);
+	chartsComp.push(componente);
+	chartsCod.push(cod);
+	chartsData.push(data);
+	chartsOptions.push(options);
 
-    charts.push(new Chart(ctx, {
-        type: 'line',
-        data: data,
-        options: options
-    }));
+	charts.push(new Chart(ctx, {
+		type: 'line',
+		data: data,
+		options: options
+	}));
 
 
 
 
 }
 
-
-
 function AtualizarCPU(componente, infoGeralComputador, atual, cod) {
-    var style = getComputedStyle(document.body);
-    var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
+	var style = getComputedStyle(document.body);
+	var darkerBgColor = (style.getPropertyValue('--darker-bg-color')).replace(/\s/g, '');
 
-    var cor = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
-    var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+	var cor = (style.getPropertyValue('--red-color')).replace(/\s/g, '');
+	var cor2 = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
 
-    if (componente == "RAM") {
-        cor = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
-    }
+	if (componente == "RAM") {
+		cor = (style.getPropertyValue('--pink-color')).replace(/\s/g, '');
+	}
 
-    var c = document.getElementById("lineChart" + componente + cod);
-    var ctx = c.getContext("2d");
+	var c = document.getElementById("lineChart" + componente + cod);
+	var ctx = c.getContext("2d");
 
-    var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
+	var gradientStroke = ctx.createLinearGradient(0, 0, window.innerWidth, window.innerHeight);
 
-    gradientStroke.addColorStop(0, cor);
-    gradientStroke.addColorStop(0.1, cor2);
-    gradientStroke.addColorStop(0.2, cor);
-    
-
-
-    for (i = 0; i < charts.length; i++) {
-
-        if (chartsCod[i] == cod && chartsComp[i] == componente) {
-
-            var chart = charts[i];
-
-            chart.data.labels.push("CPU");
-            chart.data.datasets[0].data.push(atual)
+	gradientStroke.addColorStop(0, cor);
+	gradientStroke.addColorStop(0.1, cor2);
+	gradientStroke.addColorStop(0.2, cor);
 
 
-            chart.data.datasets[0].backgroundColor = gradientStroke;
 
-            chart.data.datasets[0].hoverBackgroundColor = cor;
+	for (i = 0; i < charts.length; i++) {
 
-            chart.options.scales.xAxes[0].fontColor = cor;
-            chart.options.scales.xAxes[0].ticks.fontColor = cor2;
+		if (chartsCod[i] == cod && chartsComp[i] == componente) {
 
-            chart.options.scales.yAxes[0].scaleLabel.fontColor = cor;
-            chart.options.scales.yAxes[0].ticks.fontColor = cor2;
+			var chart = charts[i];
 
-            if (chart.data.labels.length > 6) {
-                chart.data.labels.shift()
-                chart.data.datasets[0].data.shift()
-            }
+			chart.data.labels.push("CPU");
+			chart.data.datasets[0].data.push(atual)
 
 
-            var porcentagem = document.getElementById("porcentagemCpu" + componente + cod);
-            porcentagem.style.top = (100 - atual - 10) + "%";
-            porcentagem.textContent = atual + "%";
+			chart.data.datasets[0].backgroundColor = gradientStroke;
 
-            chart.update();
+			chart.data.datasets[0].hoverBackgroundColor = cor;
 
-        }
+			chart.options.scales.xAxes[0].fontColor = cor;
+			chart.options.scales.xAxes[0].ticks.fontColor = cor2;
 
-    }
+			chart.options.scales.yAxes[0].scaleLabel.fontColor = cor;
+			chart.options.scales.yAxes[0].ticks.fontColor = cor2;
+
+			if (chart.data.labels.length > 6) {
+				chart.data.labels.shift()
+				chart.data.datasets[0].data.shift()
+			}
+
+
+			var porcentagem = document.getElementById("porcentagemCpu" + componente + cod);
+			porcentagem.style.top = (100 - atual - 10) + "%";
+			porcentagem.textContent = atual + "%";
+
+			chart.update();
+
+		}
+
+	}
 }
 
 
 function pauseChart(computadorMonitor, leituraMonitor) {
 
-    var pauseComputador = document.getElementById("pauseComputador" + computadorMonitor.CodComputador);
-    pauseComputador.style.display = "block";
-    pauseComputador.textContent = computadorMonitor.NomeComputador + computadorMonitor.User;
+	var pauseComputador = document.getElementById("pauseComputador" + computadorMonitor.CodComputador);
+	pauseComputador.style.display = "block";
+	pauseComputador.textContent = computadorMonitor.NomeComputador + computadorMonitor.User;
 }
-
-
-
