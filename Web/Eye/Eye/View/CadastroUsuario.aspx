@@ -150,7 +150,7 @@
             </a>
 
 
-            <a href="CadastroTarefas.aspx">
+            <a href="Tarefas.aspx">
                 <div class="itemMenu">
 
                     <div class="itemIcon">

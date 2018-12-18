@@ -1,6 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="Eye.View.Dashboard" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Tarefas.aspx.cs" Inherits="EYE.View.Tarefas" %>
 
 <!DOCTYPE html>
+
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -9,21 +10,19 @@
     <link runat="server" rel="icon" href="../Component/favicon.ico" type="image/ico" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Dashboard | EYE by 4U</title>
+    <title>Tarefas | EYE by 4U</title>
     <link href="../Model/EYE.css" rel="stylesheet" type="text/css" />
 
-
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script type="text/javascript" src="../Controller/Dashboard.js"></script>
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
     <script type="text/javascript" src="../Controller/BreakSession.js"></script>
-    <script type="text/javascript" src="../Controller/download.js"></script>
 
+    <script type="text/javascript" src="../Controller/ListarTarefas.js"></script>
+    <script type="text/javascript" src="../Controller/download.js"></script>
 </head>
-<body onload="iniciarEstilo(), GetUsuariosWorkspace()">
-    <form id="formDashboard" runat="server">
+<body onload="iniciarEstilo(), listar()">
+    <form id="form1" runat="server">
+
+
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />
 
@@ -38,12 +37,12 @@
 
                 <div class="slidecontainer">
                     Intensidade das cores:
-                    <input type="range" min="1" max="100" value="100" class="slider" id="slideCor" oninput="grayscale()" onmouseup="mudarIntensidade()"/>
+                    <input type="range" min="1" max="100" value="100" class="slider" id="slideCor" oninput="grayscale()" onmouseup="mudarIntensidade()" />
                 </div>
 
                 <div class="areaTextoSwitch">
-                    
-                    
+
+
                     <div class="radioTema">
                         Modo Claro
                     </div>
@@ -51,38 +50,38 @@
                         <input id="switch-tema" class="switch switch--shadow" type="checkbox" onchange="mudarModo()" />
                         <label for="switch-tema"></label>
                     </div>
-                    
+
 
                 </div>
                 <div class="areaTextoSwitch">
-                    
+
                     <div class="radioTema">
                         Escolha o tema
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema0" value="0" checked="checked" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema0" value="0" checked="checked" onchange="mudarTema()" />
                         <label for="tema0">Padrão</label>
                     </div>
 
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema1" value="1" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema1" value="1" onchange="mudarTema()" />
                         <label for="tema1">Godez</label>
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema2" value="2" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema2" value="2" onchange="mudarTema()" />
                         <label for="tema2">Martins</label>
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema3" value="3" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema3" value="3" onchange="mudarTema()" />
                         <label for="tema3">Sayuri</label>
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema4" value="4" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema4" value="4" onchange="mudarTema()" />
                         <label for="tema4">Volpe</label>
                     </div>
                 </div>
@@ -158,7 +157,7 @@
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Cadastrar Tarefas
+                        Tarefas
                
                     </div>
 
@@ -230,7 +229,7 @@
                     <div class="txtMeuResumo">Online:</div>
                     <asp:Panel runat="server" ID="pnlOnline">
 
-                        <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
+                        <asp:Label ID="Label1" Text="" CssClass="mensagem" runat="server" />
                     </asp:Panel>
                 </div>
             </ContentTemplate>
@@ -240,15 +239,10 @@
         </asp:UpdatePanel>
         <asp:Timer ID="Timer" runat="server" Interval="5000" OnTick="Timer_Tick"></asp:Timer>
 
-        <!--Area com os containers dos computadores-->
         <div id="areaInfo">
-
-
-            <!--Eles são adds através da função iniciarDash() no script EYEDash.js-->
 
         </div>
 
-        <!--/Area com os containers dos computadores-->
     </form>
 </body>
 </html>
