@@ -1479,6 +1479,73 @@ input[type=number]::-webkit-inner-spin-button {
         font-weight: lighter;
     }
 
+.divisorListaTarefa{
+    width: 50%;
+    float: left;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.tituloTarefa{
+    width: 100%;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: solid 1px var(--txt-color);
+}
+
+.descricaoTarefa {
+    width: 100%;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.qtdResponsaveisTarefa {
+    width: 100%;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    float: right;
+    text-align: right;
+}
+
+.infoTarefa {
+    float: left;
+    margin: 5%;
+    padding: 5%;
+    width: 80%;
+    height: auto;
+    background: var(--darker-bg-color);
+    box-shadow: 0px 0px 35px 1px var(--black-color);
+    border: 1px solid var(--txt-color);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+    .infoTarefa:hover {
+        background: var(--black-color);
+        box-shadow: 0px 0px 35px 1px var(--txt-color);
+        color: var(--bg-color);
+    }
+
+#infoTarefaDetalhes {
+    float: left;
+    margin: 5%;
+    padding: 5%;
+    width: 80%;
+    height: 80%;
+    background: var(--darker-bg-color);
+    box-shadow: 0px 0px 35px 1px var(--black-color);
+    border: 1px solid var(--txt-color);
+    border-radius: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
 /*                                                                                                */
 /*------------------------------------------Responsive--------------------------------------------*/
 @media only screen and (max-aspect-ratio: 6/4) {

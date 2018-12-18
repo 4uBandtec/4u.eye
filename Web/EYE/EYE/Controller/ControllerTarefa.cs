@@ -66,14 +66,15 @@ namespace EYE.Controller
 
 
         }
-		public List<Tarefa> ListarTarefas(int codWorkspace) {
-			var lista = StatementTarefa.ListarTarefas(codWorkspace);
-			lista = StatementTarefa.AdicionaProcessos(lista);
-			lista = StatementTarefa.AdicionaNomeUsuario(lista);
-			lista = StatementTarefa.AdicionaNomeProcesso(lista);
-			lista = Tarefa.CalculaPorcentagem(lista);
-			return lista;
-		}
+        public List<Tarefa> ListarTarefas(int codWorkspace)
+        {
+            var lista = StatementTarefa.ListarTarefas(codWorkspace);
+            lista = StatementTarefa.AdicionaProcessos(lista);
+            lista = StatementTarefa.AdicionaNomeUsuario(lista);
+            lista = StatementTarefa.AdicionaNomeProcesso(lista);
+            lista = Tarefa.CalculaPorcentagem(lista);
+            return lista;
+        }
 
         public static bool ClassificarProcesso(string codProcesso, string ddlPerfil)
         {
@@ -83,6 +84,11 @@ namespace EYE.Controller
         public static Processo BuscaProcessoSemPerfil(int codWorkspace)
         {
             return StatementPerfil.BuscaProcessoSemPerfil(codWorkspace);
+        }
+
+        public static DropDownList CarregaDropDownListPerfil(DropDownList ddlPerfil)
+        {
+            return StatementPerfil.AlimentaDropDownListPerfil(ddlPerfil);
         }
     }
 }
