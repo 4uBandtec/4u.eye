@@ -8,7 +8,7 @@
     <link runat="server" rel="icon" href="../Component/favicon.ico" type="image/ico" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Slack | EYE by 4U</title>
+    <title>Slack | EYE by 4U</title><a href="CadastroSlack.aspx">CadastroSlack.aspx</a>
 
     <link href="../Model/EYE.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
@@ -151,7 +151,7 @@
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Cadastrar Tarefas
+                        Tarefas
                
                     </div>
 

@@ -159,7 +159,7 @@
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Cadastrar Tarefas
+                        Tarefas
                
                     </div>
 

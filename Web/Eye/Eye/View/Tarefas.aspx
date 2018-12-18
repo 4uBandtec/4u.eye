@@ -19,7 +19,7 @@
     <script type="text/javascript" src="../Controller/ListarTarefas.js"></script>
     <script type="text/javascript" src="../Controller/download.js"></script>
 </head>
-<body onload="iniciarEstilo(), listar()">
+<body onload="iniciarEstilo(), listar(), classificando()">
     <form id="form1" runat="server">
 
 
@@ -243,15 +243,59 @@
             <div class="divisorListaTarefa" id="listaDeTarefas"></div>
             <div class="divisorListaTarefa">
                 <div id="infoTarefaDetalhes">
+                    <div id="nomeTarefaDetalhes">
+                    </div>
+                    <div id="descTarefaDetalhes">
+                    </div>
+
+                    <div id="dataInicioTarefaDetalhes" class="dataTarefadetalhes">
+                    </div>
+
+                    <div id="dataFimTarefaDetalhes" class="dataTarefadetalhes">
+                    </div>
+
+                    <div id="dataFinalizadaTarefaDetalhes" class="dataTarefadetalhes">
+                    </div>
+                    <div id="andTarefaDetalhes">Andamento da tarefa: </div>
+                    <div id="progressoTarefaDetalhes">
+
+                        <div id="trackProgressoTarefaDetalhes">
+
+                            <div id="barProgressoTarefaDetalhes">
+                            </div>
+
+                        </div>
+
+                        <div id="pctProgressoTarefaDetalhes">
+                        </div>
+                    </div>
+
+
+                    <div id="areaUsersTarefaDetalhes">
+                    </div>
+
+                </div>
+
+                
+            
+            <div class="classificar" id="classific">
+                Classificar Perfil Processo 
+                <asp:Label ID="lblNomeProcesso" Value="" runat="server"></asp:Label>
+                <asp:HiddenField ID="hdlCodProcesso" runat="server" />
+                <asp:DropDownList ID="ddlTipoPerfil" runat="server" />
+                <asp:Button ID="btnClassificar" runat="server" Text="Classificar" OnClick="btnClassificar_OnClick" />
+            </div>
+            </div>
+
+
+            <div>
+                <div class="btnForm" id="btnFormCadastrarTarefaRef" onmousemove="startaHover('itemMenuBackGround', 'btnFormCadastrarTarefaRef'), getCoordenadas()">
+
+                    <div class="itemMenuBackGround" id="itemMenuBackGround"></div>
+
+                    <input type="button" id="btnCadastrar" value="Cadastrar Nova Tarefa" runat="server" onclick="window.location.href = 'CadastroTarefas.aspx'" />
                 </div>
             </div>
-        </div>
-        <div>
-            Classificar Perfil Processo <%--HENRIQUE COLOCA UMA FRASE LEGAL AQUI--%>
-            <asp:Label ID="lblNomeProcesso" Value="" runat="server"></asp:Label>
-            <asp:HiddenField ID="hdlCodProcesso" runat="server" />
-            <asp:DropDownList ID="ddlTipoPerfil" runat="server" />
-            <asp:Button ID="btnClassificar" runat="server" Text="Classificar" OnClick="btnClassificar_OnClick" />
         </div>
 
     </form>
