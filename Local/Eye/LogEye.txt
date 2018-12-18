@@ -1,0 +1,14 @@
+[18/12/2018 19:06:47] Workspace Identificado a
+[18/12/2018 19:06:53] Login Identificado Usuario a
+[18/12/2018 19:06:56] Leitura Armazenada
+[18/12/2018 19:07:02] Leitura Armazenada
+[18/12/2018 19:07:09] Leitura Armazenada
+[18/12/2018 19:10:13] Workspace Identificado a
+[18/12/2018 19:10:15] Login Identificado Usuario a
+[18/12/2018 19:10:20] Leitura Armazenada
+[18/12/2018 19:13:12] Workspace Identificado a
+[18/12/2018 19:13:15] Login Identificado Usuario a
+[18/12/2018 19:13:18] Leitura Armazenada
+[18/12/2018 19:14:27] Workspace Identificado a
+[18/12/2018 19:14:29] Login Identificado Usuario a
+[18/12/2018 19:14:33] Leitura Armazenada
