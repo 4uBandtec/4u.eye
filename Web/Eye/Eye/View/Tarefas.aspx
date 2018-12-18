@@ -1,26 +1,32 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="CadastroSlack.aspx.cs" Inherits="EYE.View.CadastroSlack" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Tarefas.aspx.cs" Inherits="EYE.View.Tarefas" %>
 
 <!DOCTYPE html>
 
+
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+
     <link runat="server" rel="shortcut icon" href="../Component/favicon.ico" type="image/x-icon" />
     <link runat="server" rel="icon" href="../Component/favicon.ico" type="image/ico" />
 
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Slack | EYE by 4U</title><a href="CadastroSlack.aspx">CadastroSlack.aspx</a>
-
+    <title>Tarefas | EYE by 4U</title>
     <link href="../Model/EYE.css" rel="stylesheet" type="text/css" />
+
     <script type="text/javascript" src="../Controller/DashStyle.js"></script>
     <script type="text/javascript" src="../Controller/BreakSession.js"></script>
+
+    <script type="text/javascript" src="../Controller/ListarTarefas.js"></script>
     <script type="text/javascript" src="../Controller/download.js"></script>
 </head>
-<body onload="iniciarEstilo()">
+<body onload="iniciarEstilo(), listar(), classificando()">
     <form id="form1" runat="server">
+
+
         <asp:ScriptManager ID="ScriptManager" runat="server"
             EnablePageMethods="true" />
-        
-        
+
+
         <div id="blockArea" onclick="hidePopup()">
         </div>
         <div id="popup">
@@ -31,12 +37,12 @@
 
                 <div class="slidecontainer">
                     Intensidade das cores:
-                    <input type="range" min="1" max="100" value="100" class="slider" id="slideCor" oninput="grayscale()" onmouseup="mudarIntensidade()"/>
+                    <input type="range" min="1" max="100" value="100" class="slider" id="slideCor" oninput="grayscale()" onmouseup="mudarIntensidade()" />
                 </div>
 
                 <div class="areaTextoSwitch">
-                    
-                    
+
+
                     <div class="radioTema">
                         Modo Claro
                     </div>
@@ -44,38 +50,38 @@
                         <input id="switch-tema" class="switch switch--shadow" type="checkbox" onchange="mudarModo()" />
                         <label for="switch-tema"></label>
                     </div>
-                    
+
 
                 </div>
                 <div class="areaTextoSwitch">
-                    
+
                     <div class="radioTema">
                         Escolha o tema
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema0" value="0" checked="checked" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema0" value="0" checked="checked" onchange="mudarTema()" />
                         <label for="tema0">Padrão</label>
                     </div>
 
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema1" value="1" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema1" value="1" onchange="mudarTema()" />
                         <label for="tema1">Godez</label>
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema2" value="2" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema2" value="2" onchange="mudarTema()" />
                         <label for="tema2">Martins</label>
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema3" value="3" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema3" value="3" onchange="mudarTema()" />
                         <label for="tema3">Sayuri</label>
                     </div>
 
                     <div class="radioTema">
-                        <input type="radio" name="tema" id="tema4" value="4" onchange="mudarTema()"/>
+                        <input type="radio" name="tema" id="tema4" value="4" onchange="mudarTema()" />
                         <label for="tema4">Volpe</label>
                     </div>
                 </div>
@@ -233,30 +239,65 @@
         </asp:UpdatePanel>
         <asp:Timer ID="Timer" runat="server" Interval="5000" OnTick="Timer_Tick"></asp:Timer>
 
-
-        <div id="areaInfoSlack">
-            <div class="areaCamposSlack">
-                <div class="tituloCampo">
-                    Cadastre seu canal do Slack para receber atualizações!!!
-                </div>
-                <asp:Label ID="lblMensagem" Text="" CssClass="mensagem" runat="server" />
-                <div class="campos">
-
-                    <div class="tituloCampo">
-                        Você precisa acessar <a href="https://api.slack.com/"><i>ESSE LINK</i></a> e, após cadastrar seu bot, nos dizer a URL:
+        <div id="areaInfo">
+            <div class="divisorListaTarefa" id="listaDeTarefas"></div>
+            <div class="divisorListaTarefa">
+                <div id="infoTarefaDetalhes">
+                    <div id="nomeTarefaDetalhes">
                     </div>
-                    <asp:TextBox ID="txtUrl" runat="server" Placeholder="(ex: https://hooks.slack.com/services/T0/B0/X)"></asp:TextBox>
+                    <div id="descTarefaDetalhes">
+                    </div>
+
+                    <div id="dataInicioTarefaDetalhes" class="dataTarefadetalhes">
+                    </div>
+
+                    <div id="dataFimTarefaDetalhes" class="dataTarefadetalhes">
+                    </div>
+
+                    <div id="dataFinalizadaTarefaDetalhes" class="dataTarefadetalhes">
+                    </div>
+                    <div id="andTarefaDetalhes">Andamento da tarefa: </div>
+                    <div id="progressoTarefaDetalhes">
+
+                        <div id="trackProgressoTarefaDetalhes">
+
+                            <div id="barProgressoTarefaDetalhes">
+                            </div>
+
+                        </div>
+
+                        <div id="pctProgressoTarefaDetalhes">
+                        </div>
+                    </div>
+
+
+                    <div id="areaUsersTarefaDetalhes">
+                    </div>
 
                 </div>
 
-                <div class="btnForm" id="btnFormCadastrarSlack" onmousemove="startaHover('itemMenuBackGround', 'btnFormCadastrarSlack'), getCoordenadas()">
+                
+            
+            <div class="classificar" id="classific">
+                Classificar Perfil Processo 
+                <asp:Label ID="lblNomeProcesso" Value="" runat="server"></asp:Label>
+                <asp:HiddenField ID="hdlCodProcesso" runat="server" />
+                <asp:DropDownList ID="ddlTipoPerfil" runat="server" />
+                <asp:Button ID="btnClassificar" runat="server" Text="Classificar" OnClick="btnClassificar_OnClick" />
+            </div>
+            </div>
+
+
+            <div>
+                <div class="btnForm" id="btnFormCadastrarTarefaRef" onmousemove="startaHover('itemMenuBackGround', 'btnFormCadastrarTarefaRef'), getCoordenadas()">
 
                     <div class="itemMenuBackGround" id="itemMenuBackGround"></div>
 
-                    <asp:Button ID="btnCadastrar" Text="Cadastrar" runat="server" OnClick="btnCadastrar_Click" />
+                    <input type="button" id="btnCadastrar" value="Cadastrar Nova Tarefa" runat="server" onclick="window.location.href = 'CadastroTarefas.aspx'" />
                 </div>
             </div>
         </div>
+
     </form>
 </body>
 </html>

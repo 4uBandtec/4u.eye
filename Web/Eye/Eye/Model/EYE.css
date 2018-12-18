@@ -1319,7 +1319,7 @@ input[type=number]::-webkit-inner-spin-button {
 
 .switch--shadow:checked + label:after {
     transform: translateX(100%);
-    box-shadow: 0px 0px 400px 100px var(--blue-color-a);
+    box-shadow: 0px 0px 35px 1px var(--blue-color-a);
 }
 
 .areaTextoSwitch {
@@ -1479,6 +1479,219 @@ input[type=number]::-webkit-inner-spin-button {
         font-weight: lighter;
     }
 
+.divisorListaTarefa{
+    width: 50%;
+    float: left;
+    position: relative;
+    overflow-x: auto;
+    overflow-y: auto;
+    max-height: 100%;
+}
+
+.tituloTarefa{
+    width: 100%;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: solid 1px var(--txt-color);
+}
+
+.descricaoTarefa {
+    width: 100%;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+.qtdResponsaveisTarefa {
+    width: 100%;
+    height: auto;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    float: right;
+    text-align: right;
+}
+
+.infoTarefa {
+    float: left;
+    margin: 5%;
+    padding: 5%;
+    width: 80%;
+    height: auto;
+    background: var(--darker-bg-color);
+    box-shadow: 0px 0px 35px 1px var(--black-color);
+    border: 1px solid var(--txt-color);
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+    .infoTarefa:hover {
+        background: var(--black-color);
+        box-shadow: 0px 0px 35px 1px var(--txt-color);
+        color: var(--bg-color);
+    }
+
+
+.progressoTarefa {
+    width: 50%;
+    height: auto;
+    position: relative;
+    float: left;
+    min-height: 30px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    text-align: center;
+}
+
+.trackProgressoTarefa {
+    width: 80%;
+    margin: 1%;
+    border-bottom: solid 1px var(--txt-color);
+    position: relative;
+    float: left;
+}
+
+.barProgressoTarefa {
+    position: absolute;
+    padding: 0;
+    padding-top: 3%;
+    padding-bottom: 3%;
+    width: 0%;
+    background: var(--pink-color);
+}
+
+.pctProgessoTarefa {
+    position: relative;
+    float: left;
+}
+
+
+
+#infoTarefaDetalhes {
+    float: left;
+    margin: 5%;
+    padding: 5%;
+    width: 80%;
+    height: 80%;
+    background: var(--darker-bg-color);
+    box-shadow: 0px 0px 35px 1px var(--black-color);
+    border: 1px solid var(--txt-color);
+    border-radius: 20px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#nomeTarefaDetalhes {
+    width: 100%;
+    height: auto;
+    min-height: 10px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: solid 1px var(--txt-color);
+    font-size: 1.2em;
+    margin-bottom: 3%;
+}
+
+#descTarefaDetalhes {
+    width: 100%;
+    height: auto;
+    min-height: 30px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: solid 1px var(--txt-color);
+}
+
+#andTarefaDetalhes{
+    width: 100%;
+    margin-top: 3%;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+.dataTarefadetalhes {
+    width: 30%;
+    height: auto;
+    min-height: 30px;
+    padding: 1%;
+    padding: 1%;
+    float: left;
+    text-align: center;
+    margin-bottom: 3%;
+}
+
+#progressoTarefaDetalhes {
+    width: 100%;
+    height: auto;
+    position: relative;
+    float: left;
+    min-height: 30px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: solid 1px var(--txt-color);
+    text-align: center;
+}
+
+#trackProgressoTarefaDetalhes{
+    width: 80%;
+    margin: 1%;
+    margin-top: 2%;
+    border-bottom: solid 1px var(--txt-color);
+    position: relative;
+    float: left;
+}
+
+#barProgressoTarefaDetalhes{
+    position: absolute;
+    padding: 0;
+    padding-top: 3%;
+    width: 0%;
+    background: var(--pink-color);
+}
+
+#pctProgressoTarefaDetalhes {
+    position: relative;
+    padding: 0;
+    float: left;
+    margin-left: 3%;
+}
+
+#areaUsersTarefaDetalhes {
+    width: 100%;
+    height: auto;
+    min-height: 30px;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-bottom: solid 1px var(--txt-color);
+}
+
+#btnFormCadastrarTarefaRef{
+    min-width: 30%;
+    position: sticky;
+    float: left;
+    transform:translate(30%, 0);
+    border:1px solid var(--yellow-color);
+    border-radius: 20px;
+    bottom: 0;
+}
+
+#btnFormCadastrarTarefaRef #btnCadastrar{
+    width: 100%;
+}
+
+    #btnFormCadastrarTarefaRef .itemMenuBackGround {
+        background: radial-gradient(circle, var(--orange-color), var(--to-invisible));
+    }
+
+#lblNomeProcesso{
+    padding: 0;
+    margin: 0;
+}
+
+.classificar{
+    height: 10%;
+    padding-top: -90%;
+    padding-left: 15%;
+}
 /*                                                                                                */
 /*------------------------------------------Responsive--------------------------------------------*/
 @media only screen and (max-aspect-ratio: 6/4) {
