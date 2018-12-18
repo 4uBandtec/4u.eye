@@ -84,5 +84,10 @@ namespace EYE.Controller
         {
             return StatementPerfil.BuscaProcessoSemPerfil(codWorkspace);
         }
+
+        public static DropDownList CarregaDropDownListPerfil(DropDownList ddlPerfil)
+        {
+           return StatementPerfil.AlimentaDropDownListPerfil(ddlPerfil);
+        }
     }
 }

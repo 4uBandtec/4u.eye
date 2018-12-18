@@ -19,10 +19,10 @@ namespace EYE.View
                 Response.Redirect("./Login.aspx");
             if (IsPostBack == false)
             {
+                ddlTipoPerfil = ControllerTarefa.CarregaDropDownListPerfil(ddlTipoPerfil);
                 var processo = ControllerTarefa.BuscaProcessoSemPerfil(new Sessao().RetornaSessaoWorkspace());
                 lblNomeProcesso.Text = processo.NomeAplicacao;
                 hdlCodProcesso.Value = processo.CodProcesso.ToString();
-                ddlTipoPerfil.SelectedValue =processo.CodPerfil.ToString();
             }
         }
 
