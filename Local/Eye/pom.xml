@@ -78,4 +78,6 @@
             <url>file:${project.basedir}/lib</url>
         </repository>
     </repositories>
+    <name>Eye</name>
+    <description>Gerenciador de Tarefas com foco no monitoramento de produtividade</description>
 </project>
