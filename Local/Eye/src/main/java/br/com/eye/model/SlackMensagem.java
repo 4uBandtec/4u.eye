@@ -8,7 +8,6 @@ import java.io.IOException;
 public class SlackMensagem {
 
     private String url;
-    private String canal;
     private int cod_workspace;
 
     public String getUrl() {
@@ -17,14 +16,6 @@ public class SlackMensagem {
 
     public void setUrl(String url) {
         this.url = url;
-    }
-
-    public String getCanal() {
-        return canal;
-    }
-
-    public void setCanal(String canal) {
-        this.canal = canal;
     }
 
     public int getCod_workspace() {
@@ -37,12 +28,10 @@ public class SlackMensagem {
 
     public static void EnviaMensagem(SlackMensagem obj, String mensagem) throws IOException {
         Payload payload = Payload.builder()
-                .channel(obj.getCanal())
-                .username("Eye Bot")
                 .text(mensagem)
                 .build();
         Slack slack = Slack.getInstance();
         WebhookResponse response = slack.send(obj.getUrl(), payload);
-
+        LogMensagem.GravarLog("Notificação enviada para o Slack");
     }
 }
