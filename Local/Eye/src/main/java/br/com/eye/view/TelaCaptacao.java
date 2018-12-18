@@ -33,9 +33,9 @@ public class TelaCaptacao extends JFrame implements ActionListener {
 
     Font fontSergoe = new Font("Sergou Ui Light", Font.PLAIN, 40);
     JButton btnStartTarefa = new JButton("Iniciar tarefa");
-    
+
     JComboBox cmbTarefas = new JComboBox();
-    
+
     Color bgColor = new Color(26, 26, 26);
     Color txtColor = new Color(200, 200, 200);
     Color redColor = new Color(226, 26, 47);
@@ -43,7 +43,7 @@ public class TelaCaptacao extends JFrame implements ActionListener {
     LineBorder borderRed = new LineBorder(redColor, 1);
 
     private int codUsuario;
-    
+
     public TelaCaptacao(int codUsuario) throws InterruptedException, SQLException, IOException {
         this.codUsuario = codUsuario;
         setSize(500, 500);
@@ -70,7 +70,6 @@ public class TelaCaptacao extends JFrame implements ActionListener {
 
         add(lblFuncionou, constraints);
 
-        
         lblTarefas.setFont(fontSergoe);
         lblTarefas.setName("lblFuncionou");
 
@@ -83,7 +82,7 @@ public class TelaCaptacao extends JFrame implements ActionListener {
         constraints.gridwidth = 3;
 
         add(lblTarefas, constraints);
-        
+
         cmbTarefas.setFont(fontSergoe);
         cmbTarefas.setBorder(borderRed);
         cmbTarefas.setName("cmbTarefas");
@@ -98,7 +97,7 @@ public class TelaCaptacao extends JFrame implements ActionListener {
         constraints.gridwidth = 1;
         constraints.gridy = 5;
         add(cmbTarefas, constraints);
-        
+
         btnStartTarefa.setFont(fontSergoe);
         btnStartTarefa.setBorder(borderRed);
         btnStartTarefa.setName("btnStartTarefa");
@@ -114,26 +113,22 @@ public class TelaCaptacao extends JFrame implements ActionListener {
         constraints.gridy = 6;
         add(btnStartTarefa, constraints);
 
-        
         setVisible(true);
 
         if (new ControllerComputador().inserePrimeiroComputador(codUsuario)) {
             new ControllerLeituraComputador().setLeitura(codUsuario);
         }
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnStartTarefa) {
             try {
-                ControllerTarefa.desativaTarefas(codUsuario);
+                ControllerTarefa.startTarefa(cmbTarefas.getSelectedIndex(), 1000, codUsuario);
             } catch (SQLException ex) {
                 Logger.getLogger(TelaCaptacao.class.getName()).log(Level.SEVERE, null, ex);
             }
-            try {
-                ControllerTarefa.ativaTarefa(cmbTarefas.getSelectedIndex(), 1000, codUsuario);
-            } catch (SQLException ex) {
-                Logger.getLogger(TelaCaptacao.class.getName()).log(Level.SEVERE, null, ex);
-            }
+
         }
     }
 }

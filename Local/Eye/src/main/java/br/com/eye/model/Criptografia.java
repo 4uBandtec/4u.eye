@@ -23,4 +23,12 @@ public class Criptografia {
         return s.toString();
 
     }
+
+    public static String construirSenha(char[] senhaChar) {
+        String senha = "";
+        for (char caracter : senhaChar) {
+            senha += caracter;
+        }
+        return senha;
+    }
 }

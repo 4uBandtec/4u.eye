@@ -1,6 +1,7 @@
 package br.com.eye.view;
 
 import br.com.eye.controller.ControllerUsuario;
+import br.com.eye.model.Criptografia;
 import br.com.eye.model.LogMensagem;
 import java.awt.Color;
 import java.awt.Font;
@@ -125,20 +126,14 @@ public class TelaLogin extends JFrame implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         try {
             if (e.getSource() == btnLogar) {
-            char[] senhaChar = txtSenha.getPassword();
-            String senha = "";
-            for(char caracter : senhaChar){
-                senha+=caracter;
-            }
+                String senha = Criptografia.construirSenha(txtSenha.getPassword());
                 if (new ControllerUsuario().Logar(txtUsername.getText(), senha)) {
                     dispose();
                     LogMensagem.GravarLog("Login Identificado Usuario " + txtUsername.getText());
                     new TelaCaptacao(new ControllerUsuario().getCodUsuario(txtUsername.getText()));
                 }
             }
-        } catch (InterruptedException | SQLException | IOException ex) {
-            Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (NoSuchAlgorithmException ex) {
+        } catch (InterruptedException | SQLException | IOException | NoSuchAlgorithmException ex) {
             Logger.getLogger(TelaLogin.class.getName()).log(Level.SEVERE, null, ex);
         }
     }

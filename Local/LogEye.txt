@@ -1033,3 +1033,6 @@
 [17/12/2018 21:21:57] Workspace Identificado a
 [17/12/2018 21:23:19] Workspace Identificado a
 [17/12/2018 21:23:47] Workspace Identificado a
+[18/12/2018 01:57:12] Workspace Identificado a
+[18/12/2018 01:57:14] Login Identificado Usuario a
+[18/12/2018 01:57:24] Leitura Armazenada
