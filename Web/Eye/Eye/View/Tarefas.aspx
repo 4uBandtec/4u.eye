@@ -240,7 +240,13 @@
         <asp:Timer ID="Timer" runat="server" Interval="5000" OnTick="Timer_Tick"></asp:Timer>
 
         <div id="areaInfo">
-
+        </div>
+        <div>         
+                Classificar Perfil Processo <%--HENRIQUE COLOCA UMA FRASE LEGAL AQUI--%>
+                <asp:Label ID="lblNomeProcesso" Value="" runat="server"></asp:Label>
+            <asp:HiddenField ID="hdlCodProcesso" runat="server"/>
+                <asp:DropDownList ID="ddlTipoPerfil" runat="server" />
+                <asp:Button ID="btnClassificar" runat="server" Text="Classificar" OnClick="btnClassificar_OnClick" />          
         </div>
 
     </form>

@@ -17,7 +17,13 @@ namespace EYE.View
         {
             if (new Sessao().RetornaSessaoWorkspace() == 0)
                 Response.Redirect("./Login.aspx");
-            
+            if (IsPostBack == false)
+            {
+                var processo = ControllerTarefa.BuscaProcessoSemPerfil(new Sessao().RetornaSessaoWorkspace());
+                lblNomeProcesso.Text = processo.NomeAplicacao;
+                hdlCodProcesso.Value = processo.CodProcesso.ToString();
+                ddlTipoPerfil.SelectedValue =processo.CodPerfil.ToString();
+            }
         }
 
         [ScriptMethod, WebMethod]
@@ -109,6 +115,11 @@ namespace EYE.View
         public static List<Tarefa> ListarTarefas()
         {
             return new ControllerTarefa().ListarTarefas(new Sessao().RetornaSessaoWorkspace());
+        }
+
+        protected void btnClassificar_OnClick(object sender, EventArgs e)
+        {
+            ControllerTarefa.ClassificarProcesso(hdlCodProcesso.Value, ddlTipoPerfil.SelectedValue);
         }
     }
 }

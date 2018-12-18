@@ -74,5 +74,15 @@ namespace EYE.Controller
 			lista = Tarefa.CalculaPorcentagem(lista);
 			return lista;
 		}
+
+        public static bool ClassificarProcesso(string codProcesso, string ddlPerfil)
+        {
+            return StatementPerfil.UpdatePerfilProcesso(codProcesso, int.Parse(ddlPerfil));
+        }
+
+        public static Processo BuscaProcessoSemPerfil(int codWorkspace)
+        {
+            return StatementPerfil.BuscaProcessoSemPerfil(codWorkspace);
+        }
     }
 }
