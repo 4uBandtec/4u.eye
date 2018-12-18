@@ -137,6 +137,8 @@ function inserirTarefa(info) {
     pctProgressoTarefa.textContent = info.Porcentagem + "%";
     
 
+   
+
 
     divTarefa.onclick = function () { mostrarDetalhes(info); };
 
@@ -165,7 +167,7 @@ function mostrarDetalhes(info) {
     dataFinalizadaTarefaDetalhes.textContent = "Conclusão: " + ((info.DataConclusao != 0) ? info.DataConclusao : "Não Concluida");
     pctProgressoTarefaDetalhes.textContent = info.Porcentagem + "%";
     barProgressoTarefaDetalhes.style.width = info.Porcentagem + "%";
-
+    
 
     //detalhes.textContent = info.CodTarefa + info.CodWorkspace + info.DataConclusao + info.DataFim + info.DataInicio
     //    + info.Descricao + info.Nome + info.Porcentagem + info.StatusVida;
