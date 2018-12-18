@@ -66,5 +66,13 @@ namespace EYE.Controller
 
 
         }
+		public List<Tarefa> ListarTarefas(int codWorkspace) {
+			var lista = StatementTarefa.ListarTarefas(codWorkspace);
+			lista = StatementTarefa.AdicionaProcessos(lista);
+			lista = StatementTarefa.AdicionaNomeUsuario(lista);
+			lista = StatementTarefa.AdicionaNomeProcesso(lista);
+			lista = Tarefa.CalculaPorcentagem(lista);
+			return lista;
+		}
     }
 }
