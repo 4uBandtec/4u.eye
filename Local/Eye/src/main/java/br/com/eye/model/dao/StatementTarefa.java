@@ -37,4 +37,23 @@ public class StatementTarefa {
         query.setInt(2, codUsuario);
         return query.execute();
     }
+	
+	public static List<Tarefa> RetornaProcessoTarefas(int codUsuario) throws SQLException {
+		String sql = "SELECT COD_PROC_TAREFA, COD_TAREFA, COD_PROCESSO, MINUTOS_META, MINUTOS_FEITOS, ATIVA from processo_tarefa where cod_Usuario = ?";
+		PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
+		query.setInt(1, codUsuario);
+		ResultSet resultado = query.executeQuery();
+		List<Tarefa> tarefas = new ArrayList<>;
+        while (resultado.next()) {
+            tarefa = new Tarefa(
+                    resultado.getString("COD_PROC_TAREFA"),
+                    resultado.getString("COD_TAREFA"),
+                    resultado.getInt("COD_PROCESSO"),
+                    resultado.getString("MINUTOS_META"),
+                    resultado.getLong("MINUTOS_FEITOS"),
+                    resultado.getLong("ATIVA")
+            );
+			tarefas.add(tarefa);
+        }
+	}
 }
