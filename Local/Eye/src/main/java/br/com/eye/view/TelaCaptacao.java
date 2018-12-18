@@ -2,6 +2,7 @@ package br.com.eye.view;
 
 import br.com.eye.controller.ControllerLeituraComputador;
 import br.com.eye.controller.ControllerComputador;
+import br.com.eye.controller.ControllerTarefa;
 import br.com.eye.model.LeituraProcesso;
 import java.awt.Color;
 import java.awt.Font;
@@ -13,6 +14,8 @@ import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -39,7 +42,10 @@ public class TelaCaptacao extends JFrame implements ActionListener {
 
     LineBorder borderRed = new LineBorder(redColor, 1);
 
+    private int codUsuario;
+    
     public TelaCaptacao(int codUsuario) throws InterruptedException, SQLException, IOException {
+        this.codUsuario = codUsuario;
         setSize(500, 500);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setLayout(null);
@@ -117,5 +123,17 @@ public class TelaCaptacao extends JFrame implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == btnStartTarefa) {
+            try {
+                ControllerTarefa.desativaTarefas(codUsuario);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaCaptacao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                ControllerTarefa.ativaTarefa(cmbTarefas.getSelectedIndex(), 1000, codUsuario);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaCaptacao.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
 }
