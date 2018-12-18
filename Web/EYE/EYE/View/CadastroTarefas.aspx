@@ -147,7 +147,7 @@
             </a>
 
 
-            <a href="Tarefas.aspx">
+            <a href="CadastroTarefas.aspx">
                 <div class="itemMenu">
 
                     <div class="itemIcon">
@@ -156,7 +156,7 @@
                     <div class="itemMenuBackGround"></div>
 
                     <div class="itemTxt">
-                        Tarefas
+                        Cadastrar Tarefas
                
                     </div>
 
