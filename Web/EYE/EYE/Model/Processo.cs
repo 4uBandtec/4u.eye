@@ -9,13 +9,12 @@ namespace EYE.Model
         private int codProcesso;
         private string nomeProcesso;
         private string nomeAplicacao;
-        private int codPerfil;
 
 
         public int CodProcesso { get => codProcesso; set => codProcesso = value; }
         public string NomeProcesso { get => nomeProcesso; set => nomeProcesso = value; }
         public string NomeAplicacao { get => nomeAplicacao; set => nomeAplicacao = value; }
-        public int CodPerfil { get => codPerfil; set => codPerfil = value; }
+
 
         public static DropDownList AlimentarProcessos(DropDownList ddlProcesso, List<Processo> lista)
         {

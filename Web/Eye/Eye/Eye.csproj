@@ -83,7 +83,6 @@
     <Content Include="Controller\Dashboard.js" />
     <Content Include="Controller\DashStyle.js" />
     <Content Include="Controller\download.js" />
-    <Content Include="Controller\ListarTarefas.js" />
     <Content Include="Controller\Tarefas.js" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
@@ -93,9 +92,7 @@
     <Content Include="View\CadastroUsuario.aspx" />
     <Content Include="View\CadastroWorkspace.aspx" />
     <Content Include="View\Dashboard.aspx" />
-    <Content Include="View\DashboardTarefa.aspx" />
     <Content Include="View\Login.aspx" />
-    <Content Include="View\Tarefas.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -186,26 +183,12 @@
     <Compile Include="View\Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="View\DashboardTarefa.aspx.cs">
-      <DependentUpon>DashboardTarefa.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\DashboardTarefa.aspx.designer.cs">
-      <DependentUpon>DashboardTarefa.aspx</DependentUpon>
-    </Compile>
     <Compile Include="View\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="View\Tarefas.aspx.cs">
-      <DependentUpon>Tarefas.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="View\Tarefas.aspx.designer.cs">
-      <DependentUpon>Tarefas.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
