@@ -4,6 +4,7 @@ import br.com.eye.controller.ControllerLeituraComputador;
 import br.com.eye.controller.ControllerComputador;
 import br.com.eye.controller.ControllerTarefa;
 import br.com.eye.model.LeituraProcesso;
+import br.com.eye.model.Tarefa;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
@@ -25,6 +26,7 @@ import javax.swing.border.LineBorder;
 
 public class TelaCaptacao extends JFrame implements ActionListener {
 
+    List<Tarefa> listaTarefa;
     JLabel lblFuncionou = new JLabel("Capturando Dados...", SwingConstants.CENTER);
 
     JLabel lblTarefas = new JLabel("Tarefas", SwingConstants.CENTER);
@@ -33,6 +35,7 @@ public class TelaCaptacao extends JFrame implements ActionListener {
 
     Font fontSergoe = new Font("Sergou Ui Light", Font.PLAIN, 40);
     JButton btnStartTarefa = new JButton("Iniciar tarefa");
+    JButton btnStopTarefa = new JButton("Pausar tarefas");
 
     JComboBox cmbTarefas = new JComboBox();
 
@@ -113,22 +116,44 @@ public class TelaCaptacao extends JFrame implements ActionListener {
         constraints.gridy = 6;
         add(btnStartTarefa, constraints);
 
+        btnStopTarefa.setFont(fontSergoe);
+        btnStopTarefa.setBorder(borderRed);
+        btnStopTarefa.setName("btnStopTarefa");
+        btnStopTarefa.setForeground(txtColor);
+        btnStopTarefa.setBackground(bgColor);
+        btnStopTarefa.addActionListener(this);
+        
+        constraints.fill = GridBagConstraints.HORIZONTAL;
+        constraints.weighty = 1;
+        constraints.insets = new Insets(10, 10, 10, 10);
+        constraints.gridx = 1;
+        constraints.gridwidth = 1;
+        constraints.gridy = 7;
+        add(btnStopTarefa, constraints);
+
         setVisible(true);
 
         if (new ControllerComputador().inserePrimeiroComputador(codUsuario)) {
             new ControllerLeituraComputador().setLeitura(codUsuario);
         }
+        listaTarefa = ControllerTarefa.getTarefa(codUsuario, cmbTarefas);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == btnStartTarefa) {
             try {
-                ControllerTarefa.startTarefa(cmbTarefas.getSelectedIndex(), 1000, codUsuario);
+                ControllerTarefa.startTarefa(listaTarefa, cmbTarefas.getSelectedIndex(), codUsuario);
             } catch (SQLException ex) {
                 Logger.getLogger(TelaCaptacao.class.getName()).log(Level.SEVERE, null, ex);
             }
-
+        }
+        if (e.getSource() == btnStopTarefa) {
+            try {
+                ControllerTarefa.desativaTarefa(codUsuario);
+            } catch (SQLException ex) {
+                Logger.getLogger(TelaCaptacao.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
     }
 }

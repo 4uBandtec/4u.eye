@@ -1036,3 +1036,125 @@
 [18/12/2018 01:57:12] Workspace Identificado a
 [18/12/2018 01:57:14] Login Identificado Usuario a
 [18/12/2018 01:57:24] Leitura Armazenada
+[18/12/2018 17:22:09] Workspace Identificado a
+[18/12/2018 17:22:11] Login Identificado Usuario a
+[18/12/2018 17:22:38] Leitura Armazenada
+[18/12/2018 17:22:44] Leitura Armazenada
+[18/12/2018 17:22:50] Leitura Armazenada
+[18/12/2018 17:22:56] Leitura Armazenada
+[18/12/2018 17:23:02] Leitura Armazenada
+[18/12/2018 17:23:35] Workspace Identificado a
+[18/12/2018 17:23:38] Login Identificado Usuario a
+[18/12/2018 17:23:41] Leitura Armazenada
+[18/12/2018 17:23:48] Leitura Armazenada
+[18/12/2018 17:23:54] Leitura Armazenada
+[18/12/2018 17:24:00] Leitura Armazenada
+[18/12/2018 17:24:06] Leitura Armazenada
+[18/12/2018 17:24:13] Leitura Armazenada
+[18/12/2018 17:24:48] Workspace Identificado a
+[18/12/2018 17:24:50] Login Identificado Usuario a
+[18/12/2018 17:24:53] Leitura Armazenada
+[18/12/2018 17:25:00] Leitura Armazenada
+[18/12/2018 17:25:06] Leitura Armazenada
+[18/12/2018 17:25:12] Leitura Armazenada
+[18/12/2018 17:25:18] Leitura Armazenada
+[18/12/2018 17:25:24] Leitura Armazenada
+[18/12/2018 17:25:41] Workspace Identificado A
+[18/12/2018 17:25:43] Login Identificado Usuario a
+[18/12/2018 17:25:47] Leitura Armazenada
+[18/12/2018 17:25:53] Leitura Armazenada
+[18/12/2018 17:25:59] Leitura Armazenada
+[18/12/2018 17:26:05] Leitura Armazenada
+[18/12/2018 17:26:12] Leitura Armazenada
+[18/12/2018 17:26:18] Leitura Armazenada
+[18/12/2018 17:26:24] Leitura Armazenada
+[18/12/2018 17:26:30] Leitura Armazenada
+[18/12/2018 17:26:36] Leitura Armazenada
+[18/12/2018 17:26:42] Leitura Armazenada
+[18/12/2018 17:26:48] Leitura Armazenada
+[18/12/2018 17:26:55] Leitura Armazenada
+[18/12/2018 17:27:00] Processos Armazenados
+[18/12/2018 17:27:06] Leitura Armazenada
+[18/12/2018 17:27:13] Leitura Armazenada
+[18/12/2018 17:45:40] Workspace Identificado a
+[18/12/2018 17:45:42] Login Identificado Usuario a
+[18/12/2018 17:45:46] Leitura Armazenada
+[18/12/2018 17:45:52] Leitura Armazenada
+[18/12/2018 17:45:58] Leitura Armazenada
+[18/12/2018 17:46:05] Leitura Armazenada
+[18/12/2018 17:46:11] Leitura Armazenada
+[18/12/2018 17:50:24] Workspace Identificado a
+[18/12/2018 17:50:29] Login Identificado Usuario a
+[18/12/2018 17:50:33] Leitura Armazenada
+[18/12/2018 17:50:39] Leitura Armazenada
+[18/12/2018 17:51:19] Workspace Identificado a
+[18/12/2018 17:51:21] Login Identificado Usuario a
+[18/12/2018 17:51:25] Leitura Armazenada
+[18/12/2018 17:51:31] Leitura Armazenada
+[18/12/2018 17:51:37] Leitura Armazenada
+[18/12/2018 17:51:43] Leitura Armazenada
+[18/12/2018 17:51:49] Leitura Armazenada
+[18/12/2018 17:51:55] Leitura Armazenada
+[18/12/2018 17:52:02] Leitura Armazenada
+[18/12/2018 17:59:44] Workspace Identificado a
+[18/12/2018 17:59:46] Login Identificado Usuario a
+[18/12/2018 17:59:51] Leitura Armazenada
+[18/12/2018 17:59:57] Leitura Armazenada
+[18/12/2018 18:00:04] Leitura Armazenada
+[18/12/2018 18:00:10] Leitura Armazenada
+[18/12/2018 18:00:16] Leitura Armazenada
+[18/12/2018 18:00:23] Leitura Armazenada
+[18/12/2018 18:00:29] Leitura Armazenada
+[18/12/2018 18:00:35] Leitura Armazenada
+[18/12/2018 18:00:42] Leitura Armazenada
+[18/12/2018 18:00:48] Leitura Armazenada
+[18/12/2018 18:00:54] Leitura Armazenada
+[18/12/2018 18:01:01] Leitura Armazenada
+[18/12/2018 18:01:33] Workspace Identificado a
+[18/12/2018 18:01:37] Login Identificado Usuario a
+[18/12/2018 18:01:41] Leitura Armazenada
+[18/12/2018 18:01:47] Leitura Armazenada
+[18/12/2018 18:01:54] Leitura Armazenada
+[18/12/2018 18:02:00] Leitura Armazenada
+[18/12/2018 18:02:07] Leitura Armazenada
+[18/12/2018 18:02:13] Leitura Armazenada
+[18/12/2018 18:02:44] Workspace Identificado a
+[18/12/2018 18:02:45] Login Identificado Usuario a
+[18/12/2018 18:02:49] Leitura Armazenada
+[18/12/2018 18:02:56] Leitura Armazenada
+[18/12/2018 18:03:02] Leitura Armazenada
+[18/12/2018 18:03:08] Leitura Armazenada
+[18/12/2018 18:03:15] Leitura Armazenada
+[18/12/2018 18:03:21] Leitura Armazenada
+[18/12/2018 18:03:27] Leitura Armazenada
+[18/12/2018 18:03:33] Leitura Armazenada
+[18/12/2018 18:03:40] Leitura Armazenada
+[18/12/2018 18:03:46] Leitura Armazenada
+[18/12/2018 18:03:52] Leitura Armazenada
+[18/12/2018 18:03:58] Leitura Armazenada
+[18/12/2018 18:04:29] Processos Armazenados
+[18/12/2018 18:04:35] Leitura Armazenada
+[18/12/2018 18:04:41] Leitura Armazenada
+[18/12/2018 18:04:47] Leitura Armazenada
+[18/12/2018 18:04:53] Leitura Armazenada
+[18/12/2018 18:04:59] Leitura Armazenada
+[18/12/2018 18:05:06] Leitura Armazenada
+[18/12/2018 18:05:12] Leitura Armazenada
+[18/12/2018 18:05:18] Leitura Armazenada
+[18/12/2018 18:05:24] Leitura Armazenada
+[18/12/2018 18:05:30] Leitura Armazenada
+[18/12/2018 18:05:36] Leitura Armazenada
+[18/12/2018 18:05:42] Leitura Armazenada
+[18/12/2018 18:09:05] Workspace Identificado a
+[18/12/2018 18:09:07] Login Identificado Usuario a
+[18/12/2018 18:09:11] Leitura Armazenada
+[18/12/2018 18:09:17] Leitura Armazenada
+[18/12/2018 18:45:35] Workspace Identificado a
+[18/12/2018 18:45:37] Login Identificado Usuario a
+[18/12/2018 18:45:42] Leitura Armazenada
+[18/12/2018 18:45:48] Leitura Armazenada
+[18/12/2018 18:45:54] Leitura Armazenada
+[18/12/2018 18:46:31] Workspace Identificado a
+[18/12/2018 18:46:33] Login Identificado Usuario a
+[18/12/2018 18:46:36] Leitura Armazenada
+[18/12/2018 18:46:42] Leitura Armazenada

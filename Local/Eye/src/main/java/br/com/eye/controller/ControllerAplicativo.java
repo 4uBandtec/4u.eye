@@ -14,7 +14,7 @@ public class ControllerAplicativo {
         for (LeituraProcesso leitura : leituras) {
             if (processoAtivo != null) {
                 if (leitura.getNomeNativo().equals(processoAtivo)) {
-                    StatementTarefa.AdicionaMinuto(codUsuario);
+                    StatementTarefa.adicionaMinuto(codUsuario);
                 }
             }
             int codProcesso = StatementProcesso.getProcesso(leitura.getNomeNativo());
