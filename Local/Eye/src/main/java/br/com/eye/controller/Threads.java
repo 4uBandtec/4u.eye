@@ -5,6 +5,7 @@ import br.com.eye.model.LeituraComputador;
 import br.com.eye.model.LogMensagem;
 import br.com.eye.model.dao.StatementLeituraComputador;
 import br.com.eye.model.dao.StatementWorkspace;
+import java.awt.AWTException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -36,17 +37,19 @@ public class Threads extends Thread {
                 } else {
                     new StatementLeituraComputador().setPrimeiraLeitura(new LeituraComputador().leituraOshi(), codComputador);
                 }
-
                 LogMensagem.GravarLog("Leitura Armazenada");
 
                 if (contador % 12 == 0) {
-                    ControllerNotificacao.EnviaSlack(StatementWorkspace.getCodWorkspace(codUsuario));
                     leituras = ControllerAplicativo.setLeituraAplicativo(codUsuario, leituras);
                     contador = contador == 120000 ? 0 : contador;
                     LogMensagem.GravarLog("Processos Armazenados");
                 }
+                if (contador % 24 == 0) {
+                    ControllerNotificacao.EnviaSlack(StatementWorkspace.getCodWorkspace(codUsuario));
+                    ControllerNotificacao.EnviaLocal(codUsuario);
+                }
                 sleep(5000);
-            } catch (SQLException | IOException | InterruptedException ex) {
+            } catch (SQLException | IOException | InterruptedException | AWTException ex) {
                 Logger.getLogger(Threads.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
