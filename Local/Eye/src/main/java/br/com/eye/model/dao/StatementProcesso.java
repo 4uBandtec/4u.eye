@@ -1,11 +1,14 @@
 package br.com.eye.model.dao;
 
+import br.com.eye.model.Tarefa;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.FormatStyle;
+import java.util.ArrayList;
+import java.util.List;
 
 public class StatementProcesso {
 
@@ -22,7 +25,7 @@ public class StatementProcesso {
         PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setString(1, nomeProcesso);
         query.setString(2, "NULL");
-         return query.execute();
+        return query.execute();
     }
 
     public static boolean setLeituraProcesso(int codUsuario, int codProcesso) throws SQLException {
@@ -76,10 +79,24 @@ public class StatementProcesso {
     }
 
     public static boolean acumulaMinutos(int codUsuario, int minutos, String perfil) throws SQLException {
-        String sql = "UPDATE perfil_usuario set "+ perfil + " = ? WHERE cod_usuario = ?";
+        String sql = "UPDATE perfil_usuario set " + perfil + " = ? WHERE cod_usuario = ?";
         PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
         query.setInt(1, minutos);
         query.setInt(2, codUsuario);
         return query.execute();
+    }
+
+    public static List<Tarefa> adicionaNomeProcesso(List<Tarefa> listaTarefa) throws SQLException {
+        for (Tarefa tarefa : listaTarefa) {
+            String sql = "SELECT nome_processo, nome_aplicacao from processo where cod_processo = ?";
+            PreparedStatement query = new Conexao().getConexao().prepareStatement(sql);
+            query.setInt(1, tarefa.getProcessos().getCodProcesso());
+            ResultSet resultado = query.executeQuery();
+            List<Tarefa> tarefas = new ArrayList<>();
+            while (resultado.next()) {
+                tarefa.getProcessos().setNomeProcesso(resultado.getString("nome_aplicacao").equals("NULL") ? resultado.getString("nome_processo") : resultado.getString("nome_aplicacao"));
+            }
+        }
+        return listaTarefa;
     }
 }
